@@ -3,7 +3,7 @@
 
         <div class="row">
             <hr>
-            <h1><center><strong>Haz click en los botones para ver cada contenido</strong></center></h1>
+            <h1><center><strong>Haz click en los botones para ver cada contenido222</strong></center></h1>
         </div>
         <div class="row">
 		    <div class="col-6" v-for="(post, index) in posts" v-bind:index="index">
@@ -81,43 +81,6 @@
                 .catch(function (error) {
                         console.log(error);
                 });
-            },
-            showModal() {
-                /*
-                var currentDate = new Date();
-                console.log(currentDate);
-    
-                var formatted_date = new Date().toJSON().slice(0,10).replace(/-/g,'/');
-                console.log(formatted_date);
-
-                this.input = formatted_date;
-
-                formatted_date = formatted_date.split("/")
-                
-                if(localStorage.getItem('storeDate') != null) {
-                    app.input = localStorage.getItem('storeDate');
-
-                    const date = app.input.split("/");
-
-                    console.log(date[2])
-             
-                    if(date[2] != formatted_date[2]) {
-                        this.$refs['my-modal'].show()
-                    }
-                    
-                    this.$refs['my-modal'].show()
-                    localStorage.setItem('storeDate', this.input)
-                } else {
-
-                
-                    if(date[2] != formatted_date[2]) {
-                        this.$refs['my-modal'].show()
-                    }
-                   
-                    this.$refs['my-modal'].show()
-                    localStorage.setItem('storeDate', formatted_date)
-                }
-                 */
             },
             hideModal() {
                 this.$refs['my-modal'].hide()
