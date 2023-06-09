@@ -25,7 +25,7 @@
                     </div>
                     <div v-if="post.section_id == 82">
                         <a @click.native="Track(post.google_tag)" class="boton2" :style="{ background: post.color}" :href="`tel:${'+566003606000'}`" >
-                            <font class="section_title">Salcobrand</font><br><center><img style="width: 50px;" :src="'/../frontend/images/salcobrand-seeklogo.com.png'" alt=""></center>
+                            <font class="section_title">Salcobrand{{ post.section_id  }}</font><br><center><img style="width: 50px;" :src="'/../frontend/images/salcobrand-seeklogo.com.png'" alt=""></center>
                         </a>
                     </div>
                     <div v-if="post.section_id == 70">
