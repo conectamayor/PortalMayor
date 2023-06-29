@@ -175,7 +175,8 @@
 
 	</div>
 	<!-- end sidebar -->
-	<a href="tel:12345">Llamar</a>
+	<a href="tel:1234567890">Llamar</a>
+
     <div id="app">
 		
         @yield('content')
