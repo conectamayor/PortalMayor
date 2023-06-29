@@ -24,7 +24,7 @@
                         </router-link>
                     </div>
                     <div v-if="post.section_id == 82">
-                        <a @click.native="Call()" class="boton2" :style="{ background: post.color}">
+                        <a @click="Call()" class="boton2" :style="{ background: post.color}">
                             <font class="section_title">Salcobrand</font><br><center><img style="width: 50px;" :src="'/../frontend/images/salcobrand-seeklogo.com.png'" alt=""></center>
                         </a>
                     </div>
@@ -103,6 +103,7 @@
                 });
             },
             Call() {
+                alert(11)
                 window.location.href = 'tel:1234567890';
             },
             goPhone(number, google_tag) {
