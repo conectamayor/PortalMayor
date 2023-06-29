@@ -103,7 +103,6 @@
                 });
             },
             Call() {
-                alert(11)
                 window.location.href = 'tel:1234567890';
             },
             goPhone(number, google_tag) {
