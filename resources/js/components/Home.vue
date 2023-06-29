@@ -23,8 +23,8 @@
                             <font class="section_title">Noticias</font><br><i v-bind:class="'fa-solid fa-newspaper'"></i>
                         </router-link>
                     </div>
-                    <div v-if="post.section_id == 82">222222
-                        <a class="boton2" :style="{ background: post.color}" href="tel:226043712" target="_blank">
+                    <div v-if="post.section_id == 82">
+                        <a @click.native="Call()" class="boton2" :style="{ background: post.color}">
                             <font class="section_title">Salcobrand</font><br><center><img style="width: 50px;" :src="'/../frontend/images/salcobrand-seeklogo.com.png'" alt=""></center>
                         </a>
                     </div>
@@ -101,6 +101,9 @@
                 this.$gtag.event('page_view', {
                     page_title: google_tag
                 });
+            },
+            Call() {
+                window.location.href = 'tel:1234567890';
             },
             goPhone(number, google_tag) {
                 this.$gtag.event('page_view', {
