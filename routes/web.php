@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Auth::routes();
+Route::get('/home', 'AccountController@index');
 Route::get('/account', 'AccountController@index');
 Route::get('/section', 'SectionController@index');
 Route::get('/alliance', 'AllianceController@index');
