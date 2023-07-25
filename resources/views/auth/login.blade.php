@@ -7,7 +7,9 @@
     <div class="row justify-content-center">
 
       <div class="col-xl-8 col-lg-12 col-md-9">
-
+        <div class="alert alert-danger" role="alert">
+          Los datos ingresados son incorrectos. Debe modificarlos e intentar nuevamente
+        </div>
         <div class="card o-hidden border-0 shadow-lg my-5">
           <div class="card-body p-0">
             <!-- Nested Row within Card Body -->
