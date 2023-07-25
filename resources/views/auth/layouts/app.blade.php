@@ -11,6 +11,7 @@
   <meta http-equiv="Cache-Control" content="no-cache" />
 	<meta http-equiv="Pragma" content="no-cache" />
 	<meta http-equiv="expires" content="Fri, 18 Jul 2014 1:00:00 GMT" />
+  <meta http-equiv="refresh" content="{{ config('session.lifetime') * 60 }}">
 
   <title>Ingresar - Portal de la Fundación Conecta Mayor</title>
 
