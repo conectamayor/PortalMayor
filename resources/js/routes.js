@@ -53,7 +53,7 @@ export default{
         },
         {
           path: '/home',
-            component: account,
+            component: 'account',
             name: "Account"
         },
         {
