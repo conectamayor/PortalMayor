@@ -52,11 +52,6 @@ export default{
             name: "Home"
         },
         {
-          path: '/home',
-            component: 'account',
-            name: "Account"
-        },
-        {
             path: '/account',
             name: 'account',
             component: Account
