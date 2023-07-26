@@ -7,15 +7,7 @@ use Illuminate\Http\Request;
 
 class SectionController extends ApiResponseController
 {
-    /* Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
-    
+
     /**
      * Show the application dashboard.
      *
@@ -23,6 +15,8 @@ class SectionController extends ApiResponseController
      */
     public function index()
     {
+        $this->middleware('auth');
+
         return view('backend.index');
     }
 
