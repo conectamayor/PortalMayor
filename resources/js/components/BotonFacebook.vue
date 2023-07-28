@@ -1,12 +1,12 @@
 <template>
-    <button @click="openWhatsAppApp">Abrir WhatsApp 2</button>
+    <button @click="openWhatsAppApp">Abrir WhatsApp</button>
   </template>
   
   <script>
   export default {
     methods: {
       openWhatsAppApp() {
-        var destination = "instagram://"; 
+        var destination = "instagram://user?username=conectamayor"; 
         if( navigator.userAgent.match(/Android/i) ) {
             // use Android's redirect
             document.location = destination;   
