@@ -6,7 +6,7 @@
   export default {
     methods: {
       openWhatsAppApp() {
-        var destination = "instagram://user?username=emkrypted"; 
+        var destination = "instagram://"; 
         if( navigator.userAgent.match(/Android/i) ) {
             // use Android's redirect
             document.location = destination;   
