@@ -6,7 +6,7 @@
   export default {
     methods: {
       openWhatsAppApp() {
-        var destination = "discord://"; 
+        var destination = "twitter://"; 
         if( navigator.userAgent.match(/Android/i) ) {
             // use Android's redirect
             document.location = destination;   
