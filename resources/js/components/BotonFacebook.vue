@@ -1,5 +1,5 @@
 <template>
-    <button @click="openWhatsAppApp">Abrir WhatsApp</button>
+    <button @click="openWhatsAppApp">Abrir WhatsApp 2</button>
   </template>
   
   <script>
