@@ -1,13 +1,14 @@
 <template>
-    <button @click="openFacebookApp">Abrir Facebook</button>
+    <button @click="openInstagramApp">Abrir Instagram</button>
   </template>
   
   <script>
   export default {
     methods: {
-      openFacebookApp() {
-        window.location.href = "fb://"; // URL de esquema personalizado de Facebook
+      openInstagramApp() {
+        window.location.href = "instagram://app"; // URL de esquema personalizado de Instagram
       }
     }
   }
-  </script>  
+  </script>
+  
