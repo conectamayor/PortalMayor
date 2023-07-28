@@ -1,14 +1,13 @@
 <template>
-    <button @click="openInstagramApp">Abrir Instagram</button>
+    <button @click="openInstagramProfile">Abrir Instagram</button>
   </template>
   
   <script>
   export default {
     methods: {
-      openInstagramApp() {
-        window.location.href = "instagram://app"; // URL de esquema personalizado de Instagram
+      openInstagramProfile() {
+        window.open("https://www.instagram.com/tu_perfil_de_instagram", "_blank");
       }
     }
   }
   </script>
-  
