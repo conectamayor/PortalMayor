@@ -8,7 +8,7 @@
   export default {
     methods: {
       openFacebookApp() {
-        const urlScheme = 'fb://'; // Facebook URI scheme for opening the app
+        const urlScheme = 'instagram://'; // Facebook URI scheme for opening the app
   
         // Try to open the Facebook app
         window.location.href = urlScheme;
