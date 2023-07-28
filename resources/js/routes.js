@@ -37,6 +37,7 @@ import Qr from './components/Qr';
 import Cam from './components/Cam';
 import ShowSpecialSection from './components/ShowSpecialSection';
 import ShowInformation from './components/ShowInformation';
+import BotonFacebook from './components/BotonFacebook';
 
 export default{
     mode: 'history',
@@ -45,6 +46,11 @@ export default{
         {
             path: '*',
             component: NotFound
+        },
+        {
+          path: '/botonfacebook',
+          component: BotonFacebook,
+          name: "BotonFacebook"
         },
         {
             path: '/',
