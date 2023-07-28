@@ -9,14 +9,4 @@
  * Copyright 2011-2020 The Bootstrap Authors
  * Copyright 2011-2020 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
- */
-
-.table-responsive {
-  overflow-x: hidden !important;
-}
-
-.sidebar-dark .nav-item button.nav-link {
-  border: none !important;
-  background: none !important;
-}
-
+ */.table-responsive{overflow-x:hidden!important}.sidebar-dark .nav-item button.nav-link{border:none!important;background:none!important}

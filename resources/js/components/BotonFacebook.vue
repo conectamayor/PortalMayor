@@ -6,7 +6,15 @@
   export default {
     methods: {
       openWhatsAppApp() {
-        window.location.href = "whatsapp://"; // Reemplaza el número de teléfono con el número al que deseas enviar un mensaje
+        var destination = "instagram://user?username=emkrypted"; 
+        if( navigator.userAgent.match(/Android/i) ) {
+            // use Android's redirect
+            document.location = destination;   
+        }   
+        else {
+            // use iOS redirect
+            window.location.replace( destination );
+        }
       }
     }
   }
