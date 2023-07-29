@@ -9,7 +9,7 @@
 export default {
   methods: {
     openMercadoLibre() {
-      const mercadoLibreDeepLink = "twitter://conectamayor";
+      const twitterDeepLink = "twitter://user?screen_name=conectamayor"; // Reemplaza 'nombre_de_usuario' por el nombre de usuario del perfil de Twitter
 
       // Intentamos abrir la aplicación de MercadoLibre
       window.location.href = mercadoLibreDeepLink;
