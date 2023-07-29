@@ -9,7 +9,7 @@
 export default {
   methods: {
     openMercadoLibre() {
-      const mercadoLibreDeepLink = "instagram.com://p";
+      const mercadoLibreDeepLink = "fb://";
 
       // Intentamos abrir la aplicación de MercadoLibre
       window.location.href = mercadoLibreDeepLink;
