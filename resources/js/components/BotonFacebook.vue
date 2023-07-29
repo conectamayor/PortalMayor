@@ -9,12 +9,15 @@
 export default {
   methods: {
     openMercadoLibre() {
-      // Esquema de URL personalizado para la aplicación de MercadoLibre
-      const mercadoLibreDeepLink = "mercadoLibre://";
-
-      // Intentamos abrir la aplicación de MercadoLibre
-      window.location.href = mercadoLibreDeepLink;
-    },
+      if(navigator.userAgent.toLowerCase().indexOf("android") > -1){
+        window.location.href = 
+        'http://play.google.com/store/apps/details?id=com.mercadolibre&hl=es_CL&gl=US';
+      }
+          if(navigator.userAgent.toLowerCase().indexOf("iphone") > -1){
+              window.location.href = 
+        'http://itunes.apple.com/lb/app/PACKAGEURL';
+      }
+    }
   },
 };
 </script>
