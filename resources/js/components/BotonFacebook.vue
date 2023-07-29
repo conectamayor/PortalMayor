@@ -9,7 +9,7 @@
 export default {
   methods: {
     openMercadoLibre() {
-      const mercadoLibreDeepLink = "meli://";
+      const mercadoLibreDeepLink = "instagram.com/p/";
       const mercadoLibreWebURL = "https://www.mercadolibre.com";
 
       // Intentamos abrir la aplicación de MercadoLibre
