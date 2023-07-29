@@ -27,6 +27,8 @@
         'apiToken' => Auth::user()->api_token,
         'url' => env('APP_URL'),
     ]) !!};
+
+    alert(App.url)
   </script>
 
 </head>

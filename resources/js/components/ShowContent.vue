@@ -209,7 +209,7 @@
                 .then(response => {
                     this.post = response.data.data;
                     this.url = this.post.src;
-                    this.image_url = '/storage/'+this.post.image;
+                    this.image_url = '/public/files/'+this.post.image;
                     this.pdf_url = App.url + '/public/files/'+this.post.pdf;
                     this.videoID = this.post.video_id;
                 })
