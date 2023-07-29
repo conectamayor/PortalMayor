@@ -9,7 +9,7 @@
 export default {
   methods: {
     openMercadoLibre() {
-      const mercadoLibreDeepLink = "meli://conectamayor";
+      const mercadoLibreDeepLink = "twitter://conectamayor";
 
       // Intentamos abrir la aplicación de MercadoLibre
       window.location.href = mercadoLibreDeepLink;
