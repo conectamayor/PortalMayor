@@ -9,15 +9,18 @@
 export default {
   methods: {
     openMercadoLibre() {
-      if(navigator.userAgent.toLowerCase().indexOf("android") > -1){
-        window.location.href = 
-        'http://play.google.com/store/apps/details?id=com.mercadolibre&hl=es_CL&gl=US';
-      }
-          if(navigator.userAgent.toLowerCase().indexOf("iphone") > -1){
-              window.location.href = 
-        'http://itunes.apple.com/lb/app/PACKAGEURL';
-      }
-    }
+      const mercadoLibreDeepLink = "meli://";
+      const mercadoLibreWebURL = "https://www.mercadolibre.com";
+
+      // Intentamos abrir la aplicación de MercadoLibre
+      window.location.href = mercadoLibreDeepLink;
+
+      // Agregamos una espera de 300 ms antes de redirigir al sitio web de MercadoLibre
+      // Esto le dará tiempo suficiente al sistema para intentar abrir la aplicación
+      setTimeout(() => {
+        window.location.href = mercadoLibreWebURL;
+      }, 300);
+    },
   },
 };
 </script>
