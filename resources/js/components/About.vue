@@ -1,6 +1,6 @@
 <template>
     <div class="text-2xl text-green-800">
-        About page
+        About page1
     </div>
 </template>
 <script>
