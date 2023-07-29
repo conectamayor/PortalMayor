@@ -125,7 +125,7 @@ class SectionController extends ApiResponseController
 
             if($request->icon_type_id == 1) {
                 Storage::disk('local')->putFileAs(
-                    '/public',
+                    '/files',
                     $request->file,
                     $fileName
                 );
@@ -326,8 +326,8 @@ class SectionController extends ApiResponseController
             }
 
             if($request->icon_type_id == 2 && $old_icon_type == 1) {
-                if(Storage::exists('public/'.$old_icon_name)) {
-                    Storage::delete('public/'.$old_icon_name);
+                if(Storage::exists('public/files/'.$old_icon_name)) {
+                    Storage::delete('public/files/'.$old_icon_name);
                 }
             }
 
@@ -349,8 +349,8 @@ class SectionController extends ApiResponseController
 
         if($check_section_categories == 0) {
             $section = Section::find($id);
-            if(Storage::exists('public/'.$section->icon)) {
-                if(Storage::delete('public/'.$section->icon)) {
+            if(Storage::exists('public/files/'.$section->icon)) {
+                if(Storage::delete('public/files/'.$section->icon)) {
                     if($section->delete()) {
                         $fix_sections = Section::orderBy('position', 'ASC')->get();
 
