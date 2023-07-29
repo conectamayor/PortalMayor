@@ -25,6 +25,7 @@
   <script>
     window.App = {!! json_encode([
         'apiToken' => Auth::user()->api_token,
+        'url' => env('APP_URL'),
     ]) !!};
   </script>
 
@@ -119,9 +120,6 @@
       </div>
     </div>
   </div>
-  <script>
-    window.appUrl = '{{ env('APP_URL') }}';
-  </script>
   <script type="application/javascript" src="{{ mix('js/app.js') }}"></script>
   <script type="text/javascript" src="http://code.jquery.com/jquery-1.12.4.min.js"></script>
   <script src="{{ asset('backend/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
