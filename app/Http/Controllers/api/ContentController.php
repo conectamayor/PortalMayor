@@ -170,7 +170,7 @@ class ContentController extends ApiResponseController
         }
         if($content->save()) {
             if($request->file != 'undefined') { 
-                Storage::disk('local')->putFileAs(
+                Storage::disk('public')->putFileAs(
                     '/public',
                     $request->file,
                     $fileName
@@ -178,7 +178,7 @@ class ContentController extends ApiResponseController
             }
 
             if($request->pdf != 'undefined') { 
-                Storage::disk('local')->putFileAs(
+                Storage::disk('public')->putFileAs(
                     '/public',
                     $request->pdf,
                     $pdfName
