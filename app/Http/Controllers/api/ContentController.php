@@ -260,7 +260,7 @@ class ContentController extends ApiResponseController
         if($content->save()) {
             if($request->file != 'undefined') { 
                 Storage::disk('local')->putFileAs(
-                    '/public',
+                    '/files',
                     $request->file,
                     $fileName
                 );

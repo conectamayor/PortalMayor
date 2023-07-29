@@ -199,7 +199,7 @@ class CategoryController extends ApiResponseController
         if($category->save()) {
             if($request->file != 'undefined') { 
                 Storage::disk('local')->putFileAs(
-                    '/public',
+                    '/files',
                     $request->file,
                     $fileName
                 );
@@ -208,7 +208,7 @@ class CategoryController extends ApiResponseController
             if($request->icon_image != 'undefined') {
                 if($request->icon_type_id == 1) {
                     Storage::disk('local')->putFileAs(
-                        '/public',
+                        '/files',
                         $request->icon_image,
                         $icon_fileName
                     );
@@ -277,7 +277,7 @@ class CategoryController extends ApiResponseController
         if($category->save()) {
             if($request->file != 'undefined') { 
                 Storage::disk('local')->putFileAs(
-                    '/public',
+                    '/files',
                     $request->file,
                     $fileName
                 );
@@ -286,7 +286,7 @@ class CategoryController extends ApiResponseController
             if($request->icon_image != 'undefined') {
                 if($request->icon_type_id == 1) {
                     Storage::disk('local')->putFileAs(
-                        '/public',
+                        '/files',
                         $request->icon_image,
                         $icon_fileName
                     );

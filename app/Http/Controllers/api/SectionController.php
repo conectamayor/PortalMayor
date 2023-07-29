@@ -318,7 +318,7 @@ class SectionController extends ApiResponseController
             if($request->file != 'undefined') {
                 if($request->icon_type_id == 1) {
                     Storage::disk('local')->putFileAs(
-                        '/public',
+                        '/files',
                         $request->file,
                         $fileName
                     );
