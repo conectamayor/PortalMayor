@@ -1,7 +1,7 @@
 <!-- src/components/MercadoLibreButton.vue -->
 <template>
   <div>
-    <button @click="openMercadoLibre">Abrir MercadoLibre 2</button>
+    <button @click="openMercadoLibre">Abrir MercadoLibre</button>
   </div>
 </template>
 
@@ -9,8 +9,10 @@
 export default {
   methods: {
     openMercadoLibre() {
-      const mercadoLibreDeepLink = "instagram.com/p/://";
+      const mercadoLibreDeepLink = "instagram.com://p";
 
+      // Intentamos abrir la aplicación de MercadoLibre
+      window.location.href = mercadoLibreDeepLink;
 
     },
   },
