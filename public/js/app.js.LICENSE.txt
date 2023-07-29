@@ -50,6 +50,8 @@ object-assign
 
 /*! @vimeo/player v2.16.4 | (c) 2022 Vimeo | MIT License | https://github.com/vimeo/player.js */
 
+/*! Capacitor: https://capacitorjs.com/ - MIT License */
+
 /*! Native Promise Only
     v0.8.1 (c) Kyle Simpson
     MIT License: http://getify.mit-license.org

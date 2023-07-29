@@ -24,6 +24,8 @@
         "vue-template-compiler": "^2.6.14"
     },
     "dependencies": {
+        "@capacitor/cli": "^5.2.2",
+        "@capacitor/core": "^5.2.2",
         "@fortawesome/fontawesome-svg-core": "^6.1.1",
         "@fortawesome/free-brands-svg-icons": "^6.1.1",
         "@fortawesome/free-regular-svg-icons": "^6.1.1",
