@@ -181,7 +181,6 @@
     </div>
     <script>
 		window.appUrl = '{{ env('APP_URL') }}';
-		alert(window.appUrl)
 	</script>
 	<!-- end toolbar bottom -->
     <script src="{{ asset('frontend/js/jquery-3.4.1.min.js') }}"></script>
