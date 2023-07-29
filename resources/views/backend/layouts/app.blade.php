@@ -24,11 +24,8 @@
 
   <script>
     window.App = {!! json_encode([
-        'apiToken' => Auth::user()->api_token,
-        'url' => env('APP_URL'),
+        'apiToken' => Auth::user()->api_token
     ]) !!};
-
-    alert(App.url)
   </script>
 
 </head>
