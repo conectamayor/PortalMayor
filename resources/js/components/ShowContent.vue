@@ -210,7 +210,7 @@
                     this.post = response.data.data;
                     this.url = this.post.src;
                     this.image_url = '/storage/'+this.post.image;
-                    this.pdf_url = 'https://qa.portalconectamayor.cl/public/files/'+this.post.pdf;
+                    this.pdf_url = env('APP_URL') + '/public/files/'+this.post.pdf;
                     this.videoID = this.post.video_id;
                 })
                 .catch(function (error) {
