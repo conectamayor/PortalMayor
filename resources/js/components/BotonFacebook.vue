@@ -1,7 +1,7 @@
 <!-- src/components/MercadoLibreButton.vue -->
 <template>
   <div>
-    <button @click="openMercadoLibre">Abrir MercadoLibre</button>
+    <button @click="openMercadoLibre">Abrir Instagram</button>
   </div>
 </template>
 
@@ -9,7 +9,7 @@
 export default {
   methods: {
     openMercadoLibre() {
-      const twitterDeepLink = "twitter://user?screen_name=conectamayor"; // Reemplaza 'nombre_de_usuario' por el nombre de usuario del perfil de Twitter
+      const twitterDeepLink = "instagram://user?username=conectamayor"; // Reemplaza 'nombre_de_usuario' por el nombre de usuario del perfil de Twitter
 
       // Intentamos abrir la aplicación de MercadoLibre
       window.location.href = mercadoLibreDeepLink;
