@@ -171,7 +171,7 @@ class ContentController extends ApiResponseController
         if($content->save()) {
             if ($request->file != 'undefined') { 
                 Storage::disk('local')->putFileAs(
-                    '', // Ruta modificada aquí
+                    'files', // Ruta modificada aquí
                     $request->file,
                     $fileName
                 );
@@ -179,7 +179,7 @@ class ContentController extends ApiResponseController
             
             if ($request->pdf != 'undefined') { 
                 Storage::disk('local')->putFileAs(
-                    '', // Ruta modificada aquí
+                    'files', // Ruta modificada aquí
                     $request->pdf,
                     $pdfName
                 );
