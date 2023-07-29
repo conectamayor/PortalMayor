@@ -169,21 +169,21 @@ class ContentController extends ApiResponseController
             $content->status = 2;
         }
         if($content->save()) {
-            if($request->file != 'undefined') { 
-                Storage::disk('public')->putFileAs(
-                    '/public',
+            if ($request->file != 'undefined') { 
+                Storage::disk('local')->putFileAs(
+                    'files', // Ruta modificada aquí
                     $request->file,
                     $fileName
                 );
             }
-
-            if($request->pdf != 'undefined') { 
-                Storage::disk('public')->putFileAs(
-                    '/public',
+            
+            if ($request->pdf != 'undefined') { 
+                Storage::disk('local')->putFileAs(
+                    'files', // Ruta modificada aquí
                     $request->pdf,
                     $pdfName
                 );
-            }
+            }            
         }
 
         return $this->successResponse($content);
