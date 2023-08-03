@@ -353,12 +353,9 @@
                     if (this.form.icon_type_id == 1 && this.file == null) {
                         this.errors.push('El icono es obligatorio.');
                     }
-                    if (this.form.icon_type_id == 2 && this.form.fai == '') {
+                    if (this.form.icon_type_id == 2 && this.form.fai == '' && this.form.icon_available_id == 1) {
                         this.errors.push('El icono es obligatorio.');
                     } 
-                    if (this.form.icon_type_id == 1 && (this.file.size > 1024 * 1024)) {
-                        this.errors.push('La imagen es muy pesada.');
-                    }
                     if (this.form.position == '') {
                         this.errors.push('La posición es obligatoria.');
                     }
