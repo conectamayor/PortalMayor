@@ -101,11 +101,9 @@
                                             <option :value="1">Si</option>
                                             <option :value="2">No</option>
                                         </select>
-                                        <input type="text" v-model="form.icon_type_id">
+                                        <input type="hidden" v-model="form.icon_type_id">
                                     </div>
-                                </div>
-                                <div class="form-group row">
-                                    <div class="col-sm-6">
+                                    <div class="col-sm-6" v-if="form.icon_available_id == 1">
                                         <label for="exampleInputEmail1">Fa Icon - <a href="https://fontawesome.com/icons" target= "_blank">Ver iconos</a></label>
                                         <input
                                             type="text" 
