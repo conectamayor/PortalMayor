@@ -94,6 +94,17 @@
                                 </div>
                                 <div class="form-group row">
                                     <div class="col-sm-6">
+                                        <label for="exampleInputEmail1">¿La sección tiene icono? <h6 class="m-0 text-danger float-right">*</h6></label>
+                                        <select class="form-control" id="exampleFormControlSelect1"
+                                        v-model="form.icon_available_id"
+                                        >
+                                            <option :value="1">Si</option>
+                                            <option :value="2">No</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div v-if="icon_available_id == 1" class="form-group row">
+                                    <div class="col-sm-6">
                                         <label for="exampleInputEmail1">Tipo de Icono <h6 class="m-0 text-danger float-right">*</h6></label>
                                         <select class="form-control" id="exampleFormControlSelect1"
                                         v-model="form.icon_type_id"
@@ -254,7 +265,8 @@
                     subtitle: '',
                     iframe_question_id: 2,
                     iframe: '',
-                    direct_content_question_id: 2
+                    direct_content_question_id: 2,
+                    icon_available_id: 2
                 }
             }
         },
@@ -290,7 +302,7 @@
                 if(this.form.title != ''
                     && this.form.color != ''
                     && this.form.google_tag != ''
-                    && this.form.icon_type_id != null
+                    && (this.form.icon_type_id != null) || (this.form.icon_type_id == null && this.form.icon_available_id == 2)
                     && (this.file != null || this.form.fai != '')
                     && this.form.position != ''
                     && this.form.direct_content_question_id != ''
