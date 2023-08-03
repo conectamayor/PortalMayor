@@ -56,8 +56,6 @@ class SectionController extends ApiResponseController
      */
     public function store(Request $request)
     {
-        print_r($request->region);
-        die();
         if($request->icon_type_id == 1) {
             $fileName = time().'_'.'section_icon'.'.'.$request->file->getClientOriginalExtension();
         } else {
