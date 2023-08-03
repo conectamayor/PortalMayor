@@ -347,11 +347,8 @@
                     if (this.form.color == '') {
                         this.errors.push('El color es obligatorio.');
                     }
-                    if (this.form.icon_type_id == null) {
+                    if (this.form.icon_type_id == null && this.form.icon_available_id == 1) {
                         this.errors.push('El tipo de icono es obligatorio.');
-                    }
-                    if (this.form.icon_type_id == 1 && this.file == null) {
-                        this.errors.push('El icono es obligatorio.');
                     }
                     if (this.form.icon_type_id == 2 && this.form.fai == '' && this.form.icon_available_id == 1) {
                         this.errors.push('El icono es obligatorio.');
