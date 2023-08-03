@@ -131,7 +131,7 @@
                                         </select>
                                     </div>
                                 </div>
-                                <div class="form-group row" v-if="direct_content_question_id == 2 && open_app_id == 2 && youtube_question_id == 2 && iframe_question_id == 2">
+                                <div class="form-group row" v-if="form.direct_content_question_id == 2 && form.open_app_id == 2 && form.youtube_question_id == 2 && form.iframe_question_id == 2">
                                     <div class="col-sm-6">
                                         <label for="exampleInputEmail1">¿Es un enlace a una página externa? <h6 class="m-0 text-danger float-right">*</h6></label>
                                         <select class="form-control" id="exampleFormControlSelect1"
@@ -152,7 +152,7 @@
                                         >
                                     </div>
                                 </div>
-                                <div class="form-group row" v-if="direct_content_question_id == 2 && open_app_id == 2 && youtube_question_id == 2 && link_question_id == 2">
+                                <div class="form-group row" v-if="form.direct_content_question_id == 2 && form.open_app_id == 2 && form.youtube_question_id == 2 && form.link_question_id == 2">
                                     <div class="col-sm-6">
                                         <label for="exampleInputEmail1">¿Es un Iframe? <h6 class="m-0 text-danger float-right">*</h6></label>
                                         <select class="form-control" id="exampleFormControlSelect1"
@@ -172,7 +172,7 @@
                                         >
                                     </div>
                                 </div>
-                                <div class="form-group row" v-if="direct_content_question_id == 2 && open_app_id == 2 && iframe_question_id == 2 && link_question_id == 2">
+                                <div class="form-group row" v-if="form.direct_content_question_id == 2 && form.open_app_id == 2 && form.iframe_question_id == 2 && form.link_question_id == 2">
                                     <div class="col-sm-6">
                                         <label for="exampleInputEmail1">¿Es un video de Youtube? <h6 class="m-0 text-danger float-right">*</h6></label>
                                         <select class="form-control" id="exampleFormControlSelect1"
@@ -212,7 +212,7 @@
                                         >
                                     </div>
                                 </div>
-                                <div class="form-group row" v-if="direct_content_question_id == 2 && youtube_question_id == 2 && iframe_question_id == 2 && link_question_id == 2">
+                                <div class="form-group row" v-if="form.direct_content_question_id == 2 && form.youtube_question_id == 2 && form.iframe_question_id == 2 && form.link_question_id == 2">
                                     <div class="col-sm-4">
                                         <label for="exampleInputEmail1">¿Va a abrir una aplicación? <h6 class="m-0 text-danger float-right">*</h6></label>
                                         <select class="form-control" id="exampleFormControlSelect1"
