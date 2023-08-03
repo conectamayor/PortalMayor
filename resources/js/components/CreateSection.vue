@@ -256,7 +256,8 @@
                     subtitle: '',
                     iframe_question_id: 2,
                     iframe: '',
-                    direct_content_question_id: 2
+                    direct_content_question_id: 2,
+                    icon_available_id: 2
                 }
             }
         },
@@ -290,11 +291,15 @@
                 }
 
                 if(this.form.title != ''
-                    && this.form.color != ''
+                && this.form.color != ''
                     && this.form.google_tag != ''
-                    && this.form.icon_type_id != null
+                    && (this.form.icon_type_id != null) || (this.form.icon_type_id == null && this.form.icon_available_id == 2)
                     && (this.file != null || this.form.fai != '')
                     && this.form.position != ''
+                    && this.form.direct_content_question_id != ''
+                    && this.form.link_question_id != ''
+                    && this.form.iframe_question_id
+                    && this.form.youtube_question_id
                 ) {
                     let formData = new FormData();
                     formData.append('title', this.form.title);
@@ -342,20 +347,26 @@
                     if (this.form.color == '') {
                         this.errors.push('El color es obligatorio.');
                     }
-                    if (this.form.icon_type_id == null) {
+                    if (this.form.icon_type_id == null && this.form.icon_available_id == 1) {
                         this.errors.push('El tipo de icono es obligatorio.');
                     }
-                    if (this.form.icon_type_id == 1 && this.file == null) {
-                        this.errors.push('El icono es obligatorio.');
-                    }
-                    if (this.form.icon_type_id == 2 && this.form.fai == '') {
+                    if (this.form.icon_type_id == 2 && this.form.fai == '' && this.form.icon_available_id == 1) {
                         this.errors.push('El icono es obligatorio.');
                     } 
-                    if (this.form.icon_type_id == 1 && (this.file.size > 1024 * 1024)) {
-                        this.errors.push('La imagen es muy pesada.');
-                    }
                     if (this.form.position == '') {
                         this.errors.push('La posición es obligatoria.');
+                    }
+                    if (this.form.direct_content_question_id == '') {
+                        this.errors.push('La pregunta es directo a contenido es obligatoria.');
+                    }
+                    if (this.form.link_question_id == '') {
+                        this.errors.push('La pregunta de enlace es obligatoria.');
+                    }
+                    if (this.form.iframe_question_id == '') {
+                        this.errors.push('La pregunta de iframe es obligatoria.');
+                    }
+                    if (this.form.youtube_question_id == '') {
+                        this.errors.push('La pregunta de youtube es obligatoria.');
                     }
 
                     $('html,body').scrollTop(0);
