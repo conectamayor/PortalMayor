@@ -289,7 +289,7 @@
                     src: '',
                     video_type_id: null,
                     iframe: '',
-                    color
+                    color: '',
                 }
             }
         },
