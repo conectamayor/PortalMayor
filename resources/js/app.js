@@ -15,6 +15,7 @@ import 'bootstrap-vue/dist/bootstrap-vue.css'
 import VueGtag from "vue-gtag";
 // import vue-panzoom
 import panZoom from 'vue-panzoom'
+import { Plugins } from "@capacitor/core";
 
 import VueQrcodeReader from "vue-qrcode-reader";
 
@@ -58,6 +59,7 @@ Vue.use(vueVimeoPlayer)
 Vue.use(VueAWN);
 Vue.use(VueRouter);
 Vue.use(VueMask);
+Vue.prototype.$app = Plugins.App; // Agregamos el plugin App a Vue
 
 Vue.use(VueGtag, {
     config: { id: "G-XQ3YXJJRQ8" }
