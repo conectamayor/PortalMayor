@@ -103,7 +103,6 @@
                                         </select>
                                     </div>
                                     <div class="col-sm-6" v-if="form.icon_available_id == 1" >
-                                        <input type="hidden" value="2">
                                         <label for="exampleInputEmail1">Fa Icon - <a href="https://fontawesome.com/icons" target= "_blank">Ver iconos</a></label>
                                         <input
                                             type="text" 
@@ -112,6 +111,7 @@
                                             placeholder="Ingresa el icono"
                                         >
                                     </div>
+                                    <input type="hidden" v-model="form.icon_type_id" value="2">
                                 </div>
                                 <div class="form-group row">
                                     <div class="col-sm-6">
