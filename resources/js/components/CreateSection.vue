@@ -131,7 +131,6 @@
                                         </select>
                                     </div>
                                 </div>
-                                {{ form.direct_content_question_id }} {{ form.open_app_id  }} {{ form.youtube_question_id }} {{ form.open_app_id }} {{ form.link_question_id }}
                                 <div class="form-group row" v-if="form.direct_content_question_id == 2 && form.open_app_id == 2 && form.youtube_question_id == 2 && form.open_app_id == 2">
                                     <div class="col-sm-6">
                                         <label for="exampleInputEmail1">¿Es un enlace a una página externa? <h6 class="m-0 text-danger float-right">*</h6></label>
@@ -219,8 +218,8 @@
                                         <select class="form-control" id="exampleFormControlSelect1"
                                         v-model="form.open_app_id"
                                         >
-                                            <option :value="1">No</option>
-                                            <option :value="2">Si</option>
+                                            <option :value="1">Si</option>
+                                            <option :value="2">No</option>
                                         </select>
                                     </div>
                                     <div class="col-sm-4" v-if="form.open_app_id == 1">
@@ -315,7 +314,7 @@
                     region: null,
                     whatsapp_url_to_share: '',
                     whatsatpp_share_id: 1,
-                    open_app_id: 1,
+                    open_app_id: 2,
                     open_app_version_id: '',
                     open_app_uri_url: '',
                 }
@@ -374,6 +373,7 @@
                     && this.form.iframe_question_id
                     && this.form.youtube_question_id
                     && ((this.form.whatsatpp_share_id == 1) || (this.form.whatsatpp_share_id == 2 && this.form.whatsapp_url_to_share != ''))
+                    && ((this.form.open_app_id == 1) || (this.form.open_app_id == 2 && this.form.open_app_version_id != '' && this.form.open_app_uri_url != ''))
                 ) {
                     let formData = new FormData();
                     formData.append('title', this.form.title);
@@ -391,6 +391,9 @@
                     formData.append('icon_available_id', this.form.icon_available_id);
                     formData.append('whatsatpp_share_id', this.form.whatsatpp_share_id);
                     formData.append('whatsapp_url_to_share', this.form.whatsapp_url_to_share);
+                    formData.append('open_app_id', this.form.open_app_id);
+                    formData.append('open_app_version_id', this.form.open_app_version_id);
+                    formData.append('open_app_uri_url', this.form.open_app_uri_url);
 
                     if (this.form.region !== null) {
                         this.form.region.forEach(regionId => {
@@ -446,6 +449,12 @@
                     }
                     if (this.form.whatsatpp_share_id == 2 && this.form.whatsapp_url_to_share == '') {
                         this.errors.push('La url a compartir por Whatsapp es obligatoria.');
+                    }
+                    if (this.form.open_app_id == 2 && this.form.open_app_version_id == '') {
+                        this.errors.push('El método es obligatorio.');
+                    }
+                    if (this.form.open_app_id == 2 && this.form.open_app_uri_url == '') {
+                        this.errors.push('La url de la app es obligatoria.');
                     }
 
                     $('html,body').scrollTop(0);
