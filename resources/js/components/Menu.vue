@@ -79,7 +79,7 @@
         },
         methods: {
             closeSession() {
-                window.location = currentURL + '/login/logout';
+                window.location = window.location.host + '/login/logout';
             },
             getRol() {
                 axios.get('/api/user/rol?api_token='+App.apiToken)
