@@ -92,7 +92,7 @@
                                         >
                                     </div>
                                     <div class="col-sm-4">
-                                        <label for="exampleInputEmail1">Región <h6 class="m-0 text-danger float-right">*</h6> (Pulsa la tecla CTRL para seleccionar varias)</label>
+                                        <label for="exampleInputEmail1">Región <h6 class="m-0 text-danger float-right">*</h6> <h6 class="m-0 text-primary float-right">(Pulsa la tecla CTRL para seleccionar varias)</h6></label>
                                         <select v-model="form.region" multiple class="form-control">
                                             <option v-for="region in region_posts" :key="region.region_id" :value="region.region_id">{{ region.region }}</option>
                                         </select>
@@ -323,6 +323,12 @@
                     formData.append('google_tag', this.form.google_tag);
                     formData.append('direct_content_question_id', this.form.direct_content_question_id);
                     formData.append('icon_available_id', this.form.icon_available_id);
+                    
+                    if (this.form.region !== null) {
+                        this.form.region.forEach(regionId => {
+                            formData.append('region[]', regionId);
+                        });
+                    }
 
                     axios.post('/api/section/store?api_token='+App.apiToken, formData, config)
                     .then(function (response) {
