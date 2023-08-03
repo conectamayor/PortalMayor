@@ -126,6 +126,34 @@
                                 </div>
                                 <div class="form-group row">
                                     <div class="col-sm-6">
+                                        <label for="exampleInputEmail1">Color <h6 class="m-0 text-danger float-right">*</h6></label>
+                                        <div class="form-group row">
+                                            <div class="col-sm-2">
+                                                <v-input-colorpicker v-model="color" @change="handleChange" />
+                                            </div>
+                                            <div class="col-sm-10">
+                                                <input
+                                                type="text" 
+                                                v-model="form.color" 
+                                                class="form-control"
+                                                placeholder="Ingresa el color"
+                                                >
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <label for="exampleInputEmail1">Posición <h6 class="m-0 text-danger float-right">*</h6></label>
+                                        <input
+                                        type="number" 
+                                        v-model="form.position" 
+                                        min="0"
+                                        class="form-control"
+                                        placeholder="Ingresa la posición"
+                                        >
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-sm-6">
                                         <label for="exampleInputEmail1">Google Tag <h6 class="m-0 text-danger float-right">*</h6></label>
                                         <input
                                         type="text" 
@@ -200,15 +228,6 @@
                                     <div class="col-sm-8" v-if="form.type_id == 3">
                                         <vue-editor v-model="form.description"></vue-editor>
                                     </div>
-                                    <div class="col-sm-4">
-                                        <label for="exampleInputEmail1">Posición <h6 class="m-0 text-danger float-right">*</h6></label>
-                                        <input
-                                        type="number" 
-                                        v-model="form.position" 
-                                        class="form-control"
-                                        placeholder="Ingresa la posición"
-                                        >
-                                    </div>
                                 </div>
 
                                 <button 
@@ -269,7 +288,8 @@
                     end_date: '',
                     src: '',
                     video_type_id: null,
-                    iframe: ''
+                    iframe: '',
+                    color
                 }
             }
         },

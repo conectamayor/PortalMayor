@@ -211,6 +211,36 @@
                                         >
                                     </div>
                                 </div>
+                                <div class="form-group row">
+                                    <div class="col-sm-4">
+                                        <label for="exampleInputEmail1">¿Va a abrir una aplicación? <h6 class="m-0 text-danger float-right">*</h6></label>
+                                        <select class="form-control" id="exampleFormControlSelect1"
+                                        v-model="form.open_app_id"
+                                        >
+                                            <option :value="1">No</option>
+                                            <option :value="2">Si</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <label for="exampleInputEmail1">¿Qué método va a utilizar? <h6 class="m-0 text-danger float-right">*</h6></label>
+                                        <select class="form-control" id="exampleFormControlSelect1"
+                                        v-model="form.open_app_version_id"
+                                        >
+                                            <option value="">- Seleccione -</option>
+                                            <option :value="1">URI</option>
+                                            <option :value="2">URL</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-sm-4" v-if="form.open_app_version_id == 2">
+                                        <label for="exampleInputEmail1">URL a CWompartir</label>
+                                        <input
+                                            type="text" 
+                                            v-model="form.open_app_version_id"
+                                            class="form-control"
+                                            placeholder="Ingresa la url para abrir la aplicación"
+                                        >
+                                    </div>
+                                </div>
                                 <button 
                                 type="submit"
                                 class="btn btn-success btn-icon-split">
@@ -275,6 +305,9 @@
                     region: null,
                     whatsapp_url_to_share: '',
                     whatsatpp_share_id: 1,
+                    open_app_id: 1,
+                    open_app_version_id: '',
+                    whatsapp_url_to_share: '',
                 }
             }
         },
