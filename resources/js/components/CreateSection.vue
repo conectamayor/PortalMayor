@@ -232,10 +232,10 @@
                                         </select>
                                     </div>
                                     <div class="col-sm-4" v-if="form.open_app_version_id == 2">
-                                        <label for="exampleInputEmail1">URL a CWompartir</label>
+                                        <label for="exampleInputEmail1">URL a Compartir</label>
                                         <input
                                             type="text" 
-                                            v-model="form.open_app_version_id"
+                                            v-model="form.open_app_url"
                                             class="form-control"
                                             placeholder="Ingresa la url para abrir la aplicación"
                                         >
@@ -284,7 +284,6 @@
                 region_posts: [],
                 color: '#0A2787',
                 loading: false,
-                color: "#0f4c81",
                 noFile: false,
                 form: {
                     title: '',
@@ -307,7 +306,7 @@
                     whatsatpp_share_id: 1,
                     open_app_id: 1,
                     open_app_version_id: '',
-                    whatsapp_url_to_share: '',
+                    open_app_url: '',
                 }
             }
         },

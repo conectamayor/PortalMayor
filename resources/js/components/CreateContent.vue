@@ -257,10 +257,13 @@
 <script>
     import { ClipLoader } from 'vue-spinner/dist/vue-spinner.min.js';
     import { VueEditor } from "vue2-editor";
+    import InputColorPicker from 'vue-native-color-picker';
+    
     export default {
         components: {
             ClipLoader,
-            VueEditor
+            VueEditor,
+            "v-input-colorpicker": InputColorPicker
         },
         created() {
             this.getCategoryList();
