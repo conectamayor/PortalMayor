@@ -100,8 +100,6 @@
                                         >
                                             <option :value="null">Seleccionar</option>
                                             <option :value="2">Fa Icon</option>
-                                            <option :value="3">Ionic Icon</option>
-                                            <option :value="1">Imagen</option>
                                         </select>
                                     </div>
                                     <div class="col-sm-6" v-if="form.icon_type_id == 1">
@@ -295,6 +293,10 @@
                     && this.form.icon_type_id != null
                     && (this.file != null || this.form.fai != '')
                     && this.form.position != ''
+                    && this.form.direct_content_question_id != ''
+                    && this.form.link_question_id != ''
+                    && this.form.iframe_question_id
+                    && this.form.youtube_question_id
                 ) {
                     let formData = new FormData();
                     formData.append('title', this.form.title);
@@ -356,6 +358,18 @@
                     }
                     if (this.form.position == '') {
                         this.errors.push('La posición es obligatoria.');
+                    }
+                    if (this.form.direct_content_question_id == '') {
+                        this.errors.push('La pregunta es directo a contenido es obligatoria.');
+                    }
+                    if (this.form.link_question_id == '') {
+                        this.errors.push('La pregunta de enlace es obligatoria.');
+                    }
+                    if (this.form.iframe_question_id == '') {
+                        this.errors.push('La pregunta de iframe es obligatoria.');
+                    }
+                    if (this.form.youtube_question_id == '') {
+                        this.errors.push('La pregunta de youtube es obligatoria.');
                     }
 
                     $('html,body').scrollTop(0);

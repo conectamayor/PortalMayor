@@ -117,7 +117,6 @@
                                         >
                                             <option :value="null">Seleccionar</option>
                                             <option :value="2">Fa Icon</option>
-                                            <option :value="3">Ionic Icon</option>
                                         </select>
                                     </div>
                                     <div class="col-sm-6" v-if="form.icon_type_id == 1">
