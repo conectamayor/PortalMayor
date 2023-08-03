@@ -65,7 +65,7 @@
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <div class="col-sm-6">
+                                    <div class="col-sm-4">
                                         <label for="exampleInputEmail1">Color <h6 class="m-0 text-danger float-right">*</h6></label>
                                         <div class="form-group row">
                                             <div class="col-sm-2">
@@ -81,7 +81,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-sm-6">
+                                    <div class="col-sm-4">
                                         <label for="exampleInputEmail1">Posición <h6 class="m-0 text-danger float-right">*</h6></label>
                                         <input
                                         type="number" 
@@ -90,6 +90,10 @@
                                         class="form-control"
                                         placeholder="Ingresa la posición"
                                         >
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <label for="exampleInputEmail1">Región <h6 class="m-0 text-danger float-right">*</h6></label>
+
                                     </div>
                                 </div>
                                 <div class="form-group row">
@@ -224,6 +228,7 @@
         data: function() {
             return {
                 errors: [],
+                region_posts: [],
                 color: '#0A2787',
                 loading: false,
                 color: "#0f4c81",
@@ -248,6 +253,20 @@
             }
         },
         methods: {
+            getRegions() {
+                this.loading = true;
+
+                axios.get('/api/region')
+                .then(response => {
+                    this.region_posts = response.data.data;
+                })
+                .catch(function (error) {
+                    console.log(error);
+                })
+                .finally(() => {
+                    this.loading = false;
+                });
+            },
             storeAudit() {
                 let formData = new FormData();
                 formData.append('page', 'CreateSection');

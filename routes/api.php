@@ -111,3 +111,4 @@ Route::get('section_content/show/{id}', 'api\SectionContentController@show');
 Route::get('special_section/show/{id}', 'api\SpecialSectionController@show');
 Route::get('information', 'api\InformationController@index');
 Route::get('information/show/{id}', 'api\InformationController@show');
+Route::get('region', 'api\RegionController@index');
