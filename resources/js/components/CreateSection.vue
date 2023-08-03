@@ -101,7 +101,7 @@
                                             <option :value="1">Si</option>
                                             <option :value="2">No</option>
                                         </select>
-                                        <input type="text" v-model="form.icon_type_id" :value="2">
+                                        <input type="text" v-model="form.icon_type_id">
                                     </div>
                                 </div>
                                 <div class="form-group row">
@@ -235,7 +235,7 @@
                     color: '',
                     icon: '',
                     position: '',
-                    icon_type_id: null,
+                    icon_type_id: 2,
                     fai: '',
                     link_question_id: 2,
                     video_id: '',
