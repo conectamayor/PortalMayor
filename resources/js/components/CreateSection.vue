@@ -103,7 +103,7 @@
                                         </select>
                                     </div>
                                 </div>
-                                <div v-if="icon_available_id == 1" class="form-group row">
+                                <div v-if="form.icon_available_id == 1" class="form-group row">
                                     <div class="col-sm-6">
                                         <label for="exampleInputEmail1">Tipo de Icono <h6 class="m-0 text-danger float-right">*</h6></label>
                                         <select class="form-control" id="exampleFormControlSelect1"
@@ -119,15 +119,6 @@
                                     </div>
                                     <div class="col-sm-6" v-if="form.icon_type_id == 2">
                                         <label for="exampleInputEmail1">Fa Icon - <a href="https://fontawesome.com/icons" target= "_blank">Ver iconos</a></label>
-                                        <input
-                                            type="text" 
-                                            v-model="form.fai" 
-                                            class="form-control"
-                                            placeholder="Ingresa el icono"
-                                        >
-                                    </div>
-                                    <div class="col-sm-6" v-if="form.icon_type_id == 3">
-                                        <label for="exampleInputEmail1">Ionic Icon - <a href="https://ionicframework.com/docs/v3/ionicons/" target= "_blank">Ver iconos</a></label>
                                         <input
                                             type="text" 
                                             v-model="form.fai" 
