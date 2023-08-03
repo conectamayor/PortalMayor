@@ -191,6 +191,26 @@
                                         >
                                     </div>
                                 </div>
+                                <div class="form-group row">
+                                    <div class="col-sm-6">
+                                        <label for="exampleInputEmail1">¿Como va a ser el compartir de Whatsapp? <h6 class="m-0 text-danger float-right">*</h6></label>
+                                        <select class="form-control" id="exampleFormControlSelect1"
+                                        v-model="form.whatsatpp_share_id"
+                                        >
+                                            <option :value="1">Automático</option>
+                                            <option :value="2">Personalizado</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-sm-6" v-if="form.whatsatpp_share_id == 2">
+                                        <label for="exampleInputEmail1">URL a Compartir</label>
+                                        <input
+                                            type="text" 
+                                            v-model="form.whatsapp_url_to_share"
+                                            class="form-control"
+                                            placeholder="Ingresa la url a compartir por Whatsapp"
+                                        >
+                                    </div>
+                                </div>
                                 <button 
                                 type="submit"
                                 class="btn btn-success btn-icon-split">
@@ -252,7 +272,9 @@
                     iframe: '',
                     direct_content_question_id: 2,
                     icon_available_id: 2,
-                    region: null
+                    region: null,
+                    whatsapp_url_to_share: '',
+                    whatsatpp_share_id: 1,
                 }
             }
         },
@@ -308,6 +330,7 @@
                     && this.form.link_question_id != ''
                     && this.form.iframe_question_id
                     && this.form.youtube_question_id
+                    && ((this.form.whatsatpp_share_id == 1) || (this.form.whatsatpp_share_id == 2 && this.form.whatsapp_url_to_share != ''))
                 ) {
                     let formData = new FormData();
                     formData.append('title', this.form.title);
@@ -323,7 +346,9 @@
                     formData.append('google_tag', this.form.google_tag);
                     formData.append('direct_content_question_id', this.form.direct_content_question_id);
                     formData.append('icon_available_id', this.form.icon_available_id);
-                    
+                    formData.append('whatsatpp_share_id', this.form.whatsatpp_share_id);
+                    formData.append('whatsapp_url_to_share', this.form.whatsapp_url_to_share);
+
                     if (this.form.region !== null) {
                         this.form.region.forEach(regionId => {
                             formData.append('region[]', regionId);
@@ -375,6 +400,9 @@
                     }
                     if (this.form.youtube_question_id == '') {
                         this.errors.push('La pregunta de youtube es obligatoria.');
+                    }
+                    if (this.form.whatsatpp_share_id == 2 && this.form.whatsapp_url_to_share == '') {
+                        this.errors.push('La url a compartir por Whatsapp es obligatoria.');
                     }
 
                     $('html,body').scrollTop(0);
