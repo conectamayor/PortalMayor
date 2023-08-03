@@ -94,15 +94,21 @@
                                 </div>
                                 <div class="form-group row">
                                     <div class="col-sm-6">
-                                        <label for="exampleInputEmail1">¿La sección tiene icono? <h6 class="m-0 text-danger float-right">*</h6></label>
+                                        <label for="exampleInputEmail1">Tipo de Icono <h6 class="m-0 text-danger float-right">*</h6></label>
                                         <select class="form-control" id="exampleFormControlSelect1"
-                                        v-model="form.icon_available_id"
+                                        v-model="form.icon_type_id"
                                         >
-                                            <option :value="1">Si</option>
-                                            <option :value="2">No</option>
+                                            <option :value="null">Seleccionar</option>
+                                            <option :value="2">Fa Icon</option>
+                                            <option :value="3">Ionic Icon</option>
+                                            <option :value="1">Imagen</option>
                                         </select>
                                     </div>
-                                    <div class="col-sm-6" v-if="form.icon_available_id == 1" >
+                                    <div class="col-sm-6" v-if="form.icon_type_id == 1">
+                                        <label for="exampleInputEmail1">Icono</label>
+                                        <input ref="file" accept="image/png" type="file" class="form-control" v-on:change="onFileChange">
+                                    </div>
+                                    <div class="col-sm-6" v-if="form.icon_type_id == 2">
                                         <label for="exampleInputEmail1">Fa Icon - <a href="https://fontawesome.com/icons" target= "_blank">Ver iconos</a></label>
                                         <input
                                             type="text" 
@@ -111,7 +117,15 @@
                                             placeholder="Ingresa el icono"
                                         >
                                     </div>
-                                    <input type="hidden" v-model="form.icon_type_id" value="2">
+                                    <div class="col-sm-6" v-if="form.icon_type_id == 3">
+                                        <label for="exampleInputEmail1">Ionic Icon - <a href="https://ionicframework.com/docs/v3/ionicons/" target= "_blank">Ver iconos</a></label>
+                                        <input
+                                            type="text" 
+                                            v-model="form.fai" 
+                                            class="form-control"
+                                            placeholder="Ingresa el icono"
+                                        >
+                                    </div>
                                 </div>
                                 <div class="form-group row">
                                     <div class="col-sm-6">
@@ -242,8 +256,7 @@
                     subtitle: '',
                     iframe_question_id: 2,
                     iframe: '',
-                    direct_content_question_id: 2,
-                    icon_available_id: 2
+                    direct_content_question_id: 2
                 }
             }
         },
@@ -279,26 +292,19 @@
                 if(this.form.title != ''
                     && this.form.color != ''
                     && this.form.google_tag != ''
-                    && (this.form.icon_type_id != null) || (this.form.icon_type_id == null && this.form.icon_available_id == 2)
+                    && this.form.icon_type_id != null
                     && (this.file != null || this.form.fai != '')
                     && this.form.position != ''
-                    && this.form.direct_content_question_id != ''
-                    && this.form.link_question_id != ''
-                    && this.form.iframe_question_id
-                    && this.form.youtube_question_id
                 ) {
                     let formData = new FormData();
                     formData.append('title', this.form.title);
                     formData.append('color', this.form.color);
-
-                    if (this.form.icon_available_id == 1) {
-                        formData.append('icon_type_id', this.form.icon_type_id);
-                        formData.append('icon', this.form.fai);
+                    formData.append('icon_type_id', this.form.icon_type_id);
+                    if(this.form.icon_type_id == 1) {
+                        formData.append('file', this.file);
                     } else {
-                        formData.append('icon_type_id', '');
-                        formData.append('icon', '');
+                        formData.append('icon', this.form.fai);
                     }
-                    
                     formData.append('position', this.form.position);
                     formData.append('link_question_id', this.form.link_question_id);
                     formData.append('url', this.form.url);
@@ -307,7 +313,6 @@
                     formData.append('iframe', this.form.iframe);
                     formData.append('google_tag', this.form.google_tag);
                     formData.append('direct_content_question_id', this.form.direct_content_question_id);
-                    formData.append('icon_available_id', this.form.icon_available_id);
 
                     axios.post('/api/section/store?api_token='+App.apiToken, formData, config)
                     .then(function (response) {
@@ -337,26 +342,20 @@
                     if (this.form.color == '') {
                         this.errors.push('El color es obligatorio.');
                     }
-                    if (this.form.icon_type_id == null && this.form.icon_available_id == 1) {
+                    if (this.form.icon_type_id == null) {
                         this.errors.push('El tipo de icono es obligatorio.');
                     }
-                    if (this.form.icon_type_id == 2 && this.form.fai == '' && this.form.icon_available_id == 1) {
+                    if (this.form.icon_type_id == 1 && this.file == null) {
+                        this.errors.push('El icono es obligatorio.');
+                    }
+                    if (this.form.icon_type_id == 2 && this.form.fai == '') {
                         this.errors.push('El icono es obligatorio.');
                     } 
+                    if (this.form.icon_type_id == 1 && (this.file.size > 1024 * 1024)) {
+                        this.errors.push('La imagen es muy pesada.');
+                    }
                     if (this.form.position == '') {
                         this.errors.push('La posición es obligatoria.');
-                    }
-                    if (this.form.direct_content_question_id == '') {
-                        this.errors.push('La pregunta es directo a contenido es obligatoria.');
-                    }
-                    if (this.form.link_question_id == '') {
-                        this.errors.push('La pregunta de enlace es obligatoria.');
-                    }
-                    if (this.form.iframe_question_id == '') {
-                        this.errors.push('La pregunta de iframe es obligatoria.');
-                    }
-                    if (this.form.youtube_question_id == '') {
-                        this.errors.push('La pregunta de youtube es obligatoria.');
                     }
 
                     $('html,body').scrollTop(0);
