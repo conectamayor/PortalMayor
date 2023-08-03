@@ -279,7 +279,7 @@
                 if(this.form.title != ''
                 && this.form.color != ''
                     && this.form.google_tag != ''
-                    && (this.form.fai != '' && this.form.icon_available_id == 1)
+                    && ((this.form.fai != '' && this.form.icon_available_id == 1) || this.form.icon_available_id == 2)
                     && this.form.position != ''
                     && this.form.direct_content_question_id != ''
                     && this.form.link_question_id != ''
