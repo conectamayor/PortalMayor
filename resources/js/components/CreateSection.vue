@@ -226,6 +226,7 @@
         },
         created() {
             this.storeAudit();
+            this.getRegions();
         },
         data: function() {
             return {
