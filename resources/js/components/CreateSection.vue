@@ -92,10 +92,11 @@
                                         >
                                     </div>
                                     <div class="col-sm-4">
-                                        <label for="exampleInputEmail1">Región <h6 class="m-0 text-danger float-right">*</h6> <h6 class="m-0 text-primary float-right">(Pulsa la tecla CTRL para seleccionar varias)</h6></label>
+                                        <label for="exampleInputEmail1">Región <h6 class="m-0 text-danger float-right">*</h6> </label>
                                         <select v-model="form.region" multiple class="form-control">
                                             <option v-for="region in region_posts" :key="region.region_id" :value="region.region_id">{{ region.region }}</option>
                                         </select>
+                                        <h6 class="m-0 text-primary">(Pulsa la tecla CTRL para seleccionar varias)</h6>
                                     </div>
                                 </div>
                                 <div class="form-group row">
@@ -231,11 +232,20 @@
                                             <option :value="2">URL</option>
                                         </select>
                                     </div>
+                                    <div class="col-sm-4" v-if="form.open_app_version_id == 1">
+                                        <label for="exampleInputEmail1">URI a Compartir</label>
+                                        <input
+                                            type="text" 
+                                            v-model="form.open_app_uri_url"
+                                            class="form-control"
+                                            placeholder="Ingresa la uri para abrir la aplicación"
+                                        >
+                                    </div>
                                     <div class="col-sm-4" v-if="form.open_app_version_id == 2">
                                         <label for="exampleInputEmail1">URL a Compartir</label>
                                         <input
                                             type="text" 
-                                            v-model="form.open_app_url"
+                                            v-model="form.open_app_uri_url"
                                             class="form-control"
                                             placeholder="Ingresa la url para abrir la aplicación"
                                         >
@@ -306,7 +316,7 @@
                     whatsatpp_share_id: 1,
                     open_app_id: 1,
                     open_app_version_id: '',
-                    open_app_url: '',
+                    open_app_uri_url: '',
                 }
             }
         },
