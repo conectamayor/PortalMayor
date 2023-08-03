@@ -93,7 +93,9 @@
                                     </div>
                                     <div class="col-sm-4">
                                         <label for="exampleInputEmail1">Región <h6 class="m-0 text-danger float-right">*</h6></label>
-
+                                        <select v-model="form.region" multiple class="form-control">
+                                            <option v-for="region in region_posts" :key="region.region_id" :value="region.region_id">{{ region.region }}</option>
+                                        </select>
                                     </div>
                                 </div>
                                 <div class="form-group row">
@@ -248,7 +250,8 @@
                     iframe_question_id: 2,
                     iframe: '',
                     direct_content_question_id: 2,
-                    icon_available_id: 2
+                    icon_available_id: 2,
+                    region: null
                 }
             }
         },
