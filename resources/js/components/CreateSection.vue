@@ -102,22 +102,8 @@
                                             <option :value="2">No</option>
                                         </select>
                                     </div>
-                                </div>
-                                <div v-if="form.icon_available_id == 1" class="form-group row">
-                                    <div class="col-sm-6">
-                                        <label for="exampleInputEmail1">Tipo de Icono <h6 class="m-0 text-danger float-right">*</h6></label>
-                                        <select class="form-control" id="exampleFormControlSelect1"
-                                        v-model="form.icon_type_id"
-                                        >
-                                            <option :value="null">Seleccionar</option>
-                                            <option :value="2">Fa Icon</option>
-                                        </select>
-                                    </div>
-                                    <div class="col-sm-6" v-if="form.icon_type_id == 1">
-                                        <label for="exampleInputEmail1">Icono</label>
-                                        <input ref="file" accept="image/png" type="file" class="form-control" v-on:change="onFileChange">
-                                    </div>
-                                    <div class="col-sm-6" v-if="form.icon_type_id == 2">
+                                    <div class="col-sm-6" vv-if="form.icon_available_id == 1" >
+                                        <input type="hidden" value="2">
                                         <label for="exampleInputEmail1">Fa Icon - <a href="https://fontawesome.com/icons" target= "_blank">Ver iconos</a></label>
                                         <input
                                             type="text" 
@@ -318,6 +304,7 @@
                     formData.append('iframe', this.form.iframe);
                     formData.append('google_tag', this.form.google_tag);
                     formData.append('direct_content_question_id', this.form.direct_content_question_id);
+                    formData.append('icon_available_id', this.form.icon_available_id);
 
                     axios.post('/api/section/store?api_token='+App.apiToken, formData, config)
                     .then(function (response) {

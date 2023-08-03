@@ -80,6 +80,7 @@ class SectionController extends ApiResponseController
         $section->link_question_id = $request->link_question_id;
         $section->direct_content_question_id = $request->direct_content_question_id;
         $section->url = $request->url;
+        $section->icon_available_id = $request->icon_available_id;
 
         if($request->video_id != '') {
             $word = "/";
