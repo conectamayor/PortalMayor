@@ -373,7 +373,7 @@
                     && this.form.iframe_question_id
                     && this.form.youtube_question_id
                     && ((this.form.whatsatpp_share_id == 1) || (this.form.whatsatpp_share_id == 2 && this.form.whatsapp_url_to_share != ''))
-                    && ((this.form.open_app_id == 1) || (this.form.open_app_id == 2 && this.form.open_app_version_id != '' && this.form.open_app_uri_url != ''))
+                    && ((this.form.open_app_id == 2) || (this.form.open_app_id == 1 && this.form.open_app_version_id != '' && this.form.open_app_uri_url != ''))
                 ) {
                     let formData = new FormData();
                     formData.append('title', this.form.title);
@@ -450,10 +450,10 @@
                     if (this.form.whatsatpp_share_id == 2 && this.form.whatsapp_url_to_share == '') {
                         this.errors.push('La url a compartir por Whatsapp es obligatoria.');
                     }
-                    if (this.form.open_app_id == 2 && this.form.open_app_version_id == '') {
+                    if (this.form.open_app_id == 1 && this.form.open_app_version_id == '') {
                         this.errors.push('El método es obligatorio.');
                     }
-                    if (this.form.open_app_id == 2 && this.form.open_app_uri_url == '') {
+                    if (this.form.open_app_id == 1 && this.form.open_app_uri_url == '') {
                         this.errors.push('La url de la app es obligatoria.');
                     }
 
