@@ -79,6 +79,7 @@
         },
         methods: {
             closeSession() {
+                alert(window.location.host)
                 window.location = window.location.host + '/login/logout';
             },
             getRol() {
