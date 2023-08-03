@@ -102,7 +102,7 @@
                                             <option :value="2">No</option>
                                         </select>
                                     </div>
-                                    <div class="col-sm-6" vv-if="form.icon_available_id == 1" >
+                                    <div class="col-sm-6" v-if="form.icon_available_id == 1" >
                                         <input type="hidden" value="2">
                                         <label for="exampleInputEmail1">Fa Icon - <a href="https://fontawesome.com/icons" target= "_blank">Ver iconos</a></label>
                                         <input
@@ -290,12 +290,15 @@
                     let formData = new FormData();
                     formData.append('title', this.form.title);
                     formData.append('color', this.form.color);
-                    formData.append('icon_type_id', this.form.icon_type_id);
-                    if(this.form.icon_type_id == 1) {
-                        formData.append('file', this.file);
-                    } else {
+
+                    if (this.form.icon_available_id == 1) {
+                        formData.append('icon_type_id', this.form.icon_type_id);
                         formData.append('icon', this.form.fai);
+                    } else {
+                        formData.append('icon_type_id', '');
+                        formData.append('icon', '');
                     }
+                    
                     formData.append('position', this.form.position);
                     formData.append('link_question_id', this.form.link_question_id);
                     formData.append('url', this.form.url);
