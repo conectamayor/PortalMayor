@@ -79,7 +79,7 @@
         },
         methods: {
             closeSession() {
-                window.location = `http://app.conectamayor.cl/login/logout`;
+                window.location = currentURL + '/login/logout';
             },
             getRol() {
                 axios.get('/api/user/rol?api_token='+App.apiToken)
