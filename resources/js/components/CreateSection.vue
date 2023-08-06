@@ -426,9 +426,6 @@
                     if (this.form.title == '') {
                         this.errors.push('El título es obligatorio.');
                     }
-                    if (this.form.google_tag == '') {
-                        this.errors.push('La etiqueta de Google es obligatoria.');
-                    }
                     if (this.form.title.length > 36) {
                         this.errors.push('El nombre debe tener menos de 36 caracteres.');
                     }
@@ -440,6 +437,9 @@
                     } 
                     if (this.form.position == '') {
                         this.errors.push('La posición es obligatoria.');
+                    }
+                    if (this.form.google_tag == '') {
+                        this.errors.push('La etiqueta de Google es obligatoria.');
                     }
                     if (this.form.direct_content_question_id == '') {
                         this.errors.push('La pregunta es directo a contenido es obligatoria.');

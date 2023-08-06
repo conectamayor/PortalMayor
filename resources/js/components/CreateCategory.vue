@@ -349,6 +349,9 @@
                 } else {
                     this.loading = false;
                     this.errors = [];
+                    if (this.form.title == '') {
+                        this.errors.push('El título es obligatorio.');
+                    }
                     
                     if (this.form.alliance_id == null) {
                         this.errors.push('La alianza es obligatoria.');
@@ -356,8 +359,11 @@
                     if (this.form.section_id == null) {
                         this.errors.push('La sección es obligatoria.');
                     }
-                    if (this.form.title == '') {
-                        this.errors.push('El nombre es obligatorio.');
+                    if (this.form.color == '') {
+                        this.errors.push('El color es obligatorio.');
+                    }
+                    if (this.form.position == '') {
+                        this.errors.push('La posición es obligatoria.');
                     }
                     if (this.form.google_tag == '') {
                         this.errors.push('La etiqueta de Google es obligatoria.');
@@ -365,23 +371,8 @@
                     if (this.form.title.length > 28) {
                         this.errors.push('El nombre debe tener menos de 28 caracteres.');
                     }
-                    if (this.form.color == '') {
-                        this.errors.push('El color es obligatorio.');
-                    }
-                    if (this.form.position == '') {
-                        this.errors.push('La posición es obligatoria.');
-                    }
-                   if (this.form.icon_type_id == null) {
-                        this.errors.push('El tipo de icono es obligatorio.');
-                    }
-                    if (this.form.icon_type_id == 1 && this.icon_image == null) {
+                    if (this.form.icon_available_id == 2 && this.form.fai == '') {
                         this.errors.push('El icono es obligatorio.');
-                    }
-                    if (this.form.icon_type_id == 2 && this.form.fai == '') {
-                        this.errors.push('El icono es obligatorio.');
-                    } 
-                    if (this.form.icon_type_id == 1 && (icon_image_size > 1024 * 1024)) {
-                        this.errors.push('La imagen del icono es muy pesada.');
                     }
 
                     $('html,body').scrollTop(0);
