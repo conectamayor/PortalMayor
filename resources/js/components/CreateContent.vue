@@ -329,6 +329,7 @@
                 if(this.form.category_id != null
                     && this.form.type_id != null
                     && this.form.google_tag != ''
+                    && this.form.fai != ''
                     && this.form.start_date != ''
                     && this.form.position != ''
                 ) {
