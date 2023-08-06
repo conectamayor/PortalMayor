@@ -218,7 +218,7 @@
                                         <input type="hidden" v-model="form.icon_type_id">
                                     </div>
                                     <div class="col-sm-6" v-if="form.whatsapp_type_id == 1">
-                                        <label for="exampleInputEmail1">Enlace de Whatsapp</label>
+                                        <label for="exampleInputEmail1">Enlace de Whatsapp <h6 class="m-0 text-danger float-right">*</h6></label>
                                         <input
                                             type="text" 
                                             v-model="form.whatsapp_description" 
