@@ -336,6 +336,7 @@
                     formData.append('pdf', this.pdf);
                     formData.append('iframe', this.iframe);
                     formData.append('video_type_id', this.form.video_type_id);
+                    formData.append('icon_available_id', this.form.icon_available_id);
 
                     axios.post('/api/content/store?api_token='+App.apiToken, formData, config)
                     .then(function (response) {

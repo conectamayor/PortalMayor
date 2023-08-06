@@ -137,7 +137,7 @@ class ContentController extends ApiResponseController
         } else {
             $content->video_type_id = $request->video_type_id;
         }
-       
+        
         $content->title = $request->title;
         $content->google_tag = 'content_' . $request->google_tag;
         $content->start_date = $request->start_date;
@@ -151,6 +151,7 @@ class ContentController extends ApiResponseController
         $content->description = $request->description;
         $content->iframe = $request->iframe;
         $content->position = $request->position;
+        $content->icon_available_id = $request->icon_available_id;
         $content->pdf = $pdfName;
 
         $move_position_contents = Content::where('category_id', $request->category_id)->where('position', '>=', $request->position)->orderBy('position', 'ASC')->get();
