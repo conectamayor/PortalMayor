@@ -303,7 +303,7 @@
                     && this.form.title.length <= 28
                     && this.form.color != ''
                     && this.form.position != ''
-                    && (this.icon_available_id == 1 && this.form.fai != '')
+                    && (this.form.icon_available_id == 1 && this.form.fai != '')
                 ) {
                     let formData = new FormData();
                     formData.append('alliance_id', this.form.alliance_id);
