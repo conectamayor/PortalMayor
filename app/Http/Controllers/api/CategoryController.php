@@ -179,29 +179,8 @@ class CategoryController extends ApiResponseController
         }
 
         $category->status = 1;
-        if($request->file != 'undefined') { 
-            $category->banner = $fileName;
-        }
 
         if($category->save()) {
-            if($request->file != 'undefined') { 
-                Storage::disk('local')->putFileAs(
-                    '/files',
-                    $request->file,
-                    $fileName
-                );
-            }
-
-            if($request->icon_image != 'undefined') {
-                if($request->icon_type_id == 1) {
-                    Storage::disk('local')->putFileAs(
-                        '/files',
-                        $request->icon_image,
-                        $icon_fileName
-                    );
-                }
-            }
-
             return $this->successResponse($category);
         } else {
             return $this->errorResponse($category);
