@@ -206,6 +206,47 @@
                                     </div>
                                 </div>
 
+                                <div class="form-group row">
+                                    <div class="col-sm-4">
+                                        <label for="exampleInputEmail1">¿El enlace de compartir de Whatsapp es personalizado? <h6 class="m-0 text-danger float-right">*</h6></label>
+                                        <select class="form-control" id="exampleFormControlSelect1"
+                                        v-model="form.whatsapp_type_id"
+                                        >
+                                            <option :value="1">Si</option>
+                                            <option :value="2">No</option>
+                                        </select>
+                                        <input type="hidden" v-model="form.icon_type_id">
+                                    </div>
+                                    <div class="col-sm-4" v-if="form.whatsapp_type_id == 1">
+                                        <label for="exampleInputEmail1">Enlace de Whatsapp</label>
+                                        <input
+                                            type="text" 
+                                            v-model="form.whatsapp_description" 
+                                            class="form-control"
+                                            placeholder="Ingresa la url a compartir. Ej: (https://conectamayor.com)"
+                                        >
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <label for="exampleInputEmail1">Fecha de Inicio <h6 class="m-0 text-danger float-right">*</h6></label>
+                                        <input
+                                        type="date" 
+                                        v-model="form.start_date" 
+                                        class="form-control"
+                                        placeholder="Ingresa la fecha de inicio"
+                                        >
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <label for="exampleInputEmail1">Fecha de Termino <h6 class="m-0 text-danger float-right">*</h6></label>
+                                        <input
+                                        type="date" 
+                                        v-model="form.end_date" 
+                                        class="form-control"
+                                        placeholder="Ingresa la fecha de termino"
+                                        >
+                                    </div>
+                                </div>
+
+
                                 <button 
                                 type="submit"
                                 class="btn btn-success btn-icon-split">
@@ -271,6 +312,8 @@
                     color: '',
                     icon_available_id: 2,
                     position: '',
+                    whatsapp_type_id: 2,
+                    whatsapp_description: '',
                 }
             }
         },
@@ -314,6 +357,7 @@
                     && this.form.start_date != ''
                     && this.form.position != ''
                     && (this.form.icon_available_id == 2 || (this.form.icon_available_id == 1 && this.form.fai != ''))
+                    && (this.form.whatsapp_type_id == 2 || (this.form.whatsapp_type_id == 1 && this.form.whatsapp_description != ''))
                 ) {
                     let formData = new FormData();
                     formData.append('category_id', this.form.category_id);
@@ -396,6 +440,10 @@
 
                     if (this.form.end_date == '') {
                         this.errors.push('La fecha de termino es obligatoria.');
+                    }
+
+                    if (this.form.whatsapp_type_id == 1 && this.form.whatsapp_description == '') {
+                        this.errors.push('La descripción de WhatsApp es obligatoria.');
                     }
                     
                     $('html,body').scrollTop(0);
