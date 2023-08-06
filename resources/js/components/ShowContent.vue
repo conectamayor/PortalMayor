@@ -91,7 +91,7 @@
                 </div>
             </div>
         </div>
-        <a href="whatsapp://send?text=The text to share!" data-action="share/whatsapp/share">Share via Whatsapp</a>
+        <a v-if="" href="whatsapp://send?text=The text to share!" data-action="share/whatsapp/share">Compartir por medio de <i class="fas fa-whatsapp"></i></a>
 
     </div>
 	
@@ -214,6 +214,12 @@
                     this.image_url = '/public/files/'+this.post.image;
                     this.pdf_url = window.appUrl + '/public/files/'+this.post.pdf;
                     this.videoID = this.post.video_id;
+                    
+                    if(this.post.whatsapp_description == null) {
+                        this.whatsapp_description = 'Hola te quiero compartir un enlace de la Fundación Conecta Mayor - ' + window.location.href;
+                    } else {
+                        this.whatsapp_description = window.location.href;
+                    }
                 })
                 .catch(function (error) {
                     console.log(error);
@@ -242,6 +248,7 @@
                 height: 500,
                 post: '',
                 url: null,
+                whatsapp_description: '',
                 options: {
                     muted: true,
                     autoplay: true,
