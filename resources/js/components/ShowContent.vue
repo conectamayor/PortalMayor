@@ -215,7 +215,7 @@
                     this.pdf_url = window.appUrl + '/public/files/'+this.post.pdf;
                     this.videoID = this.post.video_id;
                     
-                    if(this.post.whatsapp_description == null) {
+                    if(this.post.whatsapp_description == null || this.post.whatsapp_description == '') {
                         this.whatsapp_description = 'Hola te quiero compartir un enlace de la Fundación Conecta Mayor - ' + window.location.href;
                     } else {
                         this.whatsapp_description = window.location.href;
