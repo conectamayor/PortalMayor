@@ -72,19 +72,13 @@
         </div>
         <div v-if="check_category_poll != 0">
             <div class="row">
-                <div v-if="post.icon_available_id == 1">
-                    <div class="col-12" v-for="(post, index) in posts" v-bind:index="index">
-                        <router-link class="boton2" :style="{ background: post.color}" :to="`/content/show/${post.content_id}`"> 
-                            <i v-bind:class="post.icon"></i><br> {{ post.title }}
-                        </router-link>
-                    </div>
-                </div>
-                <div v-else>
-                    <div class="col-12" v-for="(post, index) in posts" v-bind:index="index">
-                        <router-link class="boton2" :style="{ background: post.color}" :to="`/content/show/${post.content_id}`"> 
-                            {{ post.title }}
-                        </router-link>
-                    </div>
+                <div class="col-12" v-for="(post, index) in posts" v-bind:index="index">
+                    <router-link v-if="post.icon_available_id == '1'" class="boton2" :style="{ background: post.color}" :to="`/content/show/${post.content_id}`"> 
+                        <i v-bind:class="post.icon"></i><br> {{ post.title }}
+                    </router-link>
+                    <router-link v-else class="boton2" :style="{ background: post.color}" :to="`/content/show/${post.content_id}`"> 
+                        {{ post.title }}
+                    </router-link>
                 </div>
             </div>
         </div>
