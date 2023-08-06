@@ -94,17 +94,6 @@
                                         </div>
                                     </div>
                                     <div class="col-sm-6" v-if="form.type_id == 2">
-                                        <label for="exampleInputEmail1">Título <h6 class="m-0 text-danger float-right">*</h6></label>
-                                        <input
-                                        type="text" 
-                                        v-model="form.title" 
-                                        maxlength="36"
-                                        class="form-control"
-                                        placeholder="Ingresa el título"
-                                        >
-                                        <span>{{charactersLeft}}</span>
-                                    </div>
-                                    <div class="col-sm-6" v-if="form.type_id == 2">
                                         <div v-if="form.type_id == 2">
                                             <label for="exampleInputEmail1">Src</label>
                                             <input
@@ -172,7 +161,30 @@
                                 <div class="form-group row">
                                     
                                     <div class="col-sm-8" v-if="form.type_id == 3">
+                                        <label for="exampleInputEmail1">Texto <h6 class="m-0 text-danger float-right">*</h6></label>
                                         <vue-editor v-model="form.description"></vue-editor>
+                                    </div>
+                                    
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-sm-4">
+                                        <label for="exampleInputEmail1">¿La sección tiene icono? <h6 class="m-0 text-danger float-right">*</h6></label>
+                                        <select class="form-control" id="exampleFormControlSelect1"
+                                        v-model="form.icon_available_id"
+                                        >
+                                            <option :value="1">Si</option>
+                                            <option :value="2">No</option>
+                                        </select>
+                                        <input type="hidden" v-model="form.icon_type_id">
+                                    </div>
+                                    <div class="col-sm-4" v-if="form.icon_available_id == 1">
+                                        <label for="exampleInputEmail1">Fa Icon - <a href="https://fontawesome.com/icons" target= "_blank">Ver iconos</a></label>
+                                        <input
+                                            type="text" 
+                                            v-model="form.fai" 
+                                            class="form-control"
+                                            placeholder="Ingresa el icono"
+                                        >
                                     </div>
                                     <div class="col-sm-2">
                                         <label for="exampleInputEmail1">Fecha de Inicio <h6 class="m-0 text-danger float-right">*</h6></label>
@@ -192,30 +204,6 @@
                                         placeholder="Ingresa la fecha de termino"
                                         >
                                     </div>
-                                </div>
-                                <div class="form-group row">
-                                    <div class="col-sm-6">
-                                        <label for="exampleInputEmail1">¿La sección tiene icono? <h6 class="m-0 text-danger float-right">*</h6></label>
-                                        <select class="form-control" id="exampleFormControlSelect1"
-                                        v-model="form.icon_available_id"
-                                        >
-                                            <option :value="1">Si</option>
-                                            <option :value="2">No</option>
-                                        </select>
-                                        <input type="hidden" v-model="form.icon_type_id">
-                                    </div>
-                                    <div class="col-sm-6" v-if="form.icon_available_id == 1">
-                                        <label for="exampleInputEmail1">Fa Icon - <a href="https://fontawesome.com/icons" target= "_blank">Ver iconos</a></label>
-                                        <input
-                                            type="text" 
-                                            v-model="form.fai" 
-                                            class="form-control"
-                                            placeholder="Ingresa el icono"
-                                        >
-                                    </div>
-                                </div>
-                                <div class="form-group row">
-                                    
                                 </div>
 
                                 <button 
