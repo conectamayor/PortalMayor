@@ -26,7 +26,7 @@
                                     </ul>
                                 </div>
                                 <div class="form-group row">
-                                    <div class="col-sm-6">
+                                    <div class="col-sm-5">
                                         <label for="exampleInputEmail1">Título <h6 class="m-0 text-danger float-right">*</h6></label>
                                         <input
                                         type="text" 
@@ -37,20 +37,16 @@
                                         >
                                         <span>{{charactersLeft}}</span>
                                     </div>
-                                    <div class="col-sm-6">
+                                    <div class="col-sm-4">
                                         <label for="exampleInputEmail1">Categoría <h6 class="m-0 text-danger float-right">*</h6></label>
                                         <select class="form-control" id="exampleFormControlSelect1"
                                         v-model="form.category_id"
                                         >
                                             <option :value="null">-Seleccionar-</option>
-                                            <option v-for="category_post in category_posts" :key="category_post.category_id" :value="category_post.category_id">{{ category_post.name }}</option>
+                                            <option v-for="category_post in category_posts" :key="category_post.category_id" :value="category_post.category_id">{{ category_post.title }}</option>
                                         </select>
                                     </div>
-                                    
-                                    
-                                </div>
-                                <div class="form-group row">
-                                    <div class="col-sm-6">
+                                    <div class="col-sm-3">
                                         <label for="exampleInputEmail1">Tipo de Contenido <h6 class="m-0 text-danger float-right">*</h6></label>
                                         <select class="form-control" id="exampleFormControlSelect1"
                                         v-model="form.type_id"
@@ -63,6 +59,8 @@
                                             <option :value="5">Iframe</option>
                                         </select>
                                     </div>
+                                </div>
+                                <div class="form-group row">
                                     <div class="col-sm-3" v-if="form.type_id == 1">
                                         <div v-if="form.type_id == 1">
                                             <label for="exampleInputEmail1">Tipo de Video <h6 class="m-0 text-danger float-right">*</h6></label>
