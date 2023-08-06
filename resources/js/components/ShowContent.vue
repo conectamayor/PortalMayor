@@ -218,7 +218,7 @@
                     if(this.post.whatsapp_description == null || this.post.whatsapp_description == '') {
                         this.whatsapp_description = 'Hola te quiero compartir un enlace de la Fundación Conecta Mayor - ' + window.location.href;
                     } else {
-                        this.whatsapp_description = window.location.href;
+                        this.whatsapp_description = 'Hola te quiero compartir un enlace de la Fundación Conecta Mayor - ' + this.post.whatsapp_description;
                     }
                 })
                 .catch(function (error) {
