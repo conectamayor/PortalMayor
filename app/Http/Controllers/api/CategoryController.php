@@ -132,20 +132,20 @@ class CategoryController extends ApiResponseController
         $id = $request->segment(4);
 
         if ($id != '') {
-            $categories = Category::where('section_id', $id)
+            $categories = Category::where('categories.section_id', $id)
                 ->leftJoin('sections', 'categories.section_id', '=', 'sections.section_id')
                 ->where('categories.status', 1)
                 ->orderBy('categories.title', 'ASC')
                 ->get(['categories.*', 'sections.*']);
         } else {
             if ($this->user->rol_id == 2) {
-                $categories = Category::where('alliance_id', $this->user->alliance_id)
+                $categories = Category::where('categories.alliance_id', $this->user->alliance_id)
                     ->leftJoin('sections', 'categories.section_id', '=', 'sections.section_id')
                     ->where('categories.status', 1)
                     ->orderBy('categories.title', 'ASC')
                     ->get(['categories.*', 'sections.*']);
             } else {
-                $categories = Category::where('status', 1)
+                $categories = Category::where('categories.status', 1)
                     ->leftJoin('sections', 'categories.section_id', '=', 'sections.section_id')
                     ->orderBy('categories.title', 'ASC')
                     ->get(['categories.*', 'sections.*']);
