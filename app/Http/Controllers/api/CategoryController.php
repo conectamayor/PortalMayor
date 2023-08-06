@@ -155,13 +155,7 @@ class CategoryController extends ApiResponseController
             $fileName = time().'_'.'banner'.'_'.$request->alliance_id.'_'.$request->section_id.'.'.$request->file->getClientOriginalExtension();
         }
 
-        if($request->icon_type_id == 1) {
-            if($request->icon_image != 'undefined') {
-                $icon_fileName = time().'_'.'scategory_icon'.'.'.$request->icon_image->getClientOriginalExtension();
-            }
-        } else {
-            $icon_fileName = $request->icon;
-        }
+        $icon_fileName = $request->icon;
 
         $category = new Category();
         $category->alliance_id = $request->alliance_id;
@@ -177,11 +171,7 @@ class CategoryController extends ApiResponseController
         $category->position = $request->position;
         $category->icon_available_id = $request->icon_available_id;
 
-        if($request->icon_type_id == 2) {
-            $category->icon = $icon_fileName.' home_icon_size2';
-        } else if($request->icon_type_id == 3) {
-            $category->icon = 'icon ion-'.$icon_fileName.' home_icon_size2';
-        }
+        $category->icon = $icon_fileName.' home_icon_size2';
 
         $move_position_categories = Category::where('section_id', $category->section_id)->where('position', '>=', $request->position)->orderBy('position', 'ASC')->get();
         $position = $request->position;

@@ -300,6 +300,9 @@
                     && this.form.section_id != null
                     && this.form.title != ''
                     && this.form.google_tag != ''
+                    && this.form.title.length <= 28
+                    && this.form.color != ''
+                    && this.form.position != ''
                 ) {
                     let formData = new FormData();
                     formData.append('alliance_id', this.form.alliance_id);
