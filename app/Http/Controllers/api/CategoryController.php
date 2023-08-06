@@ -167,7 +167,7 @@ class CategoryController extends ApiResponseController
         $category->alliance_id = $request->alliance_id;
         $category->section_id = $request->section_id;
         $category->highlight_id = $request->highlight_id;
-        $category->name = $request->name;
+        $category->title = $request->title;
         $category->iframe = $request->iframe;
         $category->subtitle = $request->subtitle;
         $category->color = $request->color;
@@ -175,6 +175,7 @@ class CategoryController extends ApiResponseController
         $category->url = $request->url;
         $category->google_tag = 'category_' . $request->google_tag;
         $category->position = $request->position;
+        $category->icon_available_id = $request->icon_available_id;
 
         if($request->icon_type_id == 2) {
             $category->icon = $icon_fileName.' home_icon_size2';

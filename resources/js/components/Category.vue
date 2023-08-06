@@ -64,7 +64,7 @@
                                     <thead>
                                         <tr>
                                             <th>Id</th>
-                                            <th>Nombre</th>
+                                            <th>Título</th>
                                             <th>Alianza</th>
                                             <th>Sección</th>
                                             <th>Posición</th>
@@ -75,7 +75,7 @@
                                     <tbody>
                                         <tr v-for="(post, index) in posts" v-bind:index="index">
                                             <td>{{ post.category_id }}</td>
-                                            <td>{{ post.name }}</td>
+                                            <td>{{ post.title }}</td>
                                             <td>{{ post.alliance }}</td>
                                             <td>{{ post.section_title }}</td>
                                             <td>{{ post.position }}</td>

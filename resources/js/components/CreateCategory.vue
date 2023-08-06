@@ -33,18 +33,18 @@
                                     </ul>
                                 </div>
                                 <div class="form-group row">
-                                    <div class="col-sm-4">
-                                        <label for="exampleInputEmail1">Nombre <h6 class="m-0 text-danger float-right">*</h6></label>
+                                    <div class="col-sm-6">
+                                        <label for="exampleInputEmail1">Título <h6 class="m-0 text-danger float-right">*</h6></label>
                                         <input
                                         type="text" 
-                                        v-model="form.name" 
+                                        v-model="form.title" 
                                         maxlength="36"
                                         class="form-control"
-                                        placeholder="Ingresa el nombre"
+                                        placeholder="Ingresa el título"
                                         >
                                         <span class="col-sm-12">{{charactersLeft}}</span>
                                     </div>
-                                    <div class="col-sm-4">
+                                    <div class="col-sm-6">
                                         <label for="exampleInputEmail1">Subtitulo </label>
                                         <input
                                         type="text" 
@@ -52,15 +52,6 @@
                                         maxlength="36"
                                         class="form-control"
                                         placeholder="Ingresa el subtitulo"
-                                        >
-                                    </div>
-                                    <div class="col-sm-4">
-                                        <label for="exampleInputEmail1">Google Tag <h6 class="m-0 text-danger float-right">*</h6></label>
-                                        <input
-                                        type="text" 
-                                        v-model="form.google_tag" 
-                                        class="form-control"
-                                        placeholder="Ingresa el google tag"
                                         >
                                     </div>
                                 </div>
@@ -85,7 +76,7 @@
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <div class="col-sm-6">
+                                    <div class="col-sm-4">
                                         <label for="exampleInputEmail1">Color <h6 class="m-0 text-danger float-right">*</h6></label>
                                         <div class="form-group row">
                                             <div class="col-sm-2">
@@ -101,7 +92,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-sm-6">
+                                    <div class="col-sm-4">
                                         <label for="exampleInputEmail1">Posición <h6 class="m-0 text-danger float-right">*</h6></label>
                                         <input
                                         type="number" 
@@ -109,6 +100,15 @@
                                         min="0"
                                         class="form-control"
                                         placeholder="Ingresa la posición"
+                                        >
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <label for="exampleInputEmail1">Google Tag <h6 class="m-0 text-danger float-right">*</h6></label>
+                                        <input
+                                        type="text" 
+                                        v-model="form.google_tag" 
+                                        class="form-control"
+                                        placeholder="Ingresa el google tag"
                                         >
                                     </div>
                                 </div>
@@ -237,7 +237,7 @@
                 form: {
                     alliance_id: null,
                     section_id: null,
-                    name: '',
+                    title: '',
                     color: '',
                     position: '',
                     icon_type_id: null,
@@ -247,7 +247,8 @@
                     iframe_question_id: 2,
                     iframe: '',
                     subtitle: '',
-                    link_question_id: null
+                    link_question_id: null,
+                    icon_available_id: 2,
                 }
             }
         },
@@ -304,9 +305,9 @@
 
                 if(this.form.alliance_id != null
                     && this.form.section_id != null
-                    && this.form.name != ''
+                    && this.form.title != ''
                     && this.form.google_tag != ''
-                    && this.form.name.length <= 28
+                    && this.form.title.length <= 28
                     && this.form.color != ''
                     && this.form.position != ''
                     && (this.icon_image != null || this.form.fai != '')
@@ -315,7 +316,7 @@
                     let formData = new FormData();
                     formData.append('alliance_id', this.form.alliance_id);
                     formData.append('section_id', this.form.section_id);
-                    formData.append('name', this.form.name);
+                    formData.append('title', this.form.title);
                     formData.append('color', this.form.color);
                     formData.append('position', this.form.position);
                     formData.append('file', this.file);
@@ -323,6 +324,7 @@
                     formData.append('iframe', this.form.iframe);
                     formData.append('subtitle', this.form.subtitle);
                     formData.append('link_question_id', this.form.link_question_id);
+                    formData.append('icon_available_id', this.form.icon_available_id);
                     formData.append('url', this.form.url);
                     if(this.form.icon_type_id == 1) {
                         formData.append('icon_image', this.icon_image);
@@ -354,13 +356,13 @@
                     if (this.form.section_id == null) {
                         this.errors.push('La sección es obligatoria.');
                     }
-                    if (this.form.name == '') {
+                    if (this.form.title == '') {
                         this.errors.push('El nombre es obligatorio.');
                     }
                     if (this.form.google_tag == '') {
                         this.errors.push('La etiqueta de Google es obligatoria.');
                     }
-                    if (this.form.name.length > 28) {
+                    if (this.form.title.length > 28) {
                         this.errors.push('El nombre debe tener menos de 28 caracteres.');
                     }
                     if (this.form.color == '') {
@@ -399,7 +401,7 @@
                 return true;
             },
             charactersLeft() {
-                var char = this.form.name.length,
+                var char = this.form.title.length,
                     limit = 36;
 
                 return (limit - char) + " / " + limit + " caracteres disponibles";
