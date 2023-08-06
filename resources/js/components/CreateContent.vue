@@ -61,6 +61,15 @@
                                     </div>
                                 </div>
                                 <div class="form-group row">
+                                    <div class="col-sm-6" v-if="form.type_id == 1 || form.type_id == 2 || form.type_id == 4 || form.type_id == 5">
+                                        <label for="exampleInputEmail1">Descripción <h6 class="m-0 text-danger float-right">*</h6></label>
+                                        <input
+                                        type="text" 
+                                        v-model="form.description" 
+                                        class="form-control"
+                                        placeholder="Ingresa el texto"
+                                        >
+                                    </div>
                                     <div class="col-sm-3" v-if="form.type_id == 1">
                                         <div v-if="form.type_id == 1">
                                             <label for="exampleInputEmail1">Tipo de Video <h6 class="m-0 text-danger float-right">*</h6></label>
@@ -161,15 +170,7 @@
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <div class="col-sm-8" v-if="form.type_id == 1 || form.type_id == 2 || form.type_id == 4 || form.type_id == 5">
-                                        <label for="exampleInputEmail1">Descripción <h6 class="m-0 text-danger float-right">*</h6></label>
-                                        <input
-                                        type="text" 
-                                        v-model="form.description" 
-                                        class="form-control"
-                                        placeholder="Ingresa el texto"
-                                        >
-                                    </div>
+                                    
                                     <div class="col-sm-8" v-if="form.type_id == 3">
                                         <vue-editor v-model="form.description"></vue-editor>
                                     </div>
