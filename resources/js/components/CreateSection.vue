@@ -93,39 +93,7 @@
                                         >
                                     </div>
                                 </div>
-                                <div class="form-group row">
-                                    <div class="col-sm-4">
-                                        <label for="exampleInputEmail1">Tipo de Georreferenciación <h6 class="m-0 text-danger float-right">*</h6></label>
-                                        <select class="form-control" id="exampleFormControlSelect1"
-                                        v-model="form.georeferencing_type_id"
-                                        >
-                                            <option value="">- Seleccione -</option>
-                                            <option :value="1">Región</option>
-                                            <option :value="2">Comuna</option>
-                                        </select>
-                                        <input type="hidden" v-model="form.icon_type_id">
-                                    </div>
-                                    <div class="col-sm-8" v-if="form.georeferencing_type_id == 1">
-                                        <label for="exampleInputEmail1">Región <h6 class="m-0 text-danger float-right">*</h6> </label>
-                                        <select v-model="form.region_id" multiple class="form-control">
-                                            <option v-for="region in region_posts" :key="region.region_id" :value="region.region_id">{{ region.region }}</option>
-                                        </select>
-                                        <h6 class="m-0 text-primary">(Pulsa la tecla CTRL para seleccionar varias)</h6>
-                                    </div>
-                                    <div class="col-sm-4" v-if="form.georeferencing_type_id == 2">
-                                        <label for="exampleInputEmail1">Región <h6 class="m-0 text-danger float-right">*</h6> </label>
-                                        <select v-model="form.region_id" multiple class="form-control">
-                                            <option v-for="region in region_posts" :key="region.region_id" :value="region.region_id">{{ region.region }}</option>
-                                        </select>
-                                        <h6 class="m-0 text-primary">(Pulsa la tecla CTRL para seleccionar varias)</h6>
-                                    </div>
-                                    <div class="col-sm-4" v-if="form.georeferencing_type_id == 2">
-                                        <label for="exampleInputEmail1">Comuna <h6 class="m-0 text-danger float-right">*</h6> </label>
-                                        <select v-model="form.commune_id" multiple class="form-control">
-                                        </select>
-                                        <h6 class="m-0 text-primary">(Pulsa la tecla CTRL para seleccionar varias)</h6>
-                                    </div>
-                                </div>
+                                
                                 <div class="form-group row">
                                     <div class="col-sm-6">
                                         <label for="exampleInputEmail1">¿La sección tiene icono? <h6 class="m-0 text-danger float-right">*</h6></label>
@@ -400,12 +368,6 @@
                     formData.append('open_app_id', this.form.open_app_id);
                     formData.append('open_app_version_id', this.form.open_app_version_id);
                     formData.append('open_app_uri_url', this.form.open_app_uri_url);
-
-                    if (this.form.region !== null) {
-                        this.form.region.forEach(regionId => {
-                            formData.append('region[]', regionId);
-                        });
-                    }
 
                     axios.post('/api/section/store?api_token='+App.apiToken, formData, config)
                     .then(function (response) {

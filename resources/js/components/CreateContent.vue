@@ -303,6 +303,11 @@
 
                 if(this.form.category_id != null
                     && this.form.type_id != null
+                    && ((this.form.type_id == 1 && this.form.video_id != '' && this.form.video_type_id != null) 
+                    || (this.form.type_id == 2 && this.form.src != '')
+                    || (this.form.type_id == 3 && this.form.description != '')
+                    || (this.form.type_id == 5 && this.form.iframe != '')
+                    )
                     && this.form.google_tag != ''
                     && this.form.fai != ''
                     && this.form.description != ''
@@ -357,6 +362,14 @@
                         this.errors.push('El tipo de contenido es obligatorio.');
                     }
 
+                    if ((this.form.type_id == 1 && this.form.video_id == '' && this.form.video_type_id == null) 
+                    || (this.form.type_id == 2 && this.form.src == '')
+                    || (this.form.type_id == 3 && this.form.description == '')
+                    || (this.form.type_id == 5 && this.form.iframe == '')
+                    ) {
+                        this.errors.push('Los datos del tipo de contenido son obligatorios.');
+                    }
+
                     if (this.form.description == '') {
                         this.errors.push('La descripción es obligatoria.');
                     }
@@ -373,6 +386,10 @@
                         this.errors.push('Las etiqueta de Google es obligatoria.');
                     }
 
+                    if (this.form.icon_available_id == 1 && this.form.fai == '') {
+                        this.errors.push('El icono es obligatorio.');
+                    }
+                    
                     if (this.form.start_date == '') {
                         this.errors.push('La fecha inicial es obligatoria.');
                     }
