@@ -38,7 +38,7 @@
                                         <span>{{charactersLeft}}</span>
                                     </div>
                                     <div class="col-sm-4">
-                                        <label for="exampleInputEmail1">Categoría <h6 class="m-0 text-danger float-right">*</h6></label>
+                                        <label for="exampleInputEmail1">Sección - Categoría <h6 class="m-0 text-danger float-right">*</h6></label>
                                         <select class="form-control" id="exampleFormControlSelect1"
                                         v-model="form.category_id"
                                         >
