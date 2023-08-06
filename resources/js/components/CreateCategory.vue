@@ -303,6 +303,7 @@
                     && this.form.title.length <= 28
                     && this.form.color != ''
                     && this.form.position != ''
+                    && (this.form.icon_available_id == 2 || (this.form.icon_available_id == 1 && this.form.fai != ''))
                 ) {
                     let formData = new FormData();
                     formData.append('alliance_id', this.form.alliance_id);
@@ -339,7 +340,6 @@
                     if (this.form.title == '') {
                         this.errors.push('El título es obligatorio.');
                     }
-                    
                     if (this.form.alliance_id == null) {
                         this.errors.push('La alianza es obligatoria.');
                     }

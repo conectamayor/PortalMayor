@@ -151,10 +151,6 @@ class CategoryController extends ApiResponseController
      */
     public function store(Request $request)
     {
-        if($request->file != 'undefined') { 
-            $fileName = time().'_'.'banner'.'_'.$request->alliance_id.'_'.$request->section_id.'.'.$request->file->getClientOriginalExtension();
-        }
-
         $icon_fileName = $request->icon;
 
         $category = new Category();
