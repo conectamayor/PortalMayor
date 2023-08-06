@@ -154,7 +154,7 @@
                 this.$gtag.event('page_view', {
                     page_title: google_tag
                 });
-
+                alert(uri_url);
                 if (version == 1) {
                     window.location.href = uri_url;
                 } else {
