@@ -339,7 +339,6 @@
                     && this.form.start_date != ''
                     && this.form.position != ''
                     && (this.form.icon_available_id == 2 || (this.form.icon_available_id == 1 && this.form.fai != ''))
-                    && (this.form.whatsapp_type_id == 2 || (this.form.whatsapp_type_id == 1 && this.form.whatsapp_description != ''))
                 ) {
                     let formData = new FormData();
                     formData.append('category_id', this.form.category_id);
