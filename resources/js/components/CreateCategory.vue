@@ -239,7 +239,7 @@
                     title: '',
                     color: '',
                     position: '',
-                    icon_type_id: null,
+                    icon_type_id: 2,
                     google_tag: '',
                     fai: '',
                     highlight_id: 0,
@@ -300,10 +300,6 @@
                     && this.form.section_id != null
                     && this.form.title != ''
                     && this.form.google_tag != ''
-                    && this.form.title.length <= 28
-                    && this.form.color != ''
-                    && this.form.position != ''
-                    && (this.form.icon_available_id == 1 && this.form.fai != '')
                 ) {
                     let formData = new FormData();
                     formData.append('alliance_id', this.form.alliance_id);
