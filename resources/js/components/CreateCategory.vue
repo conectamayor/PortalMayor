@@ -133,7 +133,7 @@
                                         >
                                     </div>
                                 </div>
-                                <div class="form-group row">
+                                <div class="form-group row" v-if="link_question_id == 2">
                                     <div class="col-sm-6">
                                         <label for="exampleInputEmail1">¿Es un Iframe? <h6 class="m-0 text-danger float-right">*</h6></label>
                                         <select class="form-control" id="exampleFormControlSelect1"
@@ -164,7 +164,7 @@
                                         </select>
                                     </div>
                                 </div>
-                                <div class="form-group row">
+                                <div class="form-group row" v-if="iframe_question_id == 2">
                                     <div class="col-sm-6">
                                         <label for="exampleInputEmail1">¿Es un enlace a una página externa? <h6 class="m-0 text-danger float-right">*</h6></label>
                                         <select class="form-control" id="exampleFormControlSelect1"
@@ -247,7 +247,7 @@
                     iframe_question_id: 2,
                     iframe: '',
                     subtitle: '',
-                    link_question_id: null,
+                    link_question_id: 2,
                     icon_available_id: 2,
                 }
             }
@@ -371,7 +371,7 @@
                     if (this.form.title.length > 28) {
                         this.errors.push('El nombre debe tener menos de 28 caracteres.');
                     }
-                    if (this.form.icon_available_id == 2 && this.form.fai == '') {
+                    if (this.form.icon_available_id == 1 && this.form.fai == '') {
                         this.errors.push('El icono es obligatorio.');
                     }
 
