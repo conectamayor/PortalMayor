@@ -121,8 +121,7 @@
                                     </div>
                                     <div class="col-sm-4" v-if="form.georeferencing_type_id == 2">
                                         <label for="exampleInputEmail1">Comuna <h6 class="m-0 text-danger float-right">*</h6> </label>
-                                        <select v-model="form.region" multiple class="form-control">
-                                            <option v-for="region in region_posts" :key="region.region_id" :value="region.region_id">{{ region.region }}</option>
+                                        <select v-model="form.commune_id" multiple class="form-control">
                                         </select>
                                         <h6 class="m-0 text-primary">(Pulsa la tecla CTRL para seleccionar varias)</h6>
                                     </div>

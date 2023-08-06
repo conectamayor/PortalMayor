@@ -182,31 +182,18 @@
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <div class="col-sm-4">
-                                        <label for="exampleInputEmail1">Tipo de Icono <h6 class="m-0 text-danger float-right">*</h6></label>
+                                    <div class="col-sm-6">
+                                        <label for="exampleInputEmail1">¿La sección tiene icono? <h6 class="m-0 text-danger float-right">*</h6></label>
                                         <select class="form-control" id="exampleFormControlSelect1"
-                                        v-model="form.icon_type_id"
+                                        v-model="form.icon_available_id"
                                         >
-                                            <option :value="null">Seleccionar</option>
-                                            <option :value="2">Fa Icon</option>
-                                            <option :value="3">Ionic Icon</option>
+                                            <option :value="1">Si</option>
+                                            <option :value="2">No</option>
                                         </select>
+                                        <input type="hidden" v-model="form.icon_type_id">
                                     </div>
-                                    <div class="col-sm-6" v-if="form.icon_type_id == 1">
-                                        <label for="exampleInputEmail1">Icono</label>
-                                        <input ref="file" accept="image/png" type="file" class="form-control" v-on:change="onFileChange">
-                                    </div>
-                                    <div class="col-sm-6" v-if="form.icon_type_id == 2">
+                                    <div class="col-sm-6" v-if="form.icon_available_id == 1">
                                         <label for="exampleInputEmail1">Fa Icon - <a href="https://fontawesome.com/icons" target= "_blank">Ver iconos</a></label>
-                                        <input
-                                            type="text" 
-                                            v-model="form.fai" 
-                                            class="form-control"
-                                            placeholder="Ingresa el icono"
-                                        >
-                                    </div>
-                                    <div class="col-sm-6" v-if="form.icon_type_id == 3">
-                                        <label for="exampleInputEmail1">Ionic Icon - <a href="https://ionicframework.com/docs/v3/ionicons/" target= "_blank">Ver iconos</a></label>
                                         <input
                                             type="text" 
                                             v-model="form.fai" 
@@ -293,6 +280,7 @@
                     video_type_id: null,
                     iframe: '',
                     color: '',
+                    icon_available_id: 2,
                 }
             }
         },
