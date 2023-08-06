@@ -333,7 +333,6 @@
                     && this.form.description != ''
                     && this.form.start_date != ''
                     && this.form.position != ''
-                    && (this.form.icon_available_id == 2 || (this.form.icon_available_id == 1 && this.form.fai != ''))
                 ) {
                     let formData = new FormData();
                     formData.append('category_id', this.form.category_id);
