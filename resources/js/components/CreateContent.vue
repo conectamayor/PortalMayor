@@ -162,7 +162,7 @@
                                     
                                     <div class="col-sm-12" v-if="form.type_id == 3">
                                         <label for="exampleInputEmail1">Texto <h6 class="m-0 text-danger float-right">*</h6></label>
-                                        <vue-editor v-model="form.description"></vue-editor>
+                                        <vue-editor v-model="form.description" ref="editor"></vue-editor>
                                     </div>
                                     
                                 </div>
@@ -326,11 +326,14 @@
                     headers: { 'content-type': 'multipart/form-data' }
                 }
 
+                const content = this.$refs.editor.getContent();
+
+                alert(content)
+
                 if(this.form.category_id != null
                     && this.form.type_id != null
                     && ((this.form.type_id == 1 && this.form.video_id != '' && this.form.video_type_id != null) 
                     || (this.form.type_id == 2 && this.form.src != '')
-                    || (this.form.type_id == 3 && this.form.description != '')
                     || (this.form.type_id == 5 && this.form.iframe != '')
                     )
                     && this.form.google_tag != ''
