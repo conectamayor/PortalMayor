@@ -132,12 +132,12 @@ class CategoryController extends ApiResponseController
         $id = $request->segment(4);
 
         if($id != '') {
-            $categories = Category::where('section_id', $id)->where('status', 1)->orderBy('name', 'ASC')->get();
+            $categories = Category::where('section_id', $id)->where('status', 1)->orderBy('title', 'ASC')->get();
         } else {
             if($this->user->rol_id == 2) {
-                $categories = Category::where('alliance_id', $this->user->alliance_id)->where('status', 1)->orderBy('name', 'ASC')->get();
+                $categories = Category::where('alliance_id', $this->user->alliance_id)->where('status', 1)->orderBy('title', 'ASC')->get();
             } else {
-                $categories = Category::where('status', 1)->orderBy('name', 'ASC')->get();
+                $categories = Category::where('status', 1)->orderBy('title', 'ASC')->get();
             }
         }
         
