@@ -133,7 +133,7 @@
                                         >
                                     </div>
                                 </div>
-                                <div class="form-group row" v-if="post.link_question_id == 2">
+                                <div class="form-group row" v-if="form.link_question_id == 2">
                                     <div class="col-sm-6">
                                         <label for="exampleInputEmail1">¿Es un Iframe? <h6 class="m-0 text-danger float-right">*</h6></label>
                                         <select class="form-control" id="exampleFormControlSelect1"
@@ -164,7 +164,7 @@
                                         </select>
                                     </div>
                                 </div>
-                                <div class="form-group row" v-if="post.iframe_question_id == 2">
+                                <div class="form-group row" v-if="form.iframe_question_id == 2">
                                     <div class="col-sm-6">
                                         <label for="exampleInputEmail1">¿Es un enlace a una página externa? <h6 class="m-0 text-danger float-right">*</h6></label>
                                         <select class="form-control" id="exampleFormControlSelect1"
