@@ -8,15 +8,6 @@ use App\User;
 
 class ContentController extends Controller
 {
-    /* Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
-    
     /**
      * Display a listing of the resource.
      *
@@ -24,6 +15,8 @@ class ContentController extends Controller
      */
     public function index()
     {
+        $this->middleware('auth');
+
         return view('backend.index');
     }
 
@@ -34,6 +27,8 @@ class ContentController extends Controller
      */
     public function create()
     {
+        $this->middleware('auth');
+
         return view('backend.index');
     }
 
@@ -67,6 +62,8 @@ class ContentController extends Controller
      */
     public function edit($id)
     {
+        $this->middleware('auth');
+
         return view('backend.index');
     }
 

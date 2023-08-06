@@ -262,3 +262,9 @@
         }
     }
 </script>
+
+<style scoped>    
+    .fa-whatsapp {
+        color: #25D366;
+    }
+</style>
