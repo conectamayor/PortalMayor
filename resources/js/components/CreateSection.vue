@@ -95,7 +95,25 @@
                                 </div>
                                 <div class="form-group row">
                                     <div class="col-sm-4">
+                                        <label for="exampleInputEmail1">Tipo de Georreferenciación <h6 class="m-0 text-danger float-right">*</h6></label>
+                                        <select class="form-control" id="exampleFormControlSelect1"
+                                        v-model="form.georeferencing_type_id"
+                                        >
+                                            <option value="">- Seleccione -</option>
+                                            <option :value="1">Región</option>
+                                            <option :value="2">Comuna</option>
+                                        </select>
+                                        <input type="hidden" v-model="form.icon_type_id">
+                                    </div>
+                                    <div class="col-sm-4">
                                         <label for="exampleInputEmail1">Región <h6 class="m-0 text-danger float-right">*</h6> </label>
+                                        <select v-model="form.region_id" multiple class="form-control">
+                                            <option v-for="region in region_posts" :key="region.region_id" :value="region.region_id">{{ region.region }}</option>
+                                        </select>
+                                        <h6 class="m-0 text-primary">(Pulsa la tecla CTRL para seleccionar varias)</h6>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <label for="exampleInputEmail1">Comuna <h6 class="m-0 text-danger float-right">*</h6> </label>
                                         <select v-model="form.region" multiple class="form-control">
                                             <option v-for="region in region_posts" :key="region.region_id" :value="region.region_id">{{ region.region }}</option>
                                         </select>
@@ -295,12 +313,13 @@
                     iframe: '',
                     direct_content_question_id: 2,
                     icon_available_id: 2,
-                    region: null,
+                    region_id: null,
                     whatsapp_url_to_share: '',
                     whatsatpp_share_id: 1,
                     open_app_id: 2,
                     open_app_version_id: '',
                     open_app_uri_url: '',
+                    georeferencing_type_id: '',
                 }
             }
         },
