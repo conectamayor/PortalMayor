@@ -95,7 +95,7 @@
                                     </div>
                                     <div class="col-sm-6" v-if="form.type_id == 2">
                                         <div v-if="form.type_id == 2">
-                                            <label for="exampleInputEmail1">Src</label>
+                                            <label for="exampleInputEmail1">Src <h6 class="m-0 text-danger float-right">*</h6></label>
                                             <input
                                             type="text" 
                                             v-model="form.src" 
@@ -106,12 +106,12 @@
                                     </div>
                                     
                                     <div class="col-sm-6" v-if="form.type_id == 4">
-                                        <label for="exampleInputEmail1">PDF</label>
+                                        <label for="exampleInputEmail1">PDF <h6 class="m-0 text-danger float-right">*</h6></label>
                                         <input ref="pdf" accept=".pdf" type="file" class="form-control" v-on:change="onFileChangePdf">
                                     </div>
                                     <div class="col-sm-6" v-if="form.type_id == 5">
                                         <div v-if="form.type_id == 5">
-                                            <label for="exampleInputEmail1">Url</label>
+                                            <label for="exampleInputEmail1">Url <h6 class="m-0 text-danger float-right">*</h6></label>
                                             <input
                                             type="text" 
                                             v-model="form.iframe" 
@@ -160,7 +160,7 @@
                                 </div>
                                 <div class="form-group row">
                                     
-                                    <div class="col-sm-8" v-if="form.type_id == 3">
+                                    <div class="col-sm-12" v-if="form.type_id == 3">
                                         <label for="exampleInputEmail1">Texto <h6 class="m-0 text-danger float-right">*</h6></label>
                                         <vue-editor v-model="form.description"></vue-editor>
                                     </div>
@@ -343,7 +343,11 @@
                 } else {
                     this.loading = false;
                     this.errors = [];
-                    
+
+                    if (this.form.title == '') {
+                        this.errors.push('El título es obligatorio.');
+                    }
+
                     if (this.form.category_id == null) {
                         this.errors.push('La categoría es obligatoria.');
                     }
@@ -352,26 +356,30 @@
                         this.errors.push('El tipo de contenido es obligatorio.');
                     }
 
-                    if (this.form.title == '') {
-                        this.errors.push('El título es obligatorio.');
-                    }
-
-                    if (this.form.google_tag == '') {
-                        this.errors.push('Las etiqueta de Google es obligatoria.');
-                    }
-
                     if (this.form.description == '') {
                         this.errors.push('La descripción es obligatoria.');
+                    }
+                    
+                    if (this.form.color == '') {
+                        this.errors.push('El color es obligatorio.');
+                    }
+
+                    if (this.form.position == '') {
+                        this.errors.push('La posición es obligatoria.');
+                    }
+                    
+                    if (this.form.google_tag == '') {
+                        this.errors.push('Las etiqueta de Google es obligatoria.');
                     }
 
                     if (this.form.start_date == '') {
                         this.errors.push('La fecha inicial es obligatoria.');
                     }
 
-                    if (this.form.position == '') {
-                        this.errors.push('La posición es obligatoria.');
+                    if (this.form.end_date == '') {
+                        this.errors.push('La fecha de termino es obligatoria.');
                     }
-
+                    
                     $('html,body').scrollTop(0);
 
                     e.preventDefault();
