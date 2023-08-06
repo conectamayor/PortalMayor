@@ -91,7 +91,7 @@
                 </div>
             </div>
         </div>
-        <a :href="`whatsapp://send?text=${encodeURIComponent(whatsapp_description)}`" data-action="share/whatsapp/share">Compartir por medio de <i class="fab fa-whatsapp"></i></a>
+        <a :href="`whatsapp://send?text=${encodeURIComponent(whatsapp_description)}`" data-action="share/whatsapp/share"> <strong>Compartir:</strong> <i class="fab fa-whatsapp"></i></a>
 
     </div>
 	
@@ -266,5 +266,6 @@
 <style scoped>    
     .fa-whatsapp {
         color: #25D366;
+        font-size: 16px;
     }
 </style>
