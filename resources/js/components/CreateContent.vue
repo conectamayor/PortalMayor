@@ -27,6 +27,17 @@
                                 </div>
                                 <div class="form-group row">
                                     <div class="col-sm-6">
+                                        <label for="exampleInputEmail1">Título <h6 class="m-0 text-danger float-right">*</h6></label>
+                                        <input
+                                        type="text" 
+                                        v-model="form.title" 
+                                        maxlength="50"
+                                        class="form-control"
+                                        placeholder="Ingresa el título"
+                                        >
+                                        <span>{{charactersLeft}}</span>
+                                    </div>
+                                    <div class="col-sm-6">
                                         <label for="exampleInputEmail1">Categoría <h6 class="m-0 text-danger float-right">*</h6></label>
                                         <select class="form-control" id="exampleFormControlSelect1"
                                         v-model="form.category_id"
@@ -35,6 +46,10 @@
                                             <option v-for="category_post in category_posts" :key="category_post.category_id" :value="category_post.category_id">{{ category_post.name }}</option>
                                         </select>
                                     </div>
+                                    
+                                    
+                                </div>
+                                <div class="form-group row">
                                     <div class="col-sm-6">
                                         <label for="exampleInputEmail1">Tipo de Contenido <h6 class="m-0 text-danger float-right">*</h6></label>
                                         <select class="form-control" id="exampleFormControlSelect1"
@@ -47,20 +62,6 @@
                                             <option :value="4">Pdf</option>
                                             <option :value="5">Iframe</option>
                                         </select>
-                                    </div>
-                                    
-                                </div>
-                                <div class="form-group row">
-                                    <div class="col-sm-6">
-                                        <label for="exampleInputEmail1">Título <h6 class="m-0 text-danger float-right">*</h6></label>
-                                        <input
-                                        type="text" 
-                                        v-model="form.title" 
-                                        maxlength="50"
-                                        class="form-control"
-                                        placeholder="Ingresa el título"
-                                        >
-                                        <span>{{charactersLeft}}</span>
                                     </div>
                                     <div class="col-sm-3" v-if="form.type_id == 1">
                                         <div v-if="form.type_id == 1">
@@ -108,7 +109,7 @@
                                         </div>
                                     </div>
                                     
-                                    <div class="col-sm-12" v-if="form.type_id == 4">
+                                    <div class="col-sm-6" v-if="form.type_id == 4">
                                         <label for="exampleInputEmail1">PDF</label>
                                         <input ref="pdf" accept=".pdf" type="file" class="form-control" v-on:change="onFileChangePdf">
                                     </div>
@@ -125,7 +126,7 @@
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <div class="col-sm-6">
+                                    <div class="col-sm-4">
                                         <label for="exampleInputEmail1">Color <h6 class="m-0 text-danger float-right">*</h6></label>
                                         <div class="form-group row">
                                             <div class="col-sm-2">
@@ -141,7 +142,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-sm-6">
+                                    <div class="col-sm-4">
                                         <label for="exampleInputEmail1">Posición <h6 class="m-0 text-danger float-right">*</h6></label>
                                         <input
                                         type="number" 
@@ -151,9 +152,7 @@
                                         placeholder="Ingresa la posición"
                                         >
                                     </div>
-                                </div>
-                                <div class="form-group row">
-                                    <div class="col-sm-6">
+                                    <div class="col-sm-4">
                                         <label for="exampleInputEmail1">Google Tag <h6 class="m-0 text-danger float-right">*</h6></label>
                                         <input
                                         type="text" 
@@ -162,7 +161,21 @@
                                         placeholder="Ingresa el google tag"
                                         >
                                     </div>
-                                    <div class="col-sm-3">
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-sm-8" v-if="form.type_id == 1 || form.type_id == 2 || form.type_id == 4 || form.type_id == 5">
+                                        <label for="exampleInputEmail1">Descripción <h6 class="m-0 text-danger float-right">*</h6></label>
+                                        <input
+                                        type="text" 
+                                        v-model="form.description" 
+                                        class="form-control"
+                                        placeholder="Ingresa el texto"
+                                        >
+                                    </div>
+                                    <div class="col-sm-8" v-if="form.type_id == 3">
+                                        <vue-editor v-model="form.description"></vue-editor>
+                                    </div>
+                                    <div class="col-sm-2">
                                         <label for="exampleInputEmail1">Fecha de Inicio <h6 class="m-0 text-danger float-right">*</h6></label>
                                         <input
                                         type="date" 
@@ -171,7 +184,7 @@
                                         placeholder="Ingresa la fecha de inicio"
                                         >
                                     </div>
-                                    <div class="col-sm-3">
+                                    <div class="col-sm-2">
                                         <label for="exampleInputEmail1">Fecha de Termino <h6 class="m-0 text-danger float-right">*</h6></label>
                                         <input
                                         type="date" 
@@ -203,18 +216,7 @@
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <div class="col-sm-8" v-if="form.type_id == 1 || form.type_id == 2 || form.type_id == 4 || form.type_id == 5">
-                                        <label for="exampleInputEmail1">Descripción <h6 class="m-0 text-danger float-right">*</h6></label>
-                                        <input
-                                        type="text" 
-                                        v-model="form.description" 
-                                        class="form-control"
-                                        placeholder="Ingresa el texto"
-                                        >
-                                    </div>
-                                    <div class="col-sm-8" v-if="form.type_id == 3">
-                                        <vue-editor v-model="form.description"></vue-editor>
-                                    </div>
+                                    
                                 </div>
 
                                 <button 
