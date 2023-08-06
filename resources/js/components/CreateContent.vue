@@ -270,6 +270,7 @@
                     iframe: '',
                     color: '',
                     icon_available_id: 2,
+                    position: '',
                 }
             }
         },
