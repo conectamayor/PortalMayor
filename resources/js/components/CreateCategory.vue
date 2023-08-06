@@ -296,12 +296,6 @@
                     headers: { 'content-type': 'multipart/form-data' }
                 }
 
-                if (typeof this.icon_image !== 'undefined') {
-                    var icon_image_size = this.icon_image.size;
-                } else {
-                    var icon_image_size = 0;
-                }
-
                 if(this.form.alliance_id != null
                     && this.form.section_id != null
                     && this.form.title != ''
@@ -317,18 +311,14 @@
                     formData.append('title', this.form.title);
                     formData.append('color', this.form.color);
                     formData.append('position', this.form.position);
-                    formData.append('file', this.file);
                     formData.append('icon_type_id', this.form.icon_type_id);
                     formData.append('iframe', this.form.iframe);
                     formData.append('subtitle', this.form.subtitle);
                     formData.append('link_question_id', this.form.link_question_id);
                     formData.append('icon_available_id', this.form.icon_available_id);
                     formData.append('url', this.form.url);
-                    if(this.form.icon_type_id == 1) {
-                        formData.append('icon_image', this.icon_image);
-                    } else {
-                        formData.append('icon', this.form.fai);
-                    }
+                    formData.append('icon', this.form.fai);
+
                     formData.append('highlight_id', this.form.highlight_id);
                     formData.append('google_tag', this.form.google_tag);
 
