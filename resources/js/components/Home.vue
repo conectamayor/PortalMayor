@@ -37,30 +37,44 @@
                 <div v-else>
                     <div v-if="post.icon_available_id == 1">
                         <div v-if="post.link_question_id == 2">
-                            <router-link @click.native="Track(post.google_tag)" v-if="post.direct_content_question_id == 2 || post.direct_content_question_id == null" class="boton2" :style="{ background: post.color}" :to="`/section/show/${post.section_id}`" >
-                                <font class="section_title">{{ post.section_title }}</font><br><i v-bind:class="post.icon"></i>
-                            </router-link>
-                            <router-link @click.native="Track(post.google_tag)" v-if="post.direct_content_question_id == 1" class="boton2" :style="{ background: post.color}" :to="`/section/content/show/${post.section_id}`" >
-                                <font class="section_title">{{ post.section_title }}</font><br><i v-bind:class="post.icon"></i>
-                            </router-link>
+                            <div v-if="post.open_app_id == 2">
+                                <router-link @click.native="Track(post.google_tag)" v-if="post.direct_content_question_id == 2 || post.direct_content_question_id == null" class="boton2" :style="{ background: post.color}" :to="`/section/show/${post.section_id}`" >
+                                    <font class="section_title">{{ post.section_title }}</font><br><i v-bind:class="post.icon"></i>
+                                </router-link>
+                                <router-link @click.native="Track(post.google_tag)" v-if="post.direct_content_question_id == 1" class="boton2" :style="{ background: post.color}" :to="`/section/content/show/${post.section_id}`" >
+                                    <font class="section_title">{{ post.section_title }}</font><br><i v-bind:class="post.icon"></i>
+                                </router-link>
+                            </div>
+                            <div v-else>
+                                <button class="boton2" :style="{ background: post.color}" v-on:click="openApp(post.open_app_version_id, post.open_app_uri_url, post.google_tag)" >
+                                    <font class="section_title">{{ post.section_title }}</font><br> <i v-bind:class="post.icon"></i>
+                                </button>
+                            </div>
                         </div>
                         <div v-else>
-                            <button v-if="post.link_question_id == 1" class="boton2" :style="{ background: post.color}" v-on:click="goWeb(post.url,post.google_tag)" >
+                            <button class="boton2" :style="{ background: post.color}" v-on:click="goWeb(post.url, post.google_tag)" >
                                 <font class="section_title">{{ post.section_title }}</font><br> <i v-bind:class="post.icon"></i>
                             </button>
                         </div>
                     </div>
                     <div v-else>
                         <div v-if="post.link_question_id == 2">
-                            <router-link @click.native="Track(post.google_tag)" v-if="post.direct_content_question_id == 2 || post.direct_content_question_id == null" class="boton2" :style="{ background: post.color}" :to="`/section/show/${post.section_id}`" >
-                                <font class="section_title">{{ post.section_title }}</font>
-                            </router-link>
-                            <router-link @click.native="Track(post.google_tag)" v-if="post.direct_content_question_id == 1" class="boton2" :style="{ background: post.color}" :to="`/section/content/show/${post.section_id}`" >
-                                <font class="section_title">{{ post.section_title }}</font>
-                            </router-link>
+                            <div v-if="post.open_app_id == 2">
+                                <router-link @click.native="Track(post.google_tag)" v-if="post.direct_content_question_id == 2 || post.direct_content_question_id == null" class="boton2" :style="{ background: post.color}" :to="`/section/show/${post.section_id}`" >
+                                    <font class="section_title">{{ post.section_title }}</font>
+                                </router-link>
+                                <router-link @click.native="Track(post.google_tag)" v-if="post.direct_content_question_id == 1" class="boton2" :style="{ background: post.color}" :to="`/section/content/show/${post.section_id}`" >
+                                    <font class="section_title">{{ post.section_title }}</font>
+                                </router-link>
+                            </div>
+                            <div v-else>
+                                <button class="boton2" :style="{ background: post.color}" v-on:click="openApp(post.open_app_version_id, post.open_app_uri_url, post.google_tag)" >
+                                    <font class="section_title">{{ post.section_title }}</font><br> <i v-bind:class="post.icon"></i>
+                                </button>
+                            </div>
                         </div>
                         <div v-else>
-                            <button v-if="post.link_question_id == 1" class="boton2" :style="{ background: post.color}" v-on:click="goWeb(post.url,post.google_tag)" >
+                            <button class="boton2" :style="{ background: post.color}" v-on:click="goWeb(post.url, post.google_tag)" >
                                 <font class="section_title">{{ post.section_title }}</font>
                             </button>
                         </div>
@@ -135,6 +149,17 @@
                 });
 
                 window.location.href = url;
+            },
+            openApp(version, uri_url, google_tag) {
+                this.$gtag.event('page_view', {
+                    page_title: google_tag
+                });
+
+                if (version == 1) {
+                    window.location.href = uri_url;
+                } else {
+                    window.location.href = uri_url;
+                }
             },
             checkDate() {
                 let formData = new FormData();
