@@ -91,7 +91,7 @@
                 </div>
             </div>
         </div>
-        <a v-if="" href="whatsapp://send?text=The text to share!" data-action="share/whatsapp/share">Compartir por medio de <i class="fas fa-whatsapp"></i></a>
+        <a :href="`whatsapp://send?text=${encodeURIComponent(whatsapp_message)}`" data-action="share/whatsapp/share">Compartir por medio de <i class="fab fa-whatsapp"></i></a>
 
     </div>
 	
