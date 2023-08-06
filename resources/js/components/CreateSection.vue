@@ -33,7 +33,7 @@
                                     </ul>
                                 </div>
                                 <div class="form-group row">
-                                    <div class="col-sm-4">
+                                    <div class="col-sm-6">
                                         <label for="exampleInputEmail1">Título <h6 class="m-0 text-danger float-right">*</h6></label>
                                         <input
                                         type="text" 
@@ -44,7 +44,7 @@
                                         >
                                         <span class="col-sm-12">{{charactersLeft}}</span>
                                     </div>
-                                    <div class="col-sm-4">
+                                    <div class="col-sm-6">
                                         <label for="exampleInputEmail1">Sub-título</label>
                                         <input
                                         type="text" 
@@ -54,15 +54,7 @@
                                         placeholder="Ingresa el subtítulo"
                                         >
                                     </div>
-                                    <div class="col-sm-4">
-                                        <label for="exampleInputEmail1">Google Tag <h6 class="m-0 text-danger float-right">*</h6></label>
-                                        <input
-                                        type="text" 
-                                        v-model="form.google_tag" 
-                                        class="form-control"
-                                        placeholder="Ingresa el google tag"
-                                        >
-                                    </div>
+                                    
                                 </div>
                                 <div class="form-group row">
                                     <div class="col-sm-4">
@@ -91,6 +83,17 @@
                                         placeholder="Ingresa la posición"
                                         >
                                     </div>
+                                    <div class="col-sm-4">
+                                        <label for="exampleInputEmail1">Google Tag <h6 class="m-0 text-danger float-right">*</h6></label>
+                                        <input
+                                        type="text" 
+                                        v-model="form.google_tag" 
+                                        class="form-control"
+                                        placeholder="Ingresa el google tag"
+                                        >
+                                    </div>
+                                </div>
+                                <div class="form-group row">
                                     <div class="col-sm-4">
                                         <label for="exampleInputEmail1">Región <h6 class="m-0 text-danger float-right">*</h6> </label>
                                         <select v-model="form.region" multiple class="form-control">
@@ -131,7 +134,7 @@
                                         </select>
                                     </div>
                                 </div>
-                                <div class="form-group row" v-if="form.direct_content_question_id == 2 && form.open_app_id == 2 && form.youtube_question_id == 2 && form.open_app_id == 2">
+                                <div class="form-group row" v-if="form.direct_content_question_id == 2 && form.iframe_question_id == 2 && form.youtube_question_id == 2 && form.open_app_id == 2">
                                     <div class="col-sm-6">
                                         <label for="exampleInputEmail1">¿Es un enlace a una página externa? <h6 class="m-0 text-danger float-right">*</h6></label>
                                         <select class="form-control" id="exampleFormControlSelect1"
