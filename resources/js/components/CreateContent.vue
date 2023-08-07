@@ -325,7 +325,7 @@
                 const config = {
                     headers: { 'content-type': 'multipart/form-data' }
                 }
-                alert(this.form.description);
+
                 if(this.form.category_id != null
                     && this.form.type_id != null
                     && ((this.form.type_id == 1 && this.form.video_id != '' && this.form.video_type_id != null) 
