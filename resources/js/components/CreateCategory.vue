@@ -362,7 +362,7 @@
                         this.errors.push('El icono es obligatorio.');
                     }
 
-                    $('html,body').scrollTop(0);
+                    window.scrollTo(0, 0);
 
                     e.preventDefault();
                 }

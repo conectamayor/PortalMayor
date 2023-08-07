@@ -422,7 +422,7 @@
                         this.errors.push('La url de la app es obligatoria.');
                     }
 
-                    $('html,body').scrollTop(0);
+                    window.scrollTo(0, 0);
 
                     e.preventDefault();
                 }
