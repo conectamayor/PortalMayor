@@ -99,8 +99,20 @@
         },
         mounted() {
             this.showModal();
+            this.detectDispositive();
         },
         methods: {
+            detectDispositive() {
+                const userAgent = window.navigator.userAgent.toLowerCase();
+                
+                if (/mobile|android|iphone|ipod|blackberry|iemobile|opera mini/i.test(userAgent)) {
+                    this.dispositive = "Celular";
+                } else {
+                    this.dispositive = "Computadora";
+                }
+
+                alert(this.dispositive);
+            },
             catchUser() {
                 let formData = new FormData();
                 formData.append('page', 'Home');
@@ -206,7 +218,8 @@
                 posts: [],
                 form: {
                     search: 'Buscar en Google.com'
-                }
+                },
+                dispositive: '',
             }
         }
     }
