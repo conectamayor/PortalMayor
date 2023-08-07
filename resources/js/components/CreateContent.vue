@@ -426,7 +426,7 @@
                         this.errors.push('La descripción de WhatsApp es obligatoria.');
                     }
                     
-                    $('html,body').scrollTop(0);
+                    window.scrollTo(0, 0);
 
                     e.preventDefault();
                 }
