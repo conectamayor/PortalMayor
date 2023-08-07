@@ -330,6 +330,7 @@
                     && this.form.type_id != null
                     && ((this.form.type_id == 1 && this.form.video_id != '' && this.form.video_type_id != null) 
                     || (this.form.type_id == 2 && this.form.src != '')
+                    || (this.form.type_id == 3 && this.form.description != '')
                     || (this.form.type_id == 5 && this.form.iframe != '')
                     )
                     && this.form.google_tag != ''
@@ -425,7 +426,7 @@
                     if (this.form.whatsapp_type_id == 1 && this.form.whatsapp_description == '') {
                         this.errors.push('La descripción de WhatsApp es obligatoria.');
                     }
-                    
+
                     window.scrollTo(0, 0);
 
                     e.preventDefault();
