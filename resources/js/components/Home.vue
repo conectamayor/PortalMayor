@@ -69,7 +69,7 @@
                             </div>
                             <div v-else>
                                 <button class="boton2" :style="{ background: post.color}" v-on:click="openApp(post.open_app_version_id, post.open_app_uri_url, post.google_tag)" >
-                                    <i v-bind:class="post.icon"></i><br><font class="section_title">{{ post.section_title }}</font> 
+                                    <font class="section_title">{{ post.section_title }}</font> 
                                 </button>
                             </div>
                         </div>
