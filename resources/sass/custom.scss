@@ -152,10 +152,18 @@ a {
   text-decoration: none !important;
 }
 
-.section_title {
-  font-size: 25px;
-}
-
 .page-link {
   font-size: 30px !important;
+}
+
+@media (min-width: 601px) {
+  .section_title {
+    font-size: 25px !important;
+  }
+}
+
+@media (max-width: 600px) {
+  .section_title {
+    font-size: 5px !important;
+  }
 }
