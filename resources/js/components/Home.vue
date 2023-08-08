@@ -25,7 +25,7 @@
                     </div>
                     <div v-if="post.section_id == 82">
                         <a class="boton2" :style="{ background: post.color}" href="tel:226043712" target="_blank">
-                            <center><img style="width: 50px;" :src="'/../frontend/images/salcobrand-seeklogo.com.png'" alt=""></center><br><font class="section_title">Salcobrand</font>
+                            <center><img style="width: 50px;" :src="'/../frontend/images/salcobrand-seeklogo.com.png'" alt=""></center><font class="section_title">Salcobrand</font>
                         </a>
                     </div>
                     <div v-if="post.section_id == 70">
