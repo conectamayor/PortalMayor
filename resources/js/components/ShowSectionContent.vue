@@ -13,7 +13,7 @@
 
             <div class="col-12" v-for="(post, index) in section_content_posts" v-bind:index="index">
                 <router-link class="boton2" :style="{ background: '#0e385d'}" :to="`/content/show/${post.content_id}`"> 
-                    <i v-bind:class="post.icon"></i><br> {{ post.title }}
+                    {{ post.title }}<br> <font class="section_title"><i v-bind:class="post.icon"></i></font>
                 </router-link>
             </div>
         </div>
