@@ -39,24 +39,7 @@
   margin: 80px auto 76px auto;
 }
 
-.botonhighlight {
-  border-bottom: 10px solid #000;
-  border-radius: 12px;
-  box-shadow: 6px 6px 6px #999;
-  color: #fff !important;
-  cursor: pointer;
-  display: block;  
-  font-family: 'Raleway', Arial, Helvetica;
-  font-size: 22px;
-  text-shadow: 0 0 10px yellow;
-  font-weight: bold;
-  height: 150px;
-  margin: 10px auto;
-  padding: 10px 0px;
-  text-align: center;
-  transition: all 0.2s ease 0s;
-  width: 100%;
-}
+
 .botonhighlight:hover{
   background: rgb(198, 27, 27);
   border-bottom: 5px solid #ed3f3f;
@@ -165,6 +148,25 @@ a {
     transition: all 0.2s ease 0s;
     width: 100%;
   }
+
+  .botonhighlight {
+    border-bottom: 10px solid #000;
+    border-radius: 12px;
+    box-shadow: 6px 6px 6px #999;
+    color: #fff !important;
+    cursor: pointer;
+    display: block;  
+    font-family: 'Raleway', Arial, Helvetica;
+    font-size: 22px;
+    text-shadow: 0 0 10px yellow;
+    font-weight: bold;
+    height: 150px;
+    margin: 10px auto;
+    padding: 10px 0px;
+    text-align: center;
+    transition: all 0.2s ease 0s;
+    width: 100%;
+  }
 }
 
 @media (max-width: 600px) {
@@ -195,6 +197,25 @@ a {
     height: 150px;
     margin: 10px auto;
     padding: 20px 0px;
+    text-align: center;
+    transition: all 0.2s ease 0s;
+    width: 100%;
+  }
+
+  .botonhighlight {
+    border-bottom: 10px solid #000;
+    border-radius: 12px;
+    box-shadow: 6px 6px 6px #999;
+    color: #fff !important;
+    cursor: pointer;
+    display: block;  
+    font-family: 'Raleway', Arial, Helvetica;
+    font-size: 10px;
+    text-shadow: 0 0 10px yellow;
+    font-weight: bold;
+    height: 150px;
+    margin: 10px auto;
+    padding: 10px 0px;
     text-align: center;
     transition: all 0.2s ease 0s;
     width: 100%;

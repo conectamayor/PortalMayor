@@ -102,7 +102,7 @@
                         </div>
                         <div v-else>
                             <router-link v-if="post.highlight_id == 0"  class="boton2" :style="{ background: post.color}" :to="`/category/show/${post.category_id}`"> 
-                                <i v-bind:class="post.icon"></i><br> <font class="section_title">{{ post.title }}</font>
+                                <font class="section_title">{{ post.title }}</font>
                             </router-link>
 
                             <router-link v-if="post.highlight_id == 1"  class="botonhighlight" :style="{ background: post.color}" :to="`/category/show/${post.category_id}`"> 
