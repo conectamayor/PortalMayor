@@ -15,22 +15,22 @@
                     </div>
                     <div v-if="post.section_id == 67">
                         <router-link @click.native="Track(post.google_tag)" class="boton2" :style="{ background: post.color}" :to="`/special_section/show/67`" >
-                            <font class="section_title">Leer Qr</font><br><i v-bind:class="'fa-solid fa-qrcode'"></i>
+                            <i v-bind:class="'fa-solid fa-qrcode'"></i><br><font class="section_title">Leer Qr</font>
                         </router-link>
                     </div>
                     <div v-if="post.section_id == 68">
                         <router-link @click.native="Track(post.google_tag)" class="boton2" :style="{ background: post.color}" :to="`/special_section/show/68`" >
-                            <font class="section_title">Noticias</font><br><i v-bind:class="'fa-solid fa-newspaper'"></i>
+                            <i v-bind:class="'fa-solid fa-newspaper'"></i><br><font class="section_title">Noticias</font>
                         </router-link>
                     </div>
                     <div v-if="post.section_id == 82">
                         <a class="boton2" :style="{ background: post.color}" href="tel:226043712" target="_blank">
-                            <font class="section_title">Salcobrand</font><br><center><img style="width: 50px;" :src="'/../frontend/images/salcobrand-seeklogo.com.png'" alt=""></center>
+                            <center><img style="width: 50px;" :src="'/../frontend/images/salcobrand-seeklogo.com.png'" alt=""></center><br><font class="section_title">Salcobrand</font>
                         </a>
                     </div>
                     <div v-if="post.section_id == 70">
                         <router-link @click.native="Track(post.google_tag)" class="boton2" :style="{ background: post.color}" :to="`/special_section/show/70`" >
-                            <font class="section_title">Beneficios del Estado</font><br><i v-bind:class="'fa-solid fa-handshake'"></i>
+                            <i v-bind:class="'fa-solid fa-handshake'"></i><br><font class="section_title">Beneficios del Estado</font>
                         </router-link>
                     </div>
                 </div>
@@ -39,21 +39,21 @@
                         <div v-if="post.link_question_id == 2">
                             <div v-if="post.open_app_id == 2">
                                 <router-link @click.native="Track(post.google_tag)" v-if="post.direct_content_question_id == 2 || post.direct_content_question_id == null" class="boton2" :style="{ background: post.color}" :to="`/section/show/${post.section_id}`" >
-                                    <font class="section_title">{{ post.section_title }}</font><br><i v-bind:class="post.icon"></i>
+                                    <i v-bind:class="post.icon"></i><br><font class="section_title">{{ post.section_title }}</font>
                                 </router-link>
                                 <router-link @click.native="Track(post.google_tag)" v-if="post.direct_content_question_id == 1" class="boton2" :style="{ background: post.color}" :to="`/section/content/show/${post.section_id}`" >
-                                    <font class="section_title">{{ post.section_title }}</font><br><i v-bind:class="post.icon"></i>
+                                    <i v-bind:class="post.icon"></i><br><font class="section_title">{{ post.section_title }}</font>
                                 </router-link>
                             </div>
                             <div v-else>
                                 <button class="boton2" :style="{ background: post.color}" v-on:click="openApp(post.open_app_version_id, post.open_app_uri_url, post.google_tag)" >
-                                    <font class="section_title">{{ post.section_title }}</font><br> <i v-bind:class="post.icon"></i>
+                                    <i v-bind:class="post.icon"></i><br><font class="section_title">{{ post.section_title }}</font> 
                                 </button>
                             </div>
                         </div>
                         <div v-else>
                             <button class="boton2" :style="{ background: post.color}" v-on:click="goWeb(post.url, post.google_tag)" >
-                                <font class="section_title">{{ post.section_title }}</font><br> <i v-bind:class="post.icon"></i>
+                                <i v-bind:class="post.icon"></i><br> <font class="section_title">{{ post.section_title }}</font>
                             </button>
                         </div>
                     </div>
@@ -69,7 +69,7 @@
                             </div>
                             <div v-else>
                                 <button class="boton2" :style="{ background: post.color}" v-on:click="openApp(post.open_app_version_id, post.open_app_uri_url, post.google_tag)" >
-                                    <font class="section_title">{{ post.section_title }}</font><br> <i v-bind:class="post.icon"></i>
+                                    <i v-bind:class="post.icon"></i><br><font class="section_title">{{ post.section_title }}</font> 
                                 </button>
                             </div>
                         </div>
