@@ -22,26 +22,26 @@
                                 <font class="section_title">{{ post.title }}</font>
                             </button>
                             <button class="boton2" v-else :style="{ background: post.color}" v-on:click="goWeb(post.url,post.google_tag)" >
-                                <font class="section_title">{{ post.title }}</font><br> <i v-bind:class="post.icon"></i>
+                                <i v-bind:class="post.icon"></i><br><font class="section_title">{{ post.title }}</font>
                             </button>
                         </div>
                         <div v-else>
                             <div v-if="post.icon_available_id == 2">
                                 <router-link @click.native="Track(post.google_tag)" v-if="post.highlight_id == 0"  class="boton2" :style="{ background: post.color}" :to="`/category/show/${post.category_id}`"> 
-                                    {{ post.title }}
+                                    <font class="section_title">{{ post.title }}</font>
                                 </router-link>
 
                                 <router-link @click.native="Track(post.google_tag)" v-if="post.highlight_id == 1"  class="botonhighlight" :style="{ background: post.color}" :to="`/category/show/${post.category_id}`"> 
-                                    {{ post.title }}
+                                    <font class="section_title">{{ post.title }}</font>
                                 </router-link>
                             </div>
                             <div v-else>
                                 <router-link @click.native="Track(post.google_tag)" v-if="post.highlight_id == 0"  class="boton2" :style="{ background: post.color}" :to="`/category/show/${post.category_id}`"> 
-                                    {{ post.title }}<br><i v-bind:class="post.icon"></i>
+                                    <i v-bind:class="post.icon"></i><br><font class="section_title">{{ post.title }}</font>
                                 </router-link>
 
                                 <router-link @click.native="Track(post.google_tag)" v-if="post.highlight_id == 1"  class="botonhighlight" :style="{ background: post.color}" :to="`/category/show/${post.category_id}`"> 
-                                    <i v-bind:class="post.icon"></i><br> {{ post.title }}
+                                    <i v-bind:class="post.icon"></i><br> <font class="section_title">{{ post.title }}</font>
                                 </router-link>
                             </div>
                         </div>
@@ -93,20 +93,20 @@
                     <div class="col-12" v-for="(post, index) in posts" v-bind:index="index">
                         <div v-if="post.icon_available_id == 2">
                             <router-link v-if="post.highlight_id == 0"  class="boton2" :style="{ background: post.color}" :to="`/category/show/${post.category_id}`"> 
-                                {{ post.title }}
+                                <font class="section_title">{{ post.title }}</font>
                             </router-link>
 
                             <router-link v-if="post.highlight_id == 1"  class="botonhighlight" :style="{ background: post.color}" :to="`/category/show/${post.category_id}`"> 
-                                {{ post.title }}
+                                <font class="section_title">{{ post.title }}</font>
                             </router-link>
                         </div>
                         <div v-else>
                             <router-link v-if="post.highlight_id == 0"  class="boton2" :style="{ background: post.color}" :to="`/category/show/${post.category_id}`"> 
-                                <i v-bind:class="post.icon"></i><br> {{ post.title }}
+                                <i v-bind:class="post.icon"></i><br> <font class="section_title">{{ post.title }}</font>
                             </router-link>
 
                             <router-link v-if="post.highlight_id == 1"  class="botonhighlight" :style="{ background: post.color}" :to="`/category/show/${post.category_id}`"> 
-                                <i v-bind:class="post.icon"></i><br> {{ post.title }}
+                                <i v-bind:class="post.icon"></i><br> <font class="section_title">{{ post.title }}</font>
                             </router-link>
                         </div>
                     </div>
