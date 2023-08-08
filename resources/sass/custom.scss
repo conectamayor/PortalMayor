@@ -26,21 +26,6 @@
   transition: all 0.1s ease 0s;
   margin: 80px auto 76px auto;
 }
-.boton2 {
-  border-bottom: 5px solid #000;
-  border-radius: 12px;
-  box-shadow: 6px 6px 6px #999;
-  color: #fff !important;
-  cursor: pointer;
-  display: block;  
-  font-family: 'Raleway', Arial, Helvetica;
-  height: 150px;
-  margin: 10px auto;
-  padding: 20px 0px;
-  text-align: center;
-  transition: all 0.2s ease 0s;
-  width: 100%;
-}
 .boton2:hover{
   background: rgb(198, 27, 27);
   border-bottom: 5px solid #ed3f3f;
@@ -163,6 +148,23 @@ a {
   #salcobrand_logo {
     width: 50px !important;
   }
+
+  .boton2 {
+    border-bottom: 5px solid #000;
+    border-radius: 12px;
+    box-shadow: 6px 6px 6px #999;
+    color: #fff !important;
+    cursor: pointer;
+    display: block;  
+    font-family: 'Raleway', Arial, Helvetica;
+    font-size: 24px;
+    height: 150px;
+    margin: 10px auto;
+    padding: 20px 0px;
+    text-align: center;
+    transition: all 0.2s ease 0s;
+    width: 100%;
+  }
 }
 
 @media (max-width: 600px) {
@@ -180,5 +182,22 @@ a {
 
   #salcobrand_logo {
     width: 30px !important;
+  }
+
+  .boton2 {
+    border-bottom: 5px solid #000;
+    border-radius: 12px;
+    box-shadow: 6px 6px 6px #999;
+    color: #fff !important;
+    cursor: pointer;
+    display: block;  
+    font-family: 'Raleway', Arial, Helvetica;
+    font-size: 10px;
+    height: 150px;
+    margin: 10px auto;
+    padding: 20px 0px;
+    text-align: center;
+    transition: all 0.2s ease 0s;
+    width: 100%;
   }
 }
