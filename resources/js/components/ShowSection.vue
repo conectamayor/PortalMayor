@@ -36,7 +36,7 @@
                                 </router-link>
                             </div>
                             <div v-else>
-                                <router-link @click.native="Track(post.google_tag)" v-if="post.highlight_id == 0" :style="{ background: post.color}" :to="`/category/show/${post.category_id}`"> 
+                                <router-link @click.native="Track(post.google_tag)" v-if="post.highlight_id == 0"  class="boton2" :style="{ background: post.color}" :to="`/category/show/${post.category_id}`"> 
                                     <i v-bind:class="post.icon"></i><br><font class="section_title">{{ post.title }}</font>
                                 </router-link>
 
