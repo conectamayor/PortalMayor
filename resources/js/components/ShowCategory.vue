@@ -17,10 +17,10 @@
                 
                 <div class="col-12" v-for="(post, index) in posts" v-bind:index="index">
                     <router-link v-if="post.icon_available_id == '1'" @click.native="Track(post.google_tag)" class="boton2" :style="{ background: post.color}" :to="`/content/show/${post.content_id}`"> 
-                        <i v-bind:class="post.icon"></i><br> {{ post.title }}
+                        <i v-bind:class="post.icon"></i><br> <font class="section_title">{{ post.title }}</font>
                     </router-link>
                     <router-link v-else @click.native="Track(post.google_tag)" class="boton2" :style="{ background: post.color}" :to="`/content/show/${post.content_id}`"> 
-                        {{ post.title }}
+                        <font class="section_title">{{ post.title }}</font>
                     </router-link>
                 </div>
             </div>
@@ -64,7 +64,7 @@
                 <div v-if="poll_quantity > 1">
                     <div class="col-md-12" v-for="(post, index) in polls" v-bind:index="index">
                         <router-link  class="pollboton" :style="{ background: post.color}" :to="`/poll/show/${post.poll_id}`"> 
-                            {{ post.title }}
+                            <font class="section_title">{{ post.title }}</font>
                         </router-link>
                     </div>
                 </div>
@@ -77,7 +77,7 @@
                         <i v-bind:class="post.icon"></i><br> {{ post.title }}
                     </router-link>
                     <router-link v-else class="boton2" :style="{ background: post.color}" :to="`/content/show/${post.content_id}`"> 
-                        {{ post.title }}
+                        <font class="section_title">{{ post.title }}</font>
                     </router-link>
                 </div>
             </div>
