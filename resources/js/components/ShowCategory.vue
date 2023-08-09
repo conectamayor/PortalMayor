@@ -95,6 +95,7 @@
                     <div class="circle">
                         <i class="fas fa-chevron-up"></i>
                     </div>
+                    <div class="separator"></div>
                     <div class="circle">
                         <i class="fas fa-chevron-down"></i>
                     </div>
@@ -296,5 +297,9 @@
 
 .circle:hover {
   background-color: #2980b9;
+}
+
+.separator {
+    padding-top: 20px !important;
 }
 </style>
