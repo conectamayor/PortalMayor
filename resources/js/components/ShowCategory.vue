@@ -95,7 +95,7 @@
                     <div class="circle">
                         <i class="fas fa-chevron-up"></i>
                     </div>
-                    <div class="circle" style="margin-top: 20px;">
+                    <div class="circle" style="margin-top: 80px;">
                         <i class="fas fa-chevron-down"></i>
                     </div>
                 </div>
