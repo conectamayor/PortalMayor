@@ -91,7 +91,7 @@
                 </div>
             </div>
         </div>
-        <a :href="`whatsapp://send?text=${encodeURIComponent(whatsapp_description)}`" data-action="share/whatsapp/share"> <strong>Compartir por medio:</strong> <i class="fab fa-whatsapp"></i></a>
+        <a :href="`whatsapp://send?text=${encodeURIComponent(whatsapp_description)}`" data-action="share/whatsapp/share"> <strong>Compartir por medio</strong> <i class="fab fa-whatsapp"></i></a>
 
     </div>
 	

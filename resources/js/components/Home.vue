@@ -68,7 +68,7 @@
                                 </router-link>
                             </div>
                             <div v-else>
-                                <button class="boton2" :style="{ background: post.color}" v-on:click="openApp(post.open_app_version_id, post.open_app_uri_url, post.google_tag)" >
+                                <button class="boton2" :style="{ background: post.color}" v-on:click="openApp(post.open_app_version_id, post.open_app_uri_url, post.google_tag, post.open_app_desktop_url, post.open_app_not_installed)" >
                                     <font class="title">{{ post.section_title }}</font> 
                                 </button>
                             </div>
@@ -105,9 +105,9 @@
                 const userAgent = window.navigator.userAgent.toLowerCase();
                 
                 if (/mobile|android|iphone|ipod|blackberry|iemobile|opera mini/i.test(userAgent)) {
-                    this.dispositive = "Celular";
+                    this.dispositive = "phone";
                 } else {
-                    this.dispositive = "Computadora";
+                    this.dispositive = "desktop";
                 }
 
                 alert(this.dispositive);
@@ -161,15 +161,23 @@
 
                 window.location.href = url;
             },
-            openApp(version, uri_url, google_tag) {
-                this.$gtag.event('page_view', {
-                    page_title: google_tag
-                });
+            openApp(version, uri_url, google_tag, open_app_desktop_url, open_app_not_installed) {
+                try {
+                    this.$gtag.event('page_view', {
+                        page_title: google_tag
+                    });
 
-                if (version == 1) {
-                    window.location.href = uri_url;
-                } else {
-                    window.location.href = uri_url;
+                    if (this.dispositive == "desktop") {
+                        window.location.href = open_app_desktop_url;
+                    } else {
+                        if (version == 1) {
+                            window.location.href = uri_url;
+                        } else {
+                            window.location.href = uri_url;
+                        }
+                    }
+                } catch (error) {
+                    console.error('An error occurred:', error);
                 }
             },
             checkDate() {
