@@ -160,7 +160,7 @@
                 window.location.href = url;
             },
             openApp(uri_url, google_tag, open_app_desktop_url, open_app_not_installed) {
-
+alert(22)
                         try {
                         window.location.href = uri_url;
                         } catch (error) {
