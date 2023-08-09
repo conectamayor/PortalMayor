@@ -84,6 +84,8 @@ class SectionController extends ApiResponseController
         $section->open_app_id = $request->open_app_id;
         $section->open_app_version_id = $request->open_app_version_id;
         $section->open_app_uri_url = $request->open_app_uri_url;
+        $section->open_app_desktop_url = $request->open_app_desktop_url;
+        $section->open_app_not_installed = $request->open_app_not_installed;
 
         if($request->video_id != '') {
             $word = "/";

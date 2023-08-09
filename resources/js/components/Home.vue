@@ -109,8 +109,6 @@
                 } else {
                     this.dispositive = "desktop";
                 }
-
-                alert(this.dispositive);
             },
             catchUser() {
                 let formData = new FormData();
@@ -162,22 +160,19 @@
                 window.location.href = url;
             },
             openApp(version, uri_url, google_tag, open_app_desktop_url, open_app_not_installed) {
-                try {
-                    this.$gtag.event('page_view', {
-                        page_title: google_tag
-                    });
+                
+                this.$gtag.event('page_view', {
+                    page_title: google_tag
+                });
 
-                    if (this.dispositive == "desktop") {
-                        window.location.href = open_app_desktop_url;
-                    } else {
-                        if (version == 1) {
-                            window.location.href = uri_url;
-                        } else {
-                            window.location.href = uri_url;
-                        }
+                if (this.dispositive == 3) {
+                    window.location.href = open_app_desktop_url;
+                } else {
+                    try {
+                        window.location.href = uri_url;
+                    } catch (error) {
+                        console.error('An error occurred:', error);
                     }
-                } catch (error) {
-                    console.error('An error occurred:', error);
                 }
             },
             checkDate() {
