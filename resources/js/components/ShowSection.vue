@@ -315,4 +315,28 @@
 .boton2 {
   font-size: 25px !important;
 }
+
+.circle {
+  width: 60px;
+  height: 60px;
+  background-color: #3498db;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px; /* Adjust this value for more separation */
+  margin-top: 150px !important;
+  color: white;
+  font-size: 24px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.circle i {
+  display: block; /* Ensures the icon is centered within the circle */
+}
+
+.circle:hover {
+  background-color: #2980b9;
+}
 </style>
