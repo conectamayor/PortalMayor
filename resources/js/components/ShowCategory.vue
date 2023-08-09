@@ -283,7 +283,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 80px !important; /* Adjust this value for more separation */
+  margin: 40px; /* Adjust this value for more separation */
+  margin-top: 80px !important;
   color: white;
   font-size: 24px;
   cursor: pointer;
