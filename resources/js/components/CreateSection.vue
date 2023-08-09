@@ -229,7 +229,7 @@
                                 </div>
                                 <div class="form-group row" v-if="form.open_app_id == 1 && form.open_app_version_id != ''">
                                     <div class="col-sm-4">
-                                        <label for="exampleInputEmail1">URL si es computador <h6 class="m-0 text-danger float-right">*</h6></label>
+                                        <label for="exampleInputEmail1">URL si es Computador <h6 class="m-0 text-danger float-right">*</h6></label>
                                         <input
                                             type="text" 
                                             v-model="form.open_app_desktop_url"
@@ -238,7 +238,7 @@
                                         >
                                     </div>
                                     <div class="col-sm-4">
-                                        <label for="exampleInputEmail1">URL si no está instalada <h6 class="m-0 text-danger float-right">*</h6></label>
+                                        <label for="exampleInputEmail1">URL si no está Instalada <h6 class="m-0 text-danger float-right">*</h6></label>
                                         <input
                                             type="text" 
                                             v-model="form.open_app_not_installed"
