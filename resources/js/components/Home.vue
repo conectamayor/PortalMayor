@@ -98,7 +98,6 @@
             this.checkDate();
         },
         mounted() {
-            this.showModal();
             this.detectDispositive();
         },
         methods: {

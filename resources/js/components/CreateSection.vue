@@ -227,6 +227,22 @@
                                         >
                                     </div>
                                 </div>
+                                <div class="form-group row" v-if="form.open_app_id == 1">
+                                    <label for="exampleInputEmail1">URL si es computador</label>
+                                    <input
+                                        type="text" 
+                                        v-model="form.open_app_desktop_url"
+                                        class="form-control"
+                                        placeholder="Ingresa la uri para abrir la aplicación"
+                                    >
+                                    <label for="exampleInputEmail1">URL si no está instalada</label>
+                                    <input
+                                        type="text" 
+                                        v-model="form.open_app_not_installed"
+                                        class="form-control"
+                                        placeholder="Ingresa la url para abrir la aplicación"
+                                    >
+                                </div>
                                 <button 
                                 type="submit"
                                 class="btn btn-success btn-icon-split">
@@ -294,6 +310,8 @@
                     open_app_version_id: '',
                     open_app_uri_url: '',
                     georeferencing_type_id: '',
+                    open_app_desktop_url: '',
+                    open_app_not_installed: '',
                 }
             }
         },
