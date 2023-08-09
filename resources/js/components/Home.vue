@@ -168,10 +168,11 @@
                     if (this.dispositive == 1) {
                         window.location.href = open_app_desktop_url;
                     } else {
-                        if (version == 1) {
-                            window.location.href = uri_url;
-                        } else {
-                            window.location.href = uri_url;
+                        try {
+                        window.location.href = uri_url;
+                        } catch (error) {
+                        console.error("Failed to change URL:", error);
+                        alert("Failed to change URL. Please try again.");
                         }
                     }
                 } catch (error) {
