@@ -14,22 +14,23 @@
         </div>
         <div v-if="check_category_poll == 0">
             <div v-if="poll_question_posts == ''" class="row">
-                
-                <div class="col-8" v-for="(post, index) in posts" v-bind:index="index">
-                    <router-link v-if="post.icon_available_id == '1'" @click.native="Track(post.google_tag)" class="boton2" :style="{ background: post.color}" :to="`/content/show/${post.content_id}`"> 
-                        <i v-bind:class="post.icon"></i><br> <font class="title">{{ post.title }}</font>
-                    </router-link>
-                    <router-link v-else @click.native="Track(post.google_tag)" class="boton2" :style="{ background: post.color}" :to="`/content/show/${post.content_id}`"> 
-                        <font class="title">{{ post.title }}</font>
-                    </router-link>
+                <div class="col-8">
+                    <div class="col-12" v-for="(post, index) in posts" v-bind:index="index">
+                        <router-link v-if="post.icon_available_id == '1'" @click.native="Track(post.google_tag)" class="boton2" :style="{ background: post.color}" :to="`/content/show/${post.content_id}`"> 
+                            <i v-bind:class="post.icon"></i><br> <font class="title">{{ post.title }}</font>
+                        </router-link>
+                        <router-link v-else @click.native="Track(post.google_tag)" class="boton2" :style="{ background: post.color}" :to="`/content/show/${post.content_id}`"> 
+                            <font class="title">{{ post.title }}</font>
+                        </router-link>
+                    </div>
                 </div>
-                <div class="col-4" v-for="(post, index) in posts" v-bind:index="index">
-                    <router-link v-if="post.icon_available_id == '1'" @click.native="Track(post.google_tag)" class="boton2" :style="{ background: post.color}" :to="`/content/show/${post.content_id}`"> 
-                        <i v-bind:class="post.icon"></i><br> <font class="title">{{ post.title }}</font>
-                    </router-link>
-                    <router-link v-else @click.native="Track(post.google_tag)" class="boton2" :style="{ background: post.color}" :to="`/content/show/${post.content_id}`"> 
-                        <font class="title">{{ post.title }}</font>
-                    </router-link>
+                <div class="col-4">
+                    <div class="circle">
+                        <i class="fas fa-chevron-up"></i>
+                    </div>
+                    <div class="circle">
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
                 </div>
             </div>
             <div v-if="poll_question_posts != ''" class="row">
@@ -80,21 +81,23 @@
         </div>
         <div v-if="check_category_poll != 0">
             <div class="row">
-                <div class="col-8" v-for="(post, index) in posts" v-bind:index="index">
-                    <router-link v-if="post.icon_available_id == '1'" class="boton2" :style="{ background: post.color}" :to="`/content/show/${post.content_id}`"> 
-                        <i v-bind:class="post.icon"></i><br> {{ post.title }}
-                    </router-link>
-                    <router-link v-else class="boton2" :style="{ background: post.color}" :to="`/content/show/${post.content_id}`"> 
-                        <font class="title">{{ post.title }}</font>
-                    </router-link>
+                <div class="col-8">
+                    <div class="col-12" v-for="(post, index) in posts" v-bind:index="index">
+                        <router-link v-if="post.icon_available_id == '1'" class="boton2" :style="{ background: post.color}" :to="`/content/show/${post.content_id}`"> 
+                            <i v-bind:class="post.icon"></i><br> {{ post.title }}
+                        </router-link>
+                        <router-link v-else class="boton2" :style="{ background: post.color}" :to="`/content/show/${post.content_id}`"> 
+                            <font class="title">{{ post.title }}</font>
+                        </router-link>
+                    </div>
                 </div>
-                <div class="col-4" v-for="(post, index) in posts" v-bind:index="index">
-                    <router-link v-if="post.icon_available_id == '1'" class="boton2" :style="{ background: post.color}" :to="`/content/show/${post.content_id}`"> 
-                        <i v-bind:class="post.icon"></i><br> {{ post.title }}
-                    </router-link>
-                    <router-link v-else class="boton2" :style="{ background: post.color}" :to="`/content/show/${post.content_id}`"> 
-                        <font class="title">{{ post.title }}</font>
-                    </router-link>
+                <div class="col-4">
+                    <div class="circle">
+                        <i class="fas fa-chevron-up"></i>
+                    </div>
+                    <div class="circle">
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
                 </div>
             </div>
         </div>
@@ -271,3 +274,23 @@
         }
     }
 </script>
+<style scoped>
+.circle {
+  width: 60px;
+  height: 60px;
+  background-color: #3498db;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 10px;
+  color: white;
+  font-size: 24px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.circle:hover {
+  background-color: #2980b9;
+}
+</style>
