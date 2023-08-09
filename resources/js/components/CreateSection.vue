@@ -227,7 +227,7 @@
                                         >
                                     </div>
                                 </div>
-                                <div class="form-group row" v-if="form.open_app_id == 1">
+                                <div class="form-group row" v-if="form.open_app_id == 1 && form.open_app_version_id != ''">
                                     <div class="col-sm-4">
                                         <label for="exampleInputEmail1">URL si es computador</label>
                                         <input
