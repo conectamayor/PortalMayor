@@ -367,7 +367,7 @@
                     && this.form.link_question_id != ''
                     && this.form.iframe_question_id
                     && this.form.youtube_question_id
-                    && ((this.form.open_app_id == 2) || (this.form.open_app_id == 1 && this.form.open_app_version_id != '' && this.form.open_app_uri_url != ''))
+                    && ((this.form.open_app_id == 2) || (this.form.open_app_id == 1 && this.form.open_app_version_id != '' && this.form.open_app_uri_url != '' && this.form.open_app_desktop_url != '' && this.form.open_app_not_installed != ''))
                 ) {
                     let formData = new FormData();
                     formData.append('title', this.form.title);
@@ -386,6 +386,8 @@
                     formData.append('open_app_id', this.form.open_app_id);
                     formData.append('open_app_version_id', this.form.open_app_version_id);
                     formData.append('open_app_uri_url', this.form.open_app_uri_url);
+                    formData.append('open_app_desktop_url', this.form.open_app_desktop_url);
+                    formData.append('open_app_not_installed', this.form.open_app_not_installed);
 
                     axios.post('/api/section/store?api_token='+App.apiToken, formData, config)
                     .then(function (response) {
@@ -438,6 +440,12 @@
                     }
                     if (this.form.open_app_id == 1 && this.form.open_app_uri_url == '') {
                         this.errors.push('La url de la app es obligatoria.');
+                    }
+                    if (this.form.open_app_id == 1 && this.form.open_app_desktop_url == '') {
+                        this.errors.push('La url de escritorio es obligatoria.');
+                    }
+                    if (this.form.open_app_id == 1 && this.form.open_app_not_installed == '') {
+                        this.errors.push('La url de no instalado es obligatoria.');
                     }
 
                     window.scrollTo(0, 0);
