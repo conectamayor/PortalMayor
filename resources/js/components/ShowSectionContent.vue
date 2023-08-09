@@ -1,5 +1,24 @@
 <template>
+    <div class="container pt-32">
+        <div v-if="loading">
+            <center>
+                <clip-loader :color="color"></clip-loader>
+            </center>
+        </div>
+        <div v-else>
+            <div class="row" v-if="post.section_subtitle != ''">
+                <hr>
+                <h2><center><strong>{{ post.section_subtitle }}</strong></center></h2>
+            </div>
 
+            <div class="col-12" v-for="(post, index) in section_content_posts" v-bind:index="index">
+                <router-link class="boton2" :style="{ background: '#0e385d'}" :to="`/content/show/${post.content_id}`"> 
+                    <i v-bind:class="post.icon"></i><br> <font class="section_title">{{ post.title }}</font> 
+                </router-link>
+            </div>
+        </div>
+
+    </div>
 	
 </template>
 <script>
