@@ -325,6 +325,7 @@
   justify-content: center;
   align-items: center;
   margin: 20px; /* Adjust this value for more separation */
+  margin-left: 15px !important;
   margin-top: 150px !important;
   color: white;
   font-size: 24px;
