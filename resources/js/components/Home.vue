@@ -165,7 +165,7 @@
                         page_title: google_tag
                     });
 
-                    if (this.dispositive == 1) {
+                    if (this.dispositive == 'desktop') {
                         window.location.href = open_app_desktop_url;
                     } else {
                         window.location.href = uri_url;
