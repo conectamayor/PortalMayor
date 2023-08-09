@@ -283,11 +283,15 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 10px;
+  margin: 20px; /* Adjust this value for more separation */
   color: white;
   font-size: 24px;
   cursor: pointer;
   transition: background-color 0.3s ease;
+}
+
+.circle i {
+  display: block; /* Ensures the icon is centered within the circle */
 }
 
 .circle:hover {
