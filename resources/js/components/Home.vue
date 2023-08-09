@@ -46,7 +46,7 @@
                                 </router-link>
                             </div>
                             <div v-else>
-                                <button class="boton2" :style="{ background: post.color}" v-on:click="openApp(post.open_app_version_id, post.open_app_uri_url, post.google_tag)" >
+                                <button class="boton2" :style="{ background: post.color}" v-on:click="openApp(post.open_app_uri_url, post.google_tag, post.open_app_desktop_url, post.open_app_not_installed)" >
                                     <i v-bind:class="post.icon"></i><br><font class="title">{{ post.section_title }}</font> 
                                 </button>
                             </div>
@@ -68,7 +68,7 @@
                                 </router-link>
                             </div>
                             <div v-else>
-                                <button class="boton2" :style="{ background: post.color}" v-on:click="openApp(post.open_app_version_id, post.open_app_uri_url, post.google_tag, post.open_app_desktop_url, post.open_app_not_installed)" >
+                                <button class="boton2" :style="{ background: post.color}" v-on:click="openApp(post.open_app_uri_url, post.google_tag, post.open_app_desktop_url, post.open_app_not_installed)" >
                                     <font class="title">{{ post.section_title }}</font> 
                                 </button>
                             </div>
@@ -159,7 +159,7 @@
 
                 window.location.href = url;
             },
-            openApp(version, uri_url, google_tag, open_app_desktop_url, open_app_not_installed) {
+            openApp(uri_url, google_tag, open_app_desktop_url, open_app_not_installed) {
                 try {
                     this.$gtag.event('page_view', {
                         page_title: google_tag
