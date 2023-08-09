@@ -228,20 +228,24 @@
                                     </div>
                                 </div>
                                 <div class="form-group row" v-if="form.open_app_id == 1">
-                                    <label for="exampleInputEmail1">URL si es computador</label>
-                                    <input
-                                        type="text" 
-                                        v-model="form.open_app_desktop_url"
-                                        class="form-control"
-                                        placeholder="Ingresa la uri para abrir la aplicación"
-                                    >
-                                    <label for="exampleInputEmail1">URL si no está instalada</label>
-                                    <input
-                                        type="text" 
-                                        v-model="form.open_app_not_installed"
-                                        class="form-control"
-                                        placeholder="Ingresa la url para abrir la aplicación"
-                                    >
+                                    <div class="col-sm-4">
+                                        <label for="exampleInputEmail1">URL si es computador</label>
+                                        <input
+                                            type="text" 
+                                            v-model="form.open_app_desktop_url"
+                                            class="form-control"
+                                            placeholder="Ingresa la uri para abrir la aplicación"
+                                        >
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <label for="exampleInputEmail1">URL si no está instalada</label>
+                                        <input
+                                            type="text" 
+                                            v-model="form.open_app_not_installed"
+                                            class="form-control"
+                                            placeholder="Ingresa la url para abrir la aplicación"
+                                        >
+                                    </div>
                                 </div>
                                 <button 
                                 type="submit"
