@@ -42,7 +42,7 @@
                                             v-model="form.category_id"
                                             >
                                                 <option :value="null">-Seleccionar-</option>
-                                                <option v-for="category_post in category_posts" :key="category_post.category_id" :value="category_post.category_id">{{ category_post.name }}</option>
+                                                <option v-for="category_post in category_posts" :key="category_post.category_id" :value="category_post.category_id">{{ category_post.title }}</option>
                                             </select>
                                         </div>
                                     </div>
