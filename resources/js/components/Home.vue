@@ -160,31 +160,13 @@
                 window.location.href = url;
             },
             openApp(uri_url, google_tag, open_app_desktop_url, open_app_not_installed) {
-                try {
-                    this.$gtag.event('page_view', {
-                        page_title: google_tag
-                    });
 
-                    if (this.dispositive == 1) {
-                        window.location.href = open_app_desktop_url;
-                    } else {
                         try {
                         window.location.href = uri_url;
                         } catch (error) {
-                        console.error("Failed to change URL:", error);
                         alert("Failed to change URL. Please try again.");
                         }
-                    }
-                } catch (error) {
-                    if (error.message.includes("Failed to launch 'fb://'")) {
-                        // Handle the 'fb://' scheme not registered error here
-                        console.error("Facebook app scheme not registered.");
-                        // You can show a user-friendly message or perform an alternative action.
-                    } else {
-                        console.error('An error occurred:', error);
-                        // Handle other types of errors here
-                    }
-                }
+
             },
             checkDate() {
                 let formData = new FormData();
