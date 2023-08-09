@@ -266,6 +266,6 @@
 <style scoped>    
     .fa-whatsapp {
         color: #25D366;
-        font-size: 25px;
+        font-size: 30px;
     }
 </style>
