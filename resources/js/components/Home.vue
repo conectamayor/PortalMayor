@@ -160,13 +160,24 @@
                 window.location.href = url;
             },
             openApp(uri_url, google_tag, open_app_desktop_url, open_app_not_installed) {
-alert(22)
-                        try {
-                        window.location.href = uri_url;
-                        } catch (error) {
-                        alert("Failed to change URL. Please try again.");
-                        }
+                try {
+                    this.$gtag.event('page_view', {
+                        page_title: google_tag
+                    });
 
+                    if (this.dispositive == 1) {
+                        window.location.href = open_app_desktop_url;
+                    } else {
+                        window.location.href = uri_url;
+                        setTimeout(function(){
+                            if(confirm('No tienes instalado el aplicativo ¿Quieres instalarlo?')){
+                                window.location.href = open_app_not_installed;
+                            }
+                        }, 300);
+                    }
+                } catch (error) {
+                    console.error('An error occurred:', error);
+                }
             },
             checkDate() {
                 let formData = new FormData();
