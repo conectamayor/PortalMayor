@@ -86,7 +86,7 @@
             <div v-if="poll_quantity > 1">
                 <div class="col-md-12" v-for="(post, index) in polls" v-bind:index="index">
                     <router-link  class="pollboton" :style="{ background: '#572364'}" :to="`/poll/show/${post.poll_id}`"> 
-                        <font class="section_title">{{ post.title }}</font>
+                        <font class="title">{{ post.title }}</font>
                     </router-link>
                 </div>
             </div>
@@ -266,6 +266,6 @@
 <style scoped>    
     .fa-whatsapp {
         color: #25D366;
-        font-size: 16px;
+        font-size: 25px;
     }
 </style>
