@@ -23,7 +23,7 @@
                             <i v-bind:class="'fa-solid fa-newspaper'"></i><br><font class="title">Noticias</font>
                         </router-link>
                     </div>
-                    <div v-if="post.section_id == 82">
+                    <div v-if="post.section_id == 4">
                         <a class="boton2" :style="{ background: post.color}" href="tel:226043712" target="_blank">
                             <center><img id="salcobrand_logo" :src="'/../frontend/images/salcobrand-seeklogo.com.png'" alt=""></center><font class="title">Salcobrand</font>
                         </a>
