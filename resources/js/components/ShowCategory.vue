@@ -92,10 +92,10 @@
                     </div>
                 </div>
                 <div class="col-4">
-                    <div class="first_circle">
+                    <div class="circle">
                         <i class="fas fa-chevron-up"></i>
                     </div>
-                    <div class="second_circle">
+                    <div class="circle" style="margin-top: 20px;">
                         <i class="fas fa-chevron-down"></i>
                     </div>
                 </div>
@@ -275,7 +275,7 @@
     }
 </script>
 <style scoped>
-.first_circle {
+.circle {
   width: 60px;
   height: 60px;
   background-color: #3498db;
@@ -288,38 +288,13 @@
   font-size: 24px;
   cursor: pointer;
   transition: background-color 0.3s ease;
-  margin-top: 20px;
 }
 
-.first_circle i {
+.circle i {
   display: block; /* Ensures the icon is centered within the circle */
 }
 
-.first_circle:hover {
-  background-color: #2980b9;
-}
-
-.second_circle {
-  width: 60px;
-  height: 60px;
-  background-color: #3498db;
-  border-radius: 50%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 20px; /* Adjust this value for more separation */
-  color: white;
-  font-size: 24px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-  margin-top: 20px;
-}
-
-.second_circle i {
-  display: block; /* Ensures the icon is centered within the circle */
-}
-
-.second_circle:hover {
+.circle:hover {
   background-color: #2980b9;
 }
 </style>
