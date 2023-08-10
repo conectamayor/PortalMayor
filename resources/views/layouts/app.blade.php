@@ -54,8 +54,11 @@
     <script>
 		window.appUrl = '{{ env('APP_URL') }}';
 
-		window.appTitle = '{{ env('APP_TITLE') }}';
+		window.App = {!! json_encode([
+			'apiToken' => env('APP_TITLE')
+		]) !!};
 	</script>
+
 	<!-- end toolbar bottom -->
     <script src="{{ asset('frontend/js/jquery-3.4.1.min.js') }}"></script>
 	<script src="{{ asset('frontend/js/bootstrap.bundle.min.js') }}"></script>
