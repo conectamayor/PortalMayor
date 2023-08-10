@@ -165,6 +165,10 @@ a {
     transition: all 0.2s ease 0s;
     width: 100%;
   }
+  
+  .link {
+    padding-top: 10px !important;
+  }
 }
 
 @media (max-width: 600px) {
@@ -174,15 +178,18 @@ a {
 
   .title {
     font-size: 22px !important;
-    line-height: 0.5 !important;
   }
 
   i {
-    font-size: 20px !important;
+    font-size: 22px !important;
   }
 
   #salcobrand_logo {
     width: 30px !important;
+  }
+
+  .link {
+    padding-top: 10px !important;
   }
 
   .boton2 {

@@ -28,11 +28,11 @@
                             </div>
                             <div v-else>
                                 <div v-if="post.icon_available_id == 2">
-                                    <router-link @click.native="Track(post.google_tag)" v-if="post.highlight_id == 0"  class="boton2" :style="{ background: post.color}" :to="`/category/show/${post.category_id}`"> 
+                                    <router-link @click.native="Track(post.google_tag)" v-if="post.highlight_id == 0"  class="boton2 link" :style="{ background: post.color}" :to="`/category/show/${post.category_id}`"> 
                                         <font class="title">{{ post.title }}</font>
                                     </router-link>
 
-                                    <router-link @click.native="Track(post.google_tag)" v-if="post.highlight_id == 1"  class="botonhighlight" :style="{ background: post.color}" :to="`/category/show/${post.category_id}`"> 
+                                    <router-link @click.native="Track(post.google_tag)" v-if="post.highlight_id == 1"  class="botonhighlight link" :style="{ background: post.color}" :to="`/category/show/${post.category_id}`"> 
                                         <font class="title">{{ post.title }}</font>
                                     </router-link>
                                 </div>
@@ -91,7 +91,7 @@
                     </div>
                     <div v-if="poll_quantity > 1">
                         <div class="col-md-12" v-for="(post, index) in polls" v-bind:index="index">
-                            <router-link  class="pollboton" :style="{ background: '#572364'}" :to="`/poll/show/${post.poll_id}`"> 
+                            <router-link  class="pollboton link" :style="{ background: '#572364'}" :to="`/poll/show/${post.poll_id}`"> 
                                 <font class="title">{{ post.title }}</font>
                             </router-link>
                         </div>
@@ -103,20 +103,20 @@
                     <div class="col-8">
                         <div class="col-12" v-for="(post, index) in posts" v-bind:index="index">
                             <div v-if="post.icon_available_id == 2">
-                                <router-link v-if="post.highlight_id == 0"  class="boton2" :style="{ background: post.color}" :to="`/category/show/${post.category_id}`"> 
+                                <router-link v-if="post.highlight_id == 0"  class="boton2 link" :style="{ background: post.color}" :to="`/category/show/${post.category_id}`"> 
                                     <font class="title">{{ post.title }}</font>
                                 </router-link>
 
-                                <router-link v-if="post.highlight_id == 1"  class="botonhighlight" :style="{ background: post.color}" :to="`/category/show/${post.category_id}`"> 
+                                <router-link v-if="post.highlight_id == 1"  class="botonhighlight link" :style="{ background: post.color}" :to="`/category/show/${post.category_id}`"> 
                                     <font class="title">{{ post.title }}</font>
                                 </router-link>
                             </div>
                             <div v-else>
-                                <router-link v-if="post.highlight_id == 0"  class="boton2" :style="{ background: post.color}" :to="`/category/show/${post.category_id}`"> 
+                                <router-link v-if="post.highlight_id == 0"  class="boton2 link" :style="{ background: post.color}" :to="`/category/show/${post.category_id}`"> 
                                     <font class="title">{{ post.title }}</font>
                                 </router-link>
 
-                                <router-link v-if="post.highlight_id == 1"  class="botonhighlight" :style="{ background: post.color}" :to="`/category/show/${post.category_id}`"> 
+                                <router-link v-if="post.highlight_id == 1"  class="botonhighlight link" :style="{ background: post.color}" :to="`/category/show/${post.category_id}`"> 
                                     <font class="title">{{ post.title }}</font>
                                 </router-link>
                             </div>
