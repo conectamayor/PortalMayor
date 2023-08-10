@@ -55,7 +55,7 @@
 		window.appUrl = '{{ env('APP_URL') }}';
 
 		window.App = {!! json_encode([
-			'apiToken' => env('APP_TITLE')
+			'appTitle' => env('APP_TITLE')
 		]) !!};
 	</script>
 
