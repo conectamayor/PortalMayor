@@ -165,9 +165,11 @@ a {
     transition: all 0.2s ease 0s;
     width: 100%;
   }
-  
+
   .link {
     padding-top: 10px !important;
+    display: grid;
+    place-items: center; /* Centrado horizontal y vertical */
   }
 }
 
