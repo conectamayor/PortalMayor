@@ -3,7 +3,7 @@
 
         <div class="row">
             <hr>
-            <h1><center><strong>Haz click en los botones para ver cada contenido</strong></center></h1>
+            <h2><center><strong>Haz click en los botones para ver cada contenido</strong></center></h2>
         </div>
         <div class="row">
 		    <div class="col-6" v-for="(post, index) in posts" v-bind:index="index">
