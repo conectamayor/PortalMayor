@@ -332,6 +332,7 @@
   cursor: pointer;
   transition: background-color 0.3s ease;
   text-shadow:  0px 0px 5px #fff, 0px 0px 5px #fff;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5); /* Agregamos una sombra */
 }
 
 .circle i {
