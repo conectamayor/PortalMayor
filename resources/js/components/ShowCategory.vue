@@ -275,6 +275,10 @@
     }
 </script>
 <style scoped>
+.boton2 {
+  font-size: 25px !important;
+}
+
 .circle {
   width: 60px;
   height: 60px;
@@ -290,8 +294,8 @@
   font-size: 24px;
   cursor: pointer;
   transition: background-color 0.3s ease;
-  text-shadow:  0px 0px 5px #fff, 0px 0px 5px #fff;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5); /* Agregamos una sombra */
+  text-shadow: 0px 0px 5px #fff, 0px 0px 5px #fff;
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5); /* Aumentamos la difuminación */
 }
 
 .circle i {
