@@ -25,7 +25,7 @@
                     </div>
                     <div v-if="post.section_id == 4">
                         <a class="boton2" :style="{ background: post.color}" href="tel:226043712" target="_blank">
-                            <center><img id="salcobrand_logo" :src="'/../frontend/images/salcobrand-seeklogo.com.png'" alt=""></center><font class="title">Salcobrand</font>
+                            <br><center><img id="salcobrand_logo" :src="'/../frontend/images/salcobrand-seeklogo.com.png'" alt=""></center><font class="title">Salcobrand</font>
                         </a>
                     </div>
                     <div v-if="post.section_id == 70">
@@ -61,10 +61,10 @@
                         <div v-if="post.link_question_id == 2">
                             <div v-if="post.open_app_id == 2">
                                 <router-link @click.native="Track(post.google_tag)" v-if="post.direct_content_question_id == 2 || post.direct_content_question_id == null" class="boton2 link" :style="{ background: post.color}" :to="`/section/show/${post.section_id}`" >
-                                    <br><font class="title" style="margin-top: 100px !important;">{{ post.section_title }}</font>
+                                    <br><font class="title">{{ post.section_title }}</font>
                                 </router-link>
                                 <router-link @click.native="Track(post.google_tag)" v-if="post.direct_content_question_id == 1" class="boton2 link" :style="{ background: post.color}" :to="`/section/content/show/${post.section_id}`" >
-                                    <br><font class="title" style="margin-top: 100px !important;">{{ post.section_title }}</font>
+                                    <br><font class="title">{{ post.section_title }}</font>
                                 </router-link>
                             </div>
                             <div v-else>
