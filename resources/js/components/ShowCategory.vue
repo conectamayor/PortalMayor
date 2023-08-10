@@ -290,6 +290,7 @@
   font-size: 24px;
   cursor: pointer;
   transition: background-color 0.3s ease;
+  text-shadow:  0px 0px 5px #fff, 0px 0px 5px #fff;
 }
 
 .circle i {
