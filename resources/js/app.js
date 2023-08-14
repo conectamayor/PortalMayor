@@ -61,8 +61,10 @@ Vue.use(VueRouter);
 Vue.use(VueMask);
 Vue.prototype.$app = Plugins.App; // Agregamos el plugin App a Vue
 
+const gtagId = process.env.VUE_APP_GTAG_ID;
+
 Vue.use(VueGtag, {
-    config: { id: "G-FQHXBQ1HVS" }
+    config: { id: gtagId }
   });
 
 
