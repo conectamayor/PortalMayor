@@ -348,6 +348,7 @@
                     formData.append('icon_type_id', this.form.icon_type_id);
                     formData.append('icon', this.form.fai);
                     formData.append('description', this.form.description);
+                    formData.append('color', this.form.color);
                     formData.append('start_date', this.form.start_date);
                     formData.append('end_date', this.form.end_date);
                     formData.append('position', this.form.position);
