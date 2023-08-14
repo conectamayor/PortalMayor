@@ -62,7 +62,7 @@ Vue.use(VueMask);
 Vue.prototype.$app = Plugins.App; // Agregamos el plugin App a Vue
 
 Vue.use(VueGtag, {
-    config: { id: "G-XQ3YXJJRQ8" }
+    config: { id: "G-FQHXBQ1HVS" }
   });
 
 
