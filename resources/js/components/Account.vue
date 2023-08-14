@@ -10,8 +10,8 @@
 
 
             <!-- Earnings (Monthly) Card Example -->
-            <div class="col-md-4 offset-md-3 pt-lg-5">
-                <img src="backend/img/gigant_logo.png" height="100px" id="logo">
+            <div class="col-md-6 offset-md-3 text-center pt-lg-5">
+                <img src="backend/img/gigant_logo.png" height="100px" id="logo" class="centered-image">
             </div>
 
         </div>
