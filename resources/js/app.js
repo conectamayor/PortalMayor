@@ -67,7 +67,6 @@ Vue.use(VueGtag, {
     config: { id: gtagId }
   });
 
-
 const app = new Vue({
     el: '#app',
     router: new VueRouter(routes)
