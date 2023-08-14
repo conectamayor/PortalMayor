@@ -148,6 +148,7 @@ class ContentController extends ApiResponseController
             $content->icon = 'icon ion-'.$fileName.' home_icon_size2';
         }
         $content->end_date = $request->end_date;
+        $content->color = $request->color;
         $content->description = $request->description;
         $content->iframe = $request->iframe;
         $content->position = $request->position;
