@@ -360,6 +360,7 @@
                 Promise.all(region_ids.map(region_id => {
                     return axios.get('/api/commune/' + region_id)
                         .then(response => {
+                            console.log(response.data.data)
                             return response.data.data;
                         })
                         .catch(error => {
