@@ -104,12 +104,12 @@
                                         </select>
                                     </div>
                                     <div class="col-sm-6">
-                                        <label for="exampleInputEmail1">Comuna <h6 class="m-0 text-danger float-right">*</h6></label>
-                                        <select class="form-control" id="exampleFormControlSelect1"
-                                        v-model="form.commune_id" multiple
-                                        >
+                                        <label for="exampleInputEmail1">Comuna</label>
+                                        <select class="form-control" id="exampleFormControlSelect1">
                                             <option :value="null" v-if="commune_posts.length == 0">No ha seleccionado una región</option>
-                                            <option v-for="commune_post in commune_posts" :key="commune_post.commune_id" :value="commune_post.commune_id">{{ commune_post.commune }}</option>
+                                            <template v-for="commune_post in selectedCommunes" :key="commune_post.commune_id">
+                                                <option :value="commune_post.commune_id">{{ commune_post.commune }}</option>
+                                            </template>
                                         </select>
                                     </div>
                                 </div>
@@ -311,6 +311,7 @@
                 color: '#0A2787',
                 loading: false,
                 noFile: false,
+                selectedCommunes: [],
                 form: {
                     title: '',
                     color: '',
@@ -340,6 +341,12 @@
             }
         },
         methods: {
+            addCommune(commune) {
+                this.selectedCommunes.push(commune);
+            },
+            removeCommune(communeId) {
+                this.selectedCommunes = this.selectedCommunes.filter(commune => commune.commune_id !== communeId);
+            },
             getRegions() {
                 this.loading = true;
 
