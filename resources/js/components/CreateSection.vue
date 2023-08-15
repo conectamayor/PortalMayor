@@ -355,7 +355,7 @@
             getCommunes() {
                 this.loading = true;
 
-                this.commune_posts = [];
+                var commune_data = [];
 
                 var region_data = String(this.form.region_id);
 
@@ -365,8 +365,7 @@
                     console.log(region_id)
                     axios.get('/api/commune/' + region_id)
                         .then(response => {
-                            console.log(response.data.data);
-                            this.commune_posts.push(response.data.data);
+                            this.commune_posts = this.commune_posts.concat(response.data.data);
                         })
                         .catch(error => {
                             console.log(error);
