@@ -96,24 +96,20 @@
                                 <div class="form-group row">
                                     <div class="col-sm-6">
                                         <label for="exampleInputEmail1">Región <h6 class="m-0 text-danger float-right">*</h6></label>
-                                        <div>
-                                            <label v-for="region_post in region_posts" :key="region_post.region_id">
-                                            <input type="checkbox"
-                                                    v-model="selectedRegions"
-                                                    :value="region_post.region_id"
-                                                    @change="getCommunes"
-                                            >
-                                            {{ region_post.region }}
-                                            </label>
-                                        </div>
+                                        <select class="form-control" id="exampleFormControlSelect1"
+                                        v-model="form.region_id" multiple
+                                        @change="getCommunes"
+                                        >
+                                            <option v-for="region_post in region_posts" :key="region_post.region_id" :value="region_post.region_id">{{ region_post.region }}</option>
+                                        </select>
                                     </div>
                                     <div class="col-sm-6">
                                         <label for="exampleInputEmail1">Comuna</label>
                                         <select class="form-control" id="exampleFormControlSelect1">
-                                            <option :value="null" v-if="selectedCommunes.length === 0">No ha seleccionado una región</option>
-                                            <option v-for="commune_post in selectedCommunes" :key="commune_post.commune_id">
-                                            {{ commune_post.commune }}
-                                            </option>
+                                            <option :value="null" v-if="commune_posts.length == 0">No ha seleccionado una región</option>
+                                            <template v-for="commune_post in selectedCommunes" :key="commune_post.commune_id">
+                                                <option :value="commune_post.commune_id">{{ commune_post.commune }}</option>
+                                            </template>
                                         </select>
                                     </div>
                                 </div>
@@ -315,8 +311,6 @@
                 color: '#0A2787',
                 loading: false,
                 noFile: false,
-                selectedRegions: [],
-                selectedCommunes: [],
                 form: {
                     title: '',
                     color: '',
@@ -365,19 +359,16 @@
 
                 this.commune_posts = [];
 
-                // Iterate through selected regions and fetch their communes
-                for (const regionId of this.selectedRegions) {
-                    axios.get('/api/commune/' + regionId)
-                    .then(response => {
-                        this.commune_posts.push(...response.data.data);
-                    })
-                    .catch(function (error) {
-                        console.log(error);
-                    })
-                    .finally(() => {
-                        this.loading = false;
-                    });
-                }
+                axios.get('/api/commune/' + this.form.region_id)
+                .then(response => {
+                    this.commune_posts = response.data.data;
+                })
+                .catch(function (error) {
+                    console.log(error);
+                })
+                .finally(() => {
+                    this.loading = false;
+                });
             },
             storeAudit() {
                 let formData = new FormData();
