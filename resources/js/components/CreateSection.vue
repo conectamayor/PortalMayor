@@ -355,8 +355,6 @@
             getCommunes() {
                 this.loading = true;
 
-                var commune_data = [];
-
                 var region_data = String(this.form.region_id);
 
                 const region_ids = region_data.split(',');
