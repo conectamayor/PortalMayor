@@ -50,11 +50,11 @@
                     </div>
                     <div class="col-4">
                         <div class="circle-container">
-                            <div id="circle_up" class="circle" tabindex="0" @click="scrollUp">
-                            <i class="fas fa-chevron-up"></i>
+                            <div class="circle" tabindex="0" @click="scrollUp">
+                                <i class="fas fa-chevron-up"></i>
                             </div>
-                            <div id="circle_down" class="circle" tabindex="0" @click="scrollDown">
-                            <i class="fas fa-chevron-down"></i>
+                            <div class="circle" tabindex="0" @click="scrollDown">
+                                <i class="fas fa-chevron-down"></i>
                             </div>
                         </div>
                         <!-- Rest of your content -->
