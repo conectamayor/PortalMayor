@@ -109,6 +109,7 @@
                                         v-model="form.commune_id" multiple
                                         >
                                             <option :value="null">No ha seleccionado una región </option>
+                                            <option v-for="commune_post in commune_posts" :key="commune_post.commune_id" :value="commune_post.commune_id">{{ commune_post.commune }}</option>
                                         </select>
                                     </div>
                                 </div>
