@@ -3,8 +3,11 @@
 namespace App\Http\Controllers\api;
 
 use App\Section;
+use App\Commune;
 use App\Category;
 use App\User;
+use App\Region;
+use App\SectionRegion;
 use App\Poll;
 use App\Http\Controllers\ApiResponseController;
 use App\Http\Controllers\Controller\api;
@@ -56,8 +59,6 @@ class SectionController extends ApiResponseController
      */
     public function store(Request $request)
     {
-        print_r($request->region_id);
-        die();
         if($request->icon_type_id == 1) {
             $fileName = time().'_'.'section_icon'.'.'.$request->file->getClientOriginalExtension();
         } else {
@@ -120,6 +121,39 @@ class SectionController extends ApiResponseController
         }
 
         if($section->save()) {
+            $region_data = explode($request->region_id, ',');
+
+            for ($i=0; $i < count($region_data); $i++) { 
+                $section_region = new SectionRegion();
+                $section_region->section_id = $section->section_id;
+                $section_region->region_id = $region_data[$i];
+                $section_region->save();
+            }
+
+            if ($request->commune_id != NULL) {
+                $commune_data = explode($request->commune_id, ',');
+
+                for ($i=0; $i < count($commune_data); $i++) { 
+                    $section_commune = new SectionRegion();
+                    $section_commune->section_id = $section->section_id;
+                    $section_commune->commune_id = $commune_data[$i];
+                    $section_commune->save();
+                }
+            } else {
+                $region_data = explode($request->region_id, ',');
+
+                for ($i=0; $i < count($region_data); $i++) { 
+                    $communes = Commune::where('region_id', $region_data[$i])->get();
+
+                    foreach ($communes as $commune) {
+                        $section_commune = new SectionRegion();
+                        $section_commune->section_id = $section->section_id;
+                        $section_commune->commune_id = $commune->commune_id;
+                        $section_commune->save();
+                    }
+                }
+            }
+
             if($request->direct_content_question_id == 1) {
                 $category = new Category;
                 $category->alliance_id = 0;
