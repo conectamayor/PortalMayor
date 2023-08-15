@@ -336,21 +336,28 @@
   font-size: 25px !important;
 }
 
+.circle-container {
+    position: fixed; /* Mantén la posición fixed para que las flechas siempre sean visibles */
+    top: 50%; /* Alinea el contenedor al centro vertical */
+    left: 90%; /* Ajusta la posición horizontal según tus necesidades */
+    transform: translate(-50%, -50%); /* Centra el contenedor en la pantalla */
+}
+
 .circle {
-  width: 60px;
-  height: 60px;
-  background-color: #3498db;
-  border-radius: 50%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 20px;
-  color: white;
-  font-size: 24px;
-  cursor: pointer;
-  text-shadow: 0px 0px 5px #fff, 0px 0px 5px #fff;
-  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5);
-  transition: top 0.3s ease;
+    width: 60px;
+    height: 60px;
+    background-color: #3498db;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px;
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+    text-shadow: 0px 0px 5px #fff, 0px 0px 5px #fff;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5);
+    transition: top 0.3s ease;
 }
 
 .circle i {
