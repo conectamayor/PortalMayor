@@ -1,5 +1,5 @@
 <template>
-    <div class="container pt-32">111
+    <div class="container pt-32">
         <div class="row" v-if="post.section_subtitle != ''">
             <hr>
             <h2><center><strong>{{ post.section_subtitle }}</strong></center></h2>
@@ -123,8 +123,10 @@
                         </div>
                     </div>
                     <div class="col-4">
-                        <div class="circle" tabindex="0" @click="scrollUp">
-                            <i class="fas fa-chevron-up"></i>
+                        <div class="circle" tabindex="0" >
+                            <a @click="scrollUp" href="javascript:;">
+                                <i class="fas fa-chevron-up"></i>
+                            </a>
                         </div>
                         <div class="circle" tabindex="0" @click="scrollDown">
                             <i class="fas fa-chevron-down"></i>
