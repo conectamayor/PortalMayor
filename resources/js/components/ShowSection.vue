@@ -337,7 +337,6 @@
 }
 .circle-container {
     position: absolute;
-    top: 50%; /* Alinea el contenedor al centro vertical */
     left: 50%; /* Ajusta la posición horizontal según tus necesidades */
     transform: translate(-50%, -50%); /* Centra el contenedor en la pantalla */
 }
