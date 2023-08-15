@@ -413,7 +413,7 @@
                     && this.form.link_question_id != ''
                     && this.form.iframe_question_id
                     && this.form.youtube_question_id
-                    && this.form.region_id.length > 0
+                    && this.form.region_id != ''
                     && ((this.form.open_app_id == 2) || (this.form.open_app_id == 1 && this.form.open_app_version_id != '' && this.form.open_app_uri_url != '' && this.form.open_app_desktop_url != '' && this.form.open_app_not_installed != ''))
                 ) {
                     let formData = new FormData();
@@ -470,7 +470,7 @@
                     if (this.form.google_tag == '') {
                         this.errors.push('La etiqueta de Google es obligatoria.');
                     }
-                    if (this.form.region_id.length == 0) {
+                    if (this.form.region_id == '') {
                         this.errors.push('La región es obligatoria.');
                     }
                     if (this.form.direct_content_question_id == '') {
