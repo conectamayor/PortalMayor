@@ -49,10 +49,10 @@
                         </div>
                     </div>
                     <div class="col-4">
-                        <div class="circle" tabindex="0" @click="scrollUp">
+                        <div class="circle" tabindex="0" @click="scrollUp" :class="{ 'arrow-transition': isScrolling }">
                             <i class="fas fa-chevron-up"></i>
                         </div>
-                        <div class="circle" tabindex="0" @click="scrollDown">
+                        <div class="circle" tabindex="0" @click="scrollDown" :class="{ 'arrow-transition': isScrolling }">
                             <i class="fas fa-chevron-down"></i>
                         </div>
                     </div>
@@ -149,12 +149,18 @@
         },
         methods: {
             scrollUp() {
-                alert(1)
-                window.scrollBy(0, -50); // You can adjust the scroll amount as needed
+                this.isScrolling = true; // Set the scrolling state to true
+                window.scrollBy(0, -50);
+                setTimeout(() => {
+                    this.isScrolling = false; // Reset the scrolling state after a short delay
+                }, 300);
             },
             scrollDown() {
-                alert(2)
-                window.scrollBy(0, 50); // You can adjust the scroll amount as needed
+                this.isScrolling = true; // Set the scrolling state to true
+                window.scrollBy(0, 50);
+                setTimeout(() => {
+                    this.isScrolling = false; // Reset the scrolling state after a short delay
+                }, 300);
             },
             goWeb(url, google_tag) {
                 this.$gtag.event('page_view', {
@@ -310,6 +316,7 @@
                 polls: [],
                 poll_question_posts: [],
                 poll_quantity: 0,
+                isScrolling: false,
                 check_category_poll: '',
                 form: {
                     yes_no_answer: [],
@@ -349,5 +356,9 @@
 
 .circle:hover {
   background-color: #2980b9;
+}
+
+.arrow-transition {
+  transition: transform 0.3s ease; /* Adjust the transition properties as needed */
 }
 </style>
