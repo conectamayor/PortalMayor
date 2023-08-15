@@ -107,9 +107,7 @@
                                         <label for="exampleInputEmail1">Comuna</label>
                                         <select class="form-control" id="exampleFormControlSelect1">
                                             <option :value="null" v-if="commune_posts.length == 0">No ha seleccionado una región</option>
-                                            <template v-for="commune_post in selectedCommunes" :key="commune_post.commune_id">
-                                                <option :value="commune_post.commune_id">{{ commune_post.commune }}</option>
-                                            </template>
+                                            <option :value="commune_post.commune_id">{{ commune_post.commune }}</option>
                                         </select>
                                     </div>
                                 </div>
