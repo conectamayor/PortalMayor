@@ -94,19 +94,21 @@
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <div class="col-sm-4">
+                                    <div class="col-sm-6">
                                         <label for="exampleInputEmail1">Región <h6 class="m-0 text-danger float-right">*</h6></label>
                                         <select class="form-control" id="exampleFormControlSelect1"
                                         v-model="form.region_id" multiple
+                                        @change="getCommunes"
                                         >
                                             <option v-for="region_post in region_posts" :key="region_post.region_id" :value="region_post.region_id">{{ region_post.region }}</option>
                                         </select>
                                     </div>
-                                    <div class="col-sm-4">
+                                    <div class="col-sm-6">
                                         <label for="exampleInputEmail1">Comuna <h6 class="m-0 text-danger float-right">*</h6></label>
                                         <select class="form-control" id="exampleFormControlSelect1"
                                         v-model="form.commune_id" multiple
                                         >
+                                            <option :value="null">No ha seleccionado una región </option>
                                         </select>
                                     </div>
                                 </div>
@@ -343,6 +345,22 @@
                 axios.get('/api/region')
                 .then(response => {
                     this.region_posts = response.data.data;
+                })
+                .catch(function (error) {
+                    console.log(error);
+                })
+                .finally(() => {
+                    this.loading = false;
+                });
+            },
+            getCommunes() {
+                this.loading = true;
+
+                this.commune_posts = [];
+
+                axios.get('/api/commune/' + this.form.region_id)
+                .then(response => {
+                    this.commune_posts = response.data.data;
                 })
                 .catch(function (error) {
                     console.log(error);

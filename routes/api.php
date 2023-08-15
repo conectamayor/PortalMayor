@@ -112,3 +112,4 @@ Route::get('special_section/show/{id}', 'api\SpecialSectionController@show');
 Route::get('information', 'api\InformationController@index');
 Route::get('information/show/{id}', 'api\InformationController@show');
 Route::get('region', 'api\RegionController@index');
+Route::get('commune/{region_id}', 'api\CommuneController@index');
