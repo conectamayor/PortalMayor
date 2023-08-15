@@ -99,8 +99,14 @@
                                         <select class="form-control" id="exampleFormControlSelect1"
                                         v-model="form.region_id" multiple
                                         >
-                                            <option :value="null">-Seleccionar-</option>
                                             <option v-for="region_post in region_posts" :key="region_post.region_id" :value="region_post.region_id">{{ region_post.region }}</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <label for="exampleInputEmail1">Comuna <h6 class="m-0 text-danger float-right">*</h6></label>
+                                        <select class="form-control" id="exampleFormControlSelect1"
+                                        v-model="form.commune_id" multiple
+                                        >
                                         </select>
                                     </div>
                                 </div>
@@ -298,6 +304,7 @@
             return {
                 errors: [],
                 region_posts: [],
+                commune_posts: [],
                 color: '#0A2787',
                 loading: false,
                 noFile: false,
