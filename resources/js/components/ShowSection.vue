@@ -168,10 +168,10 @@
                 const currentPosition = buttonElement.getBoundingClientRect();
 
                 // Suma 10px a la posición actual
-                const newPosition = currentPosition.top + 1; // Suma 10px al margen superior
+                const newPosition = currentPosition.top + 50; // Suma 10px al margen superior
 
                 // Aplica la nueva posición al elemento botón
-                buttonElement.style.marginTop = `${newPosition}%`;
+                buttonElement.style.marginTop = `${newPosition}px`;
             },
             goWeb(url, google_tag) {
                 this.$gtag.event('page_view', {
@@ -341,7 +341,7 @@
   font-size: 25px !important;
 }
 .circle-container {
-    position: absolute;
+    position: relavtive;
     top: 10%; /* Alinea el contenedor al centro vertical */
     left: 50%; /* Ajusta la posición horizontal según tus necesidades */
     transform: translate(-50%, -50%); /* Centra el contenedor en la pantalla */
