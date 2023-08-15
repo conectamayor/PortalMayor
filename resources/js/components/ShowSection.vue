@@ -167,11 +167,9 @@
                 // Obtiene la posición actual del elemento
                 const currentPosition = buttonElement.getBoundingClientRect();
 
-                const containerHeight = buttonElement.offsetHeight;
-
                 // Suma 10px a la posición actual
                 const newPosition = currentPosition.top + 50; // Suma 10px al margen superior
-                console.log(containerHeight);
+
                 // Aplica la nueva posición al elemento botón
                 buttonElement.style.marginTop = `${newPosition}px`;
             },
