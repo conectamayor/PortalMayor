@@ -122,29 +122,29 @@ class SectionController extends ApiResponseController
         }
 
         if($section->save()) {
-            $region_data = explode($request->region_id, ',');
+            $region_data = explode(',', $request->region_id);
 
             for ($i=0; $i < count($region_data); $i++) { 
                 $section_region = new SectionRegion();
                 $section_region->section_id = $section->section_id;
-                $section_region->region_id = $region_data[$i];
+                $section_region->region_id = trim($region_data[$i]);
                 $section_region->save();
             }
 
             if ($request->commune_id != NULL) {
-                $commune_data = explode($request->commune_id, ',');
+                $commune_data = explode(',', $request->commune_id);
 
                 for ($i=0; $i < count($commune_data); $i++) { 
                     $section_commune = new SectionCommune();
                     $section_commune->section_id = $section->section_id;
-                    $section_commune->commune_id = $commune_data[$i];
+                    $section_commune->commune_id = trim($commune_data[$i]);
                     $section_commune->save();
                 }
             } else {
-                $region_data = explode($request->region_id, ',');
+                $region_data = explode(',', $request->region_id);
 
                 for ($i=0; $i < count($region_data); $i++) { 
-                    $communes = Commune::where('region_id', $region_data[$i])->get();
+                    $communes = Commune::where('region_id', trim($region_data[$i]))->get();
 
                     foreach ($communes as $commune) {
                         $section_commune = new SectionCommune();
