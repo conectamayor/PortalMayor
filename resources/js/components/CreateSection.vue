@@ -356,6 +356,7 @@
                 this.loading = true;
 
                 this.commune_posts = [];
+                console.log(1);
 
                 var region_data = this.form.region_id;
 
