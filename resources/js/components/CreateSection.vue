@@ -327,6 +327,7 @@
                     direct_content_question_id: 2,
                     icon_available_id: 2,
                     region_id: null,
+                    commune_id: null,
                     whatsapp_url_to_share: '',
                     whatsatpp_share_id: 1,
                     open_app_id: 2,
@@ -428,6 +429,8 @@
                     formData.append('subtitle', this.form.subtitle);
                     formData.append('iframe', this.form.iframe);
                     formData.append('google_tag', this.form.google_tag);
+                    formData.append('region_id', this.form.region_id);
+                    formData.append('commune_id', this.form.commune_id);
                     formData.append('direct_content_question_id', this.form.direct_content_question_id);
                     formData.append('icon_available_id', this.form.icon_available_id);
                     formData.append('open_app_id', this.form.open_app_id);
