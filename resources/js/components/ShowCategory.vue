@@ -25,11 +25,13 @@
                     </div>
                 </div>
                 <div class="col-4">
-                    <div class="circle">
-                        <i class="fas fa-chevron-up"></i>
-                    </div>
-                    <div class="circle">
-                        <i class="fas fa-chevron-down"></i>
+                    <div class="circle-container">
+                        <div class="circle" tabindex="0" @click="scrollUp">
+                            <i class="fas fa-chevron-up"></i>
+                        </div>
+                        <div class="circle" tabindex="0" @click="scrollDown">
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -118,12 +120,22 @@
         },
         methods: {
             scrollUp() {
-                alert(1)
                 window.scrollBy(0, -50); // You can adjust the scroll amount as needed
+
+                const circleElements = document.querySelectorAll('.circle');
+                circleElements.forEach(circle => {
+                    const currentPosition = parseInt(getComputedStyle(circle).top);
+                    circle.style.top = currentPosition - 10 + 'px';
+                });
             },
             scrollDown() {
-                alert(2)
                 window.scrollBy(0, 50); // You can adjust the scroll amount as needed
+
+                const circleElements = document.querySelectorAll('.circle');
+                circleElements.forEach(circle => {
+                    const currentPosition = parseInt(getComputedStyle(circle).top);
+                    circle.style.top = currentPosition + 10 + 'px';
+                });
             },
             Track(google_tag) {
                 this.$gtag.event('page_view', {
@@ -287,27 +299,33 @@
   font-size: 25px !important;
 }
 
+.circle-container {
+    position: absolute;
+    top: 50%; /* Alinea el contenedor al centro vertical */
+    left: 90%; /* Ajusta la posición horizontal según tus necesidades */
+    transform: translate(-50%, -50%); /* Centra el contenedor en la pantalla */
+}
+
 .circle {
-  width: 60px;
-  height: 60px;
-  background-color: #3498db;
-  border-radius: 50%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 20px; /* Adjust this value for more separation */
-  margin-left: 15px !important;
-  margin-top: 150px !important;
-  color: white;
-  font-size: 24px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-  text-shadow: 0px 0px 5px #fff, 0px 0px 5px #fff;
-  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5); /* Aumentamos la difuminación */
+    
+    width: 60px;
+    height: 60px;
+    background-color: #3498db;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px;
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+    text-shadow: 0px 0px 5px #fff, 0px 0px 5px #fff;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5);
+    transition: top 0.3s ease;
 }
 
 .circle i {
-  display: block; /* Ensures the icon is centered within the circle */
+  display: block;
 }
 
 .circle:hover {
