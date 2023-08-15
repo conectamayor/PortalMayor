@@ -168,25 +168,24 @@
                 localStorage.setItem('circle_position', newPosition);
             },
             scrollDown() {
-                var posicionAntes = window.scrollY; 
-
                 window.scrollBy(0, 50); // You can adjust the scroll amount as needed
+                
+                var position = localStorage.getItem('circle_position');
+                
+                const buttonElement = this.$refs.circle_container;
 
-                var posicionDespues = window.scrollY;
+                var newPosition = parseInt(position) + 4;
 
-                if (posicionDespues > posicionAntes) {
-                    
-                    var position = localStorage.getItem('circle_position');
-                    
-                    const buttonElement = this.$refs.circle_container;
+                console.log(newPosition);
 
-                    var newPosition = parseInt(position) + 4;
+                buttonElement.style.top = `${newPosition}%`;
 
-                    console.log(newPosition);
+                localStorage.setItem('circle_position', newPosition);
 
-                    buttonElement.style.top = `${newPosition}%`;
-
-                    localStorage.setItem('circle_position', newPosition);
+                if (window.scrollY === 50) {
+                    console.log("Scrolling was successful");
+                } else {
+                    console.log("Scrolling was not successful");
                 }
             },
             isScrollAtBottom() {
