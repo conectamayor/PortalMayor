@@ -25,7 +25,7 @@ class CommuneController extends ApiResponseController
     {
         $region_id = $request->segment(3);
 
-        $communes = Commune::where('region_id', $region_id)->orderBy('commune_id', 'ASC')->get();
+        $communes = Commune::where('region_id', $region_id)->orderBy('commune', 'ASC')->get();
         
         return $this->successResponse($communes);
     }
