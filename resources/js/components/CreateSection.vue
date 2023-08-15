@@ -357,7 +357,9 @@
 
                 this.commune_posts = [];
 
-                const region_ids = this.form.region_id.split(',');
+                var region_data = this.form.region_id;
+
+                const region_ids = region_data.split(',');
 
                 for (const region_id of region_ids) {
                     axios.get('/api/commune/' + region_id)
