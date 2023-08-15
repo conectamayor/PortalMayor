@@ -338,6 +338,7 @@
 }
 .circle-container {
   position: relative;
+  margin-top: 20px;
 }
 
 .circle {
