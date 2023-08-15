@@ -164,7 +164,7 @@
                 
                 const buttonElement = this.$refs.circle_container;
 
-                const currentPosition = parseInt(getComputedStyle(circle).top);
+                const currentPosition = parseInt(getComputedStyle(buttonElement).top);
 
                 // Suma 10px a la posición actual
                 const newPosition = currentPosition.top + 50; // Suma 10px al margen superior
