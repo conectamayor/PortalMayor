@@ -49,14 +49,13 @@
                         </div>
                     </div>
                     <div class="col-4">
-                        <div class="circle-container">
                             <div class="circle" tabindex="0" @click="scrollUp">
                                 <i class="fas fa-chevron-up"></i>
                             </div>
                             <div class="circle" tabindex="0" @click="scrollDown">
                                 <i class="fas fa-chevron-down"></i>
                             </div>
-                        </div>
+                 
                         <!-- Rest of your content -->
                     </div>
                 </div>
@@ -335,10 +334,6 @@
 <style scoped>
 .boton2 {
   font-size: 25px !important;
-}
-.circle-container {
-  position: relative;
-  margin-top: 20px;
 }
 
 .circle {
