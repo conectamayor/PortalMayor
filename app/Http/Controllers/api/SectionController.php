@@ -132,6 +132,7 @@ class SectionController extends ApiResponseController
             }
 
             if ($request->commune_id != null) {
+                echo 1;
                 $commune_data = explode(',', $request->commune_id);
 
                 for ($i=0; $i < count($commune_data); $i++) { 
@@ -141,6 +142,7 @@ class SectionController extends ApiResponseController
                     $section_commune->save();
                 }
             } else {
+                echo 2;
                 $region_data = explode(',', $request->region_id);
 
                 for ($i=0; $i < count($region_data); $i++) { 
