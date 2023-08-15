@@ -49,7 +49,7 @@
                         </div>
                     </div>
                     <div class="col-4">
-                        <div class="circle-container">
+                        <div class="circle-container" ref="circle_container">
                             <div class="circle" tabindex="0" @click="scrollUp">
                                 <i class="fas fa-chevron-up"></i>
                             </div>
@@ -162,11 +162,9 @@
             scrollDown() {
                 window.scrollBy(0, 50); // You can adjust the scroll amount as needed
 
-                const circleElements = document.querySelectorAll('.circle');
-                circleElements.forEach(circle => {
-                    const currentPosition = parseInt(getComputedStyle(circle).top);
-                    circle.style.top = currentPosition + 10 + 'px';
-                });
+                const buttonElement = this.$refs.circle_container;
+
+                buttonElement.style.top = '50%';
             },
             goWeb(url, google_tag) {
                 this.$gtag.event('page_view', {
