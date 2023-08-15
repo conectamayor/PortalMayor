@@ -118,9 +118,11 @@
         },
         methods: {
             scrollUp() {
+                alert(1)
                 window.scrollBy(0, -50); // You can adjust the scroll amount as needed
             },
             scrollDown() {
+                alert(2)
                 window.scrollBy(0, 50); // You can adjust the scroll amount as needed
             },
             Track(google_tag) {
