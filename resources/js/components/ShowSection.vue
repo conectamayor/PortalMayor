@@ -168,7 +168,7 @@
                 
                 const buttonElement = this.$refs.circle_container;
 
-                var newPosition = position + 10;
+                var newPosition = parseInt(position) + 5;
 
                 console.log(newPosition);
 
