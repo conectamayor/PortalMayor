@@ -172,7 +172,7 @@
 
                 console.log(newPosition);
 
-                buttonElement.style.top = `${newPosition}px`;
+                buttonElement.style.top = `${newPosition}%`;
 
                 localStorage.setItem('circle_position', newPosition);
             },
