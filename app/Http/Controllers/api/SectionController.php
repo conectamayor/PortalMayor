@@ -6,6 +6,7 @@ use App\Section;
 use App\Commune;
 use App\Category;
 use App\User;
+use App\SectionCommune;
 use App\Region;
 use App\SectionRegion;
 use App\Poll;
@@ -134,7 +135,7 @@ class SectionController extends ApiResponseController
                 $commune_data = explode($request->commune_id, ',');
 
                 for ($i=0; $i < count($commune_data); $i++) { 
-                    $section_commune = new SectionRegion();
+                    $section_commune = new SectionCommune();
                     $section_commune->section_id = $section->section_id;
                     $section_commune->commune_id = $commune_data[$i];
                     $section_commune->save();
@@ -146,7 +147,7 @@ class SectionController extends ApiResponseController
                     $communes = Commune::where('region_id', $region_data[$i])->get();
 
                     foreach ($communes as $commune) {
-                        $section_commune = new SectionRegion();
+                        $section_commune = new SectionCommune();
                         $section_commune->section_id = $section->section_id;
                         $section_commune->commune_id = $commune->commune_id;
                         $section_commune->save();
