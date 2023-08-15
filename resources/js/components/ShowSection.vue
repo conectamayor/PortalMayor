@@ -337,7 +337,7 @@
 }
 
 .circle-container {
-    position: fixed; /* Mantén la posición fixed para que las flechas siempre sean visibles */
+    position: absolute;
     top: 50%; /* Alinea el contenedor al centro vertical */
     left: 90%; /* Ajusta la posición horizontal según tus necesidades */
     transform: translate(-50%, -50%); /* Centra el contenedor en la pantalla */
@@ -345,7 +345,6 @@
 }
 
 .circle {
-    position: absolute;
     width: 60px;
     height: 60px;
     background-color: #3498db;
