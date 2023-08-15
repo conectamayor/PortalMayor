@@ -155,11 +155,17 @@
             scrollUp() {
                 window.scrollBy(0, -50); // You can adjust the scroll amount as needed
 
-                const circleElements = document.querySelectorAll('.circle');
-                circleElements.forEach(circle => {
-                    const currentPosition = parseInt(getComputedStyle(circle).top);
-                    circle.style.top = currentPosition - 10 + 'px';
-                });
+                var position = localStorage.getItem('circle_position');
+                
+                const buttonElement = this.$refs.circle_container;
+
+                var newPosition = parseInt(position) - 4;
+
+                console.log(newPosition);
+
+                buttonElement.style.top = `${newPosition}%`;
+
+                localStorage.setItem('circle_position', newPosition);
             },
             scrollDown() {
                 window.scrollBy(0, 50); // You can adjust the scroll amount as needed
@@ -168,7 +174,7 @@
                 
                 const buttonElement = this.$refs.circle_container;
 
-                var newPosition = parseInt(position) + 3;
+                var newPosition = parseInt(position) + 4;
 
                 console.log(newPosition);
 
