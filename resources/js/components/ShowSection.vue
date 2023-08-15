@@ -49,10 +49,10 @@
                         </div>
                     </div>
                     <div class="col-4">
-                        <div class="circle" tabindex="0" @click="scrollUp" :class="{ 'arrow-transition': isScrolling }">
+                        <div class="circle circle-up" tabindex="0" @click="scrollUp">
                             <i class="fas fa-chevron-up"></i>
                         </div>
-                        <div class="circle" tabindex="0" @click="scrollDown" :class="{ 'arrow-transition': isScrolling }">
+                        <div class="circle circle-down" tabindex="0" @click="scrollDown">
                             <i class="fas fa-chevron-down"></i>
                         </div>
                     </div>
@@ -146,21 +146,31 @@
             this.getPosts();
             this.getPolls();
             this.checkDate();
+            window.addEventListener('scroll', this.handleScroll);
         },
         methods: {
+            handleScroll() {
+                const scrollY = window.scrollY;
+                const upArrow = document.querySelector('.circle-up');
+                const downArrow = document.querySelector('.circle-down');
+                
+                if (scrollY > 0) {
+                upArrow.classList.add('arrow-scrolling');
+                } else {
+                upArrow.classList.remove('arrow-scrolling');
+                }
+
+                if (scrollY < document.documentElement.scrollHeight - window.innerHeight) {
+                downArrow.classList.add('arrow-scrolling');
+                } else {
+                downArrow.classList.remove('arrow-scrolling');
+                }
+            },
             scrollUp() {
-                this.isScrolling = true; // Set the scrolling state to true
-                window.scrollBy(0, -50);
-                setTimeout(() => {
-                    this.isScrolling = false; // Reset the scrolling state after a short delay
-                }, 300);
+                window.scrollBy(0, -50); // You can adjust the scroll amount as needed
             },
             scrollDown() {
-                this.isScrolling = true; // Set the scrolling state to true
-                window.scrollBy(0, 50);
-                setTimeout(() => {
-                    this.isScrolling = false; // Reset the scrolling state after a short delay
-                }, 300);
+                window.scrollBy(0, 50); // You can adjust the scroll amount as needed
             },
             goWeb(url, google_tag) {
                 this.$gtag.event('page_view', {
@@ -316,7 +326,6 @@
                 polls: [],
                 poll_question_posts: [],
                 poll_quantity: 0,
-                isScrolling: false,
                 check_category_poll: '',
                 form: {
                     yes_no_answer: [],
@@ -360,5 +369,18 @@
 
 .arrow-transition {
   transition: transform 0.3s ease; /* Adjust the transition properties as needed */
+}
+
+.arrow-scrolling {
+  animation: bounce 0.5s infinite alternate;
+}
+
+@keyframes bounce {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(-5px); /* Ajusta la distancia del movimiento vertical */
+  }
 }
 </style>
