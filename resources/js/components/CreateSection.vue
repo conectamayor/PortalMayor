@@ -97,7 +97,7 @@
                                     <div class="col-sm-4">
                                         <label for="exampleInputEmail1">Región <h6 class="m-0 text-danger float-right">*</h6></label>
                                         <select class="form-control" id="exampleFormControlSelect1"
-                                        v-model="form.region_id"
+                                        v-model="form.region_id" multiple
                                         >
                                             <option :value="null">-Seleccionar-</option>
                                             <option v-for="region_post in region_posts" :key="region_post.region_id" :value="region_post.region_id">{{ region_post.region }}</option>
