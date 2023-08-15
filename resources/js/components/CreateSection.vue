@@ -337,16 +337,6 @@
                 }
             }
         },
-        watch: {
-            // Watch for changes in selected region(s)
-            'form.region_id': {
-                immediate: true, // Trigger on initial load
-                handler(newValue) {
-                    // Fetch communes based on selected region(s)
-                    this.getCommunes(newValue);
-                },
-            },
-        },
         methods: {
             getRegions() {
                 this.loading = true;
@@ -364,10 +354,10 @@
             },
             getCommunes() {
                 this.loading = true;
-
+                alert(region_id)
                 axios.get('/api/commune/' + this.form.region_id)
                 .then(response => {
-                    this.commune_posts = responses.map(response => response.data.data);
+                    this.commune_posts = this.commune_posts.push(response.data.data);
                 })
                 .catch(function (error) {
                     console.log(error);
