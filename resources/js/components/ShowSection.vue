@@ -49,10 +49,10 @@
                         </div>
                     </div>
                     <div class="col-4">
-                        <div class="circle circle-up" tabindex="0" @click="scrollUp">
+                        <div class="circle" tabindex="0" @click="scrollUp">
                             <i class="fas fa-chevron-up"></i>
                         </div>
-                        <div class="circle circle-down" tabindex="0" @click="scrollDown">
+                        <div class="circle" tabindex="0" @click="scrollDown">
                             <i class="fas fa-chevron-down"></i>
                         </div>
                     </div>
@@ -146,31 +146,25 @@
             this.getPosts();
             this.getPolls();
             this.checkDate();
-            window.addEventListener('scroll', this.handleScroll);
         },
         methods: {
-            handleScroll() {
-                const scrollY = window.scrollY;
-                const upArrow = document.querySelector('.circle-up');
-                const downArrow = document.querySelector('.circle-down');
-                
-                if (scrollY > 0) {
-                upArrow.classList.add('arrow-scrolling');
-                } else {
-                upArrow.classList.remove('arrow-scrolling');
-                }
-
-                if (scrollY < document.documentElement.scrollHeight - window.innerHeight) {
-                downArrow.classList.add('arrow-scrolling');
-                } else {
-                downArrow.classList.remove('arrow-scrolling');
-                }
-            },
             scrollUp() {
                 window.scrollBy(0, -50); // You can adjust the scroll amount as needed
+
+                const circleElements = document.querySelectorAll('.circle');
+                circleElements.forEach(circle => {
+                    const currentPosition = parseInt(getComputedStyle(circle).top);
+                    circle.style.top = currentPosition - 10 + 'px';
+                });
             },
             scrollDown() {
                 window.scrollBy(0, 50); // You can adjust the scroll amount as needed
+
+                const circleElements = document.querySelectorAll('.circle');
+                circleElements.forEach(circle => {
+                    const currentPosition = parseInt(getComputedStyle(circle).top);
+                    circle.style.top = currentPosition + 10 + 'px';
+                });
             },
             goWeb(url, google_tag) {
                 this.$gtag.event('page_view', {
@@ -365,22 +359,5 @@
 
 .circle:hover {
   background-color: #2980b9;
-}
-
-.arrow-transition {
-  transition: transform 0.3s ease; /* Adjust the transition properties as needed */
-}
-
-.arrow-scrolling {
-  animation: bounce 0.5s infinite alternate;
-}
-
-@keyframes bounce {
-  from {
-    transform: translateY(0);
-  }
-  to {
-    transform: translateY(-5px); /* Ajusta la distancia del movimiento vertical */
-  }
 }
 </style>
