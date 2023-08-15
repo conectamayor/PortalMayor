@@ -160,18 +160,22 @@
                 });
             },
             scrollDown() {
-                window.scrollBy(0, 50); // You can adjust the scroll amount as needed
+                const scrollAmount = 50;
+                window.scrollBy(0, scrollAmount);
                 
-                const buttonElement = this.$refs.circle_container;
-                
-                // Obtiene la posición actual del elemento
-                const currentPosition = buttonElement.getBoundingClientRect();
+                // Espera un momento para que el desplazamiento se complete antes de ajustar la posición del elemento
+                setTimeout(() => {
+                    const buttonElement = this.$refs.circle_container;
+                    
+                    // Obtiene la posición actual del elemento después del desplazamiento
+                    const currentPosition = buttonElement.getBoundingClientRect();
 
-                // Suma 10px a la posición actual
-                const newPosition = currentPosition.top + 50; // Suma 10px al margen superior
+                    // Calcula la nueva posición basada en el desplazamiento
+                    const newPosition = currentPosition.top + scrollAmount;
 
-                // Aplica la nueva posición al elemento botón
-                buttonElement.style.marginTop = `${newPosition}px`;
+                    // Aplica la nueva posición al elemento botón
+                    buttonElement.style.marginTop = `${newPosition}px`;
+                }, 100); // Ajusta el tiempo según sea necesario
             },
             goWeb(url, google_tag) {
                 this.$gtag.event('page_view', {
