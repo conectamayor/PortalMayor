@@ -58,39 +58,13 @@
                                 </div>
                                 <div class="form-group row">
                                     <div class="col-sm-4">
-                                        <label for="exampleInputEmail1">Color <h6 class="m-0 text-danger float-right">*</h6></label>
-                                        <div class="form-group row">
-                                            <div class="col-sm-2">
-                                                <v-input-colorpicker v-model="color" @change="handleChange" />
-                                            </div>
-                                            <div class="col-sm-10">
-                                                <input
-                                                type="text" 
-                                                v-model="form.color" 
-                                                class="form-control"
-                                                placeholder="Ingresa el color"
-                                                >
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-4">
-                                        <label for="exampleInputEmail1">Posición <h6 class="m-0 text-danger float-right">*</h6></label>
-                                        <input
-                                        type="number" 
-                                        v-model="form.position" 
-                                        min="0"
-                                        class="form-control"
-                                        placeholder="Ingresa la posición"
+                                        <label for="exampleInputEmail1">Región: <h6 class="m-0 text-danger float-right">*</h6></label>
+                                        <select class="form-control" id="exampleFormControlSelect1"
+                                        v-model="form.region_id"
                                         >
-                                    </div>
-                                    <div class="col-sm-4">
-                                        <label for="exampleInputEmail1">Google Tag <h6 class="m-0 text-danger float-right">*</h6></label>
-                                        <input
-                                        type="text" 
-                                        v-model="form.google_tag" 
-                                        class="form-control"
-                                        placeholder="Ingresa el google tag"
-                                        >
+                                            <option :value="null">-Seleccionar-</option>
+                                            <option v-for="region_post in region_posts" :key="region_post.region_id" :value="region_post.region_id">{{ region_post.region_id }}</option>
+                                        </select>
                                     </div>
                                 </div>
                                 
