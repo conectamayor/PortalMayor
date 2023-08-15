@@ -356,9 +356,8 @@
                 this.loading = true;
 
                 this.commune_posts = [];
-                console.log(1);
 
-                var region_data = this.form.region_id;
+                var region_data = String(this.form.region_id);
 
                 const region_ids = region_data.split(',');
 
