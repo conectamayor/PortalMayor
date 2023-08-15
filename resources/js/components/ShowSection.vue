@@ -123,10 +123,10 @@
                         </div>
                     </div>
                     <div class="col-4">
-                        <div class="circle" @click="scrollUp">
+                        <div class="circle" tabindex="0" @click="scrollUp">
                             <i class="fas fa-chevron-up"></i>
                         </div>
-                        <div class="circle" @click="scrollDown">
+                        <div class="circle" tabindex="0" @click="scrollDown">
                             <i class="fas fa-chevron-down"></i>
                         </div>
                     </div>
