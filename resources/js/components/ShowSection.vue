@@ -1,5 +1,5 @@
 <template>
-    <div class="container pt-32">
+    <div class="container pt-32">111
         <div class="row" v-if="post.section_subtitle != ''">
             <hr>
             <h2><center><strong>{{ post.section_subtitle }}</strong></center></h2>
@@ -123,10 +123,10 @@
                         </div>
                     </div>
                     <div class="col-4">
-                        <div class="circle">
+                        <div class="circle" @click="scrollUp">
                             <i class="fas fa-chevron-up"></i>
                         </div>
-                        <div class="circle">
+                        <div class="circle" @click="scrollDown">
                             <i class="fas fa-chevron-down"></i>
                         </div>
                     </div>
@@ -148,6 +148,14 @@
             this.checkDate();
         },
         methods: {
+            scrollUp() {
+                alert(1)
+                window.scrollBy(0, -50); // You can adjust the scroll amount as needed
+            },
+            scrollDown() {
+                alert(2)
+                window.scrollBy(0, 50); // You can adjust the scroll amount as needed
+            },
             goWeb(url, google_tag) {
                 this.$gtag.event('page_view', {
                     page_title: google_tag
