@@ -337,7 +337,6 @@
 }
 
 .circle {
-  position: absolute;
   width: 60px;
   height: 60px;
   background-color: #3498db;
