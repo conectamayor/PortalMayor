@@ -1,5 +1,5 @@
 <template>
-    <div class="container pt-32">
+    <div class="container pt-32">1
         <div class="row" v-if="post.section_subtitle != ''">
             <hr>
             <h2><center><strong>{{ post.section_subtitle }}</strong></center></h2>
@@ -171,7 +171,7 @@
                 const newPosition = currentPosition.top + 1; // Suma 10px al margen superior
 
                 // Aplica la nueva posición al elemento botón
-                buttonElement.style.marginTop = `${newPosition}px`;
+                buttonElement.style.marginTop = `${newPosition}%`;
             },
             goWeb(url, google_tag) {
                 this.$gtag.event('page_view', {
