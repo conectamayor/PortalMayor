@@ -49,7 +49,7 @@
                         </div>
                     </div>
                     <div class="col-4">
-                        <div class="circle" tabindex="0" @click="scrollUp">
+                        <div class="circle" id="circle_up" tabindex="0" @click="scrollUp">
                             <i class="fas fa-chevron-up"></i>
                         </div>
                         <div class="circle" tabindex="0" @click="scrollDown">
@@ -151,17 +151,15 @@
             scrollUp() {
                 window.scrollBy(0, -50); // You can adjust the scroll amount as needed
 
-                const circleElements = document.querySelectorAll('.circle');
-                circleElements.forEach(circle => {
-                    circle.style.transform = `translateY(-10px)`;
-                });
+                document.getElementById("circle_up").style.top=5+"px";
             },
             scrollDown() {
                 window.scrollBy(0, 50); // You can adjust the scroll amount as needed
 
                 const circleElements = document.querySelectorAll('.circle');
                 circleElements.forEach(circle => {
-                    circle.style.transform = `translateY(10px)`;
+                    const currentPosition = parseInt(getComputedStyle(circle).top);
+                    circle.style.top = currentPosition + 10 + 'px';
                 });
             },
             goWeb(url, google_tag) {
@@ -340,17 +338,19 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 20px;
+  margin: 20px; /* Adjust this value for more separation */
+  margin-left: 15px !important;
+  margin-top: 150px !important;
   color: white;
   font-size: 24px;
   cursor: pointer;
-  transition: transform 0.3s ease; /* Use transform for smooth animations */
+  transition: background-color 0.3s ease;
   text-shadow: 0px 0px 5px #fff, 0px 0px 5px #fff;
-  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5);
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5); /* Aumentamos la difuminación */
 }
 
 .circle i {
-  display: block;
+  display: block; /* Ensures the icon is centered within the circle */
 }
 
 .circle:hover {
