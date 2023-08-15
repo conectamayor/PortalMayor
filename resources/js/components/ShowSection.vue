@@ -160,28 +160,21 @@
                 });
             },
             scrollDown() {
-  window.scrollBy(0, 50); // You can adjust the scroll amount as needed
+                window.scrollBy(0, 50); // You can adjust the scroll amount as needed
+                
+                const buttonElement = this.$refs.circle_container;
+                
+                // Obtiene la posición actual del elemento
+                const currentPosition = buttonElement.getBoundingClientRect();
 
-  const buttonElement = this.$refs.circle_container;
+                const containerHeight = buttonElement.offsetHeight;
 
-  // Obtain the current position of the element
-  const currentPosition = buttonElement.getBoundingClientRect();
-
-  // Get the height of the container element
-  const containerHeight = buttonElement.offsetHeight;
-
-  // Check if the current position is greater than or equal to half of the container height
-  if (currentPosition.top >= containerHeight / 2) {
-    // Decrease the scroll amount
-    window.scrollBy(0, -50);
-  } else {
-    // Increase the scroll amount
-    window.scrollBy(0, 50);
-  }
-
-  // Apply the new position to the element's marginTop style property
-  buttonElement.style.marginTop = `${currentPosition.top + 50}px`;
-},
+                // Suma 10px a la posición actual
+                const newPosition = currentPosition.top + 50; // Suma 10px al margen superior
+                console.log(containerHeight);
+                // Aplica la nueva posición al elemento botón
+                buttonElement.style.marginTop = `${newPosition}px`;
+            },
             goWeb(url, google_tag) {
                 this.$gtag.event('page_view', {
                     page_title: google_tag
