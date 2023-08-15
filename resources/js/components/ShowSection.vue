@@ -182,10 +182,14 @@
 
                 localStorage.setItem('circle_position', newPosition);
 
-                if (window.scrollY === 50) {
-                    console.log("Scrolling was successful");
-                } else {
-                    console.log("Scrolling was not successful");
+                var alturaPantalla = window.innerHeight;
+                            var alturaPagina = document.body.scrollHeight;
+                            var posicionScroll = window.scrollY;
+
+                            if (posicionScroll + alturaPantalla >= alturaPagina) {
+                    // Se ha llegado al final de la página
+                    console.log("Se ha llegado al final de la página");
+                    // Aquí puedes detener cualquier animación o acción relacionada con el scroll
                 }
             },
             isScrollAtBottom() {
