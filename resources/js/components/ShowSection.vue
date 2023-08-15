@@ -168,13 +168,23 @@
                 
                 const buttonElement = this.$refs.circle_container;
 
-                var newPosition = parseInt(position) + 10;
+                var newPosition = parseInt(position) + 5;
 
                 console.log(newPosition);
 
                 buttonElement.style.top = `${newPosition}%`;
 
                 localStorage.setItem('circle_position', newPosition);
+            },
+            isScrollAtBottom() {
+                const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+                const scrollHeight = Math.max(
+                    document.documentElement.scrollHeight,
+                    document.body.scrollHeight
+                );
+                const clientHeight = document.documentElement.clientHeight;
+
+                return scrollTop + clientHeight >= scrollHeight;
             },
             goWeb(url, google_tag) {
                 this.$gtag.event('page_view', {
