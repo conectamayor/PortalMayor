@@ -354,12 +354,23 @@
             },
             getCommunes() {
                 this.loading = true;
-                alert(this.form.region_id)
-                axios.get('/api/commune/' + this.form.region_id)
-                .then(response => {
-                    this.commune_posts = this.commune_posts.push(response.data.data);
+
+                const region_ids = [this.form.region_id]; // Aquí puedes incluir más valores si es necesario
+
+                Promise.all(region_ids.map(region_id => {
+                    return axios.get('/api/commune/' + region_id)
+                        .then(response => {
+                            return response.data.data;
+                        })
+                        .catch(error => {
+                            console.log(error);
+                            return []; // Otra alternativa sería lanzar una excepción aquí para manejar errores.
+                        });
+                }))
+                .then(communeDataArray => {
+                    this.commune_posts = communeDataArray;
                 })
-                .catch(function (error) {
+                .catch(error => {
                     console.log(error);
                 })
                 .finally(() => {
