@@ -49,10 +49,10 @@
                         </div>
                     </div>
                     <div class="col-4">
-                        <div class="circle">
+                        <div class="circle" tabindex="0" @click="scrollUp">
                             <i class="fas fa-chevron-up"></i>
                         </div>
-                        <div class="circle">
+                        <div class="circle" tabindex="0" @click="scrollDown">
                             <i class="fas fa-chevron-down"></i>
                         </div>
                     </div>
@@ -123,10 +123,8 @@
                         </div>
                     </div>
                     <div class="col-4">
-                        <div class="circle" tabindex="0" >
-                            <a @click="scrollUp" href="javascript:;">
-                                <i class="fas fa-chevron-up"></i>11
-                            </a>
+                        <div class="circle" tabindex="0" @click="scrollUp">
+                            <i class="fas fa-chevron-up"></i>
                         </div>
                         <div class="circle" tabindex="0" @click="scrollDown">
                             <i class="fas fa-chevron-down"></i>
