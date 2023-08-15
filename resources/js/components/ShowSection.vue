@@ -49,12 +49,15 @@
                         </div>
                     </div>
                     <div class="col-4">
-                        <div class="circle" id="circle_up" tabindex="0" @click="scrollUp">
+                        <div class="circle-container">
+                            <div id="circle_up" class="circle" tabindex="0" @click="scrollUp">
                             <i class="fas fa-chevron-up"></i>
-                        </div>
-                        <div class="circle" tabindex="0" @click="scrollDown">
+                            </div>
+                            <div id="circle_down" class="circle" tabindex="0" @click="scrollDown">
                             <i class="fas fa-chevron-down"></i>
+                            </div>
                         </div>
+                        <!-- Rest of your content -->
                     </div>
                 </div>
                 <div class="row" v-if="poll_question_posts != ''">
@@ -151,7 +154,9 @@
             scrollUp() {
                 window.scrollBy(0, -50); // You can adjust the scroll amount as needed
 
-                document.getElementById("circle_up").style.top=5+"px";
+                const circleElement = document.getElementById('circle_up');
+                const currentPosition = parseInt(getComputedStyle(circleElement).top);
+                circleElement.style.top = currentPosition - 10 + 'px';
             },
             scrollDown() {
                 window.scrollBy(0, 50); // You can adjust the scroll amount as needed
@@ -329,8 +334,12 @@
 .boton2 {
   font-size: 25px !important;
 }
+.circle-container {
+  position: relative;
+}
 
 .circle {
+  position: absolute;
   width: 60px;
   height: 60px;
   background-color: #3498db;
@@ -338,19 +347,17 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 20px; /* Adjust this value for more separation */
-  margin-left: 15px !important;
-  margin-top: 150px !important;
+  margin: 20px;
   color: white;
   font-size: 24px;
   cursor: pointer;
-  transition: background-color 0.3s ease;
   text-shadow: 0px 0px 5px #fff, 0px 0px 5px #fff;
-  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5); /* Aumentamos la difuminación */
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5);
+  transition: top 0.3s ease;
 }
 
 .circle i {
-  display: block; /* Ensures the icon is centered within the circle */
+  display: block;
 }
 
 .circle:hover {
