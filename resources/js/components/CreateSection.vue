@@ -107,7 +107,7 @@
                                         <label for="exampleInputEmail1">Comuna</label>
                                         <select class="form-control" id="exampleFormControlSelect1">
                                             <option :value="null" v-if="commune_posts.length == 0">No ha seleccionado una región</option>
-                                            <option :value="commune_post.commune_id">{{ commune_post.commune }}</option>
+                                            <option v-for="commune_post in commune_posts" :key="commune_post.commune_id" :value="commune_post.commune_id">{{ commune_post.commune }}</option>
                                         </select>
                                     </div>
                                 </div>
@@ -359,7 +359,7 @@
 
                 axios.get('/api/commune/' + this.form.region_id)
                 .then(response => {
-                    this.commune_posts = response.data.data;
+                    this.commune_posts = this.commune_posts.concat(response.data.data);
                 })
                 .catch(function (error) {
                     console.log(error);
