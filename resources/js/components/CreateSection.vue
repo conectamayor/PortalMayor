@@ -355,28 +355,22 @@
             getCommunes() {
                 this.loading = true;
 
-                const region_ids = [this.form.region_id]; // Aquí puedes incluir más valores si es necesario
+                this.commune_posts = [];
 
-                Promise.all(region_ids.map(region_id => {
-                    return axios.get('/api/commune/' + region_id)
+                const region_ids = this.form.region_id.split(',');
+
+                for (const region_id of region_ids) {
+                    axios.get('/api/commune/' + region_id)
                         .then(response => {
-                            console.log(response.data.data)
-                            return response.data.data;
+                            this.commune_posts.push(response.data.data);
                         })
                         .catch(error => {
                             console.log(error);
-                            return []; // Otra alternativa sería lanzar una excepción aquí para manejar errores.
+                        })
+                        .finally(() => {
+                            this.loading = false;
                         });
-                }))
-                .then(communeDataArray => {
-                    this.commune_posts = communeDataArray;
-                })
-                .catch(error => {
-                    console.log(error);
-                })
-                .finally(() => {
-                    this.loading = false;
-                });
+                }
             },
             storeAudit() {
                 let formData = new FormData();
