@@ -168,7 +168,7 @@
                 const currentPosition = buttonElement.getBoundingClientRect();
 
                 // Suma 10px a la posición actual
-                const newPosition = currentPosition.top + 2; // Suma 10px al margen superior
+                const newPosition = currentPosition.top + 1; // Suma 10px al margen superior
 
                 // Aplica la nueva posición al elemento botón
                 buttonElement.style.marginTop = `${newPosition}px`;
