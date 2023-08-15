@@ -154,9 +154,11 @@
             scrollUp() {
                 window.scrollBy(0, -50); // You can adjust the scroll amount as needed
 
-                const circleElement = document.getElementById('circle_up');
-                const currentPosition = parseInt(getComputedStyle(circleElement).top);
-                circleElement.style.top = currentPosition - 10 + 'px';
+                const circleElements = document.querySelectorAll('.circle');
+                circleElements.forEach(circle => {
+                    const currentPosition = parseInt(getComputedStyle(circle).top);
+                    circle.style.top = currentPosition - 10 + 'px';
+                });
             },
             scrollDown() {
                 window.scrollBy(0, 50); // You can adjust the scroll amount as needed
