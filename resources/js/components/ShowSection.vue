@@ -168,9 +168,14 @@
                 localStorage.setItem('circle_position', newPosition);
             },
             scrollDown() {
+                var posicionAntes = window.scrollY; 
+
                 window.scrollBy(0, 50); // You can adjust the scroll amount as needed
 
-                if(window.scrollBy(0, 50)) {
+                var posicionDespues = window.scrollY;
+
+                if (posicionDespues > posicionAntes) {
+                    
                     var position = localStorage.getItem('circle_position');
                     
                     const buttonElement = this.$refs.circle_container;
