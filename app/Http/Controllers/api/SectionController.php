@@ -131,8 +131,7 @@ class SectionController extends ApiResponseController
                 $section_region->save();
             }
 
-            if ($request->commune_id != NULL) {
-                print_r($request->commune_id);
+            if ($request->commune_id != null) {
                 $commune_data = explode(',', $request->commune_id);
 
                 for ($i=0; $i < count($commune_data); $i++) { 
