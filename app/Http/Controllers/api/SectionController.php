@@ -132,6 +132,7 @@ class SectionController extends ApiResponseController
             }
 
             if ($request->commune_id != NULL) {
+                print_r($request->commune_id);
                 $commune_data = explode(',', $request->commune_id);
 
                 for ($i=0; $i < count($commune_data); $i++) { 
@@ -144,7 +145,7 @@ class SectionController extends ApiResponseController
                 $region_data = explode(',', $request->region_id);
 
                 for ($i=0; $i < count($region_data); $i++) { 
-                    $communes = Commune::where('regon_id', trim($region_data[$i]))->get();
+                    $communes = Commune::where('region_id', trim($region_data[$i]))->get();
 
                     foreach ($communes as $commune) {
                         $section_commune = new SectionCommune();
