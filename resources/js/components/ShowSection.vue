@@ -170,17 +170,19 @@
             scrollDown() {
                 window.scrollBy(0, 50); // You can adjust the scroll amount as needed
 
-                var position = localStorage.getItem('circle_position');
-                
-                const buttonElement = this.$refs.circle_container;
+                if(window.scrollBy(0, 50)) {
+                    var position = localStorage.getItem('circle_position');
+                    
+                    const buttonElement = this.$refs.circle_container;
 
-                var newPosition = parseInt(position) + 4;
+                    var newPosition = parseInt(position) + 4;
 
-                console.log(newPosition);
+                    console.log(newPosition);
 
-                buttonElement.style.top = `${newPosition}%`;
+                    buttonElement.style.top = `${newPosition}%`;
 
-                localStorage.setItem('circle_position', newPosition);
+                    localStorage.setItem('circle_position', newPosition);
+                }
             },
             isScrollAtBottom() {
                 const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
