@@ -125,7 +125,7 @@
                     <div class="col-4">
                         <div class="circle" tabindex="0" >
                             <a @click="scrollUp" href="javascript:;">
-                                <i class="fas fa-chevron-up"></i>
+                                <i class="fas fa-chevron-up"></i>11
                             </a>
                         </div>
                         <div class="circle" tabindex="0" @click="scrollDown">
