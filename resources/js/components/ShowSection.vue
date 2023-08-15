@@ -153,8 +153,7 @@
 
                 const circleElements = document.querySelectorAll('.circle');
                 circleElements.forEach(circle => {
-                    const currentPosition = parseInt(getComputedStyle(circle).top);
-                    circle.style.top = currentPosition - 10 + 'px';
+                    circle.style.transform = `translateY(-10px)`;
                 });
             },
             scrollDown() {
@@ -162,8 +161,7 @@
 
                 const circleElements = document.querySelectorAll('.circle');
                 circleElements.forEach(circle => {
-                    const currentPosition = parseInt(getComputedStyle(circle).top);
-                    circle.style.top = currentPosition + 10 + 'px';
+                    circle.style.transform = `translateY(10px)`;
                 });
             },
             goWeb(url, google_tag) {
@@ -342,19 +340,17 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 20px; /* Adjust this value for more separation */
-  margin-left: 15px !important;
-  margin-top: 150px !important;
+  margin: 20px;
   color: white;
   font-size: 24px;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: transform 0.3s ease; /* Use transform for smooth animations */
   text-shadow: 0px 0px 5px #fff, 0px 0px 5px #fff;
-  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5); /* Aumentamos la difuminación */
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5);
 }
 
 .circle i {
-  display: block; /* Ensures the icon is centered within the circle */
+  display: block;
 }
 
 .circle:hover {
