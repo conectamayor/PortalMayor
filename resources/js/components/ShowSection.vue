@@ -1,5 +1,5 @@
 <template>
-    <div class="container pt-32">1
+    <div class="container pt-32">
         <div class="row" v-if="post.section_subtitle != ''">
             <hr>
             <h2><center><strong>{{ post.section_subtitle }}</strong></center></h2>
@@ -163,9 +163,8 @@
                 window.scrollBy(0, 50); // You can adjust the scroll amount as needed
                 
                 const buttonElement = this.$refs.circle_container;
-                
-                // Obtiene la posición actual del elemento
-                const currentPosition = buttonElement.getBoundingClientRect();
+
+                const currentPosition = parseInt(getComputedStyle(circle).top);
 
                 // Suma 10px a la posición actual
                 const newPosition = currentPosition.top + 50; // Suma 10px al margen superior
