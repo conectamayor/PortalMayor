@@ -362,8 +362,10 @@
                 const region_ids = region_data.split(',');
 
                 for (const region_id of region_ids) {
+                    console.log(region_id)
                     axios.get('/api/commune/' + region_id)
                         .then(response => {
+                            console.log(response.data.data);
                             this.commune_posts.push(response.data.data);
                         })
                         .catch(error => {
