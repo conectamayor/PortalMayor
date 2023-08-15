@@ -92,10 +92,10 @@
                     </div>
                 </div>
                 <div class="col-4">
-                    <div class="circle">
+                    <div class="circle" @click="scrollUp">
                         <i class="fas fa-chevron-up"></i>
                     </div>
-                    <div class="circle">
+                    <div class="circle" @click="scrollDown">
                         <i class="fas fa-chevron-down"></i>
                     </div>
                 </div>
@@ -117,6 +117,12 @@
             this.getPolls();
         },
         methods: {
+            scrollUp() {
+                window.scrollBy(0, -50); // You can adjust the scroll amount as needed
+            },
+            scrollDown() {
+                window.scrollBy(0, 50); // You can adjust the scroll amount as needed
+            },
             Track(google_tag) {
                 this.$gtag.event('page_view', {
                     page_title: google_tag
