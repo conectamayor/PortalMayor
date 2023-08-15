@@ -148,6 +148,8 @@
             this.getPosts();
             this.getPolls();
             this.checkDate();
+
+            localStorage.setItem('circle_position', '10');
         },
         methods: {
             scrollUp() {
@@ -161,16 +163,18 @@
             },
             scrollDown() {
                 window.scrollBy(0, 50); // You can adjust the scroll amount as needed
+
+                var position = localStorage.getItem('circle_position');
                 
                 const buttonElement = this.$refs.circle_container;
 
-                const currentPosition = parseInt(getComputedStyle(buttonElement).top);
+                var newPosition = position + 10;
 
-                // Suma 10px a la posición actual
-                const newPosition = currentPosition.top + 50; // Suma 10px al margen superior
+                console.log(newPosition);
 
-                // Aplica la nueva posición al elemento botón
-                buttonElement.style.marginTop = `${newPosition}px`;
+                buttonElement.style.top = `${newPosition}px`;
+
+                localStorage.setItem('circle_position', newPosition);
             },
             goWeb(url, google_tag) {
                 this.$gtag.event('page_view', {
@@ -340,7 +344,7 @@
   font-size: 25px !important;
 }
 .circle-container {
-    position: relavtive;
+    position: absolute;
     top: 10%; /* Alinea el contenedor al centro vertical */
     left: 50%; /* Ajusta la posición horizontal según tus necesidades */
     transform: translate(-50%, -50%); /* Centra el contenedor en la pantalla */
