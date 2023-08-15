@@ -161,17 +161,17 @@
             },
             scrollDown() {
                 window.scrollBy(0, 50); // You can adjust the scroll amount as needed
-
+                
+                const buttonElement = this.$refs.circle_container;
+                
                 // Obtiene la posición actual del elemento
-                    const currentPosition = buttonElement.getBoundingClientRect();
+                const currentPosition = buttonElement.getBoundingClientRect();
 
                 // Suma 10px a la posición actual
                 const newPosition = currentPosition.top + 10; // Suma 10px al margen superior
 
                 // Aplica la nueva posición al elemento botón
                 buttonElement.style.marginTop = `${newPosition}px`;
-
-                const buttonElement = this.$refs.circle_container;
             },
             goWeb(url, google_tag) {
                 this.$gtag.event('page_view', {
