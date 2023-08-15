@@ -49,14 +49,14 @@
                         </div>
                     </div>
                     <div class="col-4">
+                        <div class="circle-container">
                             <div class="circle" tabindex="0" @click="scrollUp">
                                 <i class="fas fa-chevron-up"></i>
                             </div>
                             <div class="circle" tabindex="0" @click="scrollDown">
                                 <i class="fas fa-chevron-down"></i>
                             </div>
-                 
-                        <!-- Rest of your content -->
+                        </div>
                     </div>
                 </div>
                 <div class="row" v-if="poll_question_posts != ''">
@@ -341,10 +341,10 @@
     top: 50%; /* Alinea el contenedor al centro vertical */
     left: 90%; /* Ajusta la posición horizontal según tus necesidades */
     transform: translate(-50%, -50%); /* Centra el contenedor en la pantalla */
-    margin-top: 200px !important;
 }
 
 .circle {
+    
     width: 60px;
     height: 60px;
     background-color: #3498db;
