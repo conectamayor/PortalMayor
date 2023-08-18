@@ -1,7 +1,7 @@
 <template>
     <div class="container pt-32">
         <div class="row" v-if="post.section_subtitle != ''">
-
+            <h2><center><strong>{{ post.section_subtitle }}</strong></center></h2>
         </div>
 
     </div>
