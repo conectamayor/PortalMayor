@@ -20,7 +20,7 @@
                             <div class="col-12" v-for="(post, index) in posts" v-bind:index="index">
                                 <div v-if="post.link_question_id == 1">
                                     <button class="boton2" v-if="post.icon_available_id == 2" :style="{ background: post.color}" v-on:click="goWeb(post.url,post.google_tag)" >
-                                        <br><font class="title">{{ post.title }}</font>
+                                        <font class="title">{{ post.title }}</font>
                                     </button>
                                     <button class="boton2" v-else :style="{ background: post.color}" v-on:click="goWeb(post.url,post.google_tag)" >
                                         <i v-bind:class="post.icon"></i><br><font class="title">{{ post.title }}</font>
