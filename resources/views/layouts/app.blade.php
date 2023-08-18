@@ -35,7 +35,7 @@
 	<link href="https://cdn.jsdelivr.net/npm/animate.css@3.5.1" rel="stylesheet" type="text/css">
 
 </head>
-<body>
+<body style="margin-bottom: -100px !important;">
     <!-- fakeloader -->
 	<div class="fakeLoader"></div>
 	<!-- end fakeloader -->
@@ -47,8 +47,7 @@
 	<!-- end navbar -->
 
 	<!-- end sidebar -->
-    <div id="app" style="margin-bottom: -100px !important;">
-		
+    <div id="app">
         @yield('content')
     </div>
     <script>
