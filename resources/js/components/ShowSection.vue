@@ -15,21 +15,7 @@
             </div>
 
             <div v-if="check_category_poll == 0">
-                <div v-if="poll_question_posts == ''" class="row">
-                    <div class="col-8 col-8-scroll" ref="col8">
-
-                    </div>
-                    <div class="col-4">
-                        <div class="d-flex flex-column align-items-center">
-                            <div class="circle" @click="scrollContent(-50)">
-                                <i class="fas fa-chevron-up"></i>
-                            </div>
-                            <div class="circle" @click="scrollContent(50)">
-                                <i class="fas fa-chevron-down"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                
             </div>
         </div>
     </div>
