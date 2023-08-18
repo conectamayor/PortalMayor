@@ -261,7 +261,6 @@
     }
 
     .circle {
-        
         width: 60px;
         height: 60px;
         background-color: #3498db;
@@ -287,7 +286,7 @@
     }
     /* Agrega estilos para la altura máxima y oculta el scrollbar en la columna de ancho 8 */
     .col-8-scroll {
-        max-height: 520px; /* Ajusta la altura máxima según tus necesidades */
+        max-height: 560px; /* Ajusta la altura máxima según tus necesidades */
         overflow-y: scroll;
         scrollbar-width: none; /* Oculta el scrollbar en navegadores Firefox */
         -ms-overflow-style: none; /* Oculta el scrollbar en navegadores Edge */
