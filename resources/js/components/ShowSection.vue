@@ -52,10 +52,18 @@
         }
     }
 </script>
-<style scoped>
-    /* Agrega estilos para la altura máxima y el scroll en la columna de ancho 8 */
+<style>
+    /* Agrega estilos para la altura máxima y oculta el scrollbar en la columna de ancho 8 */
     .col-8-scroll {
-      max-height: 800px; /* Ajusta la altura máxima según tus necesidades */
-      overflow-y: auto;
+      max-height: 400px; /* Ajusta la altura máxima según tus necesidades */
+      overflow-y: scroll;
+      scrollbar-width: none; /* Oculta el scrollbar en navegadores Firefox */
+      -ms-overflow-style: none; /* Oculta el scrollbar en navegadores Edge */
     }
-</style>
+    
+    /* Estilos para ocultar el scrollbar en navegadores Chrome, Safari, y nuevos navegadores Edge */
+    .col-8-scroll::-webkit-scrollbar {
+      width: 0;
+      height: 0;
+    }
+  </style>
