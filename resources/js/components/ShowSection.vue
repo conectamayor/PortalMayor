@@ -17,7 +17,7 @@
             <div v-if="check_category_poll == 0">
                 <div v-if="poll_question_posts == ''" class="row">
                     <div class="col-8 col-8-scroll" ref="col8">
-                        <div class="p-3 border">
+                        <div class="p-3">
                             <div class="col-12" v-for="(post, index) in posts" v-bind:index="index">
                                 <div v-if="post.link_question_id == 1">
                                     <button class="boton2" v-if="post.icon_available_id == 2" :style="{ background: post.color}" v-on:click="goWeb(post.url,post.google_tag)" >
@@ -287,7 +287,7 @@
     }
     /* Agrega estilos para la altura máxima y oculta el scrollbar en la columna de ancho 8 */
     .col-8-scroll {
-        max-height: 470px; /* Ajusta la altura máxima según tus necesidades */
+        max-height: 520px; /* Ajusta la altura máxima según tus necesidades */
         overflow-y: scroll;
         scrollbar-width: none; /* Oculta el scrollbar en navegadores Firefox */
         -ms-overflow-style: none; /* Oculta el scrollbar en navegadores Edge */
@@ -297,5 +297,9 @@
     .col-8-scroll::-webkit-scrollbar {
         width: 0;
         height: 0;
+    }
+
+    body {
+        overflow: hidden;
     }
 </style>
