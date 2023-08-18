@@ -35,7 +35,7 @@
 	<link href="https://cdn.jsdelivr.net/npm/animate.css@3.5.1" rel="stylesheet" type="text/css">
 
 </head>
-<body style="margin-bottom: -100px !important;">
+<body>
     <!-- fakeloader -->
 	<div class="fakeLoader"></div>
 	<!-- end fakeloader -->

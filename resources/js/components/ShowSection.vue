@@ -248,7 +248,10 @@
         }
     }
 </script>
-<style>
+<style scoped>
+.container {
+    max-height: 560px !important;
+}
     .boton2 {
         font-size: 25px !important;
     }
