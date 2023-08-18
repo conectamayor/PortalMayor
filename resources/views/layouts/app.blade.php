@@ -47,7 +47,7 @@
 	<!-- end navbar -->
 
 	<!-- end sidebar -->
-    <div id="app">
+    <div id="app" style="margin-bottom: -100px !important;">
 		
         @yield('content')
     </div>
