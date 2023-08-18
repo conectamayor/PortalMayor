@@ -15,9 +15,9 @@
             </div>
 
             <div v-if="check_category_poll == 0">
-                <div v-if="poll_question_posts == ''" class="row" style="margin-bottom: -100px !important;">
+                <div v-if="poll_question_posts == ''" class="row">
                     <div class="col-8 col-8-scroll" ref="col8">
-                        <div class="p-3">
+                        <div class="p-0">
                             <div class="col-12" v-for="(post, index) in posts" v-bind:index="index">
                                 <div v-if="post.link_question_id == 1">
                                     <button class="boton2" v-if="post.icon_available_id == 2" :style="{ background: post.color}" v-on:click="goWeb(post.url,post.google_tag)" >
