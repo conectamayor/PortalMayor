@@ -249,17 +249,53 @@
     }
 </script>
 <style>
+    .boton2 {
+        font-size: 25px !important;
+    }
+
+    .circle-container {
+        position: absolute;
+        top: 50%; /* Alinea el contenedor al centro vertical */
+        left: 50%; /* Ajusta la posición horizontal según tus necesidades */
+        transform: translate(-50%, -50%); /* Centra el contenedor en la pantalla */
+    }
+
+    .circle {
+        
+        width: 60px;
+        height: 60px;
+        background-color: #3498db;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 20px;
+        color: white;
+        font-size: 24px;
+        cursor: pointer;
+        text-shadow: 0px 0px 5px #fff, 0px 0px 5px #fff;
+        box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5);
+        transition: top 0.3s ease;
+    }
+
+    .circle i {
+        display: block;
+    }
+
+    .circle:hover {
+        background-color: #2980b9;
+    }
     /* Agrega estilos para la altura máxima y oculta el scrollbar en la columna de ancho 8 */
     .col-8-scroll {
-      max-height: 580px; /* Ajusta la altura máxima según tus necesidades */
-      overflow-y: scroll;
-      scrollbar-width: none; /* Oculta el scrollbar en navegadores Firefox */
-      -ms-overflow-style: none; /* Oculta el scrollbar en navegadores Edge */
+        max-height: 470px; /* Ajusta la altura máxima según tus necesidades */
+        overflow-y: scroll;
+        scrollbar-width: none; /* Oculta el scrollbar en navegadores Firefox */
+        -ms-overflow-style: none; /* Oculta el scrollbar en navegadores Edge */
     }
     
     /* Estilos para ocultar el scrollbar en navegadores Chrome, Safari, y nuevos navegadores Edge */
     .col-8-scroll::-webkit-scrollbar {
-      width: 0;
-      height: 0;
+        width: 0;
+        height: 0;
     }
 </style>
