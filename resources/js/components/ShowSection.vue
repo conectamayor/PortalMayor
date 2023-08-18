@@ -7,6 +7,27 @@
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
                 </div>
             </div>
             
@@ -26,13 +47,7 @@
         methods: {
             scrollContent(offset) {
                 const col8 = this.$refs.col8;
-                const newScrollTop = col8.scrollTop + offset;
-
-                if (newScrollTop >= 0 && newScrollTop <= col8.scrollHeight - col8.clientHeight) {
-                    col8.scrollTop = newScrollTop;
-                } else if (newScrollTop > col8.scrollHeight - col8.clientHeight) {
-                    col8.scrollTop = col8.scrollHeight - col8.clientHeight;
-                }
+                col8.scrollTop += offset;
             }
         }
     }
