@@ -4,17 +4,13 @@
             <hr>
             <h2><center><strong>{{ post.section_subtitle }}</strong></center></h2>
         </div>
-        <div v-if="post.video_id != 0" class="row">
-            <h1><center>{{ post.section_title }}</center></h1>
-            <iframe width="560" height="315" :src="`https://www.youtube.com/embed/${post.video_id}?autoplay=1`" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-        </div>
-        <div v-else>
+
             <div v-if="post.iframe != null && post.iframe != ''" class="row">
                 <h1><center>{{ post.section_title }}</center></h1>
                 <iframe width="600" height="600" :src="`${post.iframe}`" title="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </div>
 
-            <div v-if="check_category_poll == 0">
+
                 <div v-if="poll_question_posts == ''" class="row">
                     <div class="col-8 col-8-scroll" ref="col8">
                         <div class="col-12" v-for="(post, index) in posts" v-bind:index="index">
@@ -55,8 +51,6 @@
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
     </div>
 	
 </template>
@@ -78,56 +72,6 @@
             scrollContent(offset) {
                 const col8 = this.$refs.col8;
                 col8.scrollTop += offset;
-            },
-            scrollUp() {
-                window.scrollBy(0, -50); // You can adjust the scroll amount as needed
-
-                var position = localStorage.getItem('circle_position');
-                
-                const buttonElement = this.$refs.circle_container;
-
-                var newPosition = parseInt(position) - 4;
-
-                console.log(newPosition);
-
-                buttonElement.style.top = `${newPosition}%`;
-
-                localStorage.setItem('circle_position', newPosition);
-            },
-            scrollDown() {
-                window.scrollBy(0, 50); // You can adjust the scroll amount as needed
-                
-                var position = localStorage.getItem('circle_position');
-                
-                const buttonElement = this.$refs.circle_container;
-
-                var newPosition = parseInt(position) + 4;
-
-                console.log(newPosition);
-
-                buttonElement.style.top = `${newPosition}%`;
-
-                localStorage.setItem('circle_position', newPosition);
-
-                var alturaPantalla = window.innerHeight;
-                            var alturaPagina = document.body.scrollHeight;
-                            var posicionScroll = window.scrollY;
-
-                            if (posicionScroll + alturaPantalla >= alturaPagina) {
-                    // Se ha llegado al final de la página
-                    console.log("Se ha llegado al final de la página");
-                    // Aquí puedes detener cualquier animación o acción relacionada con el scroll
-                }
-            },
-            isScrollAtBottom() {
-                const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-                const scrollHeight = Math.max(
-                    document.documentElement.scrollHeight,
-                    document.body.scrollHeight
-                );
-                const clientHeight = document.documentElement.clientHeight;
-
-                return scrollTop + clientHeight >= scrollHeight;
             },
             goWeb(url, google_tag) {
                 this.$gtag.event('page_view', {
@@ -306,4 +250,4 @@
       width: 0;
       height: 0;
     }
-  </style>
+</style>
