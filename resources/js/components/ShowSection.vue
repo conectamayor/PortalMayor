@@ -15,7 +15,7 @@
             </div>
 
             <div v-if="check_category_poll == 0">
-                <div v-if="poll_question_posts == ''" class="row">
+                <div v-if="poll_question_posts == ''" class="row" style="margin-bottom: -100px !important;">
                     <div class="col-8 col-8-scroll" ref="col8">
                         <div class="p-3">
                             <div class="col-12" v-for="(post, index) in posts" v-bind:index="index">
