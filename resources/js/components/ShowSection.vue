@@ -55,7 +55,7 @@
 <style scoped>
     /* Agrega estilos para la altura máxima y el scroll en la columna de ancho 8 */
     .col-8-scroll {
-      max-height: 400px; /* Ajusta la altura máxima según tus necesidades */
+      max-height: 800px; /* Ajusta la altura máxima según tus necesidades */
       overflow-y: auto;
     }
 </style>
