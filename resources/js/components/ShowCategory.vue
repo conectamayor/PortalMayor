@@ -14,22 +14,24 @@
         </div>
         <div v-if="check_category_poll == 0">
             <div v-if="poll_question_posts == ''" class="row">
-                <div class="col-8">
-                    <div class="col-12" v-for="(post, index) in posts" v-bind:index="index">
-                        <router-link v-if="post.icon_available_id == '1'" @click.native="Track(post.google_tag)" class="boton2" :style="{ background: post.color}" :to="`/content/show/${post.content_id}`"> 
-                            <i v-bind:class="post.icon"></i><br> <font class="title">{{ post.title }}</font>
-                        </router-link>
-                        <router-link v-else @click.native="Track(post.google_tag)" class="boton2 link" :style="{ background: post.color}" :to="`/content/show/${post.content_id}`"> 
-                            <font class="title">{{ post.title }}</font>
-                        </router-link>
+                <div class="col-8 col-8-scroll" ref="col8">
+                    <div class="p-0">
+                        <div class="col-12" v-for="(post, index) in posts" v-bind:index="index">
+                            <router-link v-if="post.icon_available_id == '1'" @click.native="Track(post.google_tag)" class="boton2" :style="{ background: post.color}" :to="`/content/show/${post.content_id}`"> 
+                                <i v-bind:class="post.icon"></i><br> <font class="title">{{ post.title }}</font>
+                            </router-link>
+                            <router-link v-else @click.native="Track(post.google_tag)" class="boton2 link" :style="{ background: post.color}" :to="`/content/show/${post.content_id}`"> 
+                                <font class="title">{{ post.title }}</font>
+                            </router-link>
+                        </div>
                     </div>
                 </div>
                 <div class="col-4">
-                    <div class="circle-container">
-                        <div class="circle" tabindex="0" @click="scrollUp">
+                    <div class="d-flex flex-column align-items-center">
+                        <div class="circle" @click="scrollContent(-50)">
                             <i class="fas fa-chevron-up"></i>
                         </div>
-                        <div class="circle" tabindex="0" @click="scrollDown">
+                        <div class="circle" @click="scrollContent(50)">
                             <i class="fas fa-chevron-down"></i>
                         </div>
                     </div>
@@ -81,30 +83,7 @@
                 </div>
             </div>
         </div>
-        <div v-if="check_category_poll != 0">
-            <div class="row">
-                <div class="col-8">
-                    <div class="col-12" v-for="(post, index) in posts" v-bind:index="index">
-                        <router-link v-if="post.icon_available_id == '1'" class="boton2" :style="{ background: post.color}" :to="`/content/show/${post.content_id}`"> 
-                            <i v-bind:class="post.icon"></i><br> {{ post.title }}
-                        </router-link>
-                        <router-link v-else class="boton2 link" :style="{ background: post.color}" :to="`/content/show/${post.content_id}`"> 
-                            <font class="title">{{ post.title }}</font>
-                        </router-link>
-                    </div>
-                </div>
-                <div class="col-4">
-                    <div class="circle" @click="scrollUp">
-                        <i class="fas fa-chevron-up"></i>
-                    </div>
-                    <div class="circle" @click="scrollDown">
-                        <i class="fas fa-chevron-down"></i>
-                    </div>
-                </div>
-            </div>
-        </div>
     </div>
-	
 </template>
 <script>
     export default {
@@ -119,23 +98,9 @@
             this.getPolls();
         },
         methods: {
-            scrollUp() {
-                window.scrollBy(0, -50); // You can adjust the scroll amount as needed
-
-                const circleElements = document.querySelectorAll('.circle');
-                circleElements.forEach(circle => {
-                    const currentPosition = parseInt(getComputedStyle(circle).top);
-                    circle.style.top = currentPosition - 10 + 'px';
-                });
-            },
-            scrollDown() {
-                window.scrollBy(0, 50); // You can adjust the scroll amount as needed
-
-                const circleElements = document.querySelectorAll('.circle');
-                circleElements.forEach(circle => {
-                    const currentPosition = parseInt(getComputedStyle(circle).top);
-                    circle.style.top = currentPosition + 10 + 'px';
-                });
+            scrollContent(offset) {
+                const col8 = this.$refs.col8;
+                col8.scrollTop += offset;
             },
             Track(google_tag) {
                 this.$gtag.event('page_view', {
