@@ -194,6 +194,7 @@
             },
             catchUser() {
                 let formData = new FormData();
+
                 formData.append('page', 'Home');
                
                 axios.post('/api/user/catch', formData)
@@ -201,26 +202,45 @@
                     currentObj.success = response.data.success;
                 })
                 .catch(function (error) {
-                        console.log(error);
+                    console.log(error);
+                });
+            },
+            getRegion() {
+                axios.get('/api/region/find')
+                .then(function (response) {
+                    console.log(response);
+                    this.region = response.data.success;
+                })
+                .catch(function (error) {
+                    console.log(error);
                 });
             },
             getPosts() {
                 this.loading = true;
 
-                axios.get('/api/section/home')
-                .then(response => {
-                    this.posts = response.data.data;
-                })
-                .catch(function (error) {
-                    console.log(error);
-                })
-                .finally(() => {
-                    this.loading = false;
-                });
+                let formData = new FormData();
+
+                formData.append('region', this.region);
+
+                if (this.region == '') {
+                    this.posts = '';
+                } else {
+                    axios.post('/api/section/home', formData)
+                    .then(response => {
+                        this.posts = response.data.data;
+                    })
+                    .catch(function (error) {
+                        console.log(error);
+                    })
+                    .finally(() => {
+                        this.loading = false;
+                    });
+                }
             }
         },
         data: function() {
             return {
+                region: '',
                 modalShow: '',
                 posts: [],
                 form: {

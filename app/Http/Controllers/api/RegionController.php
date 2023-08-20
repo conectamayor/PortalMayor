@@ -27,4 +27,32 @@ class RegionController extends ApiResponseController
         
         return $this->successResponse($regions);
     }
+
+    /**
+     * Store the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function find()
+    {
+        if(!empty($_SERVER['HTTP_CLIENT_IP'])) {  
+            $ip = $_SERVER['HTTP_CLIENT_IP'];  
+            $ip = explode(":", $ip);
+            $ip = $ip[3];
+        } 
+        elseif (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])) {  
+            $ip = $_SERVER['HTTP_X_FORWARDED_FOR'];  
+            $ip = explode(":", $ip);
+            $ip = $ip[3];
+        }
+        else{  
+            $ip = $_SERVER['REMOTE_ADDR'];  
+        }
+
+        $details = json_decode(file_get_contents("http://ipinfo.io/{$ip}/json"));
+
+        $region = Region::where('region', 'like', $details->region)->first();
+        
+        return $this->successResponse($region);
+    }
 }

@@ -12,6 +12,7 @@ use App\Http\Controllers\ApiResponseController;
 use App\Http\Controllers\Controller\api;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use App\Http\Controllers\Controller\api\RegionController;
 
 class UserController extends ApiResponseController
 {
@@ -117,6 +118,37 @@ class UserController extends ApiResponseController
         $catch->page = $request->page;
         $catch->save();
     }
+
+    /**
+     * Store the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function location(Request $request)
+    {
+        if(!empty($_SERVER['HTTP_CLIENT_IP'])) {  
+            $ip = $_SERVER['HTTP_CLIENT_IP'];  
+            $ip = explode(":", $ip);
+            $ip = $ip[3];
+        } 
+        elseif (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])) {  
+            $ip = $_SERVER['HTTP_X_FORWARDED_FOR'];  
+            $ip = explode(":", $ip);
+            $ip = $ip[3];
+        }
+        else{  
+            $ip = $_SERVER['REMOTE_ADDR'];  
+        }
+
+        $details = json_decode(file_get_contents("http://ipinfo.io/{$ip}/json"));
+
+        $details->city;
+
+        $details->region;
+
+        return $this->successResponse($catch);
+    }
+
 
     /**
      * Store the form for creating a new resource.

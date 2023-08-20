@@ -20,7 +20,7 @@
                                 <i v-bind:class="post.icon"></i><br> <font class="title">{{ post.title }}</font>
                             </router-link>
                             <router-link v-else @click.native="Track(post.google_tag)" class="boton2 link" :style="{ background: post.color}" :to="`/content/show/${post.content_id}`"> 
-                                <font class="title">{{ post.title }}</font>
+                                <br><font class="title">{{ post.title }}</font>
                             </router-link>
                         </div>
                     </div>
@@ -76,7 +76,7 @@
                 <div v-if="poll_quantity > 1">
                     <div class="col-md-12" v-for="(post, index) in polls" v-bind:index="index">
                         <router-link  class="pollboton link" :style="{ background: post.color}" :to="`/poll/show/${post.poll_id}`"> 
-                            <font class="title">{{ post.title }}</font>
+                            <br><font class="title">{{ post.title }}</font>
                         </router-link>
                     </div>
                 </div>
