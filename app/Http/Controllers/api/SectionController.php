@@ -306,13 +306,7 @@ class SectionController extends ApiResponseController
      */
     public function update(Request $request, $id)
     {
-        if($request->icon_type_id == 1) {
-            if($request->file != 'undefined') {
-                $fileName = time().'_'.'section_icon'.'.'.$request->file->getClientOriginalExtension();
-            }
-        } else {
-            $fileName = $request->icon;
-        }
+        $fileName = $request->icon;
 
         $section = Section::find($id);
         $section->section_subtitle = $request->subtitle;
@@ -330,6 +324,12 @@ class SectionController extends ApiResponseController
         $section->link_question_id = $request->link_question_id;
         $section->direct_content_question_id = $request->direct_content_question_id;
         $section->url = $request->url;
+        $section->icon_available_id = $request->icon_available_id;
+        $section->open_app_id = $request->open_app_id;
+        $section->open_app_version_id = $request->open_app_version_id;
+        $section->open_app_uri_url = $request->open_app_uri_url;
+        $section->open_app_desktop_url = $request->open_app_desktop_url;
+        $section->open_app_not_installed = $request->open_app_not_installed;
 
         $word = "/";
         $string = $request->video_id;
@@ -356,11 +356,7 @@ class SectionController extends ApiResponseController
             $section->video_id = '';
         }
 
-        if($request->icon_type_id == 2) {
-            $section->icon = $fileName.' home_icon_size2';
-        } else if($request->icon_type_id == 3) {
-            $section->icon = 'icon ion-'.$fileName.' home_icon_size2';
-        }
+        $section->icon = $fileName.' home_icon_size2';
 
         $old_position = $section->position;
         $section->position = $request->position;
@@ -377,19 +373,63 @@ class SectionController extends ApiResponseController
         }
 
         if($section->save()) {
-            if($request->file != 'undefined') {
-                if($request->icon_type_id == 1) {
-                    Storage::disk('local')->putFileAs(
-                        '/files',
-                        $request->file,
-                        $fileName
-                    );
-                }
+            $section_regions = SectionRegion::where('section_id', $id)->get();
+
+            foreach ($section_regions as $section_region) {
+                $section_region_detail = SectionRegion::find($section_region->section_region_id);
+                $section_region_detail->delete();
             }
 
-            if($request->icon_type_id == 2 && $old_icon_type == 1) {
-                if(Storage::exists('public/files/'.$old_icon_name)) {
-                    Storage::delete('public/files/'.$old_icon_name);
+            if ($request->region_id != 1000) {
+                $region_data = explode(',', $request->region_id);
+
+                for ($i=0; $i < count($region_data); $i++) { 
+                    $section_region = new SectionRegion();
+                    $section_region->section_id = $section->section_id;
+                    $section_region->region_id = trim($region_data[$i]);
+                    $section_region->save();
+                }
+    
+                if ($request->commune_id != 'null') {
+                    $commune_data = explode(',', $request->commune_id);
+    
+                    for ($i=0; $i < count($commune_data); $i++) { 
+                        $section_commune = new SectionCommune();
+                        $section_commune->section_id = $section->section_id;
+                        $section_commune->commune_id = trim($commune_data[$i]);
+                        $section_commune->save();
+                    }
+                } else {
+                    $region_data = explode(',', $request->region_id);
+    
+                    for ($i=0; $i < count($region_data); $i++) { 
+                        $communes = Commune::where('region_id', trim($region_data[$i]))->get();
+    
+                        foreach ($communes as $commune) {
+                            $section_commune = new SectionCommune();
+                            $section_commune->section_id = $section->section_id;
+                            $section_commune->commune_id = $commune->commune_id;
+                            $section_commune->save();
+                        }
+                    }
+                }
+            } else {
+                $regions = Region::all();
+
+                foreach ($regions as $region) {
+                    $section_region = new SectionRegion();
+                    $section_region->section_id = $section->section_id;
+                    $section_region->region_id = $region->region_id;
+                    $section_region->save();
+                }
+
+                $communes = Commune::all();
+
+                foreach ($communes as $commune) {
+                    $section_commune = new SectionCommune();
+                    $section_commune->section_id = $section->section_id;
+                    $section_commune->commune_id = $commune->commune_id;
+                    $section_commune->save();
                 }
             }
 
