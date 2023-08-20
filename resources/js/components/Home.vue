@@ -183,7 +183,7 @@
             },
             async getRegion() {
                 try {
-                    const response = await axios.get('/api/region/find');
+                    const response = await axios.post('/api/region/find');
 
                     this.region = response.data.data.region_id;
                 } catch (error) {
@@ -192,7 +192,7 @@
             },
             async getCommune() {
                 try {
-                    const response = await axios.get('/api/commune/find');
+                    const response = await axios.post('/api/commune/find');
                     console.log(response.data.data)
                     this.commune = response.data.data.commune_id;
                 } catch (error) {
