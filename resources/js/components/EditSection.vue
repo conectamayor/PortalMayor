@@ -99,7 +99,6 @@
                                         <select class="form-control" id="exampleFormControlSelect1"
                                         v-model="form.region_id" multiple
                                         @change="getCommunes"
-                                        disabled
                                         >
                                             <option :value="1000">Todas las regiones y comunas</option>
                                             <option :selected="isSelectedRegion(region_post.region_id)" v-for="region_post in region_posts" :key="region_post.region_id" :value="region_post.region_id">{{ region_post.region }}</option>
@@ -444,7 +443,13 @@
                     }
 
                     this.$set(this.form, 'position', this.post.position);
-                    this.$set(this.form, 'direct_content_question_id', this.post.direct_content_question_id);
+
+                    if (this.post.direct_content_question_id != null && this.post.direct_content_question_id != '') {
+                        this.$set(this.form, 'direct_content_question_id', 1);
+                    } else {
+                        this.$set(this.form, 'direct_content_question_id', 2);
+                    }
+
                     this.$set(this.form, 'icon_available_id', this.post.icon_available_id);
                     this.$set(this.form, 'open_app_id', this.post.open_app_id);
                     this.$set(this.form, 'open_app_version_id', this.post.open_app_version_id);
