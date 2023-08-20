@@ -70,9 +70,11 @@ class RegionController extends ApiResponseController
             echo "cURL Error #:" . $err;
         } else {
             $details = json_decode($response);
-
-            var_dump($details);
         }
+
+        $details->region_name = "Region Metropolitana de Santiago";
+
+        echo $details->region_name;
 
         $region = Region::where('regin', 'like', '%' . $details->region . '%')->first();
         
