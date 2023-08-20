@@ -361,6 +361,9 @@
                 })
                 .finally(() => {
                     this.loading = false;
+
+                    const selectedRegionIds = this.stored_regions.map(item => item.region_id);
+                    this.form.region_id = selectedRegionIds;
                 });
             },
             getCommunes() {
@@ -484,6 +487,11 @@
                 const config = {
                     headers: { 'content-type': 'multipart/form-data' }
                 }
+                const selectedRegionIds = this.stored_regions.map(item => item.region_id);
+
+                // Set form.region_id based on the selected region IDs
+                this.form.region_id = selectedRegionIds;
+                
                 console.log(this.form.region_id)
                 if(this.form.title != ''
                 && this.form.color != ''
