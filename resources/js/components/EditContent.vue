@@ -26,29 +26,7 @@
                                     </ul>
                                 </div>
                                 <div class="form-group row">
-                                    <div class="col-sm-6">
-                                        <label for="exampleInputEmail1">Categoría <h6 class="m-0 text-danger float-right">*</h6></label>
-                                        <select class="form-control" id="exampleFormControlSelect1"
-                                        v-model="form.category_id"
-                                        >
-                                            <option :value="null">-Seleccionar-</option>
-                                            <option v-for="category_post in category_posts" :key="category_post.category_id" :value="category_post.category_id">{{ category_post.name }}</option>
-                                        </select>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <label for="exampleInputEmail1">Tipo de Contenido <h6 class="m-0 text-danger float-right">*</h6></label>
-                                        <select class="form-control" id="exampleFormControlSelect1"
-                                        v-model="form.type_id"
-                                        >
-                                            <option :value="null">-Seleccionar-</option>
-                                            <option :value="1">Video</option>
-                                            <option :value="2">Audio</option>
-                                            <option :value="3">Texto</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="form-group row">
-                                    <div class="col-sm-6" v-if="form.type_id == 1">
+                                    <div class="col-sm-5">
                                         <label for="exampleInputEmail1">Título <h6 class="m-0 text-danger float-right">*</h6></label>
                                         <input
                                         type="text" 
@@ -58,6 +36,39 @@
                                         placeholder="Ingresa el título"
                                         >
                                         <span>{{charactersLeft}}</span>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <label for="exampleInputEmail1">Sección - Categoría <h6 class="m-0 text-danger float-right">*</h6></label>
+                                        <select class="form-control" id="exampleFormControlSelect1"
+                                        v-model="form.category_id"
+                                        >
+                                            <option :value="null">-Seleccionar-</option>
+                                            <option v-for="category_post in category_posts" :key="category_post.category_id" :value="category_post.category_id">{{ category_post.section_title }} - {{ category_post.title }}</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <label for="exampleInputEmail1">Tipo de Contenido <h6 class="m-0 text-danger float-right">*</h6></label>
+                                        <select class="form-control" id="exampleFormControlSelect1"
+                                        v-model="form.type_id"
+                                        >
+                                            <option :value="null">-Seleccionar-</option>
+                                            <option :value="1">Video</option>
+                                            <option :value="2">Audio</option>
+                                            <option :value="3">Texto</option>
+                                            <option :value="4">Pdf</option>
+                                            <option :value="5">Iframe</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-sm-6" v-if="form.type_id == 1 || form.type_id == 2 || form.type_id == 4 || form.type_id == 5">
+                                        <label for="exampleInputEmail1">Descripción <h6 class="m-0 text-danger float-right">*</h6></label>
+                                        <input
+                                        type="text" 
+                                        v-model="form.description" 
+                                        class="form-control"
+                                        placeholder="Ingresa el texto"
+                                        >
                                     </div>
                                     <div class="col-sm-3" v-if="form.type_id == 1">
                                         <div v-if="form.type_id == 1">
@@ -83,19 +94,8 @@
                                         </div>
                                     </div>
                                     <div class="col-sm-6" v-if="form.type_id == 2">
-                                        <label for="exampleInputEmail1">Título <h6 class="m-0 text-danger float-right">*</h6></label>
-                                        <input
-                                        type="text" 
-                                        v-model="form.title" 
-                                        maxlength="36"
-                                        class="form-control"
-                                        placeholder="Ingresa el título"
-                                        >
-                                        <span>{{charactersLeft}}</span>
-                                    </div>
-                                    <div class="col-sm-6" v-if="form.type_id == 2">
                                         <div v-if="form.type_id == 2">
-                                            <label for="exampleInputEmail1">Src</label>
+                                            <label for="exampleInputEmail1">Src <h6 class="m-0 text-danger float-right">*</h6></label>
                                             <input
                                             type="text" 
                                             v-model="form.src" 
@@ -105,13 +105,50 @@
                                         </div>
                                     </div>
                                     
-                                    <div class="col-sm-12" v-if="form.type_id == 4">
-                                        <label for="exampleInputEmail1">PDF</label>
+                                    <div class="col-sm-6" v-if="form.type_id == 4">
+                                        <label for="exampleInputEmail1">PDF <h6 class="m-0 text-danger float-right">*</h6></label>
                                         <input ref="pdf" accept=".pdf" type="file" class="form-control" v-on:change="onFileChangePdf">
+                                    </div>
+                                    <div class="col-sm-6" v-if="form.type_id == 5">
+                                        <div v-if="form.type_id == 5">
+                                            <label for="exampleInputEmail1">Url <h6 class="m-0 text-danger float-right">*</h6></label>
+                                            <input
+                                            type="text" 
+                                            v-model="form.iframe" 
+                                            class="form-control"
+                                            placeholder="Ingresa el src del iframe"
+                                            >
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <div class="col-sm-6">
+                                    <div class="col-sm-4">
+                                        <label for="exampleInputEmail1">Color <h6 class="m-0 text-danger float-right">*</h6></label>
+                                        <div class="form-group row">
+                                            <div class="col-sm-2">
+                                                <v-input-colorpicker v-model="color" @change="handleChange" />
+                                            </div>
+                                            <div class="col-sm-10">
+                                                <input
+                                                type="text" 
+                                                v-model="form.color" 
+                                                class="form-control"
+                                                placeholder="Ingresa el color"
+                                                >
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <label for="exampleInputEmail1">Posición <h6 class="m-0 text-danger float-right">*</h6></label>
+                                        <input
+                                        type="number" 
+                                        v-model="form.position" 
+                                        min="0"
+                                        class="form-control"
+                                        placeholder="Ingresa la posición"
+                                        >
+                                    </div>
+                                    <div class="col-sm-4">
                                         <label for="exampleInputEmail1">Google Tag <h6 class="m-0 text-danger float-right">*</h6></label>
                                         <input
                                         type="text" 
@@ -120,7 +157,36 @@
                                         placeholder="Ingresa el google tag"
                                         >
                                     </div>
-                                    <div class="col-sm-3">
+                                </div>
+                                <div class="form-group row">
+                                    
+                                    <div class="col-sm-12" v-if="form.type_id == 3">
+                                        <label for="exampleInputEmail1">Texto <h6 class="m-0 text-danger float-right">*</h6></label>
+                                        <vue-editor v-model="form.description" ref="editor"></vue-editor>
+                                    </div>
+                                    
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-sm-4">
+                                        <label for="exampleInputEmail1">¿La sección tiene icono? <h6 class="m-0 text-danger float-right">*</h6></label>
+                                        <select class="form-control" id="exampleFormControlSelect1"
+                                        v-model="form.icon_available_id"
+                                        >
+                                            <option :value="1">Si</option>
+                                            <option :value="2">No</option>
+                                        </select>
+                                        <input type="hidden" v-model="form.icon_type_id">
+                                    </div>
+                                    <div class="col-sm-4" v-if="form.icon_available_id == 1">
+                                        <label for="exampleInputEmail1">Fa Icon - <a href="https://fontawesome.com/icons" target= "_blank">Ver iconos</a></label>
+                                        <input
+                                            type="text" 
+                                            v-model="form.fai" 
+                                            class="form-control"
+                                            placeholder="Ingresa el icono"
+                                        >
+                                    </div>
+                                    <div class="col-sm-2">
                                         <label for="exampleInputEmail1">Fecha de Inicio <h6 class="m-0 text-danger float-right">*</h6></label>
                                         <input
                                         type="date" 
@@ -129,7 +195,7 @@
                                         placeholder="Ingresa la fecha de inicio"
                                         >
                                     </div>
-                                    <div class="col-sm-3">
+                                    <div class="col-sm-2">
                                         <label for="exampleInputEmail1">Fecha de Termino <h6 class="m-0 text-danger float-right">*</h6></label>
                                         <input
                                         type="date" 
@@ -139,93 +205,45 @@
                                         >
                                     </div>
                                 </div>
+
                                 <div class="form-group row">
-                                    <div class="col-sm-4">
-                                        <label for="exampleInputEmail1">Tipo de Icono <h6 class="m-0 text-danger float-right">*</h6></label>
+                                    <div class="col-sm-6">
+                                        <label for="exampleInputEmail1">¿El enlace de compartir de Whatsapp es personalizado? <h6 class="m-0 text-danger float-right">*</h6></label>
                                         <select class="form-control" id="exampleFormControlSelect1"
-                                        v-model="form.icon_type_id"
+                                        v-model="form.whatsapp_type_id"
                                         >
-                                            <option :value="null">Seleccionar</option>
-                                            <option :value="2">Fa Icon</option>
-                                            <option :value="3">Ionic Icon</option>
+                                            <option :value="1">Si</option>
+                                            <option :value="2">No</option>
                                         </select>
+                                        <input type="hidden" v-model="form.icon_type_id">
                                     </div>
-                                    <div class="col-sm-6" v-if="form.icon_type_id == 1">
-                                        <label for="exampleInputEmail1">Icono</label>
-                                        <input ref="file" accept="image/png" type="file" class="form-control" v-on:change="onFileChange">
-                                    </div>
-                                    <div class="col-sm-6" v-if="form.icon_type_id == 2">
-                                        <label for="exampleInputEmail1">Fa Icon - <a href="https://fontawesome.com/icons" target= "_blank">Ver iconos</a></label>
+                                    <div class="col-sm-6" v-if="form.whatsapp_type_id == 1">
+                                        <label for="exampleInputEmail1">Enlace de Whatsapp <h6 class="m-0 text-danger float-right">*</h6></label>
                                         <input
                                             type="text" 
-                                            v-model="form.fai" 
+                                            v-model="form.whatsapp_description" 
                                             class="form-control"
-                                            placeholder="Ingresa el icono"
-                                        >
-                                    </div>
-                                    <div class="col-sm-6" v-if="form.icon_type_id == 3">
-                                        <label for="exampleInputEmail1">Ionic Icon - <a href="https://ionicframework.com/docs/v3/ionicons/" target= "_blank">Ver iconos</a></label>
-                                        <input
-                                            type="text" 
-                                            v-model="form.fai" 
-                                            class="form-control"
-                                            placeholder="Ingresa el icono"
-                                        >
-                                    </div>
-                                </div>
-                                <div class="form-group row">
-                                    <div class="col-sm-8" v-if="form.type_id == 1 || form.type_id == 2">
-                                        <label for="exampleInputEmail1">Descripción <h6 class="m-0 text-danger float-right">*</h6></label>
-                                        <input
-                                        type="text" 
-                                        v-model="form.description" 
-                                        class="form-control"
-                                        placeholder="Ingresa el texto"
-                                        >
-                                    </div>
-                                    <div class="col-sm-8" v-if="form.type_id == 3">
-                                        <vue-editor v-model="form.description"></vue-editor>
-                                    </div>
-                                    <div class="col-sm-4">
-                                        <label for="exampleInputEmail1">Posición <h6 class="m-0 text-danger float-right">*</h6></label>
-                                        <input
-                                        type="number" 
-                                        v-model="form.position" 
-                                        class="form-control"
-                                        placeholder="Ingresa la posición"
+                                            placeholder="Ingresa la url a compartir. Ej: (https://conectamayor.com)"
                                         >
                                     </div>
                                 </div>
 
-                                <button v-if="post.status == 1"
+
+                                <button 
                                 type="submit"
                                 class="btn btn-success btn-icon-split">
                                     <span class="icon text-white-50">
                                         <i class="fas fa-check"></i>
                                     </span>
-                                    <span class="text">Actualizar</span>
+                                    <span class="text">Guardar</span>
                                 </button>
-                                <router-link v-if="post.status == 1" to="/content" class="btn btn-danger btn-icon-split">
+                                <router-link to="/content" class="btn btn-danger btn-icon-split">
                                     <span class="icon text-white-50">
                                         <i class="fas fa-times"></i>
                                     </span>
                                     <span class="text">Cancelar</span>
                                 </router-link>
                             </form>
-                            <button v-if="post.status == 2" v-on:click="acceptPost"
-                            type="submit"
-                            class="btn btn-success btn-icon-split">
-                                <span class="icon text-white-50">
-                                    <i class="fas fa-check"></i>
-                                </span>
-                                <span class="text">Aceptar</span>
-                            </button>
-                            <router-link v-if="post.status == 2" to="/content" class="btn btn-warning btn-icon-split">
-                                <span class="icon text-white-50">
-                                    <i class="fas fa-times"></i>
-                                </span>
-                                <span class="text">Regresar</span>
-                            </router-link>
                         </div>
                     </div>
                 </div>
@@ -238,15 +256,17 @@
 <script>
     import { ClipLoader } from 'vue-spinner/dist/vue-spinner.min.js';
     import { VueEditor } from "vue2-editor";
+    import InputColorPicker from 'vue-native-color-picker';
+    
     export default {
         components: {
             ClipLoader,
-            VueEditor
+            VueEditor,
+            "v-input-colorpicker": InputColorPicker
         },
         created() {
-            this.getCategoryList();
             this.getPost();
-            this.storeAudit();
+            this.getCategoryList();
         },
         data: function() {
             return {
@@ -255,11 +275,12 @@
                 loading: false,
                 category_posts: [],
                 noFile: false,
+                noPdf: false,
                 form: {
                     category_id: null,
                     type_id: null,
                     title: '',
-                    icon_type_id: null,
+                    icon_type_id: 2,
                     video_id: '',
                     google_tag: '',
                     icon: '',
@@ -268,98 +289,61 @@
                     description: '',
                     start_date: '',
                     end_date: '',
-                    status: '',
+                    src: '',
+                    video_type_id: null,
+                    iframe: '',
+                    color: '',
+                    icon_available_id: 2,
+                    position: '',
+                    whatsapp_type_id: 2,
+                    whatsapp_description: '',
                 }
             }
         },
         methods: {
+            handleChange() {
+                this.form.color = this.color;
+            },
             onFileChange(e){
                 this.file = e.target.files[0];
                 this.noFile = e.target.files.length;
             },
-            acceptPost() {
-                if(confirm("¿Realmente usted quiere aceptar el contenido?")) {
-                    this.loading = true; //the loading begin
-                    axios.get('/api/content/accept/'+this.$route.params.id+'?api_token='+App.apiToken).then(response => {
-                        
-                    })
-                    .catch(function (error) {
-                        console.log(error);
-                    })
-                    .finally(() => {
-                        this.loading = false;
-                        this.getPosts();
-                        this.$awn.success("El registro ha sido aceptado", {labels: {success: "Éxito"}});
-                        this.$router.push('/content');
-                    });
-
-                    let formData = new FormData();
-                    formData.append('page', 'AcceptContent - '+this.$route.params.id);
-                
-                    axios.post('/api/audit/store?api_token='+App.apiToken, formData)
-                    .then(function (response) {
-                        currentObj.success = response.data.success;
-                    })
-                    .catch(function (error) {
-                        console.log(error);
-                    })
-                    .finally(() => {
-                        this.loading = false;
-                        this.$awn.success("El registro ha sido aceptado", {labels: {success: "Éxito"}});
-                        this.$router.push('/content');
-                    });
-                }
-            },
-            storeAudit() {
-                let formData = new FormData();
-                formData.append('page', 'EditContent - Content Id: '+this.$route.params.id);
-               
-                axios.post('/api/audit/store?api_token='+App.apiToken, formData)
-                .then(function (response) {
-                    currentObj.success = response.data.success;
-                })
-                .catch(function (error) {
-                    console.log(error);
-                });
-            },
-            getPost() {
-                axios.get('/api/content/'+ this.$route.params.id +'/edit?api_token='+App.apiToken)
-                .then(response => {
-                    this.post = response.data.data;
-                    
-                    this.$set(this.form, 'category_id', this.post.category_id);
-                    this.$set(this.form, 'type_id', this.post.type_id);
-                    this.$set(this.form, 'video_id', this.post.video_id);
-                    this.$set(this.form, 'title', this.post.title);
-                    var google_tag = this.post.google_tag;
-                    var google_tag_detail = google_tag.split('_');
-                    this.$set(this.form, 'google_tag', google_tag_detail[1]);
-                    this.$set(this.form, 'video_type_id', this.post.video_type_id);
-                    if(this.post.icon_type_id == 2) {
-                        var icon = this.post.icon;
-                        var icon_detail = icon.split(' ');
-                        var icon = icon_detail[1]+' '+icon_detail[2];
-                        this.$set(this.form, 'fai', icon);
-                    } else {
-                        var icon = this.post.icon;
-                        var icon_detail = icon.split(' ');
-                        var icon_detail = icon_detail[1];
-                        var icon_detail = icon_detail.split('-');
-                        var icon = 'ios-'+icon_detail[2];
-                        this.$set(this.form, 'fai', icon);
-                    }
-                    this.$set(this.form, 'icon_type_id', this.post.icon_type_id);
-                    this.$set(this.form, 'description', this.post.description);
-                    this.$set(this.form, 'start_date', this.post.start_date);
-                    this.$set(this.form, 'end_date', this.post.end_date);
-                    this.$set(this.form, 'position', this.post.position);
-                });
+            onFileChangePdf(e){
+                this.pdf = e.target.files[0];
+                this.noPdf = e.target.files.length;
             },
             getCategoryList() {
                 axios.get('/api/category/list?api_token='+App.apiToken)
                 .then(response => {
                     this.category_posts = response.data.data;
                 });
+            },
+            async getPost() {
+                try {
+                    const response = await axios.get('/api/content/' + this.$route.params.id + '/edit?api_token='+App.apiToken);
+
+                    this.post = response.data.data;
+
+                    this.$set(this.form, 'category_id', this.post.category_id);
+                    this.$set(this.form, 'type_id', this.post.type_id);
+                    this.$set(this.form, 'video_id', this.post.video_id);
+                    this.$set(this.form, 'title', this.post.title);
+                    this.$set(this.form, 'google_tag', this.post.google_tag);
+                    this.$set(this.form, 'icon_type_id', this.post.icon_type_id);
+                    this.$set(this.form, 'icon', this.post.fai);
+                    this.$set(this.form, 'description', this.post.description);
+                    this.$set(this.form, 'color', this.post.color);
+                    this.$set(this.form, 'start_date', this.post.start_date);
+                    this.$set(this.form, 'end_date', this.post.end_date);
+                    this.$set(this.form, 'position', this.post.position);
+                    this.$set(this.form, 'src', this.post.src);
+                    this.$set(this.form, 'video_type_id', this.post.video_type_id);
+                    this.$set(this.form, 'icon_available_id', this.post.icon_available_id);
+
+                    this.loading = false;
+                } catch (error) {
+                    console.error(error);
+                }
             },
             onSubmit(e) {
                 this.loading = true; //the loading begin
@@ -372,12 +356,17 @@
 
                 if(this.form.category_id != null
                     && this.form.type_id != null
-                    && this.form.title != ''
+                    && ((this.form.type_id == 1 && this.form.video_id != '' && this.form.video_type_id != null) 
+                    || (this.form.type_id == 2 && this.form.src != '')
+                    || (this.form.type_id == 3 && this.form.description != '')
+                    || (this.form.type_id == 5 && this.form.iframe != '')
+                    )
                     && this.form.google_tag != ''
-                    && this.form.fai != ''
-                    && this.form.description != ''
+                    && ((this.form.fai != '' && this.form.icon_available_id == 1) || this.form.icon_available_id == 2)
                     && this.form.start_date != ''
                     && this.form.position != ''
+                    && (this.form.icon_available_id == 2 || (this.form.icon_available_id == 1 && this.form.fai != ''))
+                    && this.color != ''
                 ) {
                     let formData = new FormData();
                     formData.append('category_id', this.form.category_id);
@@ -385,15 +374,21 @@
                     formData.append('video_id', this.form.video_id);
                     formData.append('title', this.form.title);
                     formData.append('google_tag', this.form.google_tag);
+                    formData.append('icon_type_id', this.form.icon_type_id);
                     formData.append('icon', this.form.fai);
                     formData.append('description', this.form.description);
-                    formData.append('icon_type_id', this.form.icon_type_id);
+                    formData.append('color', this.form.color);
                     formData.append('start_date', this.form.start_date);
                     formData.append('end_date', this.form.end_date);
                     formData.append('position', this.form.position);
+                    formData.append('src', this.form.src);
                     formData.append('file', this.file);
+                    formData.append('pdf', this.pdf);
+                    formData.append('iframe', this.iframe);
+                    formData.append('video_type_id', this.form.video_type_id);
+                    formData.append('icon_available_id', this.form.icon_available_id);
 
-                    axios.post('/api/content/update/'+this.$route.params.id+'?api_token='+App.apiToken, formData, config)
+                    axios.post('/api/content/update/'+ this.$route.params.id +'?api_token='+App.apiToken, formData, config)
                     .then(function (response) {
                         currentObj.success = response.data.success;
                     })
@@ -408,8 +403,12 @@
                 } else {
                     this.loading = false;
                     this.errors = [];
-                    
-                    if (this.form.branch_office_id == null) {
+
+                    if (this.form.title == '') {
+                        this.errors.push('El título es obligatorio.');
+                    }
+
+                    if (this.form.category_id == null) {
                         this.errors.push('La categoría es obligatoria.');
                     }
 
@@ -417,27 +416,47 @@
                         this.errors.push('El tipo de contenido es obligatorio.');
                     }
 
-                    if (this.form.title == '') {
-                        this.errors.push('El título es obligatorio.');
-                    }
-
-                    if (this.form.google_tag == '') {
-                        this.errors.push('La etiqueta de Google es obligatoria.');
+                    if ((this.form.type_id == 1 && this.form.video_id == '' && this.form.video_type_id == null) 
+                    || (this.form.type_id == 2 && this.form.src == '')
+                    || (this.form.type_id == 3 && this.form.description == '')
+                    || (this.form.type_id == 5 && this.form.iframe == '')
+                    ) {
+                        this.errors.push('Los datos del tipo de contenido son obligatorios.');
                     }
 
                     if (this.form.description == '') {
                         this.errors.push('La descripción es obligatoria.');
                     }
-
-                    if (this.form.start_date == '') {
-                        this.errors.push('La fecha inicial es obligatoria.');
+                    
+                    if (this.form.color == '') {
+                        this.errors.push('El color es obligatorio.');
                     }
 
                     if (this.form.position == '') {
                         this.errors.push('La posición es obligatoria.');
                     }
+                    
+                    if (this.form.google_tag == '') {
+                        this.errors.push('Las etiqueta de Google es obligatoria.');
+                    }
 
-                    $('html,body').scrollTop(0);
+                    if (this.form.icon_available_id == 1 && this.form.fai == '') {
+                        this.errors.push('El icono es obligatorio.');
+                    }
+                    
+                    if (this.form.start_date == '') {
+                        this.errors.push('La fecha inicial es obligatoria.');
+                    }
+
+                    if (this.form.end_date == '') {
+                        this.errors.push('La fecha de termino es obligatoria.');
+                    }
+
+                    if (this.form.whatsapp_type_id == 1 && this.form.whatsapp_description == '') {
+                        this.errors.push('La descripción de WhatsApp es obligatoria.');
+                    }
+
+                    window.scrollTo(0, 0);
 
                     e.preventDefault();
                 }
@@ -450,7 +469,7 @@
             },
             charactersLeft() {
                 var char = this.form.title.length,
-                    limit = 50;
+                limit = 50;
 
                 return (limit - char) + " / " + limit + " caracteres disponibles";
             }

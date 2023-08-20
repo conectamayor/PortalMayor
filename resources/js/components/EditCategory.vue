@@ -400,6 +400,7 @@
 
                     const selectedRegionIds = this.stored_regions.map(item => item.region_id);
                     this.form.region_id = selectedRegionIds;
+                    alert(this.form.region_id)
                 } catch (error) {
                     console.error(error);
                 }
@@ -488,7 +489,6 @@
                     formData.append('icon', this.form.fai);
                     formData.append('highlight_id', this.form.highlight_id);
                     formData.append('google_tag', this.form.google_tag);
-                    console.log(this.form.region_id);
                     formData.append('region_id', this.form.region_id);
                     formData.append('commune_id', this.form.commune_id);
 
