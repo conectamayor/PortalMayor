@@ -326,7 +326,7 @@
             },
             async getRegionsCommunes() {
                 try {
-                    const response = await axios.get('/api/category_region/' + this.form.section_id + '/edit?api_token='+App.apiToken);
+                    const response = await axios.get('/api/category_region/' + this.$route.params.id + '/edit?api_token='+App.apiToken);
 
                     this.stored_regions = response.data.data;
 
@@ -339,7 +339,7 @@
                 }
 
                 try {
-                    const response = await axios.get('/api/category_commune/' + this.form.section_id + '/edit?api_token='+App.apiToken);
+                    const response = await axios.get('/api/category_commune/' + this.$route.params.id + '/edit?api_token='+App.apiToken);
 
                     this.stored_communes = response.data.data;
 
@@ -371,13 +371,13 @@
                     this.$set(this.form, 'icon_available_id', this.post.icon_available_id);
                     this.$set(this.form, 'url', this.post.url);
 
-                    if (this.post.fai != null) {
-                        var icon = this.post.fai.split(' ');
+                    if (this.post.icon != null) {
+                        var icon = this.post.icon.split(' ');
 
                         icon = icon[0] +' '+ icon[1];
                     }
 
-                    this.$set(this.form, 'icon', icon);
+                    this.$set(this.form, 'fai', icon);
                     this.$set(this.form, 'highlight_id', this.post.highlight_id);
 
                     var google_tag = this.post.google_tag.split('_');
@@ -387,6 +387,34 @@
                     this.$set(this.form, 'commune_id', this.post.commune_id);
 
                     this.loading = false;
+                } catch (error) {
+                    console.error(error);
+                }
+
+                try {
+                    const response = await axios.get('/api/category_region/' + this.$route.params.id + '/edit?api_token='+App.apiToken);
+
+                    this.stored_regions = response.data.data;
+
+                    this.loading = false;
+
+                    const selectedRegionIds = this.stored_regions.map(item => item.region_id);
+                    this.form.region_id = selectedRegionIds;
+                } catch (error) {
+                    console.error(error);
+                }
+
+                try {
+                    const response = await axios.get('/api/category_commune/' + this.$route.params.id + '/edit?api_token='+App.apiToken);
+
+                    this.stored_communes = response.data.data;
+
+                    this.loading = false;
+
+                    const selectedCommuneIds = this.stored_communes.map(item => item.commune_id);
+                    this.form.commune_id = selectedCommuneIds;
+
+                    console.log(this.form.commune_id);
                 } catch (error) {
                     console.error(error);
                 }
