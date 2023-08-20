@@ -414,7 +414,10 @@
                     this.$set(this.form, 'link_question_id', this.post.link_question_id);
                     this.$set(this.form, 'video_id', this.post.video_id);
                     this.$set(this.form, 'youtube_question_id', this.post.youtube_question_id);
-                    this.$set(this.form, 'google_tag', this.post.google_tag);
+
+                    var google_tag =    this.form.google_tag.split('_');
+
+                    this.$set(this.form, 'google_tag', google_tag[1]);
                     this.$set(this.form, 'subtitle', this.post.section_subtitle);
                     this.$set(this.form, 'iframe_question_id', this.post.iframe_question_id);
                     this.$set(this.form, 'iframe', this.post.iframe);
@@ -467,15 +470,10 @@
                     formData.append('video_id', this.form.video_id);
                     formData.append('subtitle', this.form.subtitle);
                     formData.append('iframe', this.form.iframe);
-
-                    var google_tag =    this.form.google_tag.split('_');
-
-                    formData.append('google_tag', google_tag[1]);
+                    formData.append('google_tag', this.form.google_tag);
                     formData.append('region_id', this.form.region_id);
                     formData.append('commune_id', this.form.commune_id);
-                    alert(this.form.direct_content_question_id)
                     formData.append('direct_content_question_id', this.form.direct_content_question_id);
-                    alert(this.form.open_app_id)
                     formData.append('icon_available_id', this.form.icon_available_id);
                     formData.append('open_app_id', this.form.open_app_id);
                     formData.append('open_app_version_id', this.form.open_app_version_id);
