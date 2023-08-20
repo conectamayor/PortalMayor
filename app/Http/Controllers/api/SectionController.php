@@ -46,18 +46,15 @@ class SectionController extends ApiResponseController
      */
     public function home(Request $request)
     {
-        $sections = Section::leftJoin('section_regions', 'section_regions.section_id', '=', 'sections.section_id')
-        ->leftJoin('communes', 'communes.region_id', '=', 'section_regions.region_id')
-        ->leftJoin('section_communes', 'section_communes.section_id', '=', 'sections.section_id')
-        ->where('sections.status', 1)
-        ->where('section_regions.region_id', $request->region)
-        ->where('section_communes.commune_id', $request->commune)
-        ->orderBy('sections.position', 'ASC')
-        ->get([
-            'sections.*',
-            'section_regions.*',
-            'section_communes.*'
-        ]);
+        $sections = Section::select('sections.*', 'section_regions.*', 'section_communes.*')
+            ->leftJoin('section_regions', 'section_regions.section_id', '=', 'sections.section_id')
+            ->leftJoin('communes', 'communes.region_id', '=', 'section_regions.region_id')
+            ->leftJoin('section_communes', 'section_communes.commune_id', '=', 'communes.commune_id')
+            ->where('sections.status', 1)
+            ->where('section_regions.region_id', $request->region)
+            ->where('section_communes.commune_id', $request->commune)
+            ->orderBy('sections.position', 'ASC')
+            ->get();
         
         return $this->successResponse($sections);
     }
