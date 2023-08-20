@@ -411,7 +411,7 @@
                     if (this.post.icon != null) {
                         var icon = this.post.icon.split(' ');
 
-                        icon = icon[0] +''+ icon[1];
+                        icon = icon[0] +' '+ icon[1];
                     }
 
                     console.log(this.post.icon);
