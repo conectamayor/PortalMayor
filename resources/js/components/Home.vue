@@ -95,7 +95,6 @@
         created() {
             this.getRegion();
             this.getPosts();
-            this.catchUser();
             this.checkDate();
         },
         mounted() {
@@ -111,18 +110,6 @@
                 } else {
                     this.dispositive = "desktop";
                 }
-            },
-            catchUser() {
-                let formData = new FormData();
-                formData.append('page', 'Home');
-               
-                axios.post('/api/user/catch', formData)
-                .then(function (response) {
-                    currentObj.success = response.data.success;
-                })
-                .catch(function (error) {
-                        console.log(error);
-                });
             },
             hideModal() {
                 this.$refs['my-modal'].hide()
@@ -196,7 +183,6 @@
             getRegion() {
                 axios.get('/api/region/find')
                 .then(function (response) {
-                    console.log(response.data.data.region);
                     this.region = response.data.data.region;
                 })
                 .catch(function (error) {
