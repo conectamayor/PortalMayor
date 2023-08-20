@@ -50,6 +50,7 @@
                                         <label for="exampleInputEmail1">Tipo de Contenido <h6 class="m-0 text-danger float-right">*</h6></label>
                                         <select class="form-control" id="exampleFormControlSelect1"
                                         v-model="form.type_id"
+                                        @change="cleanDescription()"
                                         >
                                             <option :value="null">-Seleccionar-</option>
                                             <option :value="1">Video</option>
@@ -301,6 +302,12 @@
             }
         },
         methods: {
+            cleanDescription() {
+                var original = this.form.description;
+                var new_text = original.replace("<p>", "");
+
+                this.form.description = new_text;
+            },
             handleChange() {
                 this.form.color = this.color;
             },
