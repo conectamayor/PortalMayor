@@ -192,19 +192,20 @@
                 });
             },
             getPosts() {
-                this.loading = true;
+                const currentObj = this; 
+
+                currentObj.loading = true;
 
                 let formData = new FormData();
 
                 formData.append('region', this.region);
-                alert(this.region);
-                if (this.region == '') {
-                    this.posts = '';
+                alert(currentObj.region);
+                if (currentObj.region == '') {
+                    currentObj.posts = '';
                 } else {
-                    alert(111)
                     axios.post('/api/section/home', formData)
                     .then(response => {
-                        this.posts = response.data.data;
+                        currentObj.posts = response.data.data;
                     })
                     .catch(function (error) {
                         console.log(error);
