@@ -327,6 +327,7 @@
                     this.$set(this.form, 'category_id', this.post.category_id);
                     this.$set(this.form, 'type_id', this.post.type_id);
                     this.$set(this.form, 'video_id', this.post.video_id);
+                    this.$set(this.form, 'video_id', this.post.video_id);
                     this.$set(this.form, 'title', this.post.title);
 
                     var google_tag = this.post.google_tag.split('_');
@@ -347,7 +348,13 @@
                     this.$set(this.form, 'end_date', this.post.end_date);
                     this.$set(this.form, 'position', this.post.position);
                     this.$set(this.form, 'src', this.post.src);
-                    this.$set(this.form, 'video_type_id', this.post.video_type_id);
+                    
+                    if (this.post.video_type_id == '') {
+                        this.$set(this.form, 'video_type_id', null);
+                    } else {
+                        this.$set(this.form, 'video_type_id', this.post.video_type_id);
+                    }
+
                     this.$set(this.form, 'icon_available_id', this.post.icon_available_id);
 
                     this.loading = false;
