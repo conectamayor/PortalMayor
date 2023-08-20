@@ -405,7 +405,7 @@
 
                     this.post = response.data.data;
 
-                    this.$set(this.form, 'title', this.post.category_id);
+                    this.$set(this.form, 'title', this.post.title);
                     this.$set(this.form, 'color', this.post.color);
                     this.$set(this.form, 'icon', this.post.icon);
                     this.$set(this.form, 'icon_type_id', this.post.icon_type_id);
@@ -429,6 +429,8 @@
                     this.$set(this.form, 'georeferencing_type_id', this.post.georeferencing_type_id);
                     this.$set(this.form, 'open_app_desktop_url', this.post.open_app_desktop_url);
                     this.$set(this.form, 'open_app_not_installed', this.post.open_app_not_installed);
+
+                    this.loading = false;
                 } catch (error) {
                     console.error(error);
                 }
