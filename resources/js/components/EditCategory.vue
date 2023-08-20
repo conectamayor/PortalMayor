@@ -72,7 +72,7 @@
                                         @change="getRegionsCommunes"
                                         >
                                             <option :value="null">-Seleccionar-</option>
-                                            <option :selected="isSelectedRegion(region_post.region_id)" v-for="section_post in section_posts" :key="section_post.section_id" :value="section_post.section_id">{{ section_post.section_title }}</option>
+                                            <option v-for="section_post in section_posts" :key="section_post.section_id" :value="section_post.section_id">{{ section_post.section_title }}</option>
                                         </select>
                                     </div>
                                 </div>
@@ -84,7 +84,7 @@
                                         @change="getCommunes"
                                         >
                                             <option :value="1000">Todas las regiones y comunas</option>
-                                            <option v-for="region_post in region_posts" :key="region_post.region_id" :value="region_post.region_id">{{ region_post.region }}</option>
+                                            <option :selected="isSelectedRegion(region_post.region_id)" v-for="region_post in region_posts" :key="region_post.region_id" :value="region_post.region_id">{{ region_post.region }}</option>
                                         </select>
                                     </div>
                                     <div class="col-sm-6">
@@ -358,7 +358,6 @@
                     const response = await axios.get('/api/category/' + this.$route.params.id + '/edit?api_token='+App.apiToken);
 
                     this.post = response.data.data;
-                    console.log(this.post);
 
                     this.$set(this.form, 'alliance_id', this.post.alliance_id);
                     this.$set(this.form, 'section_id', this.post.section_id);
