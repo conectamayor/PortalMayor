@@ -72,10 +72,6 @@ class RegionController extends ApiResponseController
             $details = json_decode($response);
         }
 
-        $details->region_name = "Region Metropolitana de Santiago";
-
-
-        $region = Region::where('regin', 'like', '%' . $details->region . '%')->first();
         
         return $this->successResponse($details);
     }
