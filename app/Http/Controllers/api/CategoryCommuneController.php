@@ -29,7 +29,7 @@ class CategoryCommuneController extends ApiResponseController
      */
     public function edit($id)
     {
-        $category_communes = CategoryCommune::where('commune_id', $id)->get();
+        $category_communes = CategoryCommune::where('category_id', $id)->get();
 
         return $this->successResponse($category_communes);
     }
