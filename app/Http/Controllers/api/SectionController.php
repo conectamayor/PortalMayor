@@ -47,7 +47,7 @@ class SectionController extends ApiResponseController
     public function home(Request $request)
     {
         $sections = Section::leftJoin('section_regions', 'section_regions.region_id', '=', 'sections.region_id')
-        ->where('sections.status', 1)
+        ->where('sectios.status', 1)
         ->where('section_regions.region_id', $request->region)
         ->orderBy('sections.position', 'ASC')
         ->get([
