@@ -76,6 +76,25 @@
                                     </div>
                                 </div>
                                 <div class="form-group row">
+                                    <div class="col-sm-6">
+                                        <label for="exampleInputEmail1">Región <h6 class="m-0 text-danger float-right">*</h6></label>
+                                        <select class="form-control" id="exampleFormControlSelect1"
+                                        v-model="form.region_id" multiple
+                                        @change="getCommunes"
+                                        >
+                                            <option :value="1000">Todas las regiones y comunas</option>
+                                            <option v-for="region_post in region_posts" :key="region_post.region_id" :value="region_post.region_id">{{ region_post.region }}</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <label for="exampleInputEmail1">Comuna</label>
+                                        <select class="form-control" id="exampleFormControlSelect1" v-model="form.commune_id"  multiple>
+                                            <option :value="null" v-if="commune_posts.length == 0">No ha seleccionado una región</option>
+                                            <option v-for="commune_post in commune_posts" :key="commune_post.commune_id" :value="commune_post.commune_id">{{ commune_post.commune }}</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
                                     <div class="col-sm-4">
                                         <label for="exampleInputEmail1">Color <h6 class="m-0 text-danger float-right">*</h6></label>
                                         <div class="form-group row">
@@ -231,6 +250,8 @@
                 loading: false,
                 alliance_posts: [],
                 section_posts: [],
+                region_posts: [],
+                commune_posts: [],
                 noFile: false,
                 noFile_icon_imagen: false,
                 form: {
@@ -252,6 +273,43 @@
             }
         },
         methods: {
+            getRegions() {
+                this.loading = true;
+
+                axios.get('/api/region')
+                .then(response => {
+                    this.region_posts = response.data.data;
+                })
+                .catch(function (error) {
+                    console.log(error);
+                })
+                .finally(() => {
+                    this.loading = false;
+                });
+            },
+            getCommunes() {
+                this.loading = true;
+
+                this.commune_posts = []
+
+                var region_data = String(this.form.region_id);
+
+                const region_ids = region_data.split(',');
+
+                for (const region_id of region_ids) {
+                    console.log(region_id)
+                    axios.get('/api/commune/' + region_id)
+                        .then(response => {
+                            this.commune_posts = this.commune_posts.concat(response.data.data);
+                        })
+                        .catch(error => {
+                            console.log(error);
+                        })
+                        .finally(() => {
+                            this.loading = false;
+                        });
+                }
+            },
             storeAudit() {
                 let formData = new FormData();
                 formData.append('page', 'CreateCategory');
