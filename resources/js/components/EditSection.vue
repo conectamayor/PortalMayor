@@ -405,6 +405,35 @@
                 this.file = e.target.files[0];
                 this.noFile = e.target.files.length;
             }, 
+            async getRegionsCommunes() {
+                try {
+                    const response = await axios.get('/api/section_region/' + this.form.section_id + '/edit?api_token='+App.apiToken);
+
+                    this.stored_regions = response.data.data;
+
+                    this.loading = false;
+
+                    const selectedRegionIds = this.stored_regions.map(item => item.region_id);
+                    this.form.region_id = selectedRegionIds;
+                } catch (error) {
+                    console.error(error);
+                }
+
+                try {
+                    const response = await axios.get('/api/section_commune/' + this.form.section_id + '/edit?api_token='+App.apiToken);
+
+                    this.stored_communes = response.data.data;
+
+                    this.loading = false;
+
+                    const selectedCommuneIds = this.stored_communes.map(item => item.commune_id);
+                    this.form.commune_id = selectedCommuneIds;
+
+                    console.log(this.form.commune_id);
+                } catch (error) {
+                    console.error(error);
+                }
+            },
             async getPost() {
                 try {
                     const response = await axios.get('/api/section/' + this.$route.params.id + '/edit?api_token='+App.apiToken);
@@ -453,34 +482,6 @@
                     this.$set(this.form, 'open_app_not_installed', this.post.open_app_not_installed);
 
                     this.loading = false;
-                } catch (error) {
-                    console.error(error);
-                }
-
-                try {
-                    const response = await axios.get('/api/section_region/' + this.$route.params.id + '/edit?api_token='+App.apiToken);
-
-                    this.stored_regions = response.data.data;
-
-                    this.loading = false;
-
-                    const selectedRegionIds = this.stored_regions.map(item => item.region_id);
-                    this.form.region_id = selectedRegionIds;
-                } catch (error) {
-                    console.error(error);
-                }
-
-                try {
-                    const response = await axios.get('/api/section_commune/' + this.$route.params.id + '/edit?api_token='+App.apiToken);
-
-                    this.stored_communes = response.data.data;
-
-                    this.loading = false;
-
-                    const selectedCommuneIds = this.stored_communes.map(item => item.commune_id);
-                    this.form.commune_id = selectedCommuneIds;
-
-                    console.log(this.form.commune_id);
                 } catch (error) {
                     console.error(error);
                 }
