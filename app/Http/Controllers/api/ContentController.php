@@ -215,12 +215,12 @@ class ContentController extends ApiResponseController
      */
     public function update(Request $request, $id)
     {
-        if($request->icon_type_id == 1) {
-            if($request->file != 'undefined') {
-                $fileName = time().'_'.'contenido'.'_'.$request->category_id.'.'.$request->file->getClientOriginalExtension();
-            }
+        $fileName = $request->icon;
+
+        if($request->pdf != 'undefined') { 
+            $pdfName = time().'_'.'pdf'.'_'.$request->category_id.'.'.$request->pdf->getClientOriginalExtension();
         } else {
-            $fileName = $request->icon;
+            $pdfName = '';
         }
 
         $content = Content::find($id);
@@ -231,17 +231,16 @@ class ContentController extends ApiResponseController
         $content->google_tag = 'content_' . $request->google_tag;
         $content->start_date = $request->start_date;
         $content->icon_type_id = $request->icon_type_id;
-        if($request->icon_type_id == 2) {
-            $content->icon = 'icon '. $fileName.' home_icon_size2';
-        } else if($request->icon_type_id == 3) {
-            $content->icon = 'icon ion-'.$fileName.' home_icon_size2';
-        }
+        $content->icon = 'icon '. $fileName.' home_icon_size2';
         $content->end_date = $request->end_date;
         $content->description = $request->description;
+        $content->iframe = $request->iframe;
         $content->position = $request->position;
-
         $old_position = $content->position;
         $content->position = $request->position;
+        $content->icon_available_id = $request->icon_available_id;
+        $content->whatsapp_description = $request->whatsapp_description;
+        $content->pdf = $pdfName;
 
         if($old_position != $request->position) {
             $move_position_contents = Content::where('category_id', $request->category_id)->where('position', '>=', $request->position)->orderBy('position', 'ASC')->get();
@@ -268,6 +267,18 @@ class ContentController extends ApiResponseController
                     $fileName
                 );
             }
+
+            if ($request->pdf != 'undefined') { 
+                if (Storage::disk('local')->exists('files/' . $pdfName)) {
+                    Storage::disk('local')->delete('files/' . $pdfName);
+                }
+                
+                Storage::disk('local')->putFileAs(
+                    'files', // Ruta modificada aquí
+                    $request->pdf,
+                    $pdfName
+                );
+            }  
         }
 
         return $this->successResponse($content);
