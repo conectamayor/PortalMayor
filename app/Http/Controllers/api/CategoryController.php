@@ -290,9 +290,6 @@ class CategoryController extends ApiResponseController
 
         $category->highlight_id = $request->highlight_id;
         $category->status = 1;
-        if($request->file != 'undefined') { 
-            $category->banner = $fileName;
-        }
 
         if($category->save()) {
             $category_regions = CategoryRegion::where('category_id', $id)->get();
