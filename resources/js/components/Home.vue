@@ -94,6 +94,7 @@
     export default {
         created() {
             this.getRegion();
+            this.getCommune();
             this.getPosts();
             this.checkDate();
         },
@@ -192,7 +193,7 @@
             async getCommune() {
                 try {
                     const response = await axios.get('/api/commune/find');
-                    console.log(response.data.data)
+
                     this.commune = response.data.data.commune_id;
                 } catch (error) {
                     console.log(error);
@@ -207,7 +208,6 @@
                     let formData = new FormData();
                     formData.append('region', this.region);
                     formData.append('commune', this.commune);
-                    alert(this.commune);
 
                     if (this.region == null && this.commune == null) {
                         this.posts = '';
