@@ -478,6 +478,8 @@
 
                     const selectedCommuneIds = this.stored_communes.map(item => item.commune_id);
                     this.form.commune_id = selectedCommuneIds;
+
+                    console.log(this.form.commune_id);
                 } catch (error) {
                     console.error(error);
                 }
@@ -490,16 +492,6 @@
                 const config = {
                     headers: { 'content-type': 'multipart/form-data' }
                 }
-
-                const selectedRegionIds = this.stored_regions.map(item => item.region_id);
-
-                // Set form.region_id based on the selected region IDs
-                this.form.region_id = selectedRegionIds;
-
-                const selectedCommuneIds = this.stored_communes.map(item => item.commune_id);
-
-                // Set form.region_id based on the selected region IDs
-                this.form.commune_id = selectedCommuneIds;
                 
                 if(this.form.title != ''
                 && this.form.color != ''
@@ -526,7 +518,6 @@
                     formData.append('iframe', this.form.iframe);
                     formData.append('google_tag', this.form.google_tag);
                     formData.append('region_id', this.form.region_id);
-                    alert(this.form.commune_id);
                     formData.append('commune_id', this.form.commune_id);
                     formData.append('direct_content_question_id', this.form.direct_content_question_id);
                     formData.append('icon_available_id', this.form.icon_available_id);
