@@ -306,6 +306,24 @@
                 var original = this.form.description;
                 var new_text = original.replace("<p>", "");
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                    
+
                 this.form.description = new_text;
             },
             handleChange() {
