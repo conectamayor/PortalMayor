@@ -72,7 +72,7 @@
                                         @change="getRegionsCommunes"
                                         >
                                             <option :value="null">-Seleccionar-</option>
-                                            <option v-for="section_post in section_posts" :key="section_post.section_id" :value="section_post.section_id">{{ section_post.section_title }}</option>
+                                            <option :selected="isSelectedRegion(region_post.region_id)" v-for="section_post in section_posts" :key="section_post.section_id" :value="section_post.section_id">{{ section_post.section_title }}</option>
                                         </select>
                                     </div>
                                 </div>
@@ -91,7 +91,7 @@
                                         <label for="exampleInputEmail1">Comuna</label>
                                         <select class="form-control" id="exampleFormControlSelect1" v-model="form.commune_id"  multiple>
                                             <option :value="null" v-if="commune_posts.length == 0">No ha seleccionado una región</option>
-                                            <option v-for="commune_post in commune_posts" :key="commune_post.commune_id" :value="commune_post.commune_id">{{ commune_post.commune }}</option>
+                                            <option :selected="isSelectedCommune(commune_post.commune_id)" v-for="commune_post in commune_posts" :key="commune_post.commune_id" :value="commune_post.commune_id">{{ commune_post.commune }}</option>
                                         </select>
                                     </div>
                                 </div>
@@ -258,6 +258,8 @@
                 commune_posts: [],
                 noFile: false,
                 noFile_icon_imagen: false,
+                stored_regions: [],
+                stored_communes: [],
                 form: {
                     alliance_id: null,
                     section_id: null,
@@ -279,6 +281,12 @@
             }
         },
         methods: {
+            isSelectedRegion(regionId) {
+                return this.stored_regions.some(item => item.region_id === regionId);
+            },
+            isSelectedCommune(communeId) {
+                return this.stored_communes.some(item => item.commune_id === communeId);
+            },
             getRegions() {
                 this.loading = true;
 
@@ -362,9 +370,19 @@
                     this.$set(this.form, 'link_question_id', this.post.link_question_id);
                     this.$set(this.form, 'icon_available_id', this.post.icon_available_id);
                     this.$set(this.form, 'url', this.post.url);
-                    this.$set(this.form, 'icon', this.post.fai);
+
+                    if (this.post.fai != null) {
+                        var icon = this.post.fai.split(' ');
+
+                        icon = icon[0] +' '+ icon[1];
+                    }
+
+                    this.$set(this.form, 'icon', icon);
                     this.$set(this.form, 'highlight_id', this.post.highlight_id);
-                    this.$set(this.form, 'google_tag', this.post.google_tag);
+
+                    var google_tag = this.post.google_tag.split('_');
+
+                    this.$set(this.form, 'google_tag', google_tag);
                     this.$set(this.form, 'region_id', this.post.region_id);
                     this.$set(this.form, 'commune_id', this.post.commune_id);
 
@@ -439,9 +457,9 @@
                     formData.append('link_question_id', this.form.link_question_id);
                     formData.append('icon_available_id', this.form.icon_available_id);
                     formData.append('url', this.form.url);
-                    formData.append('icon', this.form.fai);
+                    formData.append('icon', icon);
                     formData.append('highlight_id', this.form.highlight_id);
-                    formData.append('google_tag', this.form.google_tag);
+                    formData.append('google_tag', google_tag);
                     formData.append('region_id', this.form.region_id);
                     formData.append('commune_id', this.form.commune_id);
 

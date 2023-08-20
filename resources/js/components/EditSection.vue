@@ -107,7 +107,7 @@
                                     </div>
                                     <div class="col-sm-6">
                                         <label for="exampleInputEmail1">Comuna</label>
-                                        <select class="form-control" id="exampleFormControlSelect1" v-model="form.commune_id"  multiple disabled>
+                                        <select class="form-control" id="exampleFormControlSelect1" v-model="form.commune_id"  multiple>
                                             <option :value="null" v-if="commune_posts.length == 0">No ha seleccionado una región</option>
                                             <option :selected="isSelectedCommune(commune_post.commune_id)"  v-for="commune_post in commune_posts" :key="commune_post.commune_id" :value="commune_post.commune_id">{{ commune_post.commune }}</option>
                                         </select>
@@ -405,35 +405,6 @@
                 this.file = e.target.files[0];
                 this.noFile = e.target.files.length;
             }, 
-            async getRegionsCommunes() {
-                try {
-                    const response = await axios.get('/api/section_region/' + this.form.section_id + '/edit?api_token='+App.apiToken);
-
-                    this.stored_regions = response.data.data;
-
-                    this.loading = false;
-
-                    const selectedRegionIds = this.stored_regions.map(item => item.region_id);
-                    this.form.region_id = selectedRegionIds;
-                } catch (error) {
-                    console.error(error);
-                }
-
-                try {
-                    const response = await axios.get('/api/section_commune/' + this.form.section_id + '/edit?api_token='+App.apiToken);
-
-                    this.stored_communes = response.data.data;
-
-                    this.loading = false;
-
-                    const selectedCommuneIds = this.stored_communes.map(item => item.commune_id);
-                    this.form.commune_id = selectedCommuneIds;
-
-                    console.log(this.form.commune_id);
-                } catch (error) {
-                    console.error(error);
-                }
-            },
             async getPost() {
                 try {
                     const response = await axios.get('/api/section/' + this.$route.params.id + '/edit?api_token='+App.apiToken);
