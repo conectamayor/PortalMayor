@@ -73,6 +73,6 @@ class RegionController extends ApiResponseController
         }
 
         
-        return $this->successResponse($details);
+        return $this->successResponse($details->region_name);
     }
 }
