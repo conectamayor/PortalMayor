@@ -180,39 +180,33 @@
                     console.log(error);
                 });
             },
-            getRegion() {
-                const currentObj = this; // Guarda la referencia al objeto Vue actual
-
-                axios.get('/api/region/find')
-                .then(function (response) {
-                    currentObj.region = response.data.data.region;
-                })
-                .catch(function (error) {
+            async getRegion() {
+                try {
+                    const response = await axios.get('/api/region/find');
+                    this.region = response.data.data.region;
+                } catch (error) {
                     console.log(error);
-                });
+                }
             },
-            getPosts() {
-                const currentObj = this; 
+            async getPosts() {
+                try {
+                    await this.getRegion(); // Espera a que se complete getRegion()
 
-                currentObj.loading = true;
+                    this.loading = true;
 
-                let formData = new FormData();
-
-                formData.append('region', this.region);
-                alert(currentObj.region);
-                if (currentObj.region == '') {
-                    currentObj.posts = '';
-                } else {
-                    axios.post('/api/section/home', formData)
-                    .then(response => {
-                        currentObj.posts = response.data.data;
-                    })
-                    .catch(function (error) {
-                        console.log(error);
-                    })
-                    .finally(() => {
-                        this.loading = false;
-                    });
+                    let formData = new FormData();
+                    formData.append('region', this.region);
+                    alert(this.region);
+                    if (this.region == '') {
+                        this.posts = '';
+                    } else {
+                        const response = await axios.post('/api/section/home', formData);
+                        this.posts = response.data.data;
+                    }
+                } catch (error) {
+                    console.log(error);
+                } finally {
+                    this.loading = false;
                 }
             }
         },
