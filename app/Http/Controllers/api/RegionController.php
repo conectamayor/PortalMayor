@@ -51,7 +51,7 @@ class RegionController extends ApiResponseController
 
         $details = json_decode(file_get_contents("http://ipinfo.io/{$ip}/json"));
 
-        $region = Region::where('region', 'like', $details->region)->first();
+        $region = Region::where('regin', 'like', $details->region)->first();
         
         return $this->successResponse($region);
     }
