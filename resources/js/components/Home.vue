@@ -199,10 +199,8 @@
                     formData.append('region', this.region);
 
                     if (this.region == null) {
-                        alert(3);
                         this.posts = '';
                     } else {
-                        alert(1);
                         const response = await axios.post('/api/section/home', formData);
                         this.posts = response.data.data;
                     }
