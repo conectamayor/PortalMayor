@@ -183,7 +183,7 @@
             async getRegion() {
                 try {
                     const response = await axios.get('/api/region/find');
-                    this.region = response.data.data.region;
+                    this.region = response.data.data.region_id;
                 } catch (error) {
                     console.log(error);
                 }
@@ -196,7 +196,7 @@
 
                     let formData = new FormData();
                     formData.append('region', this.region);
-                    alert(this.region);
+
                     if (this.region == '') {
                         this.posts = '';
                     } else {
