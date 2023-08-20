@@ -206,7 +206,7 @@
                                     </div>
                                 </div>
 
-                                <div class="form-group row" v-if="form.link_question_id == 2">
+                                <div class="form-group row" v-if="form.direct_content_question_id == 2 && form.youtube_question_id == 2 && form.iframe_question_id == 2 && form.link_question_id == 2">
                                     <div class="col-sm-4">
                                         <label for="exampleInputEmail1">¿Va a abrir una aplicación? <h6 class="m-0 text-danger float-right">*</h6></label>
                                         <select class="form-control" id="exampleFormControlSelect1"
@@ -422,8 +422,14 @@
 
                     this.$set(this.form, 'google_tag', google_tag[1]);
                     this.$set(this.form, 'subtitle', this.post.section_subtitle);
-                    this.$set(this.form, 'iframe_question_id', this.post.iframe_question_id);
                     this.$set(this.form, 'iframe', this.post.iframe);
+
+                    if (this.post.iframe != null) {
+                        this.$set(this.form, 'iframe_question_id', 1);
+                    } else {
+                        this.$set(this.form, 'iframe_question_id', 2);
+                    }
+
                     this.$set(this.form, 'position', this.post.position);
                     this.$set(this.form, 'direct_content_question_id', this.post.direct_content_question_id);
                     this.$set(this.form, 'icon_available_id', this.post.icon_available_id);
