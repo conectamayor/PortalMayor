@@ -430,10 +430,6 @@
                     this.$set(this.form, 'open_app_not_installed', this.post.open_app_not_installed);
                 } catch (error) {
                     console.error(error);
-                } finally {
-                    this.loading = false;
-                    this.$awn.success("El registro ha sido actualizado", { labels: { success: "Éxito" } });
-                    this.$router.push('/section');
                 }
             },
             onSubmit(e) {
