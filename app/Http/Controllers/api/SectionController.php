@@ -380,6 +380,13 @@ class SectionController extends ApiResponseController
                 $section_region_detail->delete();
             }
 
+            $section_communes = SectionCommune::where('section_id', $id)->get();
+
+            foreach ($section_communes as $section_commune) {
+                $section_commune_detail = SectionCommune::find($section_commune->section_commune_id);
+                $section_commune_detail->delete();
+            }
+
             if ($request->region_id != 1000) {
                 $region_data = explode(',', $request->region_id);
 

@@ -108,7 +108,7 @@
                                         <label for="exampleInputEmail1">Comuna</label>
                                         <select class="form-control" id="exampleFormControlSelect1" v-model="form.commune_id"  multiple>
                                             <option :value="null" v-if="commune_posts.length == 0">No ha seleccionado una región</option>
-                                            <option v-for="commune_post in commune_posts" :key="commune_post.commune_id" :value="commune_post.commune_id">{{ commune_post.commune }}</option>
+                                            <option :selected="isSelectedRegion(commune_post.commune_id)"  v-for="commune_post in commune_posts" :key="commune_post.commune_id" :value="commune_post.commune_id">{{ commune_post.commune }}</option>
                                         </select>
                                     </div>
                                 </div>
@@ -302,6 +302,7 @@
             this.getPost();
             this.storeAudit();
             this.getRegions();
+            this.getCommunes();
         },
         data: function() {
             return {
@@ -312,7 +313,8 @@
                 loading: false,
                 noFile: false,
                 post: '',
-                stored_region: [],
+                stored_regions: [],
+                stored_communes: [],
                 form: {
                     title: '',
                     color: '',
@@ -342,7 +344,10 @@
         },
         methods: {
             isSelectedRegion(regionId) {
-                return this.stored_region.some(item => item.region_id === regionId);
+                return this.stored_regions.some(item => item.region_id === regionId);
+            },
+            isSelectedCommune(communeId) {
+                return this.stored_communes.some(item => item.commune_id === communeId);
             },
             getRegions() {
                 this.loading = true;
@@ -460,7 +465,17 @@
                 try {
                     const response = await axios.get('/api/section_region/' + this.$route.params.id + '/edit?api_token='+App.apiToken);
 
-                    this.stored_region = response.data.data;
+                    this.stored_regions = response.data.data;
+
+                    this.loading = false;
+                } catch (error) {
+                    console.error(error);
+                }
+
+                try {
+                    const response = await axios.get('/api/section_commune/' + this.$route.params.id + '/edit?api_token='+App.apiToken);
+
+                    this.stored_communes = response.data.data;
 
                     this.loading = false;
                 } catch (error) {
