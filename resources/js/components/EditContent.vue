@@ -235,7 +235,7 @@
                                     <span class="icon text-white-50">
                                         <i class="fas fa-check"></i>
                                     </span>
-                                    <span class="text">Guardar</span>
+                                    <span class="text">Actualizar</span>
                                 </button>
                                 <router-link to="/content" class="btn btn-danger btn-icon-split">
                                     <span class="icon text-white-50">
@@ -384,7 +384,7 @@
                     formData.append('src', this.form.src);
                     formData.append('file', this.file);
                     formData.append('pdf', this.pdf);
-                    formData.append('iframe', this.iframe);
+                    formData.append('iframe', this.form.iframe);
                     formData.append('video_type_id', this.form.video_type_id);
                     formData.append('icon_available_id', this.form.icon_available_id);
 
