@@ -477,8 +477,7 @@
                     this.loading = false;
 
                     const selectedCommuneIds = this.stored_communes.map(item => item.commune_id);
-                    this.form.commune_id = this.stored_communes.map(item => item.commune_id);
-                    this.form.commune_id = selectedRegionIds;
+                    this.form.commune_id = selectedCommuneIds;
                 } catch (error) {
                     console.error(error);
                 }
@@ -527,7 +526,7 @@
                     formData.append('iframe', this.form.iframe);
                     formData.append('google_tag', this.form.google_tag);
                     formData.append('region_id', this.form.region_id);
-                    console.log(this.form.commune_id);
+                    alert(this.form.commune_id);
                     formData.append('commune_id', this.form.commune_id);
                     formData.append('direct_content_question_id', this.form.direct_content_question_id);
                     formData.append('icon_available_id', this.form.icon_available_id);
