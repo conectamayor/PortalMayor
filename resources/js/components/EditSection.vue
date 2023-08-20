@@ -417,9 +417,8 @@
                     console.log(this.post.icon);
                     console.log(icon);
 
-                    this.$set(this.form, 'icon', icon);
+                    this.$set(this.form, 'fai', icon);
                     this.$set(this.form, 'icon_type_id', this.post.icon_type_id);
-                    this.$set(this.form, 'fai', this.post.fai);
                     this.$set(this.form, 'link_question_id', this.post.link_question_id);
                     this.$set(this.form, 'video_id', this.post.video_id);
 
