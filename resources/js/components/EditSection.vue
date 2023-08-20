@@ -312,6 +312,7 @@
                 loading: false,
                 noFile: false,
                 post: '',
+                stored_region: [],
                 form: {
                     title: '',
                     color: '',
@@ -447,9 +448,7 @@
                 try {
                     const response = await axios.get('/api/section_region/' + this.$route.params.id + '/edit?api_token='+App.apiToken);
 
-                    this.post = response.data.data;
-
-                    console.log(this.post);
+                    this.stored_region = response.data.data;
 
                     this.loading = false;
                 } catch (error) {
