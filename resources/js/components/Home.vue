@@ -181,9 +181,11 @@
                 });
             },
             getRegion() {
+                const currentObj = this; // Guarda la referencia al objeto Vue actual
+
                 axios.get('/api/region/find')
                 .then(function (response) {
-                    this.region = response.data.data.region;
+                    currentObj.region = response.data.data.region;
                 })
                 .catch(function (error) {
                     console.log(error);
@@ -195,7 +197,7 @@
                 let formData = new FormData();
 
                 formData.append('region', this.region);
-
+                alert(this.region);
                 if (this.region == '') {
                     this.posts = '';
                 } else {
