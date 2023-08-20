@@ -46,7 +46,7 @@ class SectionController extends ApiResponseController
      */
     public function home(Request $request)
     {
-        $sections = Section::select('sections.*', 'section_regions.*', 'section_communes.*')
+        $sections = Section::select('sections.*')
             ->leftJoin('section_regions', 'section_regions.section_id', '=', 'sections.section_id')
             ->leftJoin('communes', 'communes.region_id', '=', 'section_regions.region_id')
             ->leftJoin('section_communes', 'section_communes.commune_id', '=', 'communes.commune_id')
