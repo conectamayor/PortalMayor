@@ -490,7 +490,7 @@
                 const config = {
                     headers: { 'content-type': 'multipart/form-data' }
                 }
-
+                console.log(this.form.region_id)
                 if(this.form.title != ''
                 && this.form.color != ''
                     && this.form.google_tag != ''
