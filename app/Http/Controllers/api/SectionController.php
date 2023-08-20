@@ -50,7 +50,7 @@ class SectionController extends ApiResponseController
         ->leftJoin('section_communes', 'section_communes.section_id', '=', 'sections.section_id')
         ->where('sections.status', 1)
         ->where('section_regions.region_id', $request->region)
-        ->where('section_communes.commune_id', $request->commune)
+        ->where('section_commune.commune_id', $request->commune)
         ->orderBy('sections.position', 'ASC')
         ->get([
             'sections.*',
