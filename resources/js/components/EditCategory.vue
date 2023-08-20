@@ -3,7 +3,7 @@
         <!-- Begin Page Content -->
         <div class="container-fluid">
             <h1 class="h3 mb-2 text-gray-800">
-                Crear Categoría
+                Editar Categoría
             </h1>
             <!-- DataTales Example -->
             <div class="card shadow mb-4">
@@ -33,18 +33,18 @@
                                     </ul>
                                 </div>
                                 <div class="form-group row">
-                                    <div class="col-sm-4">
-                                        <label for="exampleInputEmail1">Nombre <h6 class="m-0 text-danger float-right">*</h6></label>
+                                    <div class="col-sm-6">
+                                        <label for="exampleInputEmail1">Título <h6 class="m-0 text-danger float-right">*</h6></label>
                                         <input
                                         type="text" 
-                                        v-model="form.name" 
+                                        v-model="form.title" 
                                         maxlength="36"
                                         class="form-control"
-                                        placeholder="Ingresa el nombre"
+                                        placeholder="Ingresa el título"
                                         >
                                         <span class="col-sm-12">{{charactersLeft}}</span>
                                     </div>
-                                    <div class="col-sm-4">
+                                    <div class="col-sm-6">
                                         <label for="exampleInputEmail1">Subtitulo </label>
                                         <input
                                         type="text" 
@@ -54,18 +54,9 @@
                                         placeholder="Ingresa el subtitulo"
                                         >
                                     </div>
-                                    <div class="col-sm-4">
-                                        <label for="exampleInputEmail1">Google Tag <h6 class="m-0 text-danger float-right">*</h6></label>
-                                        <input
-                                        type="text" 
-                                        v-model="form.google_tag" 
-                                        class="form-control"
-                                        placeholder="Ingresa el google tag"
-                                        >
-                                    </div>
                                 </div>
                                 <div class="form-group row">
-                                    <div class="col-sm-4">
+                                    <div class="col-sm-6">
                                         <label for="exampleInputEmail1">Alianza <h6 class="m-0 text-danger float-right">*</h6></label>
                                         <select class="form-control" id="exampleFormControlSelect1"
                                         v-model="form.alliance_id"
@@ -74,15 +65,37 @@
                                             <option v-for="alliance_post in alliance_posts" :key="alliance_post.rut" :value="alliance_post.rut">{{ alliance_post.name }}</option>
                                         </select>
                                     </div>
-                                    <div class="col-sm-4">
+                                    <div class="col-sm-6">
                                         <label for="exampleInputEmail1">Sección <h6 class="m-0 text-danger float-right">*</h6></label>
                                         <select class="form-control" id="exampleFormControlSelect1"
                                         v-model="form.section_id"
+                                        @change="getRegionsCommunes"
                                         >
                                             <option :value="null">-Seleccionar-</option>
                                             <option v-for="section_post in section_posts" :key="section_post.section_id" :value="section_post.section_id">{{ section_post.section_title }}</option>
                                         </select>
                                     </div>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-sm-6">
+                                        <label for="exampleInputEmail1">Región <h6 class="m-0 text-danger float-right">*</h6></label>
+                                        <select class="form-control" id="exampleFormControlSelect1"
+                                        v-model="form.region_id" multiple
+                                        @change="getCommunes"
+                                        >
+                                            <option :value="1000">Todas las regiones y comunas</option>
+                                            <option v-for="region_post in region_posts" :key="region_post.region_id" :value="region_post.region_id">{{ region_post.region }}</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <label for="exampleInputEmail1">Comuna</label>
+                                        <select class="form-control" id="exampleFormControlSelect1" v-model="form.commune_id"  multiple>
+                                            <option :value="null" v-if="commune_posts.length == 0">No ha seleccionado una región</option>
+                                            <option v-for="commune_post in commune_posts" :key="commune_post.commune_id" :value="commune_post.commune_id">{{ commune_post.commune }}</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
                                     <div class="col-sm-4">
                                         <label for="exampleInputEmail1">Color <h6 class="m-0 text-danger float-right">*</h6></label>
                                         <div class="form-group row">
@@ -99,32 +112,38 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="form-group row">
-                                    <div class="col-sm-2">
+                                    <div class="col-sm-4">
                                         <label for="exampleInputEmail1">Posición <h6 class="m-0 text-danger float-right">*</h6></label>
                                         <input
                                         type="number" 
                                         v-model="form.position" 
+                                        min="0"
                                         class="form-control"
                                         placeholder="Ingresa la posición"
                                         >
                                     </div>
                                     <div class="col-sm-4">
-                                        <label for="exampleInputEmail1">Tipo de Icono <h6 class="m-0 text-danger float-right">*</h6></label>
-                                        <select class="form-control" id="exampleFormControlSelect1"
-                                        v-model="form.icon_type_id"
+                                        <label for="exampleInputEmail1">Google Tag <h6 class="m-0 text-danger float-right">*</h6></label>
+                                        <input
+                                        type="text" 
+                                        v-model="form.google_tag" 
+                                        class="form-control"
+                                        placeholder="Ingresa el google tag"
                                         >
-                                            <option :value="null">Seleccionar</option>
-                                            <option :value="2">Fa Icon</option>
-                                            <option :value="3">Ionic Icon</option>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-sm-6">
+                                        <label for="exampleInputEmail1">¿La categoría tiene icono? <h6 class="m-0 text-danger float-right">*</h6></label>
+                                        <select class="form-control" id="exampleFormControlSelect1"
+                                        v-model="form.icon_available_id"
+                                        >
+                                            <option :value="1">Si</option>
+                                            <option :value="2">No</option>
                                         </select>
+                                        <input type="hidden" v-model="form.icon_type_id">
                                     </div>
-                                    <div class="col-sm-6" v-if="form.icon_type_id == 1">
-                                        <label for="exampleInputEmail1">Icono</label>
-                                        <input ref="file" accept="image/png" type="file" class="form-control" v-on:change="onFileChange">
-                                    </div>
-                                    <div class="col-sm-6" v-if="form.icon_type_id == 2">
+                                    <div class="col-sm-6" v-if="form.icon_available_id == 1">
                                         <label for="exampleInputEmail1">Fa Icon - <a href="https://fontawesome.com/icons" target= "_blank">Ver iconos</a></label>
                                         <input
                                             type="text" 
@@ -133,13 +152,24 @@
                                             placeholder="Ingresa el icono"
                                         >
                                     </div>
-                                    <div class="col-sm-6" v-if="form.icon_type_id == 3">
-                                        <label for="exampleInputEmail1">Ionic Icon - <a href="https://ionicframework.com/docs/v3/ionicons/" target= "_blank">Ver iconos</a></label>
+                                </div>
+                                <div class="form-group row" v-if="form.link_question_id == 2">
+                                    <div class="col-sm-6">
+                                        <label for="exampleInputEmail1">¿Es un Iframe? <h6 class="m-0 text-danger float-right">*</h6></label>
+                                        <select class="form-control" id="exampleFormControlSelect1"
+                                        v-model="form.iframe_question_id"
+                                        >
+                                            <option :value="1">Si</option>
+                                            <option :value="2">No</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-sm-6" v-if="form.iframe_question_id == 1">
+                                        <label for="exampleInputEmail1">Url del Iframe</label>
                                         <input
                                             type="text" 
-                                            v-model="form.fai" 
+                                            v-model="form.iframe"
                                             class="form-control"
-                                            placeholder="Ingresa el icono"
+                                            placeholder="Ingresa la url o enlace"
                                         >
                                     </div>
                                 </div>
@@ -154,13 +184,34 @@
                                         </select>
                                     </div>
                                 </div>
+                                <div class="form-group row" v-if="form.iframe_question_id == 2">
+                                    <div class="col-sm-6">
+                                        <label for="exampleInputEmail1">¿Es un enlace a una página externa? <h6 class="m-0 text-danger float-right">*</h6></label>
+                                        <select class="form-control" id="exampleFormControlSelect1"
+                                        v-model="form.link_question_id"
+                                        >
+                                            <option :value="1">Si</option>
+                                            <option :value="2">No</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-sm-6" v-if="form.link_question_id == 1">
+                                        <label for="exampleInputEmail1">Url o enlace</label>
+                                        <input
+                                            type="text" 
+                                            v-model="form.url" 
+                                            v-mask="'http://XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'"
+                                            class="form-control"
+                                            placeholder="Ingresa la url o enlace"
+                                        >
+                                    </div>
+                                </div>
                                 <button 
                                 type="submit"
                                 class="btn btn-success btn-icon-split">
                                     <span class="icon text-white-50">
                                         <i class="fas fa-check"></i>
                                     </span>
-                                    <span class="text">Actualizar</span>
+                                    <span class="text">Guardar</span>
                                 </button>
                                 <router-link to="/category" class="btn btn-danger btn-icon-split">
                                     <span class="icon text-white-50">
@@ -188,10 +239,12 @@
             "v-input-colorpicker": InputColorPicker
         },
         created() {
+            this.getPost();
+            this.getRegions();
+            this.getCommunes();
             this.getAlliaceList();
             this.getSectionList();
             this.getRol();
-            this.getPost();
             this.storeAudit();
         },
         data: function() {
@@ -201,26 +254,127 @@
                 loading: false,
                 alliance_posts: [],
                 section_posts: [],
+                region_posts: [],
+                commune_posts: [],
                 noFile: false,
                 noFile_icon_imagen: false,
                 form: {
                     alliance_id: null,
                     section_id: null,
-                    name: '',
+                    title: '',
                     color: '',
                     position: '',
                     icon_type_id: 2,
+                    google_tag: '',
                     fai: '',
                     highlight_id: 0,
-                    google_tag: '',
-                    subtitle: ''
+                    iframe_question_id: 2,
+                    iframe: '',
+                    subtitle: '',
+                    link_question_id: 2,
+                    icon_available_id: 2,
+                    region_id: null,
+                    commune_id: null,
                 }
             }
         },
         methods: {
+            getRegions() {
+                this.loading = true;
+
+                axios.get('/api/region')
+                .then(response => {
+                    this.region_posts = response.data.data;
+                })
+                .catch(function (error) {
+                    console.log(error);
+                })
+                .finally(() => {
+                    this.loading = false;
+                });
+            },
+            getCommunes() {
+                this.loading = true;
+
+                this.commune_posts = []
+
+                var region_data = String(this.form.region_id);
+
+                const region_ids = region_data.split(',');
+
+                for (const region_id of region_ids) {
+                    console.log(region_id)
+                    axios.get('/api/commune/' + region_id)
+                        .then(response => {
+                            this.commune_posts = this.commune_posts.concat(response.data.data);
+                        })
+                        .catch(error => {
+                            console.log(error);
+                        })
+                        .finally(() => {
+                            this.loading = false;
+                        });
+                }
+            },
+            async getPost() {
+                try {
+                    const response = await axios.get('/api/category/' + this.$route.params.id + '/edit?api_token='+App.apiToken);
+
+                    this.post = response.data.data;
+
+                    this.$set('alliance_id', this.post.alliance_id);
+                    this.$set('section_id', this.post.section_id);
+                    this.$set('title', this.post.title);
+                    this.$set('color', this.post.color);
+                    this.$set('position', this.post.position);
+                    this.$set('icon_type_id', this.post.icon_type_id);
+                    this.$set('iframe', this.post.iframe);
+                    this.$set('subtitle', this.post.subtitle);
+                    this.$set('link_question_id', this.post.link_question_id);
+                    this.$set('icon_available_id', this.post.icon_available_id);
+                    this.$set('url', this.post.url);
+                    this.$set('icon', this.post.fai);
+                    this.$set('highlight_id', this.post.highlight_id);
+                    this.$set('google_tag', this.post.google_tag);
+                    this.$set('region_id', this.post.region_id);
+                    this.$set('commune_id', this.post.commune_id);
+
+                    this.loading = false;
+                } catch (error) {
+                    console.error(error);
+                }
+
+                try {
+                    const response = await axios.get('/api/category_region/' + this.form.section_id + '/edit?api_token='+App.apiToken);
+
+                    this.stored_regions = response.data.data;
+
+                    this.loading = false;
+
+                    const selectedRegionIds = this.stored_regions.map(item => item.region_id);
+                    this.form.region_id = selectedRegionIds;
+                } catch (error) {
+                    console.error(error);
+                }
+
+                try {
+                    const response = await axios.get('/api/category_commune/' + this.form.section_id + '/edit?api_token='+App.apiToken);
+
+                    this.stored_communes = response.data.data;
+
+                    this.loading = false;
+
+                    const selectedCommuneIds = this.stored_communes.map(item => item.commune_id);
+                    this.form.commune_id = selectedCommuneIds;
+
+                    console.log(this.form.commune_id);
+                } catch (error) {
+                    console.error(error);
+                }
+            },
             storeAudit() {
                 let formData = new FormData();
-                formData.append('page', 'EditCategory - Category Id: '+this.$route.params.id);
+                formData.append('page', 'CreateCategory');
                
                 axios.post('/api/audit/store?api_token='+App.apiToken, formData)
                 .then(function (response) {
@@ -228,35 +382,6 @@
                 })
                 .catch(function (error) {
                     console.log(error);
-                });
-            },
-            getPost() {
-                axios.get('/api/category/'+ this.$route.params.id +'/edit?api_token='+App.apiToken)
-                .then(response => {
-                    this.post = response.data.data;
-                    
-                    this.$set(this.form, 'alliance_id', this.post.alliance_id);
-                    this.$set(this.form, 'section_id', this.post.section_id);
-                    this.$set(this.form, 'name', this.post.name);
-                    this.$set(this.form, 'google_tag', this.post.google_tag);
-                    this.$set(this, 'color', this.post.color);
-                    this.$set(this.form, 'color', this.post.color);
-                    this.$set(this.form, 'position', this.post.position);
-                    this.$set(this.form, 'subtitle', this.post.subtitle);
-                    this.$set(this.form, 'highlight_id', this.post.highlight_id);
-                    if(this.post.icon_type_id == 2) {
-                        var icon = this.post.icon;
-                        var icon_detail = icon.split(' ');
-                        var icon = icon_detail[0]+' '+icon_detail[1];
-                        this.$set(this.form, 'fai', icon);
-                    } else {
-                        var icon = this.post.icon;
-                        var icon_detail = icon.split(' ');
-                        var icon_detail = icon_detail[1];
-                        var icon_detail = icon_detail.split('-');
-                        var icon = 'ios-'+icon_detail[2];
-                        this.$set(this.form, 'fai', icon);
-                    }
                 });
             },
             handleChange() {
@@ -291,42 +416,35 @@
                     headers: { 'content-type': 'multipart/form-data' }
                 }
 
-                if (typeof this.icon_image !== 'undefined') {
-                    var icon_image_size = this.icon_image.size;
-                } else {
-                    var icon_image_size = 0;
-                }
-
                 if(this.form.alliance_id != null
                     && this.form.section_id != null
-                    && this.form.name != ''
+                    && this.form.title != ''
                     && this.form.google_tag != ''
-                    && this.form.name.length <= 28
+                    && this.form.title.length <= 28
                     && this.form.color != ''
                     && this.form.position != ''
-                    && (this.icon_image != null || this.form.fai != '')
-                    && (icon_image_size <= 1024 * 1024)
+                    && this.form.region_id != null
+                    && (this.form.icon_available_id == 2 || (this.form.icon_available_id == 1 && this.form.fai != ''))
                 ) {
                     let formData = new FormData();
                     formData.append('alliance_id', this.form.alliance_id);
                     formData.append('section_id', this.form.section_id);
-                    formData.append('name', this.form.name);
-                    formData.append('google_tag', this.form.google_tag);
+                    formData.append('title', this.form.title);
                     formData.append('color', this.form.color);
                     formData.append('position', this.form.position);
-                    formData.append('file', this.file);
                     formData.append('icon_type_id', this.form.icon_type_id);
+                    formData.append('iframe', this.form.iframe);
                     formData.append('subtitle', this.form.subtitle);
-                    if(this.form.icon_type_id == 1) {
-                        formData.append('icon_image', this.icon_image);
-                    } else {
-                        formData.append('icon', this.form.fai);
-                    }
-
+                    formData.append('link_question_id', this.form.link_question_id);
+                    formData.append('icon_available_id', this.form.icon_available_id);
+                    formData.append('url', this.form.url);
+                    formData.append('icon', this.form.fai);
                     formData.append('highlight_id', this.form.highlight_id);
                     formData.append('google_tag', this.form.google_tag);
+                    formData.append('region_id', this.form.region_id);
+                    formData.append('commune_id', this.form.commune_id);
 
-                    axios.post('/api/category/update/'+this.$route.params.id+'?api_token='+App.apiToken, formData, config)
+                    axios.post('/api/category/update/'+ this.$route.params.id +'?api_token='+App.apiToken, formData, config)
                     .then(function (response) {
                         currentObj.success = response.data.success;
                     })
@@ -341,21 +459,14 @@
                 } else {
                     this.loading = false;
                     this.errors = [];
-                    
+                    if (this.form.title == '') {
+                        this.errors.push('El título es obligatorio.');
+                    }
                     if (this.form.alliance_id == null) {
                         this.errors.push('La alianza es obligatoria.');
                     }
                     if (this.form.section_id == null) {
                         this.errors.push('La sección es obligatoria.');
-                    }
-                    if (this.form.name == '') {
-                        this.errors.push('El nombre es obligatorio.');
-                    }
-                    if (this.form.google_tag == '') {
-                        this.errors.push('La etiqueta de Google es obligatoria.');
-                    }
-                    if (this.form.name.length > 28) {
-                        this.errors.push('El nombre debe tener menos de 28 caracteres.');
                     }
                     if (this.form.color == '') {
                         this.errors.push('El color es obligatorio.');
@@ -363,20 +474,17 @@
                     if (this.form.position == '') {
                         this.errors.push('La posición es obligatoria.');
                     }
-                   if (this.form.icon_type_id == null) {
-                        this.errors.push('El tipo de icono es obligatorio.');
+                    if (this.form.google_tag == '') {
+                        this.errors.push('La etiqueta de Google es obligatoria.');
                     }
-                    if (this.form.icon_type_id == 1 && this.icon_image == null) {
-                        this.errors.push('El icono es obligatorio.');
+                    if (this.form.title.length > 28) {
+                        this.errors.push('El nombre debe tener menos de 28 caracteres.');
                     }
-                    if (this.form.icon_type_id == 2 && this.form.fai == '') {
+                    if (this.form.icon_available_id == 1 && this.form.fai == '') {
                         this.errors.push('El icono es obligatorio.');
-                    } 
-                    if (this.form.icon_type_id == 1 && (icon_image_size > 1024 * 1024)) {
-                        this.errors.push('La imagen del icono es muy pesada.');
                     }
 
-                    $('html,body').scrollTop(0);
+                    window.scrollTo(0, 0);
 
                     e.preventDefault();
                 }
@@ -393,7 +501,7 @@
                 return true;
             },
             charactersLeft() {
-                var char = this.form.name.length,
+                var char = this.form.title.length,
                     limit = 36;
 
                 return (limit - char) + " / " + limit + " caracteres disponibles";
