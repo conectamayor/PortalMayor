@@ -526,19 +526,19 @@
                         formData.append('open_app_id', this.form.open_app_id);
                     }
 
-                    if (this.form.open_app_version_id != 'null') {
+                    if (this.form.open_app_version_id != 'null' && this.form.open_app_version_id != '' && this.form.open_app_version_id != null) {
                         formData.append('open_app_version_id', this.form.open_app_version_id);
                     }
 
-                    if (this.form.open_app_uri_url != 'null') {
+                    if (this.form.open_app_uri_url != 'null' && this.form.open_app_uri_url != '' && this.form.open_app_uri_url != null) {
                         formData.append('open_app_uri_url', this.form.open_app_uri_url);
                     }
 
-                    if (this.form.open_app_desktop_url != 'null') {
+                    if (this.form.open_app_desktop_url != 'null' && this.form.open_app_desktop_url != '' && this.form.open_app_desktop_url != null) {
                         formData.append('open_app_desktop_url', this.form.open_app_desktop_url);
                     }
 
-                    if (this.form.open_app_not_installed != 'null') {
+                    if (this.form.open_app_not_installed != 'null' && this.form.open_app_not_installed != '' && this.form.open_app_not_installed != null) {
                         formData.append('open_app_not_installed', this.form.open_app_not_installed);
                     }
 
