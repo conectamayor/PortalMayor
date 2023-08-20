@@ -351,22 +351,22 @@
 
                     this.post = response.data.data;
 
-                    this.$set('alliance_id', this.post.alliance_id);
-                    this.$set('section_id', this.post.section_id);
-                    this.$set('title', this.post.title);
-                    this.$set('color', this.post.color);
-                    this.$set('position', this.post.position);
-                    this.$set('icon_type_id', this.post.icon_type_id);
-                    this.$set('iframe', this.post.iframe);
-                    this.$set('subtitle', this.post.subtitle);
-                    this.$set('link_question_id', this.post.link_question_id);
-                    this.$set('icon_available_id', this.post.icon_available_id);
-                    this.$set('url', this.post.url);
-                    this.$set('icon', this.post.fai);
-                    this.$set('highlight_id', this.post.highlight_id);
-                    this.$set('google_tag', this.post.google_tag);
-                    this.$set('region_id', this.post.region_id);
-                    this.$set('commune_id', this.post.commune_id);
+                    this.$set(this.form, 'alliance_id', this.post.alliance_id);
+                    this.$set(this.form, 'section_id', this.post.section_id);
+                    this.$set(this.form, 'title', this.post.title);
+                    this.$set(this.form, 'color', this.post.color);
+                    this.$set(this.form, 'position', this.post.position);
+                    this.$set(this.form, 'icon_type_id', this.post.icon_type_id);
+                    this.$set(this.form, 'iframe', this.post.iframe);
+                    this.$set(this.form, 'subtitle', this.post.subtitle);
+                    this.$set(this.form, 'link_question_id', this.post.link_question_id);
+                    this.$set(this.form, 'icon_available_id', this.post.icon_available_id);
+                    this.$set(this.form, 'url', this.post.url);
+                    this.$set(this.form, 'icon', this.post.fai);
+                    this.$set(this.form, 'highlight_id', this.post.highlight_id);
+                    this.$set(this.form, 'google_tag', this.post.google_tag);
+                    this.$set(this.form, 'region_id', this.post.region_id);
+                    this.$set(this.form, 'commune_id', this.post.commune_id);
 
                     this.loading = false;
                 } catch (error) {
