@@ -443,6 +443,18 @@
                 } catch (error) {
                     console.error(error);
                 }
+
+                try {
+                    const response = await axios.get('/api/section_region/' + this.$route.params.id + '/edit?api_token='+App.apiToken);
+
+                    this.post = response.data.data;
+
+                    console.log(this.post);
+
+                    this.loading = false;
+                } catch (error) {
+                    console.error(error);
+                }
             },
             onSubmit(e) {
                 this.loading = true; //the loading begin

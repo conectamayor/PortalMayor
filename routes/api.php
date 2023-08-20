@@ -115,3 +115,4 @@ Route::get('region', 'api\RegionController@index');
 Route::get('commune/{region_id}', 'api\CommuneController@index');
 Route::post('region/find', 'api\RegionController@find');
 Route::post('commune/find', 'api\CommuneController@find');
+Route::get('section_region/{id}/edit', 'api\SectionRegionController@edit');
