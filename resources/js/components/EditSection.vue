@@ -487,12 +487,17 @@
                 const config = {
                     headers: { 'content-type': 'multipart/form-data' }
                 }
+
                 const selectedRegionIds = this.stored_regions.map(item => item.region_id);
 
                 // Set form.region_id based on the selected region IDs
                 this.form.region_id = selectedRegionIds;
+
+                const selectedCommuneIds = this.stored_communes.map(item => item.region_id);
+
+                // Set form.region_id based on the selected region IDs
+                this.form.commune_id = selectedCommuneIds;
                 
-                console.log(this.form.region_id)
                 if(this.form.title != ''
                 && this.form.color != ''
                     && this.form.google_tag != ''
