@@ -400,7 +400,7 @@
             }, 
             async getPost() {
                 try {
-                    const response = await axios.get('/api/section/edit/' + this.$route.params.id + '/edit?api_token='+App.apiToken);
+                    const response = await axios.get('/api/section/' + this.$route.params.id + '/edit?api_token='+App.apiToken);
 
                     this.post = response.data.data;
 
