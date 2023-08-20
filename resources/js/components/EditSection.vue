@@ -400,10 +400,11 @@
             }, 
             async getPost() {
                 try {
-                    alert(this.$route.params.id)
                     const response = await axios.get('/api/section/' + this.$route.params.id + '/edit?api_token='+App.apiToken);
 
                     this.post = response.data.data;
+
+                    console.log(this.post);
 
                     this.$set(this.form, 'title', this.post.title);
                     this.$set(this.form, 'color', this.post.color);
@@ -546,17 +547,6 @@
                 }
             },
 
-        },
-        computed: {
-            isDisabled() {
-                return true;
-            },
-            charactersLeft() {
-                var char = this.form.title.length,
-                    limit = 36;
-
-                return (limit - char) + " / " + limit + " caracteres disponibles";
-            }
         }
     }
 </script>
