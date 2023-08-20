@@ -333,14 +333,14 @@
 
                     this.$set(this.form, 'google_tag', google_tag[1]);
                     this.$set(this.form, 'icon_type_id', this.post.icon_type_id);
-
+              
                     if (this.post.icon != null) {
                         var icon = this.post.icon.split(' ');
 
                         icon = icon[0] +' '+ icon[1];
                     }
 
-                    this.$set(this.form, 'icon', icon);
+                    this.$set(this.form, 'fai', icon);
                     this.$set(this.form, 'description', this.post.description);
                     this.$set(this.form, 'color', this.post.color);
                     this.$set(this.form, 'start_date', this.post.start_date);
