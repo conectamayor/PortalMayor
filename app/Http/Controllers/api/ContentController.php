@@ -240,8 +240,11 @@ class ContentController extends ApiResponseController
         $content->position = $request->position;
         $content->icon_available_id = $request->icon_available_id;
         $content->whatsapp_description = $request->whatsapp_description;
-        $content->pdf = $pdfName;
 
+        if ($pdfName != '') {
+            $content->pdf = $pdfName;
+        }
+        
         if($old_position != $request->position) {
             $move_position_contents = Content::where('category_id', $request->category_id)->where('position', '>=', $request->position)->orderBy('position', 'ASC')->get();
             $position = $request->position;
@@ -272,7 +275,7 @@ class ContentController extends ApiResponseController
                 if (Storage::disk('local')->exists('files/' . $pdfName)) {
                     Storage::disk('local')->delete('files/' . $pdfName);
                 }
-                
+
                 Storage::disk('local')->putFileAs(
                     'files', // Ruta modificada aquí
                     $request->pdf,
