@@ -49,7 +49,30 @@ class RegionController extends ApiResponseController
             $ip = $_SERVER['REMOTE_ADDR'];  
         }
 
-        $details = json_decode(file_get_contents("https://api.ip2location.io/?key=D1ADF7A7E66DB897DEF099B7CD05DE34&ip={$ip}"));
+        $apiKey = "D1ADF7A7E66DB897DEF099B7CD05DE34";
+
+        $curl = curl_init();
+
+        curl_setopt_array($curl, array(
+            CURLOPT_URL => "https://api.ip2location.io/?key={$apiKey}&ip={$ip}",
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_TIMEOUT => 30,
+            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+            CURLOPT_CUSTOMREQUEST => "GET",
+        ));
+
+        $response = curl_exec($curl);
+        $err = curl_error($curl);
+
+        curl_close($curl);
+
+        if ($err) {
+            echo "cURL Error #:" . $err;
+        } else {
+            $details = json_decode($response);
+
+            var_dump($details);
+        }
 
         $region = Region::where('regin', 'like', '%' . $details->region . '%')->first();
         
