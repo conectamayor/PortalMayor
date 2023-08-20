@@ -93,6 +93,7 @@
 <script>
     export default {
         created() {
+            this.getRegion();
             this.getPosts();
             this.catchUser();
             this.checkDate();
