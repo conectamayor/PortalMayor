@@ -267,7 +267,7 @@ class CategoryController extends ApiResponseController
         $category = Category::find($id);
         $category->alliance_id = $request->alliance_id;
         $category->section_id = $request->section_id;
-        $category->name = $request->name;
+        $category->title = $request->title;
         $category->color = $request->color;
         $category->subtitle = $request->subtitle;
         $category->iframe = $request->iframe;
