@@ -411,7 +411,12 @@
                     this.$set(this.form, 'fai', this.post.fai);
                     this.$set(this.form, 'link_question_id', this.post.link_question_id);
                     this.$set(this.form, 'video_id', this.post.video_id);
-                    this.$set(this.form, 'youtube_question_id', this.post.youtube_question_id);
+
+                    if (this.post.video_id != null) {
+                        this.$set(this.form, 'youtube_question_id', 1);
+                    } else {
+                        this.$set(this.form, 'youtube_question_id', 2);
+                    }
 
                     var google_tag = this.post.google_tag.split('_');
 
