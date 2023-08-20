@@ -361,9 +361,6 @@
                 })
                 .finally(() => {
                     this.loading = false;
-
-                    const selectedRegionIds = this.stored_regions.map(item => item.region_id);
-                    this.form.region_id = selectedRegionIds;
                 });
             },
             getCommunes() {
@@ -465,6 +462,9 @@
                     this.stored_regions = response.data.data;
 
                     this.loading = false;
+
+                    const selectedRegionIds = this.stored_regions.map(item => item.region_id);
+                    this.form.region_id = selectedRegionIds;
                 } catch (error) {
                     console.error(error);
                 }
