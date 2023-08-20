@@ -358,6 +358,7 @@
                     const response = await axios.get('/api/category/' + this.$route.params.id + '/edit?api_token='+App.apiToken);
 
                     this.post = response.data.data;
+                    console.log(this.post);
 
                     this.$set(this.form, 'alliance_id', this.post.alliance_id);
                     this.$set(this.form, 'section_id', this.post.section_id);
@@ -382,7 +383,7 @@
 
                     var google_tag = this.post.google_tag.split('_');
 
-                    this.$set(this.form, 'google_tag', google_tag);
+                    this.$set(this.form, 'google_tag', google_tag[1]);
                     this.$set(this.form, 'region_id', this.post.region_id);
                     this.$set(this.form, 'commune_id', this.post.commune_id);
 
