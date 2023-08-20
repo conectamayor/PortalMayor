@@ -49,9 +49,9 @@ class RegionController extends ApiResponseController
             $ip = $_SERVER['REMOTE_ADDR'];  
         }
 
-        $details = json_decode(file_get_contents("http://ipinfo.io/{$ip}/json"));
+        $details = json_decode(file_get_contents("https://api.ip2location.io/?key=D1ADF7A7E66DB897DEF099B7CD05DE34&ip={$ip}"));
 
-        $region = Region::where('region', 'like', '%' . $details->region . '%')->first();
+        $region = Region::where('regin', 'like', '%' . $details->region . '%')->first();
         
         return $this->successResponse($region);
     }
