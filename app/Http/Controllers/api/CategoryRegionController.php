@@ -29,7 +29,7 @@ class CategoryRegionController extends ApiResponseController
      */
     public function edit($id)
     {
-        $category_regions = CategoryRegion::where('section_id', $id)->get();
+        $category_regions = CategoryRegion::where('commune_id', $id)->get();
 
         return $this->successResponse($category_regions);
     }
