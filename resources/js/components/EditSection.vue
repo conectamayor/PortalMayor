@@ -343,10 +343,10 @@
             }
         },
         methods: {
-            isSelectedRegion(regionId) {
+            async isSelectedRegion(regionId) {
                 return this.stored_regions.some(item => item.region_id === regionId);
             },
-            isSelectedCommune(communeId) {
+            async isSelectedCommune(communeId) {
                 return this.stored_communes.some(item => item.commune_id === communeId);
             },
             getRegions() {
@@ -373,7 +373,6 @@
                 const region_ids = region_data.split(',');
 
                 for (const region_id of region_ids) {
-                    console.log(region_id)
                     axios.get('/api/commune/' + region_id)
                         .then(response => {
                             this.commune_posts = this.commune_posts.concat(response.data.data);
@@ -411,8 +410,6 @@
 
                     this.post = response.data.data;
 
-                    console.log(this.post);
-
                     this.$set(this.form, 'title', this.post.section_title);
                     this.$set(this.form, 'color', this.post.color);
 
@@ -421,9 +418,6 @@
 
                         icon = icon[0] +' '+ icon[1];
                     }
-
-                    console.log(this.post.icon);
-                    console.log(icon);
 
                     this.$set(this.form, 'fai', icon);
                     this.$set(this.form, 'icon_type_id', this.post.icon_type_id);
