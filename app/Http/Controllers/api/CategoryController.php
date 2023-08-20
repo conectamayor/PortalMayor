@@ -6,6 +6,10 @@ use App\Category;
 use App\Content;
 use App\User;
 use App\Poll;
+use App\Region;
+use App\Commune;
+use App\CategoryRegion;
+use App\CategoryCommune;
 use App\Http\Controllers\ApiResponseController;
 use App\Http\Controllers\Controller\api;
 use Illuminate\Http\Request;
@@ -192,6 +196,59 @@ class CategoryController extends ApiResponseController
         $category->status = 1;
 
         if($category->save()) {
+            if ($request->region_id != 1000) {
+                $region_data = explode(',', $request->region_id);
+
+                for ($i=0; $i < count($region_data); $i++) { 
+                    $category_region = new CategoryRegion();
+                    $category_region->section_id = $category->category_id;
+                    $category_region->region_id = trim($region_data[$i]);
+                    $category_region->save();
+                }
+    
+                if ($request->commune_id != 'null') {
+                    $commune_data = explode(',', $request->commune_id);
+    
+                    for ($i=0; $i < count($commune_data); $i++) { 
+                        $category_commune = new CategoryCommune();
+                        $category_commune->section_id = $category->category_id;
+                        $category_commune->commune_id = trim($commune_data[$i]);
+                        $category_commune->save();
+                    }
+                } else {
+                    $region_data = explode(',', $request->region_id);
+    
+                    for ($i=0; $i < count($region_data); $i++) { 
+                        $communes = Commune::where('region_id', trim($region_data[$i]))->get();
+    
+                        foreach ($communes as $commune) {
+                            $category_commune = new CategoryCommune();
+                            $category_commune->section_id = $category->category_id;
+                            $category_commune->commune_id = $commune->commune_id;
+                            $category_commune->save();
+                        }
+                    }
+                }
+            } else {
+                $regions = Region::all();
+
+                foreach ($regions as $region) {
+                    $category_region = new SectionRegion();
+                    $category_region->section_id = $category->category_id;
+                    $category_region->region_id = $region->region_id;
+                    $category_region->save();
+                }
+
+                $communes = Commune::all();
+
+                foreach ($communes as $commune) {
+                    $category_commune = new CategoryCommune();
+                    $category_commune->section_id = $category->category_id;
+                    $category_commune->commune_id = $commune->commune_id;
+                    $category_commune->save();
+                }
+            }
+
             return $this->successResponse($category);
         } else {
             return $this->errorResponse($category);

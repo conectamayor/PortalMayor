@@ -395,6 +395,7 @@
                     && this.form.title.length <= 28
                     && this.form.color != ''
                     && this.form.position != ''
+                    && this.form.region_id != null
                     && (this.form.icon_available_id == 2 || (this.form.icon_available_id == 1 && this.form.fai != ''))
                 ) {
                     let formData = new FormData();
@@ -410,9 +411,10 @@
                     formData.append('icon_available_id', this.form.icon_available_id);
                     formData.append('url', this.form.url);
                     formData.append('icon', this.form.fai);
-
                     formData.append('highlight_id', this.form.highlight_id);
                     formData.append('google_tag', this.form.google_tag);
+                    formData.append('region_id', this.form.region_id);
+                    formData.append('commune_id', this.form.commune_id);
 
                     axios.post('/api/category/store?api_token='+App.apiToken, formData, config)
                     .then(function (response) {

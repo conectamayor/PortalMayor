@@ -99,6 +99,7 @@
                                         <select class="form-control" id="exampleFormControlSelect1"
                                         v-model="form.region_id" multiple
                                         @change="getCommunes"
+                                        disabled
                                         >
                                             <option :value="1000">Todas las regiones y comunas</option>
                                             <option :selected="isSelectedRegion(region_post.region_id)" v-for="region_post in region_posts" :key="region_post.region_id" :value="region_post.region_id">{{ region_post.region }}</option>
@@ -106,7 +107,7 @@
                                     </div>
                                     <div class="col-sm-6">
                                         <label for="exampleInputEmail1">Comuna</label>
-                                        <select class="form-control" id="exampleFormControlSelect1" v-model="form.commune_id"  multiple>
+                                        <select class="form-control" id="exampleFormControlSelect1" v-model="form.commune_id"  multiple disabled>
                                             <option :value="null" v-if="commune_posts.length == 0">No ha seleccionado una región</option>
                                             <option :selected="isSelectedCommune(commune_post.commune_id)"  v-for="commune_post in commune_posts" :key="commune_post.commune_id" :value="commune_post.commune_id">{{ commune_post.commune }}</option>
                                         </select>
