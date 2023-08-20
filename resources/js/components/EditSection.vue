@@ -467,10 +467,15 @@
                     formData.append('video_id', this.form.video_id);
                     formData.append('subtitle', this.form.subtitle);
                     formData.append('iframe', this.form.iframe);
-                    formData.append('google_tag', this.form.google_tag);
+
+                    var google_tag =    this.form.google_tag.split('_');
+
+                    formData.append('google_tag', google_tag[1]);
                     formData.append('region_id', this.form.region_id);
                     formData.append('commune_id', this.form.commune_id);
+                    alert(this.form.direct_content_question_id)
                     formData.append('direct_content_question_id', this.form.direct_content_question_id);
+                    alert(this.form.open_app_id)
                     formData.append('icon_available_id', this.form.icon_available_id);
                     formData.append('open_app_id', this.form.open_app_id);
                     formData.append('open_app_version_id', this.form.open_app_version_id);
