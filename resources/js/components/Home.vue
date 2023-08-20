@@ -209,8 +209,7 @@
             getRegion() {
                 axios.get('/api/region/find')
                 .then(function (response) {
-                    console.log(response);
-                    this.region = response.data.success;
+                    this.region = response.data.data.region;
                 })
                 .catch(function (error) {
                     console.log(error);
