@@ -337,7 +337,7 @@
                     if (this.post.icon != null) {
                         var icon = this.post.icon.split(' ');
 
-                        icon = icon[0] +' '+ icon[1];
+                        icon = icon[1] +' '+ icon[2];
                     }
 
                     this.$set(this.form, 'fai', icon);
