@@ -414,6 +414,9 @@
                         icon = icon[0] +''+ icon[1];
                     }
 
+                    console.log(this.post.icon);
+                    console.log(icon);
+
                     this.$set(this.form, 'icon', icon);
                     this.$set(this.form, 'icon_type_id', this.post.icon_type_id);
                     this.$set(this.form, 'fai', this.post.fai);
