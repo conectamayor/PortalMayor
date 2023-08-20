@@ -343,10 +343,10 @@
             }
         },
         methods: {
-            async isSelectedRegion(regionId) {
+            isSelectedRegion(regionId) {
                 return this.stored_regions.some(item => item.region_id === regionId);
             },
-            async isSelectedCommune(communeId) {
+            isSelectedCommune(communeId) {
                 return this.stored_communes.some(item => item.commune_id === communeId);
             },
             getRegions() {
