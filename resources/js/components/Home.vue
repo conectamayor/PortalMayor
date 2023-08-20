@@ -183,6 +183,7 @@
             async getRegion() {
                 try {
                     const response = await axios.get('/api/region/find');
+                    console.log(response.data.data);
                     this.region = response.data.data.region_id;
                 } catch (error) {
                     console.log(error);
