@@ -72,7 +72,10 @@ class RegionController extends ApiResponseController
             $details = json_decode($response);
         }
 
+        $region = str_replace("Region ", "", $details->region_name);
+
+        $region = Region::where('region', 'like', '%' . $egion . '%')->first();
         
-        return $this->successResponse($details->region_name);
+        return $this->successResponse($region);
     }
 }
