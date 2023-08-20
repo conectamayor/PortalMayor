@@ -101,7 +101,7 @@
                                         @change="getCommunes"
                                         >
                                             <option :value="1000">Todas las regiones y comunas</option>
-                                            <option v-for="region_post in region_posts" :key="region_post.region_id" :value="region_post.region_id">{{ region_post.region }}</option>
+                                            <option :selected="isSelectedRegion(region_post.region_id)" v-for="region_post in region_posts" :key="region_post.region_id" :value="region_post.region_id">{{ region_post.region }}</option>
                                         </select>
                                     </div>
                                     <div class="col-sm-6">
@@ -271,7 +271,7 @@
                                     <span class="icon text-white-50">
                                         <i class="fas fa-check"></i>
                                     </span>
-                                    <span class="text">Guardar</span>
+                                    <span class="text">Actualizar</span>
                                 </button>
                                 <router-link to="/section" class="btn btn-danger btn-icon-split">
                                     <span class="icon text-white-50">
@@ -341,6 +341,9 @@
             }
         },
         methods: {
+            isSelectedRegion(regionId) {
+                return this.stored_region.some(item => item.region_id === regionId);
+            },
             getRegions() {
                 this.loading = true;
 
