@@ -407,7 +407,14 @@
 
                     this.$set(this.form, 'title', this.post.section_title);
                     this.$set(this.form, 'color', this.post.color);
-                    this.$set(this.form, 'icon', this.post.icon);
+
+                    if (this.post.icon != null) {
+                        var icon = this.post.icon.split(' ');
+
+                        icon = icon[0] +''+ icon[1];
+                    }
+
+                    this.$set(this.form, 'icon', icon);
                     this.$set(this.form, 'icon_type_id', this.post.icon_type_id);
                     this.$set(this.form, 'fai', this.post.fai);
                     this.$set(this.form, 'link_question_id', this.post.link_question_id);

@@ -68,22 +68,13 @@ class SectionController extends ApiResponseController
      */
     public function store(Request $request)
     {
-        if($request->icon_type_id == 1) {
-            $fileName = time().'_'.'section_icon'.'.'.$request->file->getClientOriginalExtension();
-        } else {
-            $fileName = $request->icon;
-        }
+        $fileName = $request->icon;
 
         $section = new Section();
         $section->section_title = $request->title;
         $section->section_subtitle = $request->subtitle;
         $section->color = $request->color;
-        if($request->icon_type_id == 2) {
-            $section->icon = $fileName.' home_icon_size2';
-        } else if($request->icon_type_id == 3) {
-            $section->icon = 'icon ion-'.$fileName.' home_icon_size2';
-        }
-        
+        $section->icon = $fileName.' home_icon_size2';
         $section->icon_type_id = $request->icon_type_id;
         $section->status = 1;
         $section->iframe = $request->iframe;
