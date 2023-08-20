@@ -493,7 +493,7 @@
                 // Set form.region_id based on the selected region IDs
                 this.form.region_id = selectedRegionIds;
 
-                const selectedCommuneIds = this.stored_communes.map(item => item.region_id);
+                const selectedCommuneIds = this.stored_communes.map(item => item.commune_id);
 
                 // Set form.region_id based on the selected region IDs
                 this.form.commune_id = selectedCommuneIds;
