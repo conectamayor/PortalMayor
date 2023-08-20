@@ -434,7 +434,7 @@
                     this.$set(this.form, 'subtitle', this.post.section_subtitle);
                     this.$set(this.form, 'iframe', this.post.iframe);
 
-                    if (this.post.iframe != null) {
+                    if (this.post.iframe != null && this.post.iframe != '') {
                         this.$set(this.form, 'iframe_question_id', 1);
                     } else {
                         this.$set(this.form, 'iframe_question_id', 2);
