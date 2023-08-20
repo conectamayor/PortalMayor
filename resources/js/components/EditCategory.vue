@@ -211,7 +211,7 @@
                                     <span class="icon text-white-50">
                                         <i class="fas fa-check"></i>
                                     </span>
-                                    <span class="text">Guardar</span>
+                                    <span class="text">Actualizar</span>
                                 </button>
                                 <router-link to="/category" class="btn btn-danger btn-icon-split">
                                     <span class="icon text-white-50">
@@ -316,34 +316,7 @@
                         });
                 }
             },
-            async getPost() {
-                try {
-                    const response = await axios.get('/api/category/' + this.$route.params.id + '/edit?api_token='+App.apiToken);
-
-                    this.post = response.data.data;
-
-                    this.$set('alliance_id', this.post.alliance_id);
-                    this.$set('section_id', this.post.section_id);
-                    this.$set('title', this.post.title);
-                    this.$set('color', this.post.color);
-                    this.$set('position', this.post.position);
-                    this.$set('icon_type_id', this.post.icon_type_id);
-                    this.$set('iframe', this.post.iframe);
-                    this.$set('subtitle', this.post.subtitle);
-                    this.$set('link_question_id', this.post.link_question_id);
-                    this.$set('icon_available_id', this.post.icon_available_id);
-                    this.$set('url', this.post.url);
-                    this.$set('icon', this.post.fai);
-                    this.$set('highlight_id', this.post.highlight_id);
-                    this.$set('google_tag', this.post.google_tag);
-                    this.$set('region_id', this.post.region_id);
-                    this.$set('commune_id', this.post.commune_id);
-
-                    this.loading = false;
-                } catch (error) {
-                    console.error(error);
-                }
-
+            async getRegionsCommunes() {
                 try {
                     const response = await axios.get('/api/category_region/' + this.form.section_id + '/edit?api_token='+App.apiToken);
 
@@ -368,6 +341,34 @@
                     this.form.commune_id = selectedCommuneIds;
 
                     console.log(this.form.commune_id);
+                } catch (error) {
+                    console.error(error);
+                }
+            },
+            async getPost() {
+                try {
+                    const response = await axios.get('/api/category/' + this.$route.params.id + '/edit?api_token='+App.apiToken);
+
+                    this.post = response.data.data;
+
+                    this.$set('alliance_id', this.post.alliance_id);
+                    this.$set('section_id', this.post.section_id);
+                    this.$set('title', this.post.title);
+                    this.$set('color', this.post.color);
+                    this.$set('position', this.post.position);
+                    this.$set('icon_type_id', this.post.icon_type_id);
+                    this.$set('iframe', this.post.iframe);
+                    this.$set('subtitle', this.post.subtitle);
+                    this.$set('link_question_id', this.post.link_question_id);
+                    this.$set('icon_available_id', this.post.icon_available_id);
+                    this.$set('url', this.post.url);
+                    this.$set('icon', this.post.fai);
+                    this.$set('highlight_id', this.post.highlight_id);
+                    this.$set('google_tag', this.post.google_tag);
+                    this.$set('region_id', this.post.region_id);
+                    this.$set('commune_id', this.post.commune_id);
+
+                    this.loading = false;
                 } catch (error) {
                     console.error(error);
                 }

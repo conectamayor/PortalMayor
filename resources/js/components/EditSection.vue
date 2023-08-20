@@ -485,6 +485,34 @@
                 } catch (error) {
                     console.error(error);
                 }
+
+                try {
+                    const response = await axios.get('/api/section_region/' + this.$route.params.id + '/edit?api_token='+App.apiToken);
+
+                    this.stored_regions = response.data.data;
+
+                    this.loading = false;
+
+                    const selectedRegionIds = this.stored_regions.map(item => item.region_id);
+                    this.form.region_id = selectedRegionIds;
+                } catch (error) {
+                    console.error(error);
+                }
+
+                try {
+                    const response = await axios.get('/api/section_commune/' + this.$route.params.id + '/edit?api_token='+App.apiToken);
+
+                    this.stored_communes = response.data.data;
+
+                    this.loading = false;
+
+                    const selectedCommuneIds = this.stored_communes.map(item => item.commune_id);
+                    this.form.commune_id = selectedCommuneIds;
+
+                    console.log(this.form.commune_id);
+                } catch (error) {
+                    console.error(error);
+                }
             },
             onSubmit(e) {
                 this.loading = true; //the loading begin
