@@ -207,8 +207,9 @@
                     let formData = new FormData();
                     formData.append('region', this.region);
                     formData.append('commune', this.commune);
+                    alert(this.commune);
 
-                    if (this.region == null && this.commune != null) {
+                    if (this.region == null && this.commune == null) {
                         this.posts = '';
                     } else {
                         const response = await axios.post('/api/section/home', formData);
