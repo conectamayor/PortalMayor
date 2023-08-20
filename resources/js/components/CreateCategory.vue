@@ -238,6 +238,8 @@
             "v-input-colorpicker": InputColorPicker
         },
         created() {
+            this.getRegions();
+            this.getCommunes();
             this.getAlliaceList();
             this.getSectionList();
             this.getRol();
@@ -269,6 +271,8 @@
                     subtitle: '',
                     link_question_id: 2,
                     icon_available_id: 2,
+                    region_id: null,
+                    commune_id: null,
                 }
             }
         },
