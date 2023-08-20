@@ -305,8 +305,7 @@ class CategoryController extends ApiResponseController
                 $category_commune_detail = CategoryCommune::find($category_commune->category_commune_id);
                 $category_commune_detail->delete();
             }
-            print_r($request->region_id);
-            die();
+
             if ($request->region_id != 1000) {
                 $region_data = explode(',', $request->region_id);
 
