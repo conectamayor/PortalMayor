@@ -521,11 +521,26 @@
                     formData.append('commune_id', this.form.commune_id);
                     formData.append('direct_content_question_id', this.form.direct_content_question_id);
                     formData.append('icon_available_id', this.form.icon_available_id);
-                    formData.append('open_app_id', this.form.open_app_id);
-                    formData.append('open_app_version_id', this.form.open_app_version_id);
-                    formData.append('open_app_uri_url', this.form.open_app_uri_url);
-                    formData.append('open_app_desktop_url', this.form.open_app_desktop_url);
-                    formData.append('open_app_not_installed', this.form.open_app_not_installed);
+
+                    if (this.form.open_app_id != 'null') {
+                        formData.append('open_app_id', this.form.open_app_id);
+                    }
+
+                    if (this.form.open_app_version_id != 'null') {
+                        formData.append('open_app_version_id', this.form.open_app_version_id);
+                    }
+
+                    if (this.form.open_app_uri_url != 'null') {
+                        formData.append('open_app_uri_url', this.form.open_app_uri_url);
+                    }
+
+                    if (this.form.open_app_desktop_url != 'null') {
+                        formData.append('open_app_desktop_url', this.form.open_app_desktop_url);
+                    }
+
+                    if (this.form.open_app_not_installed != 'null') {
+                        formData.append('open_app_not_installed', this.form.open_app_not_installed);
+                    }
 
                     axios.post('/api/section/update/'+ this.$route.params.id +'?api_token='+App.apiToken, formData, config)
                     .then(function (response) {
