@@ -485,7 +485,7 @@
                     formData.append('link_question_id', this.form.link_question_id);
                     formData.append('icon_available_id', this.form.icon_available_id);
                     formData.append('url', this.form.url);
-                    formData.append('icon', icon);
+                    formData.append('icon', this.form.fai);
                     formData.append('highlight_id', this.form.highlight_id);
                     formData.append('google_tag', google_tag);
                     formData.append('region_id', this.form.region_id);
