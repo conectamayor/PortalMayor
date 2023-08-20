@@ -42,7 +42,7 @@ Route::get('category', 'api\CategoryController@index');
 Route::get('category/{id}/edit', 'api\CategoryController@edit');
 Route::post('category/store', 'api\CategoryController@store');
 Route::get('category/destroy/{id}', 'api\CategoryController@destroy');
-Route::get('category/show/{id}', 'api\CategoryController@show');
+Route::post('category/show', 'api\CategoryController@show');
 Route::get('category/list', 'api\CategoryController@list');
 Route::get('category/list/{id}', 'api\CategoryController@list');
 Route::post('category/update/{id}', 'api\CategoryController@update');

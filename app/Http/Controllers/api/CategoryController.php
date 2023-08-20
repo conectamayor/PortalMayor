@@ -354,8 +354,17 @@ class CategoryController extends ApiResponseController
      */
     public function show(Request $request)
     {
-        $id = $request->segment(4);
-        $categories = Category::where('section_id', $id)->where('status', 1)->get();
+        $categories = Category::select('categories.*')
+                ->distinct() // Agrega la función distinct()
+                ->leftJoin('category_regions', 'category_regions.category_id', '=', 'categories.category_id')
+                ->leftJoin('communes', 'communes.region_id', '=', 'category_regions.region_id')
+                ->leftJoin('category_communes', 'section_communes.commune_id', '=', 'communes.commune_id')
+                ->where('categories.status', 1)
+                ->where('categories.section_id', $request->section_id)
+                ->where('category_regions.region_id', $request->region)
+                ->where('category_communes.commune_id', $request->commune)
+                ->orderBy('categories.position', 'ASC')
+                ->get();
 
         return $this->successResponse($categories);
     }

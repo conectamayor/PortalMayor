@@ -69,6 +69,8 @@
 <script>
     export default {
         created() {
+            this.getRegion();
+            this.getCommune();
             this.checkVideo();
             this.checkCategoryPoll();
             this.getPollQuestions();
@@ -202,6 +204,24 @@
             goBack() {
                 this.$router.go(-1)
             },
+            async getRegion() {
+                try {
+                    const response = await axios.post('/api/region/find');
+
+                    this.region = response.data.data.region_id;
+                } catch (error) {
+                    console.log(error);
+                }
+            },
+            async getCommune() {
+                try {
+                    const response = await axios.post('/api/commune/find');
+
+                    this.commune = response.data.data.commune_id;
+                } catch (error) {
+                    console.log(error);
+                }
+            },
             checkVideo() {
                 this.loading = true;
 
@@ -216,19 +236,28 @@
                     this.loading = false;
                 });
             },
-            getPosts() {
-                this.loading = true;
+            async getPosts() {
+                try {
+                    await this.getRegion(); // Espera a que se complete getRegion()
 
-                axios.get('/api/category/show/'+ this.$route.params.id)
-                .then(response => {
-                    this.posts = response.data.data;
-                })
-                .catch(function (error) {
+                    this.loading = true;
+
+                    let formData = new FormData();
+                    formData.append('section_id',this.$route.params.id);
+                    formData.append('region', this.region);
+                    formData.append('commune', this.commune);
+
+                    if (this.region == null && this.commune == null) {
+                        this.posts = '';
+                    } else {
+                        const response = await axios.post('/api/category/show', formData);
+                        this.posts = response.data.data;
+                    }
+                } catch (error) {
                     console.log(error);
-                })
-                .finally(() => {
+                } finally {
                     this.loading = false;
-                });
+                }
             }
         },
         data: function() {
