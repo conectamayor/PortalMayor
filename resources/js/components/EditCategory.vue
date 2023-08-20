@@ -487,7 +487,7 @@
                     formData.append('url', this.form.url);
                     formData.append('icon', this.form.fai);
                     formData.append('highlight_id', this.form.highlight_id);
-                    formData.append('google_tag', google_tag);
+                    formData.append('google_tag', this.form.google_tag);
                     formData.append('region_id', this.form.region_id);
                     formData.append('commune_id', this.form.commune_id);
 
