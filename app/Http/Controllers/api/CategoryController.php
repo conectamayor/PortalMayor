@@ -302,7 +302,7 @@ class CategoryController extends ApiResponseController
             $category_communes = CategoryCommune::where('category_id', $id)->get();
 
             foreach ($category_communes as $category_commune) {
-                $category_commune_detail = SectionCommune::find($category_commune->category_commune_id);
+                $category_commune_detail = CategoryCommune::find($category_commune->category_commune_id);
                 $category_commune_detail->delete();
             }
 
