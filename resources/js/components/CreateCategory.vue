@@ -69,6 +69,7 @@
                                         <label for="exampleInputEmail1">Sección <h6 class="m-0 text-danger float-right">*</h6></label>
                                         <select class="form-control" id="exampleFormControlSelect1"
                                         v-model="form.section_id"
+                                        @change="getRegionsCommunes"
                                         >
                                             <option :value="null">-Seleccionar-</option>
                                             <option v-for="section_post in section_posts" :key="section_post.section_id" :value="section_post.section_id">{{ section_post.section_title }}</option>
@@ -133,7 +134,7 @@
                                 </div>
                                 <div class="form-group row">
                                     <div class="col-sm-6">
-                                        <label for="exampleInputEmail1">¿La sección tiene icono? <h6 class="m-0 text-danger float-right">*</h6></label>
+                                        <label for="exampleInputEmail1">¿La categoría tiene icono? <h6 class="m-0 text-danger float-right">*</h6></label>
                                         <select class="form-control" id="exampleFormControlSelect1"
                                         v-model="form.icon_available_id"
                                         >
@@ -312,6 +313,35 @@
                         .finally(() => {
                             this.loading = false;
                         });
+                }
+            },
+            async getRegionsCommunes() {
+                try {
+                    const response = await axios.get('/api/section_region/' + this.form.section_id + '/edit?api_token='+App.apiToken);
+
+                    this.stored_regions = response.data.data;
+
+                    this.loading = false;
+
+                    const selectedRegionIds = this.stored_regions.map(item => item.region_id);
+                    this.form.region_id = selectedRegionIds;
+                } catch (error) {
+                    console.error(error);
+                }
+
+                try {
+                    const response = await axios.get('/api/section_commune/' + this.form.section_id + '/edit?api_token='+App.apiToken);
+
+                    this.stored_communes = response.data.data;
+
+                    this.loading = false;
+
+                    const selectedCommuneIds = this.stored_communes.map(item => item.commune_id);
+                    this.form.commune_id = selectedCommuneIds;
+
+                    console.log(this.form.commune_id);
+                } catch (error) {
+                    console.error(error);
                 }
             },
             storeAudit() {
