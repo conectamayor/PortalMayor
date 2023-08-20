@@ -416,6 +416,20 @@ class CategoryController extends ApiResponseController
             if(Storage::exists('public/'.$category->icon)) {
                 if(Storage::delete('public/'.$category->icon)) {
                     if($category->delete()) {
+                        $category_regions = CategoryRegion::where('category_id', $id)->get();
+
+                        foreach ($category_regions as $category_region) {
+                            $category_region_detail = CategoryRegion::find($category_region->category_region_id);
+                            $category_region_detail->delete();
+                        }
+            
+                        $category_communes = CategoryCommune::where('category_id', $id)->get();
+            
+                        foreach ($category_communes as $category_commune) {
+                            $category_commune_detail = CategoryCommune::find($category_commune->category_commune_id);
+                            $category_commune_detail->delete();
+                        }
+
                         $fix_categories = Category::where('section_id', $category->section_id)->orderBy('position', 'ASC')->get();
 
                         $i = 1;
@@ -434,6 +448,20 @@ class CategoryController extends ApiResponseController
                 }
             } else {
                 if($category->delete()) {
+                    $category_regions = CategoryRegion::where('category_id', $id)->get();
+
+                    foreach ($category_regions as $category_region) {
+                        $category_region_detail = CategoryRegion::find($category_region->category_region_id);
+                        $category_region_detail->delete();
+                    }
+        
+                    $category_communes = CategoryCommune::where('category_id', $id)->get();
+        
+                    foreach ($category_communes as $category_commune) {
+                        $category_commune_detail = CategoryCommune::find($category_commune->category_commune_id);
+                        $category_commune_detail->delete();
+                    }
+                    
                     $fix_categories = Category::where('section_id', $category->section_id)->orderBy('position', 'ASC')->get();
 
                     $i = 1;

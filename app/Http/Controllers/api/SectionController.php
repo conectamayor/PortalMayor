@@ -463,6 +463,20 @@ class SectionController extends ApiResponseController
             if(Storage::exists('public/files/'.$section->icon)) {
                 if(Storage::delete('public/files/'.$section->icon)) {
                     if($section->delete()) {
+                        $section_regions = SectionRegion::where('section_id', $id)->get();
+
+                        foreach ($section_regions as $section_region) {
+                            $section_region_detail = SectionRegion::find($section_region->section_region_id);
+                            $section_region_detail->delete();
+                        }
+            
+                        $section_communes = SectionCommune::where('section_id', $id)->get();
+            
+                        foreach ($section_communes as $section_commune) {
+                            $section_commune_detail = SectionCommune::find($section_commune->section_commune_id);
+                            $section_commune_detail->delete();
+                        }
+                        
                         $fix_sections = Section::orderBy('position', 'ASC')->get();
 
                         $i = 1;
@@ -481,6 +495,20 @@ class SectionController extends ApiResponseController
                 }
             } else {
                 if($section->delete()) {
+                    $section_regions = SectionRegion::where('section_id', $id)->get();
+
+                    foreach ($section_regions as $section_region) {
+                        $section_region_detail = SectionRegion::find($section_region->section_region_id);
+                        $section_region_detail->delete();
+                    }
+        
+                    $section_communes = SectionCommune::where('section_id', $id)->get();
+        
+                    foreach ($section_communes as $section_commune) {
+                        $section_commune_detail = SectionCommune::find($section_commune->section_commune_id);
+                        $section_commune_detail->delete();
+                    }
+
                     $fix_sections = Section::orderBy('position', 'ASC')->get();
 
                     $i = 1;
