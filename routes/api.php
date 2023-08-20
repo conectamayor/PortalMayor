@@ -114,3 +114,4 @@ Route::get('information/show/{id}', 'api\InformationController@show');
 Route::get('region', 'api\RegionController@index');
 Route::get('commune/{region_id}', 'api\CommuneController@index');
 Route::get('region/find', 'api\RegionController@find');
+Route::get('commune/find', 'api\CommuneController@find');

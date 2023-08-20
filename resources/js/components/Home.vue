@@ -189,6 +189,15 @@
                     console.log(error);
                 }
             },
+            async getCommune() {
+                try {
+                    const response = await axios.get('/api/commune/find');
+
+                    this.commune = response.data.data.commune_id;
+                } catch (error) {
+                    console.log(error);
+                }
+            },
             async getPosts() {
                 try {
                     await this.getRegion(); // Espera a que se complete getRegion()
@@ -197,8 +206,9 @@
 
                     let formData = new FormData();
                     formData.append('region', this.region);
+                    formData.append('commune', this.commune);
 
-                    if (this.region == null) {
+                    if (this.region == null && this.commune != null) {
                         this.posts = '';
                     } else {
                         const response = await axios.post('/api/section/home', formData);
@@ -214,6 +224,7 @@
         data: function() {
             return {
                 region: '',
+                commune: '',
                 modalShow: '',
                 posts: [],
                 form: {
