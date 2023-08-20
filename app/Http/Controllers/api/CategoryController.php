@@ -358,7 +358,7 @@ class CategoryController extends ApiResponseController
                 ->distinct() // Agrega la función distinct()
                 ->leftJoin('category_regions', 'category_regions.category_id', '=', 'categories.category_id')
                 ->leftJoin('communes', 'communes.region_id', '=', 'category_regions.region_id')
-                ->leftJoin('category_communes', 'section_communes.commune_id', '=', 'communes.commune_id')
+                ->leftJoin('category_communes', 'category_communes.commune_id', '=', 'communes.commune_id')
                 ->where('categories.status', 1)
                 ->where('categories.section_id', $request->section_id)
                 ->where('category_regions.region_id', $request->region)
