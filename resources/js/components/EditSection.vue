@@ -330,8 +330,6 @@
                     icon_available_id: 2,
                     region_id: null,
                     commune_id: null,
-                    whatsapp_url_to_share: '',
-                    whatsatpp_share_id: 1,
                     open_app_id: 2,
                     open_app_version_id: '',
                     open_app_uri_url: '',
@@ -424,12 +422,9 @@
                     this.$set(this.form, 'position', this.post.position);
                     this.$set(this.form, 'direct_content_question_id', this.post.direct_content_question_id);
                     this.$set(this.form, 'icon_available_id', this.post.icon_available_id);
-                    this.$set(this.form, 'whatsapp_url_to_share', this.post.whatsapp_url_to_share);
-                    this.$set(this.form, 'whatsatpp_share_id', this.post.whatsatpp_share_id);
                     this.$set(this.form, 'open_app_id', this.post.open_app_id);
                     this.$set(this.form, 'open_app_version_id', this.post.open_app_version_id);
                     this.$set(this.form, 'open_app_uri_url', this.post.open_app_uri_url);
-                    this.$set(this.form, 'georeferencing_type_id', this.post.georeferencing_type_id);
                     this.$set(this.form, 'open_app_desktop_url', this.post.open_app_desktop_url);
                     this.$set(this.form, 'open_app_not_installed', this.post.open_app_not_installed);
 
