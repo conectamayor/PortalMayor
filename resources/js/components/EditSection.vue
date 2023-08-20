@@ -3,7 +3,7 @@
         <!-- Begin Page Content -->
         <div class="container-fluid">
             <h1 class="h3 mb-2 text-gray-800">
-                Crear Sección
+                Editar Sección
             </h1>
             <!-- DataTales Example -->
             <div class="card shadow mb-4">
@@ -406,7 +406,7 @@
 
                     console.log(this.post);
 
-                    this.$set(this.form, 'title', this.post.title);
+                    this.$set(this.form, 'title', this.post.section_title);
                     this.$set(this.form, 'color', this.post.color);
                     this.$set(this.form, 'icon', this.post.icon);
                     this.$set(this.form, 'icon_type_id', this.post.icon_type_id);
@@ -415,13 +415,11 @@
                     this.$set(this.form, 'video_id', this.post.video_id);
                     this.$set(this.form, 'youtube_question_id', this.post.youtube_question_id);
                     this.$set(this.form, 'google_tag', this.post.google_tag);
-                    this.$set(this.form, 'subtitle', this.post.subtitle);
+                    this.$set(this.form, 'subtitle', this.post.section_subtitle);
                     this.$set(this.form, 'iframe_question_id', this.post.iframe_question_id);
                     this.$set(this.form, 'iframe', this.post.iframe);
                     this.$set(this.form, 'direct_content_question_id', this.post.direct_content_question_id);
                     this.$set(this.form, 'icon_available_id', this.post.icon_available_id);
-                    this.$set(this.form, 'region_id', this.post.region_id);
-                    this.$set(this.form, 'commune_id', this.post.commune_id);
                     this.$set(this.form, 'whatsapp_url_to_share', this.post.whatsapp_url_to_share);
                     this.$set(this.form, 'whatsatpp_share_id', this.post.whatsatpp_share_id);
                     this.$set(this.form, 'open_app_id', this.post.open_app_id);
