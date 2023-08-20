@@ -177,7 +177,7 @@
                     currentObj.success = response.data.success;
                 })
                 .catch(function (error) {
-                        console.log(error);
+                    console.log(error);
                 });
             },
             getRegion() {
@@ -199,6 +199,7 @@
                 if (this.region == '') {
                     this.posts = '';
                 } else {
+                    alert(111)
                     axios.post('/api/section/home', formData)
                     .then(response => {
                         this.posts = response.data.data;
