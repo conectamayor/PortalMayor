@@ -418,6 +418,7 @@
                     this.$set(this.form, 'subtitle', this.post.section_subtitle);
                     this.$set(this.form, 'iframe_question_id', this.post.iframe_question_id);
                     this.$set(this.form, 'iframe', this.post.iframe);
+                    this.$set(this.form, 'iframe', this.post.position);
                     this.$set(this.form, 'direct_content_question_id', this.post.direct_content_question_id);
                     this.$set(this.form, 'icon_available_id', this.post.icon_available_id);
                     this.$set(this.form, 'whatsapp_url_to_share', this.post.whatsapp_url_to_share);
@@ -545,6 +546,17 @@
                 }
             },
 
+        },
+        computed: {
+            isDisabled() {
+                return true;
+            },
+            charactersLeft() {
+                var char = this.form.title.length,
+                    limit = 36;
+
+                return (limit - char) + " / " + limit + " caracteres disponibles";
+            }
         }
     }
 </script>
