@@ -193,7 +193,7 @@
             async getCommune() {
                 try {
                     const response = await axios.post('/api/commune/find');
-                    console.log(response.data.data)
+
                     this.commune = response.data.data.commune_id;
                 } catch (error) {
                     console.log(error);
