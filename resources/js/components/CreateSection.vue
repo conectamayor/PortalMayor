@@ -99,8 +99,8 @@
                                         <select class="form-control" id="exampleFormControlSelect1"
                                         v-model="form.georeferencing_type_id"
                                         >
-                                            <option value="1">Si</option>
-                                            <option value="2">No</option>
+                                            <option :value="1">Si</option>
+                                            <option :value="2">No</option>
                                         </select>
                                     </div>
                                     <div class="col-sm-4" v-if="form.georeferencing_type_id == 1">
@@ -320,8 +320,8 @@
                 loading: false,
                 noFile: false,
                 form: {
-                    georeferencing_type_id: 2,
                     title: '',
+                    georeferencing_type_id: 2,
                     color: '',
                     icon: '',
                     position: '',
@@ -343,7 +343,6 @@
                     open_app_id: 2,
                     open_app_version_id: '',
                     open_app_uri_url: '',
-                    georeferencing_type_id: '',
                     open_app_desktop_url: '',
                     open_app_not_installed: '',
                 }

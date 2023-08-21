@@ -346,7 +346,6 @@
                     open_app_id: 2,
                     open_app_version_id: '',
                     open_app_uri_url: '',
-                    georeferencing_type_id: '',
                     open_app_desktop_url: '',
                     open_app_not_installed: '',
                 }
