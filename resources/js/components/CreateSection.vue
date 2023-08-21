@@ -99,8 +99,8 @@
                                         <select class="form-control" id="exampleFormControlSelect1"
                                         v-model="form.georeferencing_type_id"
                                         >
-                                            <option :value="1">Si</option>
-                                            <option :value="2">No</option>
+                                            <option value="1">Si</option>
+                                            <option value="2">No</option>
                                         </select>
                                     </div>
                                     <div class="col-sm-4" v-if="form.georeferencing_type_id == 1">
