@@ -59,7 +59,7 @@
                                     <div class="col-sm-4">
                                         <label for="exampleInputEmail1">¿Tiene Georeferenciación? <h6 class="m-0 text-danger float-right">*</h6></label>
                                         <select class="form-control" id="exampleFormControlSelect1"
-                                        v-model="form.georeferencing_type_id" multiple
+                                        v-model="form.georeferencing_type_id"
                                         >
                                             <option :value="1">Si</option>
                                             <option :value="2">No</option>
