@@ -423,7 +423,7 @@
                     && this.form.link_question_id != ''
                     && this.form.iframe_question_id
                     && this.form.youtube_question_id
-                    && this.form.region_id != null
+                    && (this.form.georeferencing_type_id == 1 && this.form.region_id != null)
                     && ((this.form.open_app_id == 2) || (this.form.open_app_id == 1 && this.form.open_app_version_id != '' && this.form.open_app_uri_url != '' && this.form.open_app_desktop_url != '' && this.form.open_app_not_installed != ''))
                 ) {
                     let formData = new FormData();
@@ -486,7 +486,7 @@
                     if (this.form.georeferencing_type_id == '') {
                         this.errors.push('La pregunta de la georeferenciación es obligatoria.');
                     }
-                    if (this.form.region_id == null) {
+                    if (this.form.georeferencing_type_id == 1 && this.form.region_id == null) {
                         this.errors.push('La región es obligatoria.');
                     }
                     if (this.form.direct_content_question_id == '') {

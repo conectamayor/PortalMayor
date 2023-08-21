@@ -406,7 +406,7 @@
                     && this.form.color != ''
                     && this.form.position != ''
                     && this.form.region_id != null
-                    && this.form.georeferencing_type_id != ''
+                    && (this.form.georeferencing_type_id == 1 && this.form.region_id != null)
                     && (this.form.icon_available_id == 2 || (this.form.icon_available_id == 1 && this.form.fai != ''))
                 ) {
                     let formData = new FormData();
