@@ -65,7 +65,7 @@
                                             <option :value="2">No</option>
                                         </select>
                                     </div>
-                                    <div class="col-sm-4">
+                                    <div class="col-sm-4" v-if="form.georeferencing_type_id == 1">
                                         <label for="exampleInputEmail1">Alianza <h6 class="m-0 text-danger float-right">*</h6></label>
                                         <select class="form-control" id="exampleFormControlSelect1"
                                         v-model="form.alliance_id"
@@ -74,7 +74,7 @@
                                             <option v-for="alliance_post in alliance_posts" :key="alliance_post.rut" :value="alliance_post.rut">{{ alliance_post.name }}</option>
                                         </select>
                                     </div>
-                                    <div class="col-sm-4">
+                                    <div class="col-sm-4" v-if="form.georeferencing_type_id == 1">
                                         <label for="exampleInputEmail1">Sección <h6 class="m-0 text-danger float-right">*</h6></label>
                                         <select class="form-control" id="exampleFormControlSelect1"
                                         v-model="form.section_id"

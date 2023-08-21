@@ -56,8 +56,7 @@ class SectionController extends ApiResponseController
                 ->where('section_communes.commune_id', $request->commune)
                 ->orderBy('sections.position', 'ASC')
                 ->count();
-        echo $section_qty;
-        die();
+
         if ($section_qty > 0) {
             $sections = Section::select('sections.*')
                 ->distinct() // Agrega la función distinct()
