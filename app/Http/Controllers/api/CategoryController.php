@@ -421,8 +421,6 @@ class CategoryController extends ApiResponseController
                 ->where('categories.georeferencing_type_id', 2)
                 ->where('categories.status', 1)
                 ->where('categories.section_id', $request->section_id)
-                ->where('category_regions.region_id', $request->region)
-                ->where('category_communes.commune_id', $request->commune)
                 ->orderBy('categories.position', 'ASC')
                 ->get();
         }

@@ -72,13 +72,11 @@ class SectionController extends ApiResponseController
         } else {
             $sections = Section::select('sections.*')
                 ->distinct() // Agrega la función distinct()
-                ->leftJoin('section_rgions', 'section_regions.section_id', '=', 'sections.section_id')
+                ->leftJoin('section_regions', 'section_regions.section_id', '=', 'sections.section_id')
                 ->leftJoin('communes', 'communes.region_id', '=', 'section_regions.region_id')
                 ->leftJoin('section_communes', 'section_communes.commune_id', '=', 'communes.commune_id')
                 ->where('sections.georeferencing_type_id', 2)
                 ->where('sections.status', 1)
-                ->where('section_regions.region_id', $request->region)
-                ->where('section_communes.commune_id', $request->commune)
                 ->orderBy('sections.position', 'ASC')
                 ->get();
         }
