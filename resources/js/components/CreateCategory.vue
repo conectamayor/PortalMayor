@@ -77,7 +77,16 @@
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <div class="col-sm-6">
+                                    <div class="col-sm-4">
+                                        <label for="exampleInputEmail1">¿Tiene Georeferenciación? <h6 class="m-0 text-danger float-right">*</h6></label>
+                                        <select class="form-control" id="exampleFormControlSelect1"
+                                        v-model="form.georeferencing_type_id" multiple
+                                        >
+                                            <option :value="1">Si</option>
+                                            <option :value="2">No</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-sm-4">
                                         <label for="exampleInputEmail1">Región <h6 class="m-0 text-danger float-right">*</h6></label>
                                         <select class="form-control" id="exampleFormControlSelect1"
                                         v-model="form.region_id" multiple
@@ -87,7 +96,7 @@
                                             <option v-for="region_post in region_posts" :key="region_post.region_id" :value="region_post.region_id">{{ region_post.region }}</option>
                                         </select>
                                     </div>
-                                    <div class="col-sm-6">
+                                    <div class="col-sm-4">
                                         <label for="exampleInputEmail1">Comuna</label>
                                         <select class="form-control" id="exampleFormControlSelect1" v-model="form.commune_id"  multiple>
                                             <option :value="null" v-if="commune_posts.length == 0">No ha seleccionado una región</option>
@@ -259,6 +268,7 @@
                 noFile_icon_imagen: false,
                 form: {
                     alliance_id: null,
+                    georeferencing_type_id: 2,
                     section_id: null,
                     title: '',
                     color: '',
@@ -396,6 +406,7 @@
                     && this.form.color != ''
                     && this.form.position != ''
                     && this.form.region_id != null
+                    && this.form.georeferencing_type_id != ''
                     && (this.form.icon_available_id == 2 || (this.form.icon_available_id == 1 && this.form.fai != ''))
                 ) {
                     let formData = new FormData();
@@ -415,6 +426,7 @@
                     formData.append('google_tag', this.form.google_tag);
                     formData.append('region_id', this.form.region_id);
                     formData.append('commune_id', this.form.commune_id);
+                    formData.append('georeferencing_type_id', this.form.georeferencing_type_id);
 
                     axios.post('/api/category/store?api_token='+App.apiToken, formData, config)
                     .then(function (response) {

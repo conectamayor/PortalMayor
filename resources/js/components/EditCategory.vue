@@ -56,7 +56,16 @@
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <div class="col-sm-6">
+                                    <div class="col-sm-4">
+                                        <label for="exampleInputEmail1">¿Tiene Georeferenciación? <h6 class="m-0 text-danger float-right">*</h6></label>
+                                        <select class="form-control" id="exampleFormControlSelect1"
+                                        v-model="form.georeferencing_type_id" multiple
+                                        >
+                                            <option :value="1">Si</option>
+                                            <option :value="2">No</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-sm-4">
                                         <label for="exampleInputEmail1">Alianza <h6 class="m-0 text-danger float-right">*</h6></label>
                                         <select class="form-control" id="exampleFormControlSelect1"
                                         v-model="form.alliance_id"
@@ -65,7 +74,7 @@
                                             <option v-for="alliance_post in alliance_posts" :key="alliance_post.rut" :value="alliance_post.rut">{{ alliance_post.name }}</option>
                                         </select>
                                     </div>
-                                    <div class="col-sm-6">
+                                    <div class="col-sm-4">
                                         <label for="exampleInputEmail1">Sección <h6 class="m-0 text-danger float-right">*</h6></label>
                                         <select class="form-control" id="exampleFormControlSelect1"
                                         v-model="form.section_id"
@@ -261,6 +270,7 @@
                 stored_regions: [],
                 stored_communes: [],
                 form: {
+                    georeferencing_type_id: 2,
                     alliance_id: null,
                     section_id: null,
                     title: '',
@@ -359,6 +369,7 @@
 
                     this.post = response.data.data;
 
+                    this.$set(this.form, 'georeferencing_type_id', this.post.georeferencing_type_id);
                     this.$set(this.form, 'alliance_id', this.post.alliance_id);
                     this.$set(this.form, 'section_id', this.post.section_id);
                     this.$set(this.form, 'title', this.post.title);

@@ -94,7 +94,16 @@
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <div class="col-sm-6">
+                                    <div class="col-sm-4">
+                                        <label for="exampleInputEmail1">¿Tiene Georeferenciación? <h6 class="m-0 text-danger float-right">*</h6></label>
+                                        <select class="form-control" id="exampleFormControlSelect1"
+                                        v-model="form.georeferencing_type_id" multiple
+                                        >
+                                            <option :value="1">Si</option>
+                                            <option :value="2">No</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-sm-4">
                                         <label for="exampleInputEmail1">Región <h6 class="m-0 text-danger float-right">*</h6></label>
                                         <select class="form-control" id="exampleFormControlSelect1"
                                         v-model="form.region_id" multiple
@@ -104,7 +113,7 @@
                                             <option :selected="isSelectedRegion(region_post.region_id)" v-for="region_post in region_posts" :key="region_post.region_id" :value="region_post.region_id">{{ region_post.region }}</option>
                                         </select>
                                     </div>
-                                    <div class="col-sm-6">
+                                    <div class="col-sm-4">
                                         <label for="exampleInputEmail1">Comuna</label>
                                         <select class="form-control" id="exampleFormControlSelect1" v-model="form.commune_id"  multiple>
                                             <option :value="null" v-if="commune_posts.length == 0">No ha seleccionado una región</option>
@@ -316,6 +325,7 @@
                 stored_regions: [],
                 stored_communes: [],
                 form: {
+                    georeferencing_type_id: 2,
                     title: '',
                     color: '',
                     icon: '',
@@ -412,6 +422,8 @@
 
                     this.$set(this.form, 'title', this.post.section_title);
                     this.$set(this.form, 'color', this.post.color);
+
+                    this.$set(this.form, 'georeferencing_type_id', this.post.georeferencing_type_id);
 
                     if (this.post.icon != null) {
                         var icon = this.post.icon.split(' ');

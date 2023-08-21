@@ -94,7 +94,16 @@
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <div class="col-sm-6">
+                                    <div class="col-sm-4">
+                                        <label for="exampleInputEmail1">¿Tiene Georeferenciación? <h6 class="m-0 text-danger float-right">*</h6></label>
+                                        <select class="form-control" id="exampleFormControlSelect1"
+                                        v-model="form.georeferencing_type_id" multiple
+                                        >
+                                            <option :value="1">Si</option>
+                                            <option :value="2">No</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-sm-4">
                                         <label for="exampleInputEmail1">Región <h6 class="m-0 text-danger float-right">*</h6></label>
                                         <select class="form-control" id="exampleFormControlSelect1"
                                         v-model="form.region_id" multiple
@@ -104,7 +113,7 @@
                                             <option v-for="region_post in region_posts" :key="region_post.region_id" :value="region_post.region_id">{{ region_post.region }}</option>
                                         </select>
                                     </div>
-                                    <div class="col-sm-6">
+                                    <div class="col-sm-4">
                                         <label for="exampleInputEmail1">Comuna</label>
                                         <select class="form-control" id="exampleFormControlSelect1" v-model="form.commune_id"  multiple>
                                             <option :value="null" v-if="commune_posts.length == 0">No ha seleccionado una región</option>
@@ -311,6 +320,7 @@
                 loading: false,
                 noFile: false,
                 form: {
+                    georeferencing_type_id: 2,
                     title: '',
                     color: '',
                     icon: '',
@@ -429,6 +439,7 @@
                     formData.append('subtitle', this.form.subtitle);
                     formData.append('iframe', this.form.iframe);
                     formData.append('google_tag', this.form.google_tag);
+                    formData.append('georeferencing_type_id', this.form.georeferencing_type_id);
                     formData.append('region_id', this.form.region_id);
                     formData.append('commune_id', this.form.commune_id);
                     formData.append('direct_content_question_id', this.form.direct_content_question_id);
@@ -472,6 +483,9 @@
                     }
                     if (this.form.google_tag == '') {
                         this.errors.push('La etiqueta de Google es obligatoria.');
+                    }
+                    if (this.form.georeferencing_type_id == '') {
+                        this.errors.push('La pregunta de la georeferenciación es obligatoria.');
                     }
                     if (this.form.region_id == null) {
                         this.errors.push('La región es obligatoria.');

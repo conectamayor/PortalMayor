@@ -181,6 +181,7 @@ class CategoryController extends ApiResponseController
         $category->google_tag = 'category_' . $request->google_tag;
         $category->position = $request->position;
         $category->icon_available_id = $request->icon_available_id;
+        $category->georeferencing_type_id = $request->georeferencing_type_id;
 
         $category->icon = $icon_fileName.' home_icon_size2';
 
@@ -274,6 +275,7 @@ class CategoryController extends ApiResponseController
         $category->google_tag = 'category_' . $request->google_tag;
         $old_position = $category->position;
         $category->position = $request->position;
+        $category->georeferencing_type_id = $request->georeferencing_type_id;
 
         $category->icon = $icon_fileName.' home_icon_size2';
         
@@ -386,7 +388,20 @@ class CategoryController extends ApiResponseController
      */
     public function show(Request $request)
     {
-        $categories = Category::select('categories.*')
+        $categort_qty = Category::select('categories.*')
+            ->distinct() // Agrega la función distinct()
+            ->leftJoin('category_regions', 'category_regions.category_id', '=', 'categories.category_id')
+            ->leftJoin('communes', 'communes.region_id', '=', 'category_regions.region_id')
+            ->leftJoin('category_communes', 'category_communes.commune_id', '=', 'communes.commune_id')
+            ->where('categories.status', 1)
+            ->where('categories.section_id', $request->section_id)
+            ->where('category_regions.region_id', $request->region)
+            ->where('category_communes.commune_id', $request->commune)
+            ->orderBy('categories.position', 'ASC')
+            ->get();
+
+        if($categort_qty > 0) {
+            $categories = Category::select('categories.*')
                 ->distinct() // Agrega la función distinct()
                 ->leftJoin('category_regions', 'category_regions.category_id', '=', 'categories.category_id')
                 ->leftJoin('communes', 'communes.region_id', '=', 'category_regions.region_id')
@@ -397,6 +412,20 @@ class CategoryController extends ApiResponseController
                 ->where('category_communes.commune_id', $request->commune)
                 ->orderBy('categories.position', 'ASC')
                 ->get();
+        } else {
+            $categories = Category::select('categories.*')
+                ->distinct() // Agrega la función distinct()
+                ->leftJoin('category_regions', 'category_regions.category_id', '=', 'categories.category_id')
+                ->leftJoin('communes', 'communes.region_id', '=', 'category_regions.region_id')
+                ->leftJoin('category_communes', 'category_communes.commune_id', '=', 'communes.commune_id')
+                ->where('categories.georeferencing_type_id', 1)
+                ->where('categories.status', 1)
+                ->where('categories.section_id', $request->section_id)
+                ->where('category_regions.region_id', $request->region)
+                ->where('category_communes.commune_id', $request->commune)
+                ->orderBy('categories.position', 'ASC')
+                ->get();
+        }
 
         return $this->successResponse($categories);
     }
