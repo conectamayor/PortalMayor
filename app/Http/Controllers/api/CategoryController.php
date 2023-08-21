@@ -398,7 +398,7 @@ class CategoryController extends ApiResponseController
             ->where('category_regions.region_id', $request->region)
             ->where('category_communes.commune_id', $request->commune)
             ->orderBy('categories.position', 'ASC')
-            ->get();
+            ->count();
 
         if($categort_qty > 0) {
             $categories = Category::select('categories.*')
