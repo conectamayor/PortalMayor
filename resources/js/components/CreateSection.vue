@@ -413,11 +413,7 @@
                 const config = {
                     headers: { 'content-type': 'multipart/form-data' }
                 }
-                alert(this.form.open_app_id)
-                alert(this.form.open_app_version_id)
-                alert(this.form.open_app_uri_url)
-                alert(this.form.open_app_desktop_url)
-                alert(this.form.open_app_not_installed)
+
                 if(this.form.title != ''
                 && this.form.color != ''
                     && this.form.google_tag != ''
@@ -427,7 +423,7 @@
                     && this.form.link_question_id != ''
                     && this.form.iframe_question_id
                     && this.form.youtube_question_id
-                    && (this.form.georeferencing_type_id == 1 && this.form.region_id != null)
+                    && ((this.form.georeferencing_type_id == 2) || (this.form.georeferencing_type_id == 1 && this.form.region_id != null))
                     && ((this.form.open_app_id == 2) || (this.form.open_app_id == 1 && this.form.open_app_version_id != '' && this.form.open_app_uri_url != '' && this.form.open_app_desktop_url != '' && this.form.open_app_not_installed != ''))
                 ) {
                     let formData = new FormData();
