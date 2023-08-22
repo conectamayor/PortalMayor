@@ -4,6 +4,8 @@
 		    <div class="col-12" v-if="this.post.type_id == 1 || this.post.type_id == 2 || this.post.type_id == 4 || this.post.type_id == 5">
                 <h1><center>{{ this.post.title }}</center></h1>
                 <hr>
+
+                <a :href="`whatsapp://send?text=${encodeURIComponent(whatsapp_description)}`" data-action="share/whatsapp/share"> <strong>Compartir por medio</strong> <i class="fab fa-whatsapp"></i></a>
                 <div v-if="url !== null">
                     <center>
                         <img v-bind:src="image_url">
@@ -91,7 +93,7 @@
                 </div>
             </div>
         </div>
-        <a :href="`whatsapp://send?text=${encodeURIComponent(whatsapp_description)}`" data-action="share/whatsapp/share"> <strong>Compartir por medio</strong> <i class="fab fa-whatsapp"></i></a>
+       
 
     </div>
 	
