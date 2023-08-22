@@ -197,56 +197,58 @@ class CategoryController extends ApiResponseController
         $category->status = 1;
 
         if($category->save()) {
-            if ($request->region_id != 1000) {
-                $region_data = explode(',', $request->region_id);
-
-                for ($i=0; $i < count($region_data); $i++) { 
-                    $category_region = new CategoryRegion();
-                    $category_region->category_id = $category->category_id;
-                    $category_region->region_id = trim($region_data[$i]);
-                    $category_region->save();
-                }
-    
-                if ($request->commune_id != 'null') {
-                    $commune_data = explode(',', $request->commune_id);
-    
-                    for ($i=0; $i < count($commune_data); $i++) { 
-                        $category_commune = new CategoryCommune();
-                        $category_commune->category_id = $category->category_id;
-                        $category_commune->commune_id = trim($commune_data[$i]);
-                        $category_commune->save();
-                    }
-                } else {
+            if($request->georeferencing_type_id == 1) {
+                if ($request->region_id != 1000) {
                     $region_data = explode(',', $request->region_id);
-    
+
                     for ($i=0; $i < count($region_data); $i++) { 
-                        $communes = Commune::where('region_id', trim($region_data[$i]))->get();
-    
-                        foreach ($communes as $commune) {
+                        $category_region = new CategoryRegion();
+                        $category_region->category_id = $category->category_id;
+                        $category_region->region_id = trim($region_data[$i]);
+                        $category_region->save();
+                    }
+        
+                    if ($request->commune_id != 'null') {
+                        $commune_data = explode(',', $request->commune_id);
+        
+                        for ($i=0; $i < count($commune_data); $i++) { 
                             $category_commune = new CategoryCommune();
                             $category_commune->category_id = $category->category_id;
-                            $category_commune->commune_id = $commune->commune_id;
+                            $category_commune->commune_id = trim($commune_data[$i]);
                             $category_commune->save();
                         }
+                    } else {
+                        $region_data = explode(',', $request->region_id);
+        
+                        for ($i=0; $i < count($region_data); $i++) { 
+                            $communes = Commune::where('region_id', trim($region_data[$i]))->get();
+        
+                            foreach ($communes as $commune) {
+                                $category_commune = new CategoryCommune();
+                                $category_commune->category_id = $category->category_id;
+                                $category_commune->commune_id = $commune->commune_id;
+                                $category_commune->save();
+                            }
+                        }
                     }
-                }
-            } else {
-                $regions = Region::all();
+                } else {
+                    $regions = Region::all();
 
-                foreach ($regions as $region) {
-                    $category_region = new SectionRegion();
-                    $category_region->category_id = $category->category_id;
-                    $category_region->region_id = $region->region_id;
-                    $category_region->save();
-                }
+                    foreach ($regions as $region) {
+                        $category_region = new SectionRegion();
+                        $category_region->category_id = $category->category_id;
+                        $category_region->region_id = $region->region_id;
+                        $category_region->save();
+                    }
 
-                $communes = Commune::all();
+                    $communes = Commune::all();
 
-                foreach ($communes as $commune) {
-                    $category_commune = new CategoryCommune();
-                    $category_commune->category_id = $category->category_id;
-                    $category_commune->commune_id = $commune->commune_id;
-                    $category_commune->save();
+                    foreach ($communes as $commune) {
+                        $category_commune = new CategoryCommune();
+                        $category_commune->category_id = $category->category_id;
+                        $category_commune->commune_id = $commune->commune_id;
+                        $category_commune->save();
+                    }
                 }
             }
 
@@ -294,70 +296,72 @@ class CategoryController extends ApiResponseController
         $category->status = 1;
 
         if($category->save()) {
-            $category_regions = CategoryRegion::where('category_id', $id)->get();
+            if($request->georeferencing_type_id == 1) {
+                $category_regions = CategoryRegion::where('category_id', $id)->get();
 
-            foreach ($category_regions as $category_region) {
-                $category_region_detail = CategoryRegion::find($category_region->category_region_id);
-                $category_region_detail->delete();
-            }
-
-            $category_communes = CategoryCommune::where('category_id', $id)->get();
-
-            foreach ($category_communes as $category_commune) {
-                $category_commune_detail = CategoryCommune::find($category_commune->category_commune_id);
-                $category_commune_detail->delete();
-            }
-
-            if ($request->region_id != 1000) {
-                $region_data = explode(',', $request->region_id);
-
-                for ($i=0; $i < count($region_data); $i++) { 
-                    $category_region = new CategoryRegion();
-                    $category_region->category_id = $category->category_id;
-                    $category_region->region_id = trim($region_data[$i]);
-                    $category_region->save();
+                foreach ($category_regions as $category_region) {
+                    $category_region_detail = CategoryRegion::find($category_region->category_region_id);
+                    $category_region_detail->delete();
                 }
-    
-                if ($request->commune_id != 'null') {
-                    $commune_data = explode(',', $request->commune_id);
-    
-                    for ($i=0; $i < count($commune_data); $i++) { 
-                        $category_commune = new CategoryCommune();
-                        $category_commune->category_id = $category->category_id;
-                        $category_commune->commune_id = trim($commune_data[$i]);
-                        $category_commune->save();
-                    }
-                } else {
+
+                $category_communes = CategoryCommune::where('category_id', $id)->get();
+
+                foreach ($category_communes as $category_commune) {
+                    $category_commune_detail = CategoryCommune::find($category_commune->category_commune_id);
+                    $category_commune_detail->delete();
+                }
+
+                if ($request->region_id != 1000) {
                     $region_data = explode(',', $request->region_id);
-    
+
                     for ($i=0; $i < count($region_data); $i++) { 
-                        $communes = Commune::where('region_id', trim($region_data[$i]))->get();
-    
-                        foreach ($communes as $commune) {
+                        $category_region = new CategoryRegion();
+                        $category_region->category_id = $category->category_id;
+                        $category_region->region_id = trim($region_data[$i]);
+                        $category_region->save();
+                    }
+        
+                    if ($request->commune_id != 'null') {
+                        $commune_data = explode(',', $request->commune_id);
+        
+                        for ($i=0; $i < count($commune_data); $i++) { 
                             $category_commune = new CategoryCommune();
                             $category_commune->category_id = $category->category_id;
-                            $category_commune->commune_id = $commune->commune_id;
+                            $category_commune->commune_id = trim($commune_data[$i]);
                             $category_commune->save();
                         }
+                    } else {
+                        $region_data = explode(',', $request->region_id);
+        
+                        for ($i=0; $i < count($region_data); $i++) { 
+                            $communes = Commune::where('region_id', trim($region_data[$i]))->get();
+        
+                            foreach ($communes as $commune) {
+                                $category_commune = new CategoryCommune();
+                                $category_commune->category_id = $category->category_id;
+                                $category_commune->commune_id = $commune->commune_id;
+                                $category_commune->save();
+                            }
+                        }
                     }
-                }
-            } else {
-                $regions = Region::all();
+                } else {
+                    $regions = Region::all();
 
-                foreach ($regions as $region) {
-                    $category_region = new SectionRegion();
-                    $category_region->category_id = $category->category_id;
-                    $category_region->region_id = $region->region_id;
-                    $category_region->save();
-                }
+                    foreach ($regions as $region) {
+                        $category_region = new SectionRegion();
+                        $category_region->category_id = $category->category_id;
+                        $category_region->region_id = $region->region_id;
+                        $category_region->save();
+                    }
 
-                $communes = Commune::all();
+                    $communes = Commune::all();
 
-                foreach ($communes as $commune) {
-                    $category_commune = new CategoryCommune();
-                    $category_commune->category_id = $category->category_id;
-                    $category_commune->commune_id = $commune->commune_id;
-                    $category_commune->save();
+                    foreach ($communes as $commune) {
+                        $category_commune = new CategoryCommune();
+                        $category_commune->category_id = $category->category_id;
+                        $category_commune->commune_id = $commune->commune_id;
+                        $category_commune->save();
+                    }
                 }
             }
 
