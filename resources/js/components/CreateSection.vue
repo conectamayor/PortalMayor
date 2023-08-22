@@ -413,7 +413,11 @@
                 const config = {
                     headers: { 'content-type': 'multipart/form-data' }
                 }
-
+                alert(this.form.open_app_id)
+                alert(this.form.open_app_version_id)
+                alert(this.form.open_app_uri_url)
+                alert(this.form.open_app_desktop_url)
+                alert(this.form.open_app_not_installed)
                 if(this.form.title != ''
                 && this.form.color != ''
                     && this.form.google_tag != ''
