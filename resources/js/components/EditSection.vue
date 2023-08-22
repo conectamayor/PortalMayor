@@ -455,10 +455,10 @@
 
                     this.$set(this.form, 'position', this.post.position);
 
-                    if (this.post.direct_content_question_id != null && this.post.direct_content_question_id != '' && this.post.direct_content_question_id == 1) {
-                        this.$set(this.form, 'direct_content_question_id', 1);
-                    } else {
+                    if (this.post.direct_content_question_id == 2) {
                         this.$set(this.form, 'direct_content_question_id', 2);
+                    } else {
+                        this.$set(this.form, 'direct_content_question_id', 1);
                     }
 
                     this.$set(this.form, 'icon_available_id', this.post.icon_available_id);
