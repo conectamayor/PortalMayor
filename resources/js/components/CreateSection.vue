@@ -322,7 +322,7 @@
                 form: {
                     title: '',
                     georeferencing_type_id: 2,
-                    color: '',
+                    color: '#0b2784',
                     icon: '',
                     position: '',
                     icon_type_id: 2,

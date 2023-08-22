@@ -539,6 +539,7 @@
                     formData.append('commune_id', this.form.commune_id);
                     formData.append('direct_content_question_id', this.form.direct_content_question_id);
                     formData.append('icon_available_id', this.form.icon_available_id);
+                    formData.append('georeferencing_type_id', this.form.georeferencing_type_id);
 
                     if (this.form.open_app_id != 'null') {
                         formData.append('open_app_id', this.form.open_app_id);

@@ -503,6 +503,7 @@
                     formData.append('google_tag', this.form.google_tag);
                     formData.append('region_id', this.form.region_id);
                     formData.append('commune_id', this.form.commune_id);
+                    formData.append('georeferencing_type_id', this.form.georeferencing_type_id);
 
                     axios.post('/api/category/update/'+ this.$route.params.id +'?api_token='+App.apiToken, formData, config)
                     .then(function (response) {

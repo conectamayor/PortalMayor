@@ -291,7 +291,7 @@
                     src: '',
                     video_type_id: null,
                     iframe: '',
-                    color: '',
+                    color: '#0b2784',
                     icon_available_id: 2,
                     position: '',
                     whatsapp_type_id: 2,

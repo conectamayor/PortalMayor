@@ -271,7 +271,7 @@
                     georeferencing_type_id: 2,
                     section_id: null,
                     title: '',
-                    color: '',
+                    color: '#0b2784',
                     position: '',
                     icon_type_id: 2,
                     google_tag: '',
