@@ -5,7 +5,7 @@
                 <h1><center>{{ this.post.title }}</center></h1>
                 <hr>
 
-                <a :href="`whatsapp://send?text=${encodeURIComponent(whatsapp_description)}`" data-action="share/whatsapp/share"> <strong>Compartir por medio</strong> <i class="fab fa-whatsapp"></i></a>
+                <a :href="`whatsapp://send?text=${encodeURIComponent(whatsapp_description)}`" style="whatsapp_share_button" data-action="share/whatsapp/share"> <strong>Compartir por Whatsapp</strong> <i class="fab fa-whatsapp"></i></a>
                 <div v-if="url !== null">
                     <center>
                         <img v-bind:src="image_url">
@@ -269,5 +269,9 @@
     .fa-whatsapp {
         color: #25D366;
         font-size: 30px !important;
+    }
+
+    .whatsapp_share_button {
+        font-size: 18px !important;
     }
 </style>
