@@ -462,7 +462,7 @@
                     }
 
                     this.$set(this.form, 'icon_available_id', this.post.icon_available_id);
-                    this.$set(this.form.direct_content_question_id);
+                    this.$set(this.form, 'direct_content_question_id', this.post.direct_content_question_id);
                     this.$set(this.form, 'open_app_version_id', this.post.open_app_version_id);
                     this.$set(this.form, 'open_app_uri_url', this.post.open_app_uri_url);
                     this.$set(this.form, 'open_app_desktop_url', this.post.open_app_desktop_url);
