@@ -265,7 +265,7 @@
                                         >
                                     </div>
                                     <div class="col-sm-4">
-                                        <label for="exampleInputEmail1">URL si no está Instalada <h6 class="m-0 text-danger float-right">*</h6></label>
+                                        <label for="exampleInputEmail1">URL si no está Instalada <h6 class="m-0 text-danger float-right">*</h6> (Google Play Store)</label>
                                         <input
                                             type="text" 
                                             v-model="form.open_app_not_installed"
