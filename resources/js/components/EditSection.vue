@@ -215,7 +215,7 @@
                                     </div>
                                 </div>
 
-                                <div class="form-group row">
+                                <div class="form-group row" v-if="form.direct_content_question_id == 2">
                                     <div class="col-sm-4">
                                         <label for="exampleInputEmail1">¿Va a abrir una aplicación? <h6 class="m-0 text-danger float-right">*</h6></label>
                                         <select class="form-control" id="exampleFormControlSelect1"
@@ -460,6 +460,8 @@
                     } else {
                         this.$set(this.form, 'direct_content_question_id', 2);
                     }
+
+                    alert(this.form.direct_content_question_id);
 
                     this.$set(this.form, 'icon_available_id', this.post.icon_available_id);
                     this.$set(this.form, 'open_app_id', this.post.open_app_id);
