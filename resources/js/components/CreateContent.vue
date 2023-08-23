@@ -337,7 +337,6 @@
                     && ((this.form.fai != '' && this.form.icon_available_id == 1) || this.form.icon_available_id == 2)
                     && this.form.start_date != ''
                     && this.form.position != ''
-                    && (this.form.icon_available_id == 2 || (this.form.icon_available_id == 1 && this.form.fai != ''))
                     && this.color != ''
                 ) {
                     let formData = new FormData();
