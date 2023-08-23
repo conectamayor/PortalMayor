@@ -356,7 +356,7 @@
                     formData.append('src', this.form.src);
                     formData.append('file', this.file);
                     formData.append('pdf', this.pdf);
-                    formData.append('iframe', this.iframe);
+                    formData.append('iframe', this.form.iframe);
                     formData.append('video_type_id', this.form.video_type_id);
                     formData.append('icon_available_id', this.form.icon_available_id);
 
