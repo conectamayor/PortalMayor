@@ -37,7 +37,7 @@
                                     </thead>
                                     <tbody>
                                         <tr v-for="(post, index) in posts" v-bind:index="index">
-                                            <td>{{ post.id }}</td>
+                                            <td>{{ post.rol_id }}</td>
                                             <td>{{ post.rol }}</td>
                                           
                                             <td>
