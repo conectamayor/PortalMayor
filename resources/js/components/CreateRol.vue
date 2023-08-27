@@ -44,7 +44,7 @@
                                         >
                                     </div>
                                     <div class="col-sm-6">
-                                        <div v-for="post in posts">
+                                        <div v-for="(post, index) in posts" v-bind:index="index">
                                             <label for="exampleInputEmail1">{{ post.permission }}</label>
                                         </div>
                                     </div>
