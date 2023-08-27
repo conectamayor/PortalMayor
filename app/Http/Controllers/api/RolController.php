@@ -17,7 +17,7 @@ class RolController extends ApiResponseController
      */
     public function index(Request $request)
     {
-        $rols = Rol::from('Rol as c')
+        $rols = Rol::from('rols as c')
                         ->selectRaw('c.*')
                         ->paginate(10);
         
