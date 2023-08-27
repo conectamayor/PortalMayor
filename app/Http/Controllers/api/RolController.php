@@ -23,4 +23,14 @@ class RolController extends ApiResponseController
         
         return $this->successResponse($rols);
     }
+
+        /**
+     * Store the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
+    {
+        print_r($request);
+    }
 }

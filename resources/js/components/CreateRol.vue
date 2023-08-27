@@ -140,6 +140,11 @@
                     let formData = new FormData();
                     formData.append('rol', this.form.rol);
 
+                    const selectedPermissions = this.posts.filter(post => post.selected);
+                    selectedPermissions.forEach(permission => {
+                        formData.append('permissions[]', permission.permission_id);
+                    });
+
                     axios.post('/api/rol/store?api_token='+App.apiToken, formData, config)
                     .then(function (response) {
                         currentObj.success = response.data.success;
