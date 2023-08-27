@@ -57,7 +57,7 @@ Route::get('/metric', 'MetricController@index');
 Route::get('/metric/result/{id}', 'MetricController@result');
 Route::get('/audit', 'MetricController@result');
 Route::get('/botonfacebook', 'FacebookController@botonfacebook');
-Route::get('/reol', 'RolController@index');
+Route::get('/rol', 'RolController@index');
 
 /*
 Route::get('/{any}', function () {
