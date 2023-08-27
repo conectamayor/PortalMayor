@@ -41,7 +41,7 @@
                                             <td>{{ post.rol }}</td>
                                           
                                             <td>
-                                                <router-link :to="`/rol/edit/${post.id}`" class="btn btn-primary btn-circle btn-sm">
+                                                <router-link :to="`/rol/edit/${post.rol_id}`" class="btn btn-primary btn-circle btn-sm">
                                                     <i class="fas fa-edit"></i>
                                                 </router-link>
                                             </td>
