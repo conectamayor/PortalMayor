@@ -57,6 +57,13 @@
         </li>
 
         <!-- Nav Item - Dashboard -->
+        <li class="nav-item" v-if="rol_id == 1">
+            <router-link class="nav-link" to="/rol">
+            <i class="fas fa-fw fa-lock"></i>
+            <span>Roles</span></router-link>
+        </li>
+
+        <!-- Nav Item - Dashboard -->
         <li class="nav-item" v-if="rol_id == 1 || rol_id == 3">
             <router-link class="nav-link" to="/user">
             <i class="fas fa-fw fa-users"></i>

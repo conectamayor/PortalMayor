@@ -38,6 +38,7 @@ import Cam from './components/Cam';
 import ShowSpecialSection from './components/ShowSpecialSection';
 import ShowInformation from './components/ShowInformation';
 import BotonFacebook from './components/BotonFacebook';
+import Rol from './components/Rol';
 
 export default{
     mode: 'history',
@@ -239,6 +240,11 @@ export default{
           path: '/information/show/:id',
           name: 'show_information',
           component: ShowInformation
+        },
+        {
+          path: '/rol',
+          name: 'rol',
+          component: Rol
         }
     ]
 }
