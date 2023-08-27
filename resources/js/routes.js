@@ -48,11 +48,6 @@ export default{
             component: NotFound
         },
         {
-          path: '/botonfacebook',
-          component: BotonFacebook,
-          name: "BotonFacebook"
-        },
-        {
             path: '/',
             component: Home,
             name: "Home"
