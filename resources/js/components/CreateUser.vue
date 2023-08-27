@@ -169,6 +169,7 @@
             ClipLoader
         },
         created() {
+            this.storeAudit();
             this.getAlliaceList();
             this.getRol();
         },
@@ -194,6 +195,18 @@
             }
         },
         methods: {
+            storeAudit() {
+                let formData = new FormData();
+                formData.append('page', 'Crear Usuario');
+               
+                axios.post('/api/audit/store?api_token='+App.apiToken, formData)
+                .then(function (response) {
+                    currentObj.success = response.data.success;
+                })
+                .catch(function (error) {
+                    console.log(error);
+                });
+            },
             getRol() {
                 axios.get('/api/user/rol?api_token='+App.apiToken)
                 .then(response => {

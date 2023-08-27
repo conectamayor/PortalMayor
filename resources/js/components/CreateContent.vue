@@ -265,6 +265,7 @@
             "v-input-colorpicker": InputColorPicker
         },
         created() {
+            this.storeAudit();
             this.getCategoryList();
         },
         data: function() {
@@ -315,6 +316,18 @@
                 axios.get('/api/category/list?api_token='+App.apiToken)
                 .then(response => {
                     this.category_posts = response.data.data;
+                });
+            },
+            storeAudit() {
+                let formData = new FormData();
+                formData.append('page', 'Crear Contenido');
+               
+                axios.post('/api/audit/store?api_token='+App.apiToken, formData)
+                .then(function (response) {
+                    currentObj.success = response.data.success;
+                })
+                .catch(function (error) {
+                    console.log(error);
                 });
             },
             onSubmit(e) {

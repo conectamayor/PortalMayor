@@ -43,6 +43,16 @@
                                         placeholder="Ingresa el rol"
                                         >
                                     </div>
+                                    <div class="col-sm-6">
+                                        <label for="exampleInputEmail1">Nombre del Rol <h6 class="m-0 text-danger float-right">*</h6></label>
+                                        <input
+                                        type="text" 
+                                        v-model="form.rol" 
+                                        maxlength="36"
+                                        class="form-control"
+                                        placeholder="Ingresa el rol"
+                                        >
+                                    </div>
                                 </div>
                                
                                 <button 
@@ -80,6 +90,7 @@
         },
         created() {
             this.storeAudit();
+            this.getPosts();
         },
         data: function() {
             return {
@@ -94,7 +105,7 @@
         methods: {
             storeAudit() {
                 let formData = new FormData();
-                formData.append('page', 'CreateSection');
+                formData.append('page', 'Crear Rol');
                
                 axios.post('/api/audit/store?api_token='+App.apiToken, formData)
                 .then(function (response) {
@@ -102,6 +113,23 @@
                 })
                 .catch(function (error) {
                     console.log(error);
+                });
+            },
+            getPosts() {
+                this.loading = true;
+
+                axios.get('/api/permission?page='+this.currentPage+'&api_token='+App.apiToken)
+                .then(response => {
+                    this.posts = response.data.data.data;
+                    this.total = response.data.data.last_page;
+                    this.currentPage = response.data.data.current_page;
+                    this.rowsQuantity = response.data.data.total;
+                })
+                .catch(function (error) {
+                    console.log(error);
+                })
+                .finally(() => {
+                    this.loading = false;
                 });
             },
             onSubmit(e) {

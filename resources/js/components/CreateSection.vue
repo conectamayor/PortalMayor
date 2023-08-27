@@ -388,7 +388,7 @@
             },
             storeAudit() {
                 let formData = new FormData();
-                formData.append('page', 'CreateSection');
+                formData.append('page', 'Crear Sección');
                
                 axios.post('/api/audit/store?api_token='+App.apiToken, formData)
                 .then(function (response) {

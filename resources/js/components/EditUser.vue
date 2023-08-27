@@ -176,7 +176,7 @@
         methods: {
             storeAudit() {
                 let formData = new FormData();
-                formData.append('page', 'EditUser - User Id: '+this.$route.params.id);
+                formData.append('page', 'Editar Usuario - Id del Usuario: '+this.$route.params.id);
                
                 axios.post('/api/audit/store?api_token='+App.apiToken, formData)
                 .then(function (response) {

@@ -132,7 +132,7 @@
         methods: {
             storeAudit() {
                 let formData = new FormData();
-                formData.append('page', 'User');
+                formData.append('page', 'Usuarios');
                
                 axios.post('/api/audit/store?api_token='+App.apiToken, formData)
                 .then(function (response) {

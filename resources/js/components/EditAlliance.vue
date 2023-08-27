@@ -164,7 +164,7 @@
         methods: {
             storeAudit() {
                 let formData = new FormData();
-                formData.append('page', 'EditAlliance - Alianza Id: '+this.$route.params.id);
+                formData.append('page', 'Editar Alianza - Id de la Alianza: '+this.$route.params.id);
                
                 axios.post('/api/audit/store?api_token='+App.apiToken, formData)
                 .then(function (response) {

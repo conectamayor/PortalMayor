@@ -96,6 +96,7 @@
             ClipLoader
         },
         created() {
+            this.storeAudit();
         },
         data: function() {
             return {
@@ -112,6 +113,18 @@
             }
         },
         methods: {
+            storeAudit() {
+                let formData = new FormData();
+                formData.append('page', 'Editar Perfil - Id del Perfil: '+this.$route.params.id);
+               
+                axios.post('/api/audit/store?api_token='+App.apiToken, formData)
+                .then(function (response) {
+                    currentObj.success = response.data.success;
+                })
+                .catch(function (error) {
+                    console.log(error);
+                });
+            },
             onSubmit(e) {
                 this.loading = true;
                 e.preventDefault();

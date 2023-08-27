@@ -34,10 +34,8 @@ import MetricResult from './components/MetricResult';
 import PollResult from './components/PollResult';
 import ShowSectionContent from './components/ShowSectionContent';
 import Qr from './components/Qr';
-import Cam from './components/Cam';
 import ShowSpecialSection from './components/ShowSpecialSection';
 import ShowInformation from './components/ShowInformation';
-import BotonFacebook from './components/BotonFacebook';
 import Rol from './components/Rol';
 import CreateRol from './components/CreateRol';
 
@@ -226,11 +224,6 @@ export default{
           path: '/qr',
           name: 'qr',
           component: Qr
-        },
-        {
-          path: '/cam',
-          name: 'cam',
-          component: Cam
         },
         {
           path: '/special_section/show/:id',

@@ -163,7 +163,7 @@
         methods: {
             storeAudit() {
                 let formData = new FormData();
-                formData.append('page', 'CreateAlliance');
+                formData.append('page', 'Crear Alianza');
                
                 axios.post('/api/audit/store?api_token='+App.apiToken, formData)
                 .then(function (response) {

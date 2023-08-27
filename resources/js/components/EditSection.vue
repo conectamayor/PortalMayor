@@ -396,7 +396,7 @@
             },
             storeAudit() {
                 let formData = new FormData();
-                formData.append('page', 'CreateSection');
+                formData.append('page', 'Editar Sección - Id de la Sección: '+this.$route.params.id);
                
                 axios.post('/api/audit/store?api_token='+App.apiToken, formData)
                 .then(function (response) {
