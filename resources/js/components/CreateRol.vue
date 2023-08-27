@@ -3,7 +3,7 @@
         <!-- Begin Page Content -->
         <div class="container-fluid">
             <h1 class="h3 mb-2 text-gray-800">
-                Crear Sección
+                Crear Rol
             </h1>
             <!-- DataTales Example -->
             <div class="card shadow mb-4">
@@ -44,14 +44,9 @@
                                         >
                                     </div>
                                     <div class="col-sm-6">
-                                        <label for="exampleInputEmail1">Nombre del Rol <h6 class="m-0 text-danger float-right">*</h6></label>
-                                        <input
-                                        type="text" 
-                                        v-model="form.rol" 
-                                        maxlength="36"
-                                        class="form-control"
-                                        placeholder="Ingresa el rol"
-                                        >
+                                        <div v-for="post in posts">
+                                            <label for="exampleInputEmail1">{{ post.permission }}</label>
+                                        </div>
                                     </div>
                                 </div>
                                
@@ -95,6 +90,7 @@
         data: function() {
             return {
                 errors: [],
+                posts: [],
                 loading: false,
                 noFile: false,
                 form: {
@@ -118,7 +114,7 @@
             getPosts() {
                 this.loading = true;
 
-                axios.get('/api/permission?page='+this.currentPage+'&api_token='+App.apiToken)
+                axios.get('/api/permission?api_token='+App.apiToken)
                 .then(response => {
                     this.posts = response.data.data.data;
                     this.total = response.data.data.last_page;
