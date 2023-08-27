@@ -116,10 +116,7 @@
 
                 axios.get('/api/permission?api_token='+App.apiToken)
                 .then(response => {
-                    this.posts = response.data.data.data;
-                    this.total = response.data.data.last_page;
-                    this.currentPage = response.data.data.current_page;
-                    this.rowsQuantity = response.data.data.total;
+                    this.posts = response.data.data;
                 })
                 .catch(function (error) {
                     console.log(error);
