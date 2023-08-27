@@ -17,10 +17,7 @@ class PermissionController extends ApiResponseController
      */
     public function index(Request $request)
     {
-        $permissions = Permission::from('permissions as c')
-                        ->selectRaw('c.*')
-                        ->orderBy('c.permission', 'asc')
-                        ->all();
+        $permissions = Permission::orderBy('c.permission', 'asc')->all();
         
         return $this->successResponse($permissions);
     }
