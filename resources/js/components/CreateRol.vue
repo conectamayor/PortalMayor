@@ -46,6 +46,7 @@
                                     <div class="col-sm-6">
                                         <label for="exampleInputEmail1">Permisos</label>
                                         <div v-for="(post, index) in posts" v-bind:index="index">
+                                            <input type="checkbox" name="permissions[]" value="{{ post.permission_id }}">
                                             <label for="exampleInputEmail1">{{ post.permission }}</label>
                                         </div>
                                     </div>
