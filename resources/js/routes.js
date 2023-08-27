@@ -39,6 +39,7 @@ import ShowSpecialSection from './components/ShowSpecialSection';
 import ShowInformation from './components/ShowInformation';
 import BotonFacebook from './components/BotonFacebook';
 import Rol from './components/Rol';
+import CreateRol from './components/CreateRol';
 
 export default{
     mode: 'history',
@@ -245,6 +246,11 @@ export default{
           path: '/rol',
           name: 'rol',
           component: Rol
+        },
+        {
+          path: '/rol/create',
+          name: 'create_rol',
+          component: CreateRol
         }
     ]
 }
