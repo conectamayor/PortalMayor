@@ -45,8 +45,8 @@
                                     </div>
                                     <div class="col-sm-6">
                                         <label for="exampleInputEmail1">Permisos</label>
-                                        <div v-for="(post, index) in posts" v-bind:index="index">
-                                            <input type="checkbox" name="permissions[]" value="{{ post.permission_id }}">
+                                        <div v-for="(post, index) in posts" v-bind:key="index">
+                                            <input type="checkbox" v-model="post.selected">
                                             <label for="exampleInputEmail1">{{ post.permission }}</label>
                                         </div>
                                     </div>
@@ -139,7 +139,9 @@
                 if(this.form.rol != '') {
                     let formData = new FormData();
                     formData.append('rol', this.form.rol);
-                    formData.append('permissions', this.permissions);
+                    this.selectedPermissions = this.posts.filter(post => post.selected).map(post => post.permission_id);
+
+                    formData.append('permissions', this.selectedPermissions);
 
                     axios.post('/api/rol/store?api_token='+App.apiToken, formData, config)
                     .then(function (response) {
