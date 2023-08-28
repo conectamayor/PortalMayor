@@ -120,4 +120,5 @@ Route::get('section_commune/{id}/edit', 'api\SectionCommuneController@edit');
 Route::get('category_region/{id}/edit', 'api\CategoryRegionController@edit');
 Route::get('category_commune/{id}/edit', 'api\CategoryCommuneController@edit');
 Route::get('rol', 'api\RolController@index');
+Route::post('rol/store', 'api\RolController@store');
 Route::get('permission', 'api\PermissionController@index');
