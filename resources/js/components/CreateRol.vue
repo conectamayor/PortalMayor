@@ -139,11 +139,7 @@
                 if(this.form.rol != '') {
                     let formData = new FormData();
                     formData.append('rol', this.form.rol);
-
-                    const selectedPermissions = this.posts.filter(post => post.selected);
-                    selectedPermissions.forEach(permission => {
-                        formData.append('permissions[]', permission.permission_id);
-                    });
+                    formData.append('permissions', this.permissions);
 
                     axios.post('/api/rol/store?api_token='+App.apiToken, formData, config)
                     .then(function (response) {
