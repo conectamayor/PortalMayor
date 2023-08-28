@@ -36,9 +36,10 @@ class RolController extends ApiResponseController
         // Obtén los permisos seleccionados (array)
         $permissions = $request->input('permissions', []);
 
-        // Aquí recorres el array de permisos y haces lo que necesites con cada valor
-        foreach ($permissions as $permission) {
-            echo $permission;
+        $permissions = explode(',', $permissions);
+
+        for ($i=0; $i < count($permissions); $i++) { 
+            echo $permissions[$i];
             echo '<br>';
         }
     }
