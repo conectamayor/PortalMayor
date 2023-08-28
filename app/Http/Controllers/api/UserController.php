@@ -44,10 +44,12 @@ class UserController extends ApiResponseController
     {
         $users = User::from('users as c')
                         ->selectRaw('members.rol_id as rol_id')
+                        ->leftJoin('rols', 'rols.rol_id', '=', 'c.rol_id')
                         ->leftJoin('members', 'members.user_id', '=', 'c.rut')
                         ->leftJoin('alliances', 'alliances.rut', '=', 'members.alliance_id')
+                        ->leftJoin('permissions', 'permissions.rol_id', '=', 'rols.rol_id')
                         ->where('c.api_token', $request->api_token)
-                        ->first();
+                        ->get();
         
         return $this->successResponse($users);
     }
