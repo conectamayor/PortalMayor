@@ -92,7 +92,9 @@
             getRol() {
                 axios.get('/api/user/rol?api_token='+App.apiToken)
                 .then(response => {
-                    this.rol_id = response.data.data.rol_id;
+                    response.data.data.forEach(item => {
+                        console.log('Name:', item.rol_permission_id);
+                    });
                 });
             }
         },
