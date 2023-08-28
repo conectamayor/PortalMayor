@@ -82,21 +82,21 @@
 <script>
     export default {
         created() {
-          this.getRol();
+          this.getRols();
         },
         methods: {
             closeSession() {
                 alert(window.location.host)
                 window.location = 'https://' + window.location.host + '/login/logout';
             },
-            getRol() {
+            getRols() {
                 axios.get('/api/user/rol?api_token='+App.apiToken)
                 .then(response => {
                     
                     var i = 1;
 
                     response.data.data.forEach(item => {
-                        this.rols_permissions[i] = item.rol_permission_id;
+                        this.rols_permissions[item.rol_permission_id] = 1;
                         i++;
                     });
 
@@ -106,7 +106,6 @@
         },
         data: function() {
           return {
-            rol_id: this.rol_id,
             rols_permissions: []
           }
         }
