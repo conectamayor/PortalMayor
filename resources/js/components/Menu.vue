@@ -8,21 +8,21 @@
         </li>
 
         <!-- Nav Item - Dashboard -->
-        <li class="nav-item" v-if="rols_permissions[0] != ''">
+        <li class="nav-item" v-if="rols_permissions[0] != null">
             <router-link class="nav-link" to="/alliance">
             <i class="fas fa-fw fa-handshake"></i>
             <span>Alianzas</span></router-link>
         </li>
 
         <!-- Nav Item - Dashboard -->
-        <li class="nav-item" v-if="rols_permissions[1] != ''">
+        <li class="nav-item" v-if="rols_permissions[1] != null">
             <router-link class="nav-link" to="/section">
             <i class="fas fa-fw fa-arrow-up"></i>
             <span>Secciones</span></router-link>
         </li>
 
         <!-- Nav Item - Dashboard -->
-        <li class="nav-item" v-if="rols_permissions[2] != ''">
+        <li class="nav-item" v-if="rols_permissions[2] != null">
             <router-link class="nav-link" to="/category">
             <i class="fas fa-fw fa-signal"></i>
             <span>Categorias</span></router-link>
