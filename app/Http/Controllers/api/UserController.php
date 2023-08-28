@@ -46,7 +46,7 @@ class UserController extends ApiResponseController
                         ->leftJoin('members', 'members.user_id', '=', 'c.rut')
                         ->leftJoin('rols', 'rols.rol_id', '=', 'members.rol_id')
                         ->leftJoin('alliances', 'alliances.rut', '=', 'members.alliance_id')
-                        ->leftJoin('permissions', 'permissions.rol_id', '=', 'rols.rol_id')
+                        ->leftJoin('rol_permissions', 'rol_permissions.rol_id', '=', 'rols.rol_id')
                         ->where('c.api_token', $request->api_token)
                         ->get();
         
