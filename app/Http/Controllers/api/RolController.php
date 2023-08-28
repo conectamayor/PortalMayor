@@ -31,6 +31,11 @@ class RolController extends ApiResponseController
      */
     public function store(Request $request)
     {
-        print_r($request);
+        $rol = $request->input('rol');
+    
+        // Obtén los permisos seleccionados (array)
+        $permissions = $request->input('permissions', []);
+
+        print_r($permissions);
     }
 }
