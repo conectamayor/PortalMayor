@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\api;
 
 use App\Rol;
+use App\RolPermission;
 use App\Http\Controllers\ApiResponseController;
 use App\Http\Controllers\Controller\api;
 use Illuminate\Http\Request;
@@ -32,6 +33,10 @@ class RolController extends ApiResponseController
     public function store(Request $request)
     {
         $rol = $request->input('rol');
+
+        $rol = new Rol();
+        $rol->rol = $request->input('rol');
+        $rol->save();
     
         // Obtén los permisos seleccionados (array)
         $permissions = $request->input('permissions', []);
@@ -39,8 +44,10 @@ class RolController extends ApiResponseController
         $permissions = explode(',', $permissions);
 
         for ($i=0; $i < count($permissions); $i++) { 
-            echo $permissions[$i];
-            echo '<br>';
+            $rol_permission = new RolPermission();
+            $rol_permission->rol_id = $rol->rol_id;
+            $rol_permission->permission_id = $permissions[$i];
+            $rol_permission->save();
         }
     }
 }
