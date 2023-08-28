@@ -8,21 +8,21 @@
         </li>
 
         <!-- Nav Item - Dashboard -->
-        <li class="nav-item" v-if="rols_permissions[0] != null">
+        <li class="nav-item" v-if="rols_permissions[0]">
             <router-link class="nav-link" to="/alliance">
             <i class="fas fa-fw fa-handshake"></i>
             <span>Alianzas</span></router-link>
         </li>
 
         <!-- Nav Item - Dashboard -->
-        <li class="nav-item" v-if="rols_permissions[1] != null">
+        <li class="nav-item" v-if="rols_permissions[1]">
             <router-link class="nav-link" to="/section">
             <i class="fas fa-fw fa-arrow-up"></i>
             <span>Secciones</span></router-link>
         </li>
 
         <!-- Nav Item - Dashboard -->
-        <li class="nav-item" v-if="rols_permissions[2] != null">
+        <li class="nav-item" v-if="rols_permissions[2]">
             <router-link class="nav-link" to="/category">
             <i class="fas fa-fw fa-signal"></i>
             <span>Categorias</span></router-link>
@@ -80,35 +80,32 @@
 </template>
 
 <script>
-    export default {
-        created() {
-          this.getRols();
-        },
-        methods: {
-            closeSession() {
-                alert(window.location.host)
-                window.location = 'https://' + window.location.host + '/login/logout';
-            },
-            getRols() {
-                axios.get('/api/user/rol?api_token='+App.apiToken)
-                .then(response => {
-                    
-                    var i = 1;
+export default {
+  created() {
+    this.getRols();
+  },
+  methods: {
+    closeSession() {
+      alert(window.location.host);
+      window.location = 'https://' + window.location.host + '/login/logout';
+    },
+    getRols() {
+      axios.get('/api/user/rol?api_token=' + App.apiToken)
+        .then(response => {
+          this.rols_permissions = {}; // Initialize as an object
 
-                    response.data.data.forEach(item => {
-                        this.rols_permissions[item.rol_permission_id] = 1;
-                        i++;
-                    });
+          response.data.data.forEach(item => {
+            this.rols_permissions[item.rol_permission_id] = true; // Set as true
+          });
 
-                    console.log(this.rols_permissions);
-                });
-            }
-        },
-        data: function() {
-          return {
-            rols_permissions: []
-          }
-        }
-
+          console.log(this.rols_permissions);
+        });
     }
+  },
+  data: function() {
+    return {
+      rols_permissions: {}
+    };
+  }
+};
 </script>
