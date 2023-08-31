@@ -95,7 +95,7 @@ export default {
             this.rols_permissions = {}; // Initialize as an object
 
             response.data.data.forEach(item => {
-                this.rols_permissions[item.rol_permission_id] = true; // Set as true
+                this.rols_permissions[item.permission_id] = true; // Set as true
             });
 
         });
