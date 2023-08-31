@@ -92,13 +92,12 @@ export default {
     getRols() {
       axios.get('/api/user/rol?api_token=' + App.apiToken)
         .then(response => {
-          this.rols_permissions = {}; // Initialize as an object
+            this.rols_permissions = {}; // Initialize as an object
 
-          response.data.data.forEach(item => {
-            this.rols_permissions[item.rol_permission_id] = true; // Set as true
-          });
+            response.data.data.forEach(item => {
+                this.rols_permissions[item.rol_permission_id] = true; // Set as true
+            });
 
-          console.log(this.rols_permissions);
         });
     }
   },

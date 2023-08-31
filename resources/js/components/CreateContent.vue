@@ -374,6 +374,17 @@
 
                     axios.post('/api/content/store?api_token='+App.apiToken, formData, config)
                     .then(function (response) {
+                        let formData = new FormData();
+                    formData.append('page', 'Contenido Creado');
+                
+                    axios.post('/api/audit/store?api_token='+App.apiToken, formData)
+                    .then(function (response) {
+                        currentObj.success = response.data.success;
+                    })
+                    .catch(function (error) {
+                        console.log(error);
+                    });
+                    
                         currentObj.success = response.data.success;
                     })
                     .catch(function (error) {
