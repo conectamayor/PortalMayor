@@ -17,7 +17,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="card-body">
+                <div class="card-body" v-if="rols_permissions[8]">
                     <div class="table-responsive">
                         <div v-if="loading">
                             <center>
@@ -308,11 +308,13 @@
             "v-input-colorpicker": InputColorPicker
         },
         created() {
+            this.getRols();
             this.storeAudit();
             this.getRegions();
         },
         data: function() {
             return {
+                rols_permissions: {},
                 errors: [],
                 region_posts: [],
                 commune_posts: [],
@@ -349,6 +351,17 @@
             }
         },
         methods: {
+            getRols() {
+                axios.get('/api/user/rol?api_token=' + App.apiToken)
+                    .then(response => {
+                        this.rols_permissions = {}; // Initialize as an object
+
+                        response.data.data.forEach(item => {
+                            this.rols_permissions[item.permission_id] = true; // Set as true
+                        });
+
+                    });
+            },
             getRegions() {
                 this.loading = true;
 

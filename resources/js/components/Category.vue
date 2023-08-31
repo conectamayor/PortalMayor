@@ -4,7 +4,7 @@
         <div class="container-fluid">
             <h1 class="h3 mb-2 text-gray-800">
                 Categorias
-                <router-link to="/category/create" class="btn btn-success btn-icon-split">
+                <router-link to="/category/create" class="btn btn-success btn-icon-split" v-if="rols_permissions[12]">
                     <span class="icon text-white-50">
                       <i class="fas fa-check"></i>
                     </span>
@@ -47,7 +47,7 @@
                 </div>
             </div>
             <!-- DataTales Example -->
-            <div class="card shadow mb-4">
+            <div class="card shadow mb-4" v-if="rols_permissions[11]">
                 <div class="card-header py-3">
                     <h6 class="m-0 font-weight-bold text-primary">Listado</h6>
                 </div>
@@ -88,16 +88,16 @@
                                                 </span>
                                             </td>
                                             <td>
-                                                <router-link :to="`/category/edit/${post.category_id}`"  class="btn btn-primary btn-circle btn-sm">
+                                                <router-link v-if="rols_permissions[13]" :to="`/category/edit/${post.category_id}`"  class="btn btn-primary btn-circle btn-sm">
                                                     <i class="fas fa-edit"></i>
                                                 </router-link>
-                                                <button v-on:click="deletePost(post.category_id, index)" class="btn btn-danger btn-circle btn-sm">
+                                                <button v-if="rols_permissions[14]" v-on:click="deletePost(post.category_id, index)" class="btn btn-danger btn-circle btn-sm">
                                                     <i class="fas fa-trash"></i>
                                                 </button>
-                                                <button v-if="index != (rowsQuantity-1)" v-on:click="movePost(post.category_id, index+1, post.section_id)" class="btn btn-success btn-circle btn-sm">
+                                                <button v-if="index != (rowsQuantity-1) && rols_permissions[35]" v-on:click="movePost(post.category_id, index+1, post.section_id)" class="btn btn-success btn-circle btn-sm">
                                                     <i class="fas fa-arrow-down"></i>
                                                 </button>
-                                                <button v-if="index != 0" v-on:click="movePost(post.category_id, index-1, post.section_id)" class="btn btn-success btn-circle btn-sm">
+                                                <button v-if="index != 0 && rols_permissions[35]" v-on:click="movePost(post.category_id, index-1, post.section_id)" class="btn btn-success btn-circle btn-sm">
                                                     <i class="fas fa-arrow-up"></i>
                                                 </button>
                                             </td>
@@ -148,11 +148,22 @@
 
     export default {
         created() {
-            this.getRol();
+            this.getRols();
             this.storeAudit();
             this.getSectionList();
         },
         methods: {
+            getRols() {
+                axios.get('/api/user/rol?api_token=' + App.apiToken)
+                    .then(response => {
+                        this.rols_permissions = {}; // Initialize as an object
+
+                        response.data.data.forEach(item => {
+                            this.rols_permissions[item.permission_id] = true; // Set as true
+                        });
+
+                    });
+            },
             getSectionList() {
                 axios.get('/api/section/list?api_token='+App.apiToken)
                 .then(response => {
@@ -234,12 +245,6 @@
                     console.log(error);
                 });
             },
-            getRol() {
-                axios.get('/api/user?api_token='+App.apiToken)
-                .then(response => {
-                    this.rol_id = response.data.data.rol_id;
-                });
-            },
             deletePost(id, index) {
                 if(confirm("¿Realmente usted quiere borrar el registro?")) {
                     this.loading = true; //the loading begin
@@ -301,6 +306,7 @@
         },
         data: function() {
             return {
+                rols_permissions: {},
                 color: '#0A2787',
                 loading: false,
                 form: {
