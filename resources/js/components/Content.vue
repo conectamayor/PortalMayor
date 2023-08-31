@@ -280,7 +280,7 @@
             },
             storeAudit() {
                 let formData = new FormData();
-                formData.append('page', 'Content');
+                formData.append('page', 'Contenidos');
                
                 axios.post('/api/audit/store?api_token='+App.apiToken, formData)
                 .then(function (response) {
