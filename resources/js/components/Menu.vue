@@ -57,7 +57,7 @@
         </li>
 
         <!-- Nav Item - Dashboard -->
-        <li class="nav-item" v-if="rols_permissions[7]">
+        <li class="nav-item" v-if="rols_permissions[29] || rols_permissions[30] || rols_permissions[31] || rols_permissions[32]">
             <router-link class="nav-link" to="/rol">
             <i class="fas fa-fw fa-lock"></i>
             <span>Roles</span></router-link>
