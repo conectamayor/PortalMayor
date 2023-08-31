@@ -86,7 +86,6 @@ export default {
   },
   methods: {
     closeSession() {
-      alert(window.location.host);
       window.location = 'https://' + window.location.host + '/login/logout';
     },
     getRols() {
