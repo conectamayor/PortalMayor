@@ -36,13 +36,6 @@
         </li>
 
         <!-- Nav Item - Dashboard -->
-        <li class="nav-item" v-if="rols_permissions[19] || rols_permissions[20] || rols_permissions[21] || rols_permissions[22] || rols_permissions[23]">
-            <router-link class="nav-link" to="/poll">
-            <i class="fas fa-fw fa-poll"></i>
-            <span>Encuestas</span></router-link>
-        </li>
-
-        <!-- Nav Item - Dashboard -->
         <li class="nav-item" v-if="rols_permissions[5]">
             <router-link class="nav-link" to="/metric">
             <i class="fas fa-fw fa-database"></i>

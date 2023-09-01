@@ -47,7 +47,7 @@
                 </div>
             </div>
             <!-- DataTales Example -->
-            <div class="card shadow mb-4" v-if="rols_permissions[11]">
+            <div class="card shadow mb-4">
                 <div class="card-header py-3">
                     <h6 class="m-0 font-weight-bold text-primary">Listado</h6>
                 </div>
@@ -59,7 +59,7 @@
                             </center>
                         </div>
                         <div v-else>
-                            <div v-if="rowsQuantity > 0">
+                            <div v-if="rowsQuantity > 0 && rols_permissions[11]">
                                 <table v-if="total > 0" class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
