@@ -160,7 +160,7 @@
                     } else {
                         window.location.href = uri_url;
                         setTimeout(function(){
-                            if(confirm('No tienes instalado el aplicativo ¿Quieres instalarlo?')){
+                            if(confirm('No tienes instalado la App o falta una actualización. ¿Deseas ir a Google Play?')){
                                 window.location.href = open_app_not_installed;
                             }
                         }, 300);
