@@ -26,7 +26,7 @@
                             </center>
                         </div>
                         <div v-else>
-                            <div v-if="rowsQuantity > 0">
+                            <div v-if="rowsQuantity > 0 && rols_permissions[25]">
                                 <table v-if="total > 0" class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
@@ -66,13 +66,13 @@
                                                 </span>
                                             </td>
                                             <td>
-                                                <router-link :to="`/user/edit/${post.rut}`" v-if="post.rol_id != 1 || rut == post.rut || rol_id == 3"  class="btn btn-primary btn-circle btn-sm">
+                                                <router-link v-if="rols_permissions[27]" :to="`/user/edit/${post.rut}`" v-if="post.rol_id != 1 || rut == post.rut || rol_id == 3"  class="btn btn-primary btn-circle btn-sm">
                                                     <i class="fas fa-edit"></i>
                                                 </router-link>
-                                                <button v-if="post.status == 1 && rol_id == 3" v-on:click="deletePost(post.rut, index)" class="btn btn-danger btn-circle btn-sm">
+                                                <button v-if="post.status == 1 && rol_id == 3 && rols_permissions[28]" v-on:click="deletePost(post.rut, index)" class="btn btn-danger btn-circle btn-sm">
                                                     <i class="fas fa-trash"></i>
                                                 </button>
-                                                <button v-if="post.status == 0" v-on:click="activatePost(post.rut, index)" class="btn btn-success btn-circle btn-sm">
+                                                <button v-if="post.status == 0 && rols_permissions[39]" v-on:click="activatePost(post.rut, index)" class="btn btn-success btn-circle btn-sm">
                                                     <i class="fas fa-check"></i>
                                                 </button>
                                             </td>
@@ -124,12 +124,24 @@
 
     export default {
         created() {
+            this.getRols();
             this.getPosts();
             this.getRol();
             this.storeAudit();
             this.getUser();
         },
         methods: {
+            getRols() {
+                axios.get('/api/user/rol?api_token=' + App.apiToken)
+                    .then(response => {
+                        this.rols_permissions = {}; // Initialize as an object
+
+                        response.data.data.forEach(item => {
+                            this.rols_permissions[item.permission_id] = true; // Set as true
+                        });
+
+                    });
+            },
             storeAudit() {
                 let formData = new FormData();
                 formData.append('page', 'Usuarios');
@@ -228,6 +240,7 @@
         },
         data: function() {
             return {
+                rols_permissions: {},
                 color: '#0A2787',
                 loading: false,
                 form: {
