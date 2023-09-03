@@ -392,7 +392,6 @@
                     this.$set(this.form, 'iframe', this.post.iframe);
 
                     if (this.post.iframe != null && this.post.iframe != '') {
-                        alert(2);
                         this.$set(this.form, 'iframe_question_id', 1);
                     } else {
                         this.$set(this.form, 'iframe_question_id', 2);
@@ -515,6 +514,7 @@
                     formData.append('position', this.form.position);
                     formData.append('icon_type_id', this.form.icon_type_id);
                     formData.append('iframe', this.form.iframe);
+                    formData.append('iframe_question_id', this.form.iframe_question_id);
                     formData.append('subtitle', this.form.subtitle);
                     formData.append('link_question_id', this.form.link_question_id);
                     formData.append('icon_available_id', this.form.icon_available_id);
