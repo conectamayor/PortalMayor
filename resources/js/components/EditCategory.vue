@@ -390,6 +390,14 @@
                     this.$set(this.form, 'position', this.post.position);
                     this.$set(this.form, 'icon_type_id', this.post.icon_type_id);
                     this.$set(this.form, 'iframe', this.post.iframe);
+
+                    if (this.post.iframe != null && this.post.iframe != '') {
+                        this.$set(this.form, 'iframe_question_id', 1);
+                    } else {
+                        this.$set(this.form, 'iframe_question_id', 2);
+                    }
+
+                    
                     this.$set(this.form, 'subtitle', this.post.subtitle);
                     this.$set(this.form, 'link_question_id', this.post.link_question_id);
                     this.$set(this.form, 'icon_available_id', this.post.icon_available_id);
