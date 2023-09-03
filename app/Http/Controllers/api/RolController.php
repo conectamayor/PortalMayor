@@ -63,4 +63,27 @@ class RolController extends ApiResponseController
 
         return $this->successResponse($rol);
     }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy($id)
+    {
+        $rol = Rol::where('rol_id', $id)->first();
+
+        if($rol->delete()) {
+            $permissions = RolPermission::where('rol_id', $id)->get();
+
+            foreach ($permissions as $permission) {
+                $permission->delete();
+            }
+
+            return $this->successResponse($rol);
+        } else {
+            return $this->errorResponse($rol);
+        }
+    }
 }

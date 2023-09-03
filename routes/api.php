@@ -123,3 +123,5 @@ Route::get('rol', 'api\RolController@index');
 Route::post('rol/store', 'api\RolController@store');
 Route::get('permission', 'api\PermissionController@index');
 Route::get('rol/{id}/edit', 'api\RolController@edit');
+Route::post('rol/update/{id}', 'api\RolController@update');
+Route::get('rol/destroy/{id}', 'api\RolController@destroy');

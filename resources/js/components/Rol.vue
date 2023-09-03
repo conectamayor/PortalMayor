@@ -41,7 +41,7 @@
                                             <td>{{ post.rol }}</td>
                                           
                                             <td>
-                                                <button v-if="post.status == 1 && rol_id == 3 && rols_permissions[31]" v-on:click="deletePost(post.rut, index)" class="btn btn-danger btn-circle btn-sm">
+                                                <button v-if="post.status == 1 && rol_id == 3 && rols_permissions[31]" v-on:click="deletePost(post.rol_id, index)" class="btn btn-danger btn-circle btn-sm">
                                                     <i class="fas fa-trash"></i>
                                                 </button>
                                             </td>
@@ -161,7 +161,7 @@
             deletePost(id, index) {
                 if(confirm("¿Realmente usted quiere desactivar el registro?")) {
                     this.loading = true; //the loading begin
-                    axios.get('/api/user/destroy/'+id+'?api_token='+App.apiToken).then(response => {
+                    axios.get('/api/rol/destroy/'+id+'?api_token='+App.apiToken).then(response => {
                         this.posts.splice(index, 1);
                     })
                     .catch(function (error) {
@@ -170,7 +170,7 @@
                     .finally(() => {
                         this.loading = false;
                         this.getPosts();
-                        this.$awn.success("El registro ha sido desactivado", {labels: {success: "Éxito"}});
+                        this.$awn.success("El registro ha sido borrado", {labels: {success: "Éxito"}});
                     });
 
                     let formData = new FormData();
@@ -182,22 +182,6 @@
                     })
                     .catch(function (error) {
                         console.log(error);
-                    });
-                }
-            },
-            activatePost(id, index) {
-                if(confirm("¿Realmente usted quiere activar el registro?")) {
-                    this.loading = true; //the loading begin
-                    axios.get('/api/user/activate/'+id+'?api_token='+App.apiToken).then(response => {
-                        this.posts.splice(index, 1);
-                    })
-                    .catch(function (error) {
-                        console.log(error);
-                    })
-                    .finally(() => {
-                        this.loading = false;
-                        this.getPosts();
-                        this.$awn.success("El registro ha sido activado", {labels: {success: "Éxito"}});
                     });
                 }
             }
