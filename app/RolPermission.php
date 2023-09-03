@@ -11,4 +11,6 @@ use Auth;
 class RolPermission extends Authenticatable
 {
     use Notifiable;
+
+    protected $primaryKey = 'rol_id';
 }
