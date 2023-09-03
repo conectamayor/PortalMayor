@@ -26,7 +26,7 @@
                             </center>
                         </div>
                         <div v-else>
-                            <div v-if="rowsQuantity > 0">
+                            <div v-if="rowsQuantity > 0 && rols_permissions[29]">
                                 <table v-if="total > 0" class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
@@ -41,9 +41,9 @@
                                             <td>{{ post.rol }}</td>
                                           
                                             <td>
-                                                <router-link :to="`/rol/edit/${post.rol_id}`" class="btn btn-primary btn-circle btn-sm">
-                                                    <i class="fas fa-edit"></i>
-                                                </router-link>
+                                                <button v-if="post.status == 1 && rol_id == 3 && rols_permissions[31]" v-on:click="deletePost(post.rut, index)" class="btn btn-danger btn-circle btn-sm">
+                                                    <i class="fas fa-trash"></i>
+                                                </button>
                                             </td>
                                         </tr>
                                     </tbody>
@@ -93,12 +93,23 @@
 
     export default {
         created() {
+            this.getRols();
             this.getPosts();
-            this.getRol();
             this.storeAudit();
             this.getUser();
         },
         methods: {
+            getRols() {
+                axios.get('/api/user/rol?api_token=' + App.apiToken)
+                    .then(response => {
+                        this.rols_permissions = {}; // Initialize as an object
+
+                        response.data.data.forEach(item => {
+                            this.rols_permissions[item.permission_id] = true; // Set as true
+                        });
+
+                    });
+            },
             storeAudit() {
                 let formData = new FormData();
                 formData.append('page', 'Roles');
@@ -197,6 +208,7 @@
         },
         data: function() {
             return {
+                rols_permissions: {},
                 color: '#0A2787',
                 loading: false,
                 form: {
