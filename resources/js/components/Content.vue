@@ -179,7 +179,6 @@
     export default {
         created() {
             this.getRols();
-            this.getRol();
             this.getAlliaceList();
             this.getSectionList();
         },
