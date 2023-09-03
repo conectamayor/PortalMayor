@@ -546,7 +546,6 @@
                     formData.append('url', this.form.url);
                     formData.append('video_id', this.form.video_id);
                     formData.append('subtitle', this.form.subtitle);
-                    alert(this.form.iframe_question_id);
                     formData.append('iframe_question_id', this.form.iframe_question_id);
                     formData.append('iframe', this.form.iframe);
                     formData.append('google_tag', this.form.google_tag);
