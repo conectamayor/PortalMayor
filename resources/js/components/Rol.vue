@@ -41,7 +41,7 @@
                                             <td>{{ post.rol }}</td>
                                           
                                             <td>
-                                                <button v-if="post.status == 1 && rol_id == 3 && rols_permissions[31]" v-on:click="deletePost(post.rol_id, index)" class="btn btn-danger btn-circle btn-sm">
+                                                <button v-if="rols_permissions[31]" v-on:click="deletePost(post.rol_id, index)" class="btn btn-danger btn-circle btn-sm">
                                                     <i class="fas fa-trash"></i>
                                                 </button>
                                             </td>
