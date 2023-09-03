@@ -514,6 +514,7 @@
                     formData.append('position', this.form.position);
                     formData.append('icon_type_id', this.form.icon_type_id);
                     formData.append('iframe', this.form.iframe);
+                    alert(this.form.iframe_question_id);
                     formData.append('iframe_question_id', this.form.iframe_question_id);
                     formData.append('subtitle', this.form.subtitle);
                     formData.append('link_question_id', this.form.link_question_id);
