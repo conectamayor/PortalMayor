@@ -92,7 +92,6 @@
             this.getPollQuantity();
             this.getPost();
             this.getPosts();
-            this.catchUser();
             this.checkDate();
             this.getPolls();
         },

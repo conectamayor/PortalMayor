@@ -109,7 +109,6 @@
             this.getPollQuantity();
             this.getPolls();
             this.getPost();
-            this.catchUser();
         },
         components: {
             pdf
