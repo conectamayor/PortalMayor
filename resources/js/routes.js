@@ -38,6 +38,7 @@ import ShowSpecialSection from './components/ShowSpecialSection';
 import ShowInformation from './components/ShowInformation';
 import Rol from './components/Rol';
 import CreateRol from './components/CreateRol';
+import EditRol from './components/EditRol';
 
 export default{
     mode: 'history',
@@ -239,6 +240,11 @@ export default{
           path: '/rol/create',
           name: 'create_rol',
           component: CreateRol
+        },
+        {
+          path: '/rol/edit/:id',
+          name: 'edit_rol',
+          component: EditRol
         }
     ]
 }

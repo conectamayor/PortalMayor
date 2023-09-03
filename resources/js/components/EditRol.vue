@@ -3,7 +3,7 @@
         <!-- Begin Page Content -->
         <div class="container-fluid">
             <h1 class="h3 mb-2 text-gray-800">
-                Crear Rol
+                Editar Rol
             </h1>
             <!-- DataTales Example -->
             <div class="card shadow mb-4">
@@ -86,6 +86,7 @@
             "v-input-colorpicker": InputColorPicker
         },
         created() {
+            this.getPost();
             this.storeAudit();
             this.getPosts();
         },
@@ -111,6 +112,14 @@
                 })
                 .catch(function (error) {
                     console.log(error);
+                });
+            },
+            getPost() {
+                axios.get('/api/rol/'+ this.$route.params.id +'/edit?api_token='+App.apiToken)
+                .then(response => {
+                    this.post = response.data.data;
+                    
+                    this.$set(this.form, 'rol', this.post.rol);
                 });
             },
             getPosts() {
@@ -143,7 +152,7 @@
 
                     formData.append('permissions', this.selectedPermissions);
 
-                    axios.post('/api/rol/store?api_token='+App.apiToken, formData, config)
+                    axios.post('/api/rol/update/'+ this.$route.params.id +'?api_token='+App.apiToken, formData, config)
                     .then(function (response) {
                         currentObj.success = response.data.success;
                     })

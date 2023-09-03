@@ -25,7 +25,7 @@ class RolController extends ApiResponseController
         return $this->successResponse($rols);
     }
 
-        /**
+    /**
      * Store the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
@@ -49,5 +49,18 @@ class RolController extends ApiResponseController
             $rol_permission->permission_id = $permissions[$i];
             $rol_permission->save();
         }
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
+    {
+        $rol = Rol::where('rol_id', $id)->first();
+
+        return $this->successResponse($rol);
     }
 }
