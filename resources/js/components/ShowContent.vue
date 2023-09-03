@@ -1,11 +1,13 @@
 <template>
-    <div class="container pt-32">222222222222222
+    <div class="container pt-32">
         <div v-if="poll_question_posts == ''" class="row">
+            <h1><center>{{ this.post.title }}</center></h1>
+            <hr>
+                
+            <a :href="`whatsapp://send?text=${encodeURIComponent(whatsapp_description)}`" style="whatsapp_share_button" data-action="share/whatsapp/share"> <strong>Compartir por Whatsapp</strong> <i class="fab fa-whatsapp"></i></a>
+                
 		    <div class="col-12" v-if="this.post.type_id == 1 || this.post.type_id == 2 || this.post.type_id == 4 || this.post.type_id == 5">
-                <h1><center>{{ this.post.title }}</center></h1>
-                <hr>
-                2222222222
-                <a :href="`whatsapp://send?text=${encodeURIComponent(whatsapp_description)}`" style="whatsapp_share_button" data-action="share/whatsapp/share"> <strong>Compartir por Whatsapp</strong> <i class="fab fa-whatsapp"></i></a>
+
                 <div v-if="url !== null">
                     <center>
                         <img v-bind:src="image_url">
