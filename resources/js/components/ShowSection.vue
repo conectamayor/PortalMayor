@@ -13,7 +13,7 @@
                 <iframe width="600" height="600" :src="`${post.iframe}`" title="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </div>
 
-            <div v-if="check_category_poll == 0  && post.iframe == null && post.iframe == ''">
+            <div v-if="check_category_poll == 0">
                 <div v-if="poll_question_posts == ''" class="row">
                     <div class="col-8 col-8-scroll" ref="col8">
                         <div class="p-0">
