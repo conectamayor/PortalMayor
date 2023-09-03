@@ -47,7 +47,7 @@
                 <hr>	
                 <h3>{{ this.post.description }}</h3>	    
             </div>
-            <div class="col-12" v-if="this.post.type_id == 3" v-html="this.post.description">	    
+            <div class="col-12 pt-10" v-if="this.post.type_id == 3" v-html="this.post.description">	    
             </div>
         </div>
         <div v-if="poll_question_posts != ''" class="row">
