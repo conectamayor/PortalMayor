@@ -128,6 +128,9 @@ class ContentController extends ApiResponseController
             $pdfName = '';
         }
 
+        print(11111);
+        print($pdfName);
+
         $content = new Content();
         $content->category_id = $request->category_id;
         $content->type_id = $request->type_id;
