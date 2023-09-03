@@ -232,6 +232,10 @@ a {
     margin-top: 7px !important;
   }
 
+  .app {
+    padding-top: 1px !important;
+  }
+
   .link {
     padding-top: 10px !important;
   }
@@ -247,6 +251,7 @@ a {
     height: 150px;
     font-size: 9px !important;
     margin: 7px auto;
+    padding: 20px 0px;
     text-align: center;
     transition: all 0.2s ease 0s;
     width: 100%;
