@@ -217,15 +217,10 @@
                     this.image_url = '/public/files/'+this.post.image;
 
                     var fullUrl = window.location.href;
-
-                    // Separa la URL por "/"
                     var splitted_url = fullUrl.split('/');
-
-                    // Re-construye la URL sin la parte de la ruta
                     var new_url = splitted_url[0] + '//' + splitted_url[2];
 
                     this.pdf_url = new_url + '/public/files/'+this.post.pdf;
-                    alert(this.pdf_url)
                     this.videoID = this.post.video_id;
                     
                     if(this.post.whatsapp_description == null || this.post.whatsapp_description == '') {
