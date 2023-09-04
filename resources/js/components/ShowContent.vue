@@ -216,6 +216,7 @@
                     this.url = this.post.src;
                     this.image_url = '/public/files/'+this.post.image;
                     this.pdf_url = window.appUrl + '/public/files/'+this.post.pdf;
+                    alert(this.pdf_url)
                     this.videoID = this.post.video_id;
                     
                     if(this.post.whatsapp_description == null || this.post.whatsapp_description == '') {
