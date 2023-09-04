@@ -222,7 +222,7 @@
                     var splitted_url = fullUrl.split('/');
 
                     // Re-construye la URL sin la parte de la ruta
-                    var new_url = partesUrl[0] + '//' + partesUrl[2];
+                    var new_url = splitted_url[0] + '//' + splitted_url[2];
 
                     this.pdf_url = new_url + '/public/files/'+this.post.pdf;
                     alert(this.pdf_url)
