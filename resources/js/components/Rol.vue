@@ -41,6 +41,9 @@
                                             <td>{{ post.rol }}</td>
                                           
                                             <td>
+                                                <router-link :to="`/rol/edit/${post.rol_id}`" v-if="rols_permissions[30]"  class="btn btn-primary btn-circle btn-sm">
+                                                    <i class="fas fa-edit"></i>
+                                                </router-link>
                                                 <button v-if="rols_permissions[31]" v-on:click="deletePost(post.rol_id, index)" class="btn btn-danger btn-circle btn-sm">
                                                     <i class="fas fa-trash"></i>
                                                 </button>
