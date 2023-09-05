@@ -125,3 +125,4 @@ Route::get('permission', 'api\PermissionController@index');
 Route::get('rol/{id}/edit', 'api\RolController@edit');
 Route::post('rol/update/{id}', 'api\RolController@update');
 Route::get('rol/destroy/{id}', 'api\RolController@destroy');
+Route::get('rol_permission/{id}/edit', 'api\RolPermissionController@edit');

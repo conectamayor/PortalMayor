@@ -45,7 +45,7 @@
                                     </div>
                                     <div class="col-sm-6">
                                         <label for="exampleInputEmail1">Permisos</label>
-                                        <div v-for="(post, index) in posts" v-bind:key="index">
+                                        <div v-for="(post, index) in posts" :key="index">
                                             <input type="checkbox" v-model="post.selected">
                                             <label for="exampleInputEmail1">{{ post.permission }}</label>
                                         </div>
@@ -58,7 +58,7 @@
                                     <span class="icon text-white-50">
                                         <i class="fas fa-check"></i>
                                     </span>
-                                    <span class="text">Guardar</span>
+                                    <span class="text">Actualizar</span>
                                 </button>
                                 <router-link to="/rol" class="btn btn-danger btn-icon-split">
                                     <span class="icon text-white-50">
@@ -94,6 +94,7 @@
             return {
                 errors: [],
                 posts: [],
+                rol_permission_posts: [],
                 loading: false,
                 noFile: false,
                 form: {
@@ -121,13 +122,30 @@
                     
                     this.$set(this.form, 'rol', this.post.rol);
                 });
-            },
-            getPosts() {
-                this.loading = true;
 
                 axios.get('/api/permission?api_token='+App.apiToken)
                 .then(response => {
                     this.posts = response.data.data;
+                })
+                .catch(function (error) {
+                    console.log(error);
+                })
+                .finally(() => {
+                    this.loading = false;
+                });
+
+                axios.get('/api/rol_permission/' + this.$route.params.id + '/edit?api_token=' + App.apiToken)
+                .then(response => {
+                    this.rol_permission_posts = response.data.data;
+
+                    this.posts.forEach(post => {
+                        const matchingPermission = this.rol_permission_posts.find(rolPermission => rolPermission.permission_id === post.permission_id);
+                        if (matchingPermission) {
+                            post.selected = true;
+                        } else {
+                             post.selected = false;
+                        }
+                    });
                 })
                 .catch(function (error) {
                     console.log(error);
