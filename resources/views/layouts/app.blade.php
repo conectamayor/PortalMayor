@@ -12,7 +12,9 @@
 	<meta content='yes' name='apple-mobile-web-app-capable'/>
 	<meta content='yes' name='mobile-web-app-capable'/>
 
-    <title>{{ config('app.name', 'Portal de la Fundación Conecta Mayor') }}</title>
+    <title>{{ env('APP_NAME') }}</title>
+
+	<meta name="description" content="{{ env('META_DESCRIPTION') }}">
 
     <!-- Scripts -->
     <script src="{{ mix('js/app.js') }}" defer></script>
