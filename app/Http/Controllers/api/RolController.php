@@ -25,6 +25,34 @@ class RolController extends ApiResponseController
         return $this->successResponse($rols);
     }
 
+     /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, $id)
+    {  
+        $rol = Rol::find($id);
+        $rol->rol = $request->rol;
+        if($rol->save()) {
+            $rol_permissions = RolPermission::where('rol_id', $id)->get();
+
+            foreach ($rol_permissions as $rol_permission) {
+                $rol_permission_detail = RolPermission::find($rol_permission->rol_id);
+                $rol_permission_detail->delete();
+            }
+
+            $permissions = explode(',', $request->permissions);
+
+            for ($i=0; $i < count($permissions); $i++) { 
+                $rol_permission = new RolPermission();
+                $rol_permission->rol_id = $rol->rol_id;
+                $rol_permission->permission_id = $permissions[$i];
+                $rol_permission->save();
+            }
+        }
+    }
+
     /**
      * Store the form for creating a new resource.
      *
@@ -37,11 +65,8 @@ class RolController extends ApiResponseController
         $rol = new Rol();
         $rol->rol = $request->input('rol');
         $rol->save();
-    
-        // Obtén los permisos seleccionados (array)
-        $permissions = $request->input('permissions', []);
 
-        $permissions = explode(',', $permissions);
+        $permissions = explode(',', $request->permissions);
 
         for ($i=0; $i < count($permissions); $i++) { 
             $rol_permission = new RolPermission();

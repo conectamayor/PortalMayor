@@ -24,9 +24,9 @@
                         </router-link>
                     </div>
                     <div v-if="post.section_id == 4">
-                        <button class="boton2" :style="{ background: post.color}" v-on:click="goPhone('226043712', post.google_tag)" >
+                        <a class="boton2" :style="{ background: post.color}" href="tel:226043712" target="_blank">
                             <center><img id="salcobrand_logo" :src="'/../frontend/images/salcobrand-seeklogo.com.png'" alt=""></center><font class="title">Salcobrand</font>
-                        </button>
+                        </a>
                     </div>
                     <div v-if="post.section_id == 70">
                         <router-link @click.native="Track(post.google_tag)" class="boton2" :style="{ background: post.color}" :to="`/special_section/show/70`" >

@@ -44,11 +44,12 @@
                                         >
                                     </div>
                                     <div class="col-sm-6">
-                                        <label for="exampleInputEmail1">Permisos</label>
-                                        <div v-for="(post, index) in posts" :key="index">
-                                            <input type="checkbox" v-model="post.selected">
-                                            <label for="exampleInputEmail1">{{ post.permission }}</label>
-                                        </div>
+                                        <label for="exampleInputEmail1">Permisos <h6 class="m-0 text-danger float-right">*</h6></label>
+                                        <select class="form-control" id="exampleFormControlSelect1"
+                                        v-model="form.permission_id" multiple
+                                        >
+                                            <option v-for="permission_post in permission_posts" :key="permission_post.permission_id" :value="permission_post.permission_id">{{ permission_post.permission }}</option>
+                                        </select>
                                     </div>
                                 </div>
                                
@@ -93,16 +94,31 @@
         data: function() {
             return {
                 errors: [],
-                posts: [],
-                rol_permission_posts: [],
+                permission_posts: [],
+                stored_permissions: [],
                 loading: false,
                 noFile: false,
                 form: {
                     rol: '',
+                    permission_id: null,
                 }
             }
         },
         methods: {
+            getPosts() {
+                this.loading = true;
+
+                axios.get('/api/permission?api_token='+App.apiToken)
+                .then(response => {
+                    this.permission_posts = response.data.data;
+                })
+                .catch(function (error) {
+                    console.log(error);
+                })
+                .finally(() => {
+                    this.loading = false;
+                });
+            },
             storeAudit() {
                 let formData = new FormData();
                 formData.append('page', 'Crear Rol');
@@ -115,44 +131,29 @@
                     console.log(error);
                 });
             },
-            getPost() {
-                axios.get('/api/rol/'+ this.$route.params.id +'/edit?api_token='+App.apiToken)
-                .then(response => {
+            async getPost() {
+                try {
+                    const response = await axios.get('/api/rol/'+ this.$route.params.id +'/edit?api_token='+App.apiToken);
+
                     this.post = response.data.data;
                     
                     this.$set(this.form, 'rol', this.post.rol);
-                });
+                } catch (error) {
+                    console.error(error);
+                }
 
-                axios.get('/api/permission?api_token='+App.apiToken)
-                .then(response => {
-                    this.posts = response.data.data;
-                })
-                .catch(function (error) {
-                    console.log(error);
-                })
-                .finally(() => {
+                try {
+                    const response = await axios.get('/api/rol_permission/' + this.$route.params.id + '/edit?api_token='+App.apiToken);
+
+                    this.stored_permissions = response.data.data;
+
                     this.loading = false;
-                });
 
-                axios.get('/api/rol_permission/' + this.$route.params.id + '/edit?api_token=' + App.apiToken)
-                .then(response => {
-                    this.rol_permission_posts = response.data.data;
-
-                    this.posts.forEach(post => {
-                        const matchingPermission = this.rol_permission_posts.find(rolPermission => rolPermission.permission_id === post.permission_id);
-                        if (matchingPermission) {
-                            post.selected = true;
-                        } else {
-                             post.selected = false;
-                        }
-                    });
-                })
-                .catch(function (error) {
-                    console.log(error);
-                })
-                .finally(() => {
-                    this.loading = false;
-                });
+                    const selectedPermissionIds = this.stored_permissions.map(item => item.permission_id);
+                    this.form.permission_id = selectedPermissionIds;
+                } catch (error) {
+                    console.error(error);
+                }
             },
             onSubmit(e) {
                 this.loading = true; //the loading begin
@@ -166,9 +167,7 @@
                 if(this.form.rol != '') {
                     let formData = new FormData();
                     formData.append('rol', this.form.rol);
-                    this.selectedPermissions = this.posts.filter(post => post.selected).map(post => post.permission_id);
-
-                    formData.append('permissions', this.selectedPermissions);
+                    formData.append('permissions', this.form.permission_id);
 
                     axios.post('/api/rol/update/'+ this.$route.params.id +'?api_token='+App.apiToken, formData, config)
                     .then(function (response) {
