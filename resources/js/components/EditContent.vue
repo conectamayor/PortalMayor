@@ -491,7 +491,7 @@
                     this.$set(this.form, 'end_date', this.post.end_date);
                     this.$set(this.form, 'position', this.post.position);
                     this.$set(this.form, 'src', this.post.src);
-                    this.$set(this.form, 'src', this.post.iframe);
+                    this.$set(this.form, 'iframe', this.post.iframe);
                     
                     if (this.post.video_type_id == '') {
                         this.$set(this.form, 'video_type_id', null);
