@@ -208,7 +208,8 @@
                     let formData = new FormData();
                     formData.append('region', this.region);
                     formData.append('commune', this.commune);
-
+                    console.log(this.region);
+                    console.log(this.commune);
                     if (this.region == null && this.commune == null) {
                         this.posts = '';
                     } else {
