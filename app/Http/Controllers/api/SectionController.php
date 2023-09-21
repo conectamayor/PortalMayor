@@ -53,18 +53,7 @@ class SectionController extends ApiResponseController
                     $query->where('georeferencing_type_id', 2)
                         ->orWhere(function ($query) use ($request) {
                             $query->where('georeferencing_type_id', 1)
-                                    ->whereExists(function ($subquery) use ($request) {
-                                        $subquery->select(DB::raw(1))
-                                                ->from('section_regions')
-                                                ->whereColumn('section_regions.section_id', 'sections.section_id')
-                                                ->where('section_regions.region_id', $request->region)
-                                                ->whereExists(function ($subsubquery) use ($request) {
-                                                    $subsubquery->select(DB::raw(1))
-                                                                ->from('section_communes')
-                                                                ->whereColumn('section_communes.section_id', 'sections.section_id')
-                                                                ->where('section_communes.commune_id', $request->commune);
-                                                });
-                                    });
+
                         });
                 })
                 ->orderBy('sections.position', 'ASC')
