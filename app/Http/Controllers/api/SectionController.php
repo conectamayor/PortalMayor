@@ -60,26 +60,26 @@ class SectionController extends ApiResponseController
 
         if ($section_qty > 0) {
             $sections = Section::select('sections.*')
-                ->where(function ($query) use ($request) {
-                    $query->where('georeferencing_type_id', 0)
-                        ->orWhere(function ($query) use ($request) {
-                            $query->where('georeferencing_type_id', 1)
-                                    ->whereExists(function ($subquery) use ($request) {
-                                        $subquery->select(DB::raw(1))
-                                                ->from('section_regions')
-                                                ->whereColumn('section_regions.section_id', 'sections.section_id')
-                                                ->where('section_regions.region_id', $request->region)
-                                                ->whereExists(function ($subsubquery) use ($request) {
-                                                    $subsubquery->select(DB::raw(1))
-                                                                ->from('communes')
-                                                                ->whereColumn('communes.region_id', 'section_regions.region_id')
-                                                                ->where('communes.commune_id', $request->commune);
-                                                });
+    ->where(function ($query) use ($request) {
+        $query->where('georeferencing_type_id', 0)
+              ->orWhere(function ($query) use ($request) {
+                  $query->where('georeferencing_type_id', 1)
+                        ->whereExists(function ($subquery) use ($request) {
+                            $subquery->select(DB::raw(1))
+                                    ->from('section_regions')
+                                    ->whereColumn('section_regions.section_id', 'sections.section_id')
+                                    ->where('section_regions.region_id', $request->region)
+                                    ->whereExists(function ($subsubquery) use ($request) {
+                                        $subsubquery->select(DB::raw(1))
+                                                    ->from('section_communes')
+                                                    ->whereColumn('section_communes.section_id', 'sections.section_id')
+                                                    ->where('section_communes.commune_id', $request->commune);
                                     });
                         });
-                })
-                ->orderBy('sections.position', 'ASC')
-                ->get();
+              });
+    })
+    ->orderBy('sections.position', 'ASC')
+    ->get();
         } else {
             $sections = Section::select('sections.*')
                 ->distinct() // Agrega la función distinct()
