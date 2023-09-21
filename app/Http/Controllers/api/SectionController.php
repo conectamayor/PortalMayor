@@ -61,7 +61,7 @@ class SectionController extends ApiResponseController
                                                 ->whereExists(function ($subsubquery) use ($request) {
                                                     $subsubquery->select(DB::raw(1))
                                                                 ->from('section_communes')
-                                                                ->whereColumn('section_communes.sectionid', 'sections.section_id')
+                                                                ->whereColumn('section_communes.section_id', 'sections.section_id')
                                                                 ->where('section_communes.commune_id', $request->commune);
                                                 });
                                     });
