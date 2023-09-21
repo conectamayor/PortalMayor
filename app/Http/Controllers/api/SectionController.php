@@ -59,9 +59,6 @@ class SectionController extends ApiResponseController
                 ->count();
 
         if ($section_qty > 0) {
-            echo $request->region;
-            echo $request->commune;
-            die();
             $sections = Section::select('sections.*')
                 ->where(function ($query) use ($request) {
                     $query->where('georeferencing_type_id', 2)
