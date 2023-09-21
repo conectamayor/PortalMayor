@@ -400,26 +400,27 @@ class CategoryController extends ApiResponseController
     public function show(Request $request)
     {
         $categories = Category::select('categories.*')
-                ->where(function ($query) use ($request) {
-                    $query->where('georeferencing_type_id', 2)
-                        ->orWhere(function ($query) use ($request) {
-                            $query->where('georeferencing_type_id', 1)
-                                    ->whereExists(function ($subquery) use ($request) {
-                                        $subquery->select(DB::raw(1))
-                                                ->from('category_regions')
-                                                ->whereColumn('category_regions.category_id', 'categories.category_id')
-                                                ->where('category_regions.region_id', $request->region)
-                                                ->whereExists(function ($subsubquery) use ($request) {
-                                                    $subsubquery->select(DB::raw(1))
-                                                                ->from('category_communes')
-                                                                ->whereColumn('category_communes.category_id', 'categories.category_id')
-                                                                ->where('category_communes.commune_id', $request->commune);
-                                                });
-                                    });
-                        });
-                })
-                ->orderBy('categories.position', 'ASC')
-                ->get();
+        ->where(function ($query) use ($request) {
+            $query->where('georeferencing_type_id', 2)
+                ->orWhere(function ($query) use ($request) {
+                    $query->where('georeferencing_type_id', 1)
+                            ->whereExists(function ($subquery) use ($request) {
+                                $subquery->select(DB::raw(1))
+                                        ->from('category_regions')
+                                        ->whereColumn('category_regions.category_id', 'categories.category_id')
+                                        ->where('category_regions.region_id', $request->region)
+                                        ->whereExists(function ($subsubquery) use ($request) {
+                                            $subsubquery->select(DB::raw(1))
+                                                        ->from('category_communes')
+                                                        ->whereColumn('category_communes.category_id', 'categories.category_id')
+                                                        ->where('category_communes.commune_id', $request->commune);
+                                        });
+                            });
+                });
+        })
+        ->where('categories.section_id', $request->section_id)
+        ->orderBy('categories.position', 'ASC')
+        ->get();
 
         return $this->successResponse($categories);
     }
