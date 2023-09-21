@@ -201,7 +201,8 @@
             },
             async getPosts() {
                 try {
-                    await this.getRegion(); // Espera a que se complete getRegion()
+                    await this.getRegion();
+                    await this.getCommune();
 
                     this.loading = true;
 
