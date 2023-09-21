@@ -14,6 +14,7 @@ use App\Http\Controllers\ApiResponseController;
 use App\Http\Controllers\Controller\api;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\DB;
 
 class SectionController extends ApiResponseController
 {
