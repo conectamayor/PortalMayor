@@ -47,8 +47,7 @@ class SectionController extends ApiResponseController
      */
     public function home(Request $request)
     {
-
-            $sections = Section::select('sections.*')
+        $sections = Section::select('sections.*')
                 ->where(function ($query) use ($request) {
                     $query->where('georeferencing_type_id', 2)
                         ->orWhere(function ($query) use ($request) {
