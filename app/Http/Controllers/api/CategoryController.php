@@ -407,12 +407,12 @@ class CategoryController extends ApiResponseController
                                     ->whereExists(function ($subquery) use ($request) {
                                         $subquery->select(DB::raw(1))
                                                 ->from('category_regions')
-                                                ->whereColumn('category_regions.section_id', 'categories.category_id')
+                                                ->whereColumn('category_regions.category_id', 'categories.category_id')
                                                 ->where('category_regions.region_id', $request->region)
                                                 ->whereExists(function ($subsubquery) use ($request) {
                                                     $subsubquery->select(DB::raw(1))
                                                                 ->from('category_communes')
-                                                                ->whereColumn('category_communes.section_id', 'categories.category_id')
+                                                                ->whereColumn('category_communes.category_id', 'categories.category_id')
                                                                 ->where('category_communes.commune_id', $request->commune);
                                                 });
                                     });
