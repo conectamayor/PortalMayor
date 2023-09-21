@@ -419,6 +419,7 @@ class CategoryController extends ApiResponseController
                 });
         })
         ->where('categories.section_id', $request->section_id)
+        ->where('categories.status', 1)
         ->orderBy('categories.position', 'ASC')
         ->get();
 

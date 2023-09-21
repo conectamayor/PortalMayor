@@ -444,6 +444,7 @@ class ContentController extends ApiResponseController
                 });
         })
         ->where('contents.category_id', $request->category_id)
+        ->where('contents.status', 1)
         ->orderBy('contents.position', 'ASC')
         ->get();
 

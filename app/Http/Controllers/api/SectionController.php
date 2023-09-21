@@ -66,6 +66,7 @@ class SectionController extends ApiResponseController
                                     });
                         });
                 })
+                ->where('sections.status', 1)
                 ->orderBy('sections.position', 'ASC')
                 ->get();
 
