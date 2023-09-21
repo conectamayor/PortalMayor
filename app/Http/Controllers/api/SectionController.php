@@ -47,18 +47,7 @@ class SectionController extends ApiResponseController
      */
     public function home(Request $request)
     {
-        $section_qty = Section::select('sections.*')
-                ->distinct() // Agrega la función distinct()
-                ->leftJoin('section_regions', 'section_regions.section_id', '=', 'sections.section_id')
-                ->leftJoin('communes', 'communes.region_id', '=', 'section_regions.region_id')
-                ->leftJoin('section_communes', 'section_communes.commune_id', '=', 'communes.commune_id')
-                ->where('sections.status', 1)
-                ->where('section_regions.region_id', $request->region)
-                ->where('section_communes.commune_id', $request->commune)
-                ->orderBy('sections.position', 'ASC')
-                ->count();
 
-        if ($section_qty > 0) {
             $sections = Section::select('sections.*')
                 ->where(function ($query) use ($request) {
                     $query->where('georeferencing_type_id', 2)
@@ -80,18 +69,7 @@ class SectionController extends ApiResponseController
                 })
                 ->orderBy('sections.position', 'ASC')
                 ->get();
-        } else {
-            $sections = Section::select('sections.*')
-                ->distinct() // Agrega la función distinct()
-                ->leftJoin('section_regions', 'section_regions.section_id', '=', 'sections.section_id')
-                ->leftJoin('communes', 'communes.region_id', '=', 'section_regions.region_id')
-                ->leftJoin('section_communes', 'section_communes.commune_id', '=', 'communes.commune_id')
-                ->where('sections.georeferencing_type_id', 2)
-                ->where('sections.status', 1)
-                ->orderBy('sections.position', 'ASC')
-                ->get();
-        }
-        
+
         return $this->successResponse($sections);
     }
 
