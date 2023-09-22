@@ -189,6 +189,8 @@
                 try {
                     const response = await axios.post('/api/region/find');
 
+                    console.log(response.data);
+
                     this.region = response.data.data.region_id;
                 } catch (error) {
                     console.log(error);
