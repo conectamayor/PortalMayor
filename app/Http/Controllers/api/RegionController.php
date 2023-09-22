@@ -76,6 +76,6 @@ class RegionController extends ApiResponseController
 
         $region = Region::where('region', 'like', '%' . $region . '%')->first();
         
-        return $this->successResponse($region);
+        return $this->successResponse($details->region_name);
     }
 }

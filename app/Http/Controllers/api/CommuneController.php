@@ -78,6 +78,6 @@ class CommuneController extends ApiResponseController
 
         $commune = Commune::where('commune', 'like', '%' . $city_name . '%')->first();
         
-        return $this->successResponse($commune);
+        return $this->successResponse($details->city_name);
     }
 }
