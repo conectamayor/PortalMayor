@@ -3,11 +3,7 @@
 
         <div class="row">
             <hr>
-            <h2><center><strong>{{ title }}</strong></center>
-                Region: {{ region }}
-                Comuna: {{ commune }}
-            </h2>
-            </h2>
+            <h2><center><strong>{{ title }}</strong></center></h2>
         </div>
         <div class="row">
 		    <div class="col-6" v-for="(post, index) in posts" v-bind:index="index">
@@ -189,7 +185,7 @@
                 try {
                     const response = await axios.post('/api/region/find');
 
-                    this.region = response.data;
+                    this.region = response.data.data.region_id;
                 } catch (error) {
                     console.log(error);
                 }
@@ -198,7 +194,7 @@
                 try {
                     const response = await axios.post('/api/commune/find');
 
-                    this.commune = response.data;
+                    this.commune = response.data.data.commune_id;
                 } catch (error) {
                     console.log(error);
                 }
