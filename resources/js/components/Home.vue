@@ -189,9 +189,7 @@
                 try {
                     const response = await axios.post('/api/region/find');
 
-                    console.log(response.data);
-
-                    this.region = response.data.data.region_id;
+                    this.region = response.data;
                 } catch (error) {
                     console.log(error);
                 }
@@ -200,7 +198,7 @@
                 try {
                     const response = await axios.post('/api/commune/find');
 
-                    this.commune = response.data.data.commune_id;
+                    this.commune = response.data;
                 } catch (error) {
                     console.log(error);
                 }
