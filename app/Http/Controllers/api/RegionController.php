@@ -49,7 +49,7 @@ class RegionController extends ApiResponseController
             $ip = $_SERVER['REMOTE_ADDR'];  
         }
 
-        $apiKey = "16823809AF409285AEB1180E176139FF";
+        $apiKey = "D1ADF7A7E66DB897DEF099B7CD05DE34";
 
         $curl = curl_init();
 
