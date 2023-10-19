@@ -97,6 +97,7 @@
             this.getCommune();
             this.getPosts();
             this.checkDate();
+            this.getSettings();
         },
         mounted() {
             this.detectDispositive();
@@ -199,23 +200,37 @@
                     console.log(error);
                 }
             },
+            async getSettings() {
+                try {
+                    const response = await axios.post('/api/setting');
+
+                    this.settings = response.data.data;
+                } catch (error) {
+                    console.log(error);
+                }
+            },
             async getPosts() {
                 try {
-                    await this.getRegion();
-                    await this.getCommune();
-
-                    this.loading = true;
-
-                    let formData = new FormData();
-                    formData.append('region', this.region);
-                    formData.append('commune', this.commune);
-                    console.log(this.region);
-                    console.log(this.commune);
-                    if (this.region == null && this.commune == null) {
-                        this.posts = '';
-                    } else {
+                    if (this.settings.geo_location_id == 0) {
                         const response = await axios.post('/api/section/home', formData);
                         this.posts = response.data.data;
+                    } else {
+                        await this.getRegion();
+                        await this.getCommune();
+
+                        this.loading = true;
+
+                        let formData = new FormData();
+                        formData.append('region', this.region);
+                        formData.append('commune', this.commune);
+                        console.log(this.region);
+                        console.log(this.commune);
+                        if (this.region == null && this.commune == null) {
+                            this.posts = '';
+                        } else {
+                            const response = await axios.post('/api/section/home', formData);
+                            this.posts = response.data.data;
+                        }
                     }
                 } catch (error) {
                     console.log(error);
@@ -229,6 +244,7 @@
                 region: '',
                 commune: '',
                 modalShow: '',
+                settings: '',
                 posts: [],
                 form: {
                     search: 'Buscar en Google.com'
