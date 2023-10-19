@@ -18,7 +18,7 @@ class SettingController extends ApiResponseController
     public function index(Request $request)
     {
         $settings = Setting::from('settings as c')
-                        ->selectRaw('c.*')->where('section_id', 1)->first();
+                        ->selectRaw('c.*')->where('geo_location_id', 1)->first();
         
         return $this->successResponse($settings);
     }
