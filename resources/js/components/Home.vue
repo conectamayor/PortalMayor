@@ -24,7 +24,7 @@
                         </router-link>
                     </div>
                     <div v-if="post.section_id == 4">
-                        <a class="boton2" :style="{ background: post.color}" href="tel:226043712" target="_blank">
+                        <a class="boton2" :style="{ background: post.color}" v-on:click="goPhone('226043712', post.google_tag)" target="_blank">
                             <center><img id="salcobrand_logo" :src="'/../frontend/images/salcobrand-seeklogo.com.png'" alt=""></center><font class="title">Salcobrand</font>
                         </a>
                     </div>
