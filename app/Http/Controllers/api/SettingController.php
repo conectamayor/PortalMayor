@@ -8,7 +8,7 @@ use App\Http\Controllers\Controller\api;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
-class RolController extends ApiResponseController
+class SettingController extends ApiResponseController
 {
     /**
      * Display a listing of the resource.
