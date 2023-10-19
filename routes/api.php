@@ -128,3 +128,4 @@ Route::get('rol/destroy/{id}', 'api\RolController@destroy');
 Route::get('rol_permission/{id}/edit', 'api\RolPermissionController@edit');
 Route::get('content_region/{id}/edit', 'api\ContentRegionController@edit');
 Route::get('content_commune/{id}/edit', 'api\ContentCommuneController@edit');
+Route::post('setting', 'api\Setting@index');
