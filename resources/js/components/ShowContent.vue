@@ -207,6 +207,15 @@
             goBack() {
                 this.$router.go(-1)
             },
+            async getSettings() {
+                try {
+                    const response = await axios.post('/api/setting');
+
+                    this.settings = response.data.data;
+                } catch (error) {
+                    console.log(error);
+                }
+            },
             getPost() {
                 this.loading = true;
 

@@ -79,6 +79,7 @@
             this.getPosts();
             this.getPolls();
             this.checkDate();
+            this.getSettings();
 
             localStorage.setItem('circle_position', '10');
         },
@@ -237,22 +238,36 @@
                     this.loading = false;
                 });
             },
+            async getSettings() {
+                try {
+                    const response = await axios.post('/api/setting');
+
+                    this.settings = response.data.data;
+                } catch (error) {
+                    console.log(error);
+                }
+            },
             async getPosts() {
                 try {
-                    await this.getRegion(); // Espera a que se complete getRegion()
-
-                    this.loading = true;
-
-                    let formData = new FormData();
-                    formData.append('section_id',this.$route.params.id);
-                    formData.append('region', this.region);
-                    formData.append('commune', this.commune);
-
-                    if (this.region == null && this.commune == null) {
-                        this.posts = '';
-                    } else {
-                        const response = await axios.post('/api/category/show', formData);
+                    if (this.settings.geo_location_id == 0) {
+                        const response = await axios.post('/api/section/home', formData);
                         this.posts = response.data.data;
+                    } else {
+                        await this.getRegion(); // Espera a que se complete getRegion()
+
+                        this.loading = true;
+
+                        let formData = new FormData();
+                        formData.append('section_id',this.$route.params.id);
+                        formData.append('region', this.region);
+                        formData.append('commune', this.commune);
+
+                        if (this.region == null && this.commune == null) {
+                            this.posts = '';
+                        } else {
+                            const response = await axios.post('/api/category/show', formData);
+                            this.posts = response.data.data;
+                        }
                     }
                 } catch (error) {
                     console.log(error);
@@ -263,6 +278,7 @@
         },
         data: function() {
             return {
+                settings: '',
                 posts: [],
                 post: '',
                 polls: [],
