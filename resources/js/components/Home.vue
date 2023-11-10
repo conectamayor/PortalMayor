@@ -46,7 +46,6 @@
                                 </router-link>
                             </div>
                             <div v-else>
-                                3233
                                 <button class="boton2 app" :style="{ background: post.color}" v-on:click="openApp(post.open_app_uri_url, post.google_tag, post.open_app_desktop_url, post.open_app_not_installed)" >
                                     <i v-bind:class="post.icon"></i><br><font class="title">{{ post.section_title }}</font> 
                                 </button>
